@@ -28,10 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NthDimension.Network", "NthDimension.Network\NthDimension.Network.csproj", "{9E92AC80-5200-4DB5-9C91-B2EC1FDB930F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9E624AF-7F5A-4F0B-B347-86BC271B8152}"
-	ProjectSection(SolutionItems) = preProject
-		ChangeLog_2020.txt = ChangeLog_2020.txt
-		xsn.xml = xsn.xml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripting Engine (SDK)", "Scripting Engine (SDK)", "{6B4203B2-B734-4F34-8DB2-5A2FFA9B3E34}"
 EndProject
