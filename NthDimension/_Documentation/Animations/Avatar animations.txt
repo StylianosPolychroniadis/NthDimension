@@ -1,0 +1,29 @@
+﻿   - Idle
+   - Run
+   - Walk
+   - Jump
+   - Crouch Walk
+   - Crouch Idle
+   - Crawl
+   - Climb Up
+   - Climb Down
+   - Climb Left
+   - Climb Right
+   - Climb Up_2
+   - Hang Left
+   - Hang Right
+
+   - Sit
+   - Sit to stand
+   - Stand to sit
+   - Talk
+   - Talk Agree
+   - Talk Angry
+   - Talk Reserved
+   - Talk Phone
+   - Greet
+   - Dance 1
+   - Dance 2
+   ...
+   - Dance N
+

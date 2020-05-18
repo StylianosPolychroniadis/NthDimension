@@ -1,0 +1,6 @@
+<material shader="defaultnongeo.xsp" ssnshader="ssnormals.xsp" selection="selection.xsp" shadow="shadow.xsp" definfo="defInfo.xsp">
+	<textures base="firstperson\spotlight.dds" normal="firstperson\spotlight_n.dds" definfo="firstperson\spotlight_i.dds"/>
+	<emit  tint="0.2|0.2|1"/>
+	<lighted/>
+	<envmap  tint="0.5|0.5|0.5" />
+</material>

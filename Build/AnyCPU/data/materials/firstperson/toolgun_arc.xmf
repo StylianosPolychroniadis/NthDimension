@@ -1,0 +1,6 @@
+<material shader="electricArc.xsp">
+	<textures base="firstperson\electric_arc.png" base2="firstperson\electric_arc_displace.png"/>
+	<transparency/>
+	<nodepthmask/>
+	<additive/>
+</material>

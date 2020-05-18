@@ -1,0 +1,66 @@
+Acetamide
+Acetic Acid
+Acetone 100%
+Acifloctin
+Air
+Aminophen
+Ammonia
+Asphalt
+Benzene
+Benzenol
+Carbon Oil
+Caustic Soda 30% (Sodium Hydroxyde)
+Caustic Soda 50% (Sodium Hydroxyde)
+Carbon Dioxide (CO2)
+Chloroform
+Cinnamol
+Coal Naptha
+Diesel Fuel (Fuel Oil No. 2)
+Ethanolic Acid
+Fuel Oil No. 1 (Kerosene)
+Fuel Oil No. 2 (Diesel)
+Fuel Oil No. 3, 4 (Medium)
+Fuel Oil No. 5, 6 (Heavy)
+Gasoline
+Glycerine
+Glycol
+Clycol Acid
+Mercury
+Methanol
+Milk
+Motor Benzol
+Napthalene
+Nitric Acid 7%
+Nitric Acid 95%
+Nitrogen
+Nitrogen Oxides (NOx)
+Oil API20 Heavy
+Oil API25 Medium
+Oil API35 Light
+Oil Cottonseed
+Oil Olive
+Oil Soybean
+Oil Vegetable
+Oil Waxy
+Oxygen (O2)
+Parafin Melted
+Phenol
+Propane
+Propanol
+Steam (Water)
+Sugar 40%
+Sugar 60%
+Sulfuric Acid 20%
+Sulfuric Acid 60%
+Sulfuric Acid 98%
+Sulfur
+SO2 (Sulfur Dioxide)
+Sulfur Melted
+Toluene
+Turpentine
+Undefined
+Vinegar Acid
+Vinyl Acetate
+Water
+Water Sea
+Water Vapor

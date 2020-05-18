@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9D509CA6-5635-4C05-AD73-76F97CFBABA7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NthDimension.Math</RootNamespace>
+    <AssemblyName>NthDimension.Math</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algebra\BezierCurve.cs" />
+    <Compile Include="Algebra\BezierCurveCubic.cs" />
+    <Compile Include="Algebra\BezierCurveQuadric.cs" />
+    <Compile Include="Algebra\BezierPath.cs" />
+    <Compile Include="Algebra\Box2.cs" />
+    <Compile Include="Algebra\Box2d.cs" />
+    <Compile Include="Algebra\Color4.cs" />
+    <Compile Include="Algebra\Half.cs" />
+    <Compile Include="Algebra\Index2i.cs" />
+    <Compile Include="Algebra\Index3i.cs" />
+    <Compile Include="Algebra\Index4i.cs" />
+    <Compile Include="Algebra\Line.cs" />
+    <Compile Include="Algebra\Matrix2.cs" />
+    <Compile Include="Algebra\Matrix2d.cs" />
+    <Compile Include="Algebra\Matrix2x3.cs" />
+    <Compile Include="Algebra\Matrix2x3d.cs" />
+    <Compile Include="Algebra\Matrix2x4.cs" />
+    <Compile Include="Algebra\Matrix2x4d.cs" />
+    <Compile Include="Algebra\Matrix3.cs" />
+    <Compile Include="Algebra\Matrix3d.cs" />
+    <Compile Include="Algebra\Matrix3x2.cs" />
+    <Compile Include="Algebra\Matrix3x2d.cs" />
+    <Compile Include="Algebra\Matrix3x4.cs" />
+    <Compile Include="Algebra\Matrix3x4d.cs" />
+    <Compile Include="Algebra\Matrix4.cs" />
+    <Compile Include="Algebra\Matrix4d.cs" />
+    <Compile Include="Algebra\Matrix4x2.cs" />
+    <Compile Include="Algebra\Matrix4x2d.cs" />
+    <Compile Include="Algebra\Matrix4x3.cs" />
+    <Compile Include="Algebra\Matrix4x3d.cs" />
+    <Compile Include="Algebra\NormDist.cs" />
+    <Compile Include="Algebra\Point.cs" />
+    <Compile Include="Algebra\Point.minimal.cs" />
+    <Compile Include="Algebra\Quaternion.cs" />
+    <Compile Include="Algebra\Quaterniond.cs" />
+    <Compile Include="Algebra\Rect.cs" />
+    <Compile Include="Algebra\Rectangle.cs" />
+    <Compile Include="Algebra\Size.cs" />
+    <Compile Include="Algebra\Tensor.cs" />
+    <Compile Include="Algebra\Transform.cs" />
+    <Compile Include="Algebra\Uvw.cs" />
+    <Compile Include="Algebra\Vector2.cs" />
+    <Compile Include="Algebra\Vector2d.cs" />
+    <Compile Include="Algebra\Vector2h.cs" />
+    <Compile Include="Algebra\Vector2i.cs" />
+    <Compile Include="Algebra\Vector3.cs" />
+    <Compile Include="Algebra\Vector3d.cs" />
+    <Compile Include="Algebra\Vector3h.cs" />
+    <Compile Include="Algebra\Vector3i.cs" />
+    <Compile Include="Algebra\Vector4.cs" />
+    <Compile Include="Algebra\Vector4d.cs" />
+    <Compile Include="Algebra\Vector4h.cs" />
+    <Compile Include="Algebra\Vector4i.cs" />
+    <Compile Include="Easing.cs" />
+    <Compile Include="Enumerators.cs" />
+    <Compile Include="MathHelper.cs" />
+    <Compile Include="Physics\Collision\CollisionIsland.cs" />
+    <Compile Include="Physics\Collision\CollisionSystem.cs" />
+    <Compile Include="Physics\Collision\CollisionSystemBrute.cs" />
+    <Compile Include="Physics\Collision\CollisionSystemPersistentSAP.cs" />
+    <Compile Include="Physics\Collision\CollisionSystemSAP.cs" />
+    <Compile Include="Physics\Collision\DynamicTree.cs" />
+    <Compile Include="Physics\Collision\GJKCollide.cs" />
+    <Compile Include="Physics\Collision\IslandManager.cs" />
+    <Compile Include="Physics\Collision\Octree.cs" />
+    <Compile Include="Physics\Collision\Shapes\BoxShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\CapsuleShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\CompoundShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\ConeShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\ConvexHullShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\CylinderShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\MinkowskiSumShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\Multishape.cs" />
+    <Compile Include="Physics\Collision\Shapes\Shape.cs" />
+    <Compile Include="Physics\Collision\Shapes\SphereShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\TerrainShape.cs" />
+    <Compile Include="Physics\Collision\Shapes\TriangleMeshShape.cs" />
+    <Compile Include="Physics\Collision\XenoCollide.cs" />
+    <Compile Include="Physics\DataStructures\Action.cs" />
+    <Compile Include="Physics\DataStructures\Hashset.cs" />
+    <Compile Include="Physics\DataStructures\ReadOnlyHashset.cs" />
+    <Compile Include="Physics\Dynamics\Arbiter.cs" />
+    <Compile Include="Physics\Dynamics\ArbiterMap.cs" />
+    <Compile Include="Physics\Dynamics\Constraint.cs" />
+    <Compile Include="Physics\Dynamics\Constraints\FixedAngle.cs" />
+    <Compile Include="Physics\Dynamics\Constraints\PointOnLine.cs" />
+    <Compile Include="Physics\Dynamics\Constraints\PointOnPoint.cs" />
+    <Compile Include="Physics\Dynamics\Constraints\PointPointDistance.cs" />
+    <Compile Include="Physics\Dynamics\Constraints\SingleBody\FixedAngle.cs" />
+    <Compile Include="Physics\Dynamics\Constraints\SingleBody\PointOnLine.cs" />
+    <Compile Include="Physics\Dynamics\Constraints\SingleBody\PointOnPoint.cs" />
+    <Compile Include="Physics\Dynamics\Contact.cs" />
+    <Compile Include="Physics\Dynamics\IConstraint.cs" />
+    <Compile Include="Physics\Dynamics\Joints\HingeJoint.cs" />
+    <Compile Include="Physics\Dynamics\Joints\Joint.cs" />
+    <Compile Include="Physics\Dynamics\Joints\LimitedHingeJoint.cs" />
+    <Compile Include="Physics\Dynamics\Joints\PrismaticJoint.cs" />
+    <Compile Include="Physics\Dynamics\Material.cs" />
+    <Compile Include="Physics\Dynamics\RigidBody.cs" />
+    <Compile Include="Physics\Dynamics\SoftBody.cs" />
+    <Compile Include="Physics\IDebugDraw.cs" />
+    <Compile Include="Physics\LinearMath\JBBox.cs" />
+    <Compile Include="Physics\LinearMath\JConvexHull.cs" />
+    <Compile Include="Physics\LinearMath\JMath.cs" />
+    <Compile Include="Physics\LinearMath\JMatrix.cs" />
+    <Compile Include="Physics\LinearMath\JQuaternion.cs" />
+    <Compile Include="Physics\LinearMath\JVector.cs" />
+    <Compile Include="Physics\PhysicsWorld.cs" />
+    <Compile Include="Physics\ResourcePool.cs" />
+    <Compile Include="Physics\ThreadManager.cs" />
+    <Compile Include="Physics\World.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

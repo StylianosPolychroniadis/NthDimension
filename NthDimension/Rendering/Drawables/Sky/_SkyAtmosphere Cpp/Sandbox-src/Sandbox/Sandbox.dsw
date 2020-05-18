@@ -1,0 +1,149 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "EngineCore"=.\EngineCore\EngineCore.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "GLCloud1"=.\GLCloud1\GLCloud1.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name EngineCore
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "GLCloud2"=.\GLCloud2\GLCloud2.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name EngineCore
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "GLCloud3"=.\GLCloud3\GLCloud3.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name EngineCore
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "Planet_Quad"=.\Planet_Quad\Planet_Quad.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name EngineCore
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ScatterCPU"=.\ScatterCPU\ScatterCPU.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name EngineCore
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ScatterGPU"=.\ScatterGPU\ScatterGPU.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name EngineCore
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "SpriteTest"=.\SpriteTest\SpriteTest.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name EngineCore
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "TestApp"=.\TestApp\TestApp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name EngineCore
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

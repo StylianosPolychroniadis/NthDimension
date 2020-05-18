@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A53F318-33FA-4D2E-9BD9-DAB371F010BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NthDimension.Forms</RootNamespace>
+    <AssemblyName>NthDimension.Forms</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accessibility\WinForms.cs" />
+    <Compile Include="Dialogs\SaveFileDialog.cs" />
+    <Compile Include="Docking\Colors.cs" />
+    <Compile Include="Docking\Consts.cs" />
+    <Compile Include="Docking\DockContent.cs" />
+    <Compile Include="Docking\DockDropArea.cs" />
+    <Compile Include="Docking\DockDropCollection.cs" />
+    <Compile Include="Docking\DockGroup.cs" />
+    <Compile Include="Docking\DockGroupState.cs" />
+    <Compile Include="Docking\DockPanel.cs" />
+    <Compile Include="Docking\DockPanelState.cs" />
+    <Compile Include="Docking\DockRegion.cs" />
+    <Compile Include="Docking\DockRegionState.cs" />
+    <Compile Include="Docking\DockSplitter.cs" />
+    <Compile Include="Docking\DockTab.cs" />
+    <Compile Include="Docking\DockTabArea.cs" />
+    <Compile Include="Docking\EventArgs.cs" />
+    <Compile Include="Enumerators.Docking.cs" />
+    <Compile Include="Widgets\Button\Button.cs" />
+    <Compile Include="Cursors.cs" />
+    <Compile Include="Cursors.Nano.cs" />
+    <Compile Include="Cursors.Single.cs" />
+    <Compile Include="Delegates\ContextMenu.cs" />
+    <Compile Include="Delegates\Handlers.cs" />
+    <Compile Include="Delegates\Menu.cs" />
+    <Compile Include="Delegates\ToolStrip.cs" />
+    <Compile Include="Delegates\TreeView.cs" />
+    <Compile Include="Dialogs\DialogBase.cs" />
+    <Compile Include="Dialogs\MessageDialog.cs" />
+    <Compile Include="Dialogs\OpenFilesDialog.cs" />
+    <Compile Include="DragAndDrop.cs" />
+    <Compile Include="DragDropPackage.cs" />
+    <Compile Include="Ellipsis.cs" />
+    <Compile Include="Enumerators.cs" />
+    <Compile Include="Enumerators.Keyboard.cs" />
+    <Compile Include="Enumerators.Mouse.cs" />
+    <Compile Include="Events\BaseEventArgs.cs" />
+    <Compile Include="Events\DrawTreeNodeEventArgs.cs" />
+    <Compile Include="Events\ItemDragEventArgs.cs" />
+    <Compile Include="Events\KeyEventArgs.cs" />
+    <Compile Include="Events\KeyPressedEventArgs.cs" />
+    <Compile Include="Events\MarginPaintEventHandler.cs" />
+    <Compile Include="Events\MouseButtonEventArgs.cs" />
+    <Compile Include="Events\MouseCursorChangedEventArgs.cs" />
+    <Compile Include="Events\MouseDownEventArgs.cs" />
+    <Compile Include="Events\MouseEventArgs.cs" />
+    <Compile Include="Events\NodeLabelEditEventArgs.cs" />
+    <Compile Include="Events\PaintEventArgs.cs" />
+    <Compile Include="Events\ScrollEventArgs.cs" />
+    <Compile Include="Events\TreeNodeMouseClickEventArgs.cs" />
+    <Compile Include="Events\TreeNodeMouseHoverEventArgs.cs" />
+    <Compile Include="Events\TreeViewCancelEventArgs.cs" />
+    <Compile Include="Events\TreeViewEventArgs.cs" />
+    <Compile Include="GContext.cs" />
+    <Compile Include="Widgets\CalcGrid\CalcGrid.cs" />
+    <Compile Include="Widgets\CalcGrid\CalcGridEngine.cs" />
+    <Compile Include="Widgets\CalcGrid\CalcGridStyleSettings.cs" />
+    <Compile Include="Widgets\CalcGrid\CellRange.cs" />
+    <Compile Include="Widgets\ImageList\ImageList.cs" />
+    <Compile Include="IUiContext.cs" />
+    <Compile Include="Widgets\Label\Label.cs" />
+    <Compile Include="Layout\AbstractMargin.cs" />
+    <Compile Include="Layout\DockAnchor.cs" />
+    <Compile Include="Layout\LayoutBase.cs" />
+    <Compile Include="Layout\LayoutList.cs" />
+    <Compile Include="Layout\Spacing.cs" />
+    <EmbeddedResource Include="Cursors\bottom_left_corner" />
+    <EmbeddedResource Include="Cursors\bottom_right_corner" />
+    <EmbeddedResource Include="Cursors\cross" />
+    <EmbeddedResource Include="Cursors\hand" />
+    <EmbeddedResource Include="Cursors\help" />
+    <EmbeddedResource Include="Cursors\ibeam" />
+    <EmbeddedResource Include="Cursors\move" />
+    <EmbeddedResource Include="Cursors\right_ptr" />
+    <EmbeddedResource Include="Cursors\sb_h_double_arrow" />
+    <EmbeddedResource Include="Cursors\sb_v_double_arrow" />
+    <EmbeddedResource Include="Cursors\top_left_corner" />
+    <EmbeddedResource Include="Cursors\top_right_corner" />
+    <EmbeddedResource Include="Cursors\arrow" />
+    <EmbeddedResource Include="Cursors\arrow_right" />
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Layout\TextCanvasMargin.cs" />
+    <Compile Include="NanoFont.cs" />
+    <Compile Include="NanoPen.cs" />
+    <Compile Include="NanoSolidBrush.cs" />
+    <Compile Include="Overlay.cs" />
+    <Compile Include="Widgets\Panel\Panel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Configuration\MouseConfig.cs" />
+    <Compile Include="Themes\ThemeEngine.cs" />
+    <Compile Include="Widget.cs" />
+    <Compile Include="Widget.WHUD.cs" />
+    <Compile Include="WidgetList.cs" />
+    <Compile Include="Widgets\ContextMenu\ContextMenuStrip.cs" />
+    <Compile Include="Widgets\LabelEditTextBox\LabelEditTextBox.cs" />
+    <Compile Include="Widgets\ListView\Collections\ListViewColumnsCollection.cs" />
+    <Compile Include="Widgets\ListView\Collections\ListViewItemsCollection.cs" />
+    <Compile Include="Widgets\ListView\EventArgs.cs" />
+    <Compile Include="Widgets\ListView\IListViewItem.cs" />
+    <Compile Include="Widgets\ListView\KeysConverter.cs" />
+    <Compile Include="Widgets\ListView\ListView.cs" />
+    <Compile Include="Widgets\ListView\ListViewColumn.cs" />
+    <Compile Include="Widgets\ListView\ListViewItem.cs" />
+    <Compile Include="Widgets\ListView\ListViewPanel.cs" />
+    <Compile Include="Widgets\ListView\ListViewSubItem.cs" />
+    <Compile Include="Widgets\ListView\ListViewSubItemRating.cs" />
+    <Compile Include="Widgets\MenuStrip\Collections\MenuStripItemList.cs" />
+    <Compile Include="Widgets\MenuStrip\MenuStripItem.cs" />
+    <Compile Include="Widgets\MenuStrip\MenuStrip.cs" />
+    <Compile Include="Widgets\MenuStrip\MenuStripItemSeparator.cs" />
+    <Compile Include="Widgets\ScrollBar\ScrollBarBase.cs" />
+    <Compile Include="Widgets\ScrollBar\ScrollBarH.cs" />
+    <Compile Include="Widgets\ScrollBar\ScrollBarV.cs" />
+    <Compile Include="Widgets\SplitterBox\SplitterBox.cs" />
+    <Compile Include="Widgets\TextField\TextField.cs" />
+    <Compile Include="Widgets\ToolStrip\ToolStrip.cs" />
+    <Compile Include="Widgets\ToolStrip\ToolStripItemList.cs" />
+    <Compile Include="Widgets\ToolTip\ToolTip.cs" />
+    <Compile Include="Widgets\TreeView\TreeNode.cs" />
+    <Compile Include="Widgets\TreeView\TreeNodeCollection.cs" />
+    <Compile Include="Widgets\TreeView\TreeView.cs" />
+    <Compile Include="Widgets\TreeView\TreeViewCanvas.cs" />
+    <Compile Include="WinApi.cs" />
+    <Compile Include="Window.cs" />
+    <EmbeddedResource Include="Resources\PlayRegular.ttf" />
+    <EmbeddedResource Include="Resources\Roboto-Regular.ttf" />
+    <EmbeddedResource Include="Resources\entypo.ttf" />
+    <EmbeddedResource Include="Resources\Roboto-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Roboto-Light.ttf" />
+    <EmbeddedResource Include="Resources\Attractive-Italic.ttf" />
+    <EmbeddedResource Include="Resources\Attractive-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Cmu-Bright-Roman.ttf" />
+    <EmbeddedResource Include="Resources\DroidSansJapanese.ttf" />
+    <EmbeddedResource Include="Resources\DroidSerif-Bold.ttf" />
+    <EmbeddedResource Include="Resources\DroidSerif-Italic.ttf" />
+    <EmbeddedResource Include="Resources\DroidSerif-Regular.ttf" />
+    <EmbeddedResource Include="Resources\NotoEmoji-Regular.ttf" />
+    <EmbeddedResource Include="Resources\OpenSansEmoji.ttf" />
+    <EmbeddedResource Include="Resources\Rounded_Blocks_by_SCriBu.ttf" />
+    <EmbeddedResource Include="Resources\SpaceAge-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NthDimension.Math\NthDimension.Math.csproj">
+      <Project>{9d509ca6-5635-4c05-ad73-76f97cfbaba7}</Project>
+      <Name>NthDimension.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.OpenGL\NthDimension.Rasterizer.csproj">
+      <Project>{8fa1bc9b-47ed-4838-95b3-03589355eafb}</Project>
+      <Name>NthDimension.Rasterizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension\NthDimension.csproj">
+      <Project>{239e7ffd-bd08-4572-abcf-e3f291213798}</Project>
+      <Name>NthDimension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

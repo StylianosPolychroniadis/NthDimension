@@ -1,0 +1,959 @@
+﻿*BEGIN*
+
+Feature := None
+Char	:= 0
+Color	:= Black
+Tile	:= Empty
+Name	:= void
+
+Feature	:= CaveFloor
+Char	:= 7
+Color	:= White
+Map Color := Grey
+Tile	:= Cave Floor Plain
+Name	:= open floor
+Flags	:= AllowMove,AllowShot
+
+Feature	:= CavernFloor
+Char	:= 7
+Color	:= White
+Map Color := Grey
+Tile	:= Cavern Floor
+Name	:= open floor
+Flags	:= AllowMove,AllowShot
+
+Feature	:= DoorCavernOpen
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Open 1
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorCavernBroken
+Char	:= 15
+Color	:= Brown
+Map Color := Brown
+Tile	:= Door Secret Open 1
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorCavernClosed
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Closed 1
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorCavernHidden
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Cavern Wall
+Name	:= rough cavern wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= GraniteWallExtra
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall 1
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+	
+Feature	:= GraniteWallOuter
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall 1
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+	
+Feature	:= GraniteWallInner
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall 1
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+	
+Feature	:= GraniteWallSolid
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall 1
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= CavernWall
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Cavern Wall
+Name	:= rough cavern wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= Column1
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Column 1
+Name	:= support column
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= Column3
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Column 3
+Name	:= support column
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= PermanentWallExtra
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall 1
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+	
+Feature	:= PermanentWallOuter
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall 1
+Name	:= permanent wall
+Flags	:= NoObjects,BlockLOS
+	
+Feature	:= PermanentWallInner
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall 1
+Name	:= permanent wall
+Flags	:= NoObjects,BlockLOS
+	
+Feature	:= MagmaWall
+Char	:= 127
+Color	:= Grey
+Map Color := White
+Name	:= magma vein
+Flags	:= NoObjects,BlockLOS
+	
+Feature	:= QuartzWall
+Char	:= 127
+Color	:= LightGrey
+Map Color := White
+Name	:= quartz vein
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= Grass
+Char	:= 7
+Color	:= Green
+Map Color := Green
+Tile	:= Grass
+Name	:= grassy area
+Flags	:= AllowMove,AllowShot
+
+Feature	:= Dirt
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Dirt
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= Mountain
+Char	:= 94
+Color	:= Brown
+Map Color := Grey
+Tile	:= Mountain
+Name	:= mountain
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= Tree1
+Char	:= 35
+Color	:= Green
+Map Color := DarkGreen
+Tile	:= Tree 1
+Name	:= tree
+Flags	:= AllowMove,BlockLOS,Interesting
+
+Feature	:= Tree2
+Char	:= 35
+Color	:= Green
+Map Color := DarkGreen
+Tile	:= Tree 2
+Name	:= tree
+Flags	:= AllowMove,BlockLOS,Interesting
+
+Feature	:= Tree3
+Char	:= 35
+Color	:= Green
+Map Color := DarkGreen
+Tile	:= Tree 3
+Name	:= tree
+Flags	:= AllowMove,BlockLOS,Interesting
+
+Feature	:= ShopGeneral
+Char	:= 49
+Color	:= Brown
+Map Color := LightBlue
+Tile	:= Shop General
+Name	:= General Store
+Flags	:= AllowMove, AllowShot,Interesting,BlockLOS
+
+Feature	:= ShopArmor
+Char	:= 50
+Color	:= Brown
+Map Color := LightBlue
+Tile	:= Shop Armor
+Name	:= Armory
+Flags	:= AllowMove, AllowShot,Interesting,BlockLOS
+
+Feature	:= ShopWeapons
+Char	:= 51
+Color	:= White
+Map Color := LightBlue
+Tile	:= Shop Weapons
+Name	:= Weapon Smith's
+Flags	:= AllowMove, AllowShot,Interesting,BlockLOS
+
+Feature	:= ShopPotions
+Char	:= 53
+Color	:= Blue
+Map Color := LightBlue
+Tile	:= Shop Potions
+Name	:= Alchemist's
+Flags	:= AllowMove, AllowShot,Interesting,BlockLOS
+
+Feature	:= ShopMagic
+Char	:= 53
+Color	:= Red
+Map Color := LightBlue
+Tile	:= Shop Magic
+Name	:= Magic Store
+Flags	:= AllowMove, AllowShot,Interesting,BlockLOS
+
+Feature	:= ShopBook
+Char	:= 53
+Color	:= Orange
+Map Color := LightBlue
+Tile	:= Shop Book
+Name	:= Book Store
+Flags	:= AllowMove, AllowShot,Interesting,BlockLOS
+
+Feature	:= GrassDirtBlend0
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 0
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend1
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 1
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend2
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 2
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend3
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 3
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend4
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 4
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend5
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 5
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend6
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 6
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend7
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 7
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend8
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 8
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend9
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 9
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend10
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 10
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= GrassDirtBlend11
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Grass Dirt Blend 11
+Name	:= dirt path
+Flags	:= AllowMove,AllowShot
+
+Feature	:= FarmPlot
+Char	:= 7
+Color	:= Brown
+Map Color := LightBrown
+Tile	:= Farm Plot
+Name	:= farm plot
+Flags	:= AllowMove,AllowShot
+
+Feature	:= WallBlood1
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall Blood 1
+Name	:= blood-splattered granite wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallMoss1
+Char	:= 127
+Color	:= White
+Map Color := Green
+Tile	:= Wall Moss 1
+Name	:= moss-covered granite wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallImage1
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall Image 1
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallFountain1
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall Fountain 1
+Name	:= fountain
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallColumns1
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall Columns 1
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= Window1
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Window 1
+Name	:= window
+Flags	:= NoObjects,AllowShot
+
+Feature	:= WindowBars1
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Window Bars 1
+Name	:= window
+Flags	:= NoObjects,AllowShot
+
+Feature	:= DoorOpen1
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Open 1
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorBroken1
+Char	:= 15
+Color	:= Brown
+Map Color	:= Brown
+Tile	:= Door Broken 1
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorClosed1
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Closed 1
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorStoneOpen1
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Stone Open 1
+Name	:= open stone door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorStoneBroken1
+Char	:= 15
+Color	:= Brown
+Map Color	:= Brown
+Tile	:= Door Stone Broken 1
+Name	:= broken stone door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorStoneClosed1
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Stone Closed 1
+Name	:= closed stone door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorSecretOpen1
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Open 1
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorSecretBroken1
+Char	:= 15
+Color	:= Brown
+Map Color := Brown
+Tile	:= Door Secret Open 1
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorSecretClosed1
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Closed 1
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorSecretHidden1
+Char	:= 127
+Color	:= White
+Map Color := White
+Tile	:= Wall 1
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= StairsUp1
+Char	:= 60
+Color	:= White
+MapColor	:= Blue
+Tile	:= Stairs Up 1
+Name	:= stairs going up
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= StairsDown1
+Char	:= 62
+Color	:= White
+MapColor	:= Blue
+Tile	:= Stairs Down 1
+Name	:= stairs going down
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= Wall2
+Char	:= 127
+Color	:= White
+Map Color := LightBrown
+Tile	:= Wall 2
+Name	:= wooden wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallBlood2
+Char	:= 127
+Color	:= White
+Map Color := LightBrown
+Tile	:= Wall Blood 2
+Name	:= blood-splattered wooden wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallMoss2
+Char	:= 127
+Color	:= White
+Map Color := Green
+Tile	:= Wall Moss 2
+Name	:= moss-covered wooden wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallImage2
+Char	:= 127
+Color	:= White
+Map Color := LightBrown
+Tile	:= Wall Image 2
+Name	:= wooden wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallFountain2
+Char	:= 127
+Color	:= White
+Map Color := LightBrown
+Tile	:= Wall Fountain 2
+Name	:= fountain
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallColumns2
+Char	:= 127
+Color	:= White
+Map Color := LightBrown
+Tile	:= Wall Columns 2
+Name	:= wooden wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= Window2
+Char	:= 127
+Color	:= White
+Map Color := LightBrown
+Tile	:= Window 2
+Name	:= window
+Flags	:= NoObjects,AllowShot
+
+Feature	:= WindowBars2
+Char	:= 127
+Color	:= White
+Map Color := LightBrown
+Tile	:= Window Bars 2
+Name	:= window
+Flags	:= NoObjects,AllowShot
+
+Feature	:= DoorOpen2
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Open 2
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorBroken2
+Char	:= 15
+Color	:= Brown
+Map Color	:= Brown
+Tile	:= Door Broken 2
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorClosed2
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Closed 2
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorSecretOpen2
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Open 2
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorSecretBroken2
+Char	:= 15
+Color	:= Brown
+Map Color := Brown
+Tile	:= Door Secret Open 2
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorSecretClosed2
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Closed 2
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorSecretHidden2
+Char	:= 127
+Color	:= White
+Map Color := LightBrown
+Tile	:= Wall 2
+Name	:= granite wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= StairsUp2
+Char	:= 60
+Color	:= White
+MapColor	:= Blue
+Tile	:= Stairs Up 2
+Name	:= stairs going up
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= StairsDown2
+Char	:= 62
+Color	:= White
+MapColor	:= Blue
+Tile	:= Stairs Down 2
+Name	:= stairs going down
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= Wall3
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall 3
+Name	:= stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallBlood3
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall Blood 3
+Name	:= blood-splattered stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallMoss3
+Char	:= 127
+Color	:= White
+Map Color := Green
+Tile	:= Wall Moss 3
+Name	:= moss-covered stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallImage3
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall Image 3
+Name	:= stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallFountain3
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall Fountain 3
+Name	:= fountain
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallColumns3
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall Columns 3
+Name	:= stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= Window3
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Window 3
+Name	:= window
+Flags	:= NoObjects,AllowShot
+
+Feature	:= WindowBars3
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Window Bars 3
+Name	:= window
+Flags	:= NoObjects,AllowShot
+
+Feature	:= DoorOpen3
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Open 3
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorBroken3
+Char	:= 15
+Color	:= Brown
+Map Color	:= Brown
+Tile	:= Door Broken 3
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorClosed3
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Closed 3
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorGateOpen3
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Gate Open 3
+Name	:= open iron gate
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorGateBroken3
+Char	:= 15
+Color	:= Brown
+Map Color	:= Brown
+Tile	:= Door Gate Broken 3
+Name	:= broken iron gate
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorGateClosed3
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Gate Closed 3
+Name	:= closed iron gate
+Flags	:= NoObjects,MonsterOpen,PlayerOpen,Interesting,AllowShot
+
+Feature	:= DoorSecretOpen3
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Open 3
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorSecretBroken3
+Char	:= 15
+Color	:= Brown
+Map Color := Brown
+Tile	:= Door Secret Open 3
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorSecretClosed3
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Closed 3
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorSecretHidden3
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall 3
+Name	:= stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= StairsUp3
+Char	:= 60
+Color	:= White
+MapColor	:= Blue
+Tile	:= Stairs Up 3
+Name	:= stairs going up
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= StairsDown3
+Char	:= 62
+Color	:= White
+MapColor	:= Blue
+Tile	:= Stairs Down 3
+Name	:= stairs going down
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= Wall4
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall 4
+Name	:= stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallBlood4
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall Blood 4
+Name	:= blood-splattered stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallMoss4
+Char	:= 127
+Color	:= White
+Map Color := Green
+Tile	:= Wall Moss 4
+Name	:= moss-covered stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallImage4
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall Image 4
+Name	:= stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallFountain4
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall Fountain 4
+Name	:= fountain
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= WallColumns4
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall Columns 4
+Name	:= stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= Window4
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Window 4
+Name	:= window
+Flags	:= NoObjects,AllowShot
+
+Feature	:= WindowBars4
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Window Bars 4
+Name	:= window
+Flags	:= NoObjects,AllowShot
+
+Feature	:= DoorOpen4
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Open 4
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorBroken4
+Char	:= 15
+Color	:= Brown
+Map Color	:= Brown
+Tile	:= Door Broken 4
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorClosed4
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Closed 4
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorStoneOpen4
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Stone Open 4
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorStoneBroken4
+Char	:= 15
+Color	:= Brown
+Map Color	:= Brown
+Tile	:= Door Stone Broken 4
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorStoneClosed4
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Stone Closed 4
+Name	:= closed door
+Flags	:= NoObjects,MonsterOpen,PlayerOpen,Interesting,BlockLOS
+
+Feature	:= DoorSecretOpen4
+Char	:= 14
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Open 4
+Name	:= open door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorSecretBroken4
+Char	:= 15
+Color	:= Brown
+Map Color := Brown
+Tile	:= Door Secret Open 4
+Name	:= broken door
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= DoorSecretClosed4
+Char	:= 13
+Color	:= LightBrown
+Map Color := Brown
+Tile	:= Door Secret Closed 4
+Name	:= closed door
+Flags	:= NoObjects,BlockLOS,MonsterOpen,PlayerOpen,Interesting
+
+Feature	:= DoorSecretHidden4
+Char	:= 127
+Color	:= White
+Map Color := LightGrey
+Tile	:= Wall 4
+Name	:= stone wall
+Flags	:= NoObjects,BlockLOS
+
+Feature	:= StairsUp4
+Char	:= 60
+Color	:= White
+MapColor	:= Blue
+Tile	:= Stairs Up 4
+Name	:= stairs going up
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+Feature	:= StairsDown4
+Char	:= 62
+Color	:= White
+MapColor	:= Blue
+Tile	:= Stairs Down 4
+Name	:= stairs going down
+Flags	:= NoObjects,Interesting,AllowMove,AllowShot
+
+*END*

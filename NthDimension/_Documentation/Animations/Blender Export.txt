@@ -1,0 +1,28 @@
+﻿1. Notes on Mixamo:
+	-Use full skeleton (65 bones) 
+	-Use full overdrive to compact the data
+
+2. Blender 2.78
+	-After importing the FBX from mixamo change the Y rotation from 90 to 0
+	-After importing the FBX from mixamo change the scale to 1,1,1
+	-Use the following settings for the DAE exporter
+		Export Data Options
+			[ ] Apply Modifiers
+			[ ] Selection Inly
+			[ ] Include Children
+			[ ] Include Armaments
+			[X] Include Shape Keys (disabled)
+		Texture Options
+			[X] Only Selected UV Map
+			[ ] Include UV Textures
+			[ ] Include Material Textures
+			[ ] Copy
+		Armature Options
+			[ ] Deform Bones Only
+			[X] Export to SL/OpenSim
+		Collada Options
+			[ ] Triangulate
+			[X] Use Object Instances
+			[ ] Use Blender Profile
+			[ ] Sort by Object Name
+	

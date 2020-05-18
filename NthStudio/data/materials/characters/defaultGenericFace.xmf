@@ -1,0 +1,10 @@
+<material shader="defInfo.xsp"  
+		  ssnshader="ssnormals.xsp" 
+		  selection="selection.xsp" 
+		  shadow="shadow.xsp" >
+	
+	<textures base="characters\meshGenericFace_d.png" 
+		      normal="characters\meshGenericFace_n.png" 
+			  definfo="characters\meshGenericFace_s.png"/>
+	<lighted/>
+</material>

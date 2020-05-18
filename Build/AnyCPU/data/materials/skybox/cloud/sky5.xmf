@@ -1,0 +1,5 @@
+<material shader="sky.xsp">
+	<textures base="skybox\cloud9_0005.png"/>
+	<lighted/>
+	<nocull/>
+</material>

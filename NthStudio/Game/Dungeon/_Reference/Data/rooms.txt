@@ -1,0 +1,106 @@
+﻿# Room definition file
+#	N:Room type name
+#	F:Room type frequency (relative, higher values make the room more frequent)
+#	D:Tile data
+#
+# Tile data key:
+#		%	Normal granite wall, doors can pierce
+#		#	Inner granite wall, doors do not need to pierce
+#		S	Solid granite wall, doors will not pierce
+#		X	Permanent wall, cannot be tunneled through by player,
+#			doors will not pierce
+#		.	Floor
+#		+	Door
+#		o	Likely place to put treasure and/or monsters.  Items
+#			can be generated elsewhere, but these tiles are filled first.
+
+
+N:Cross
+F:100
+D:    SS%SS
+D:    S...S
+D:    S...S
+D:    S...S
+D:SSSSS...SSSSS
+D:S....###....S
+D:%....#o+....%
+D:S....###....S
+D:SSSSS...SSSSS
+D:    S...S
+D:    S...S
+D:    S...S
+D:    SS%SS
+
+N:Apartments1
+F:50
+D:SSSSSSSSSSS%%%
+D:S..o#o....#..%
+D:S...#.....+..%
+D:S+#########..%
+D:%............%
+D:%............%
+D:S+#########..%
+D:S.....#...+..%
+D:S....o#o..#..%
+D:SSSSSSSSSSS%%%
+
+N:Apartments2
+F:50
+D:  %%%%%%%%%
+D: %%.......%%
+D:%%..##+##..%%
+D:%..##...##..%
+D:%.##.....##.%
+D:%.#o.....o#.%
+D:%.#########.%
+D:%.+..o#o..+.%
+D:%.##..#..##.%
+D:%..##.#.##..%
+D:%%..#####..%%
+D: %%.......%%
+D:  %%%%%%%%%
+
+N:Apartments3
+F:50
+D:%%%%%%%%%%%%%%%
+D:%.............%
+D:%.###########.%
+D:%.+....#....+.%
+D:%.#...o#o...#.%
+D:%.###########.%
+D:%.#...o#o...#.%
+D:%.+....#....+.%
+D:%.###########.%
+D:%.............%
+D:%%%%%%%%%%%%%%%
+
+N:LightFortress
+F:25
+D:    SSSSS%%%SSSSS
+D: SSSS...S...S...SSSS
+D: So.#...S...S...#.oS
+D: S..#...S...S...#..S
+D:SS#+#...S+##S...##+SS
+D:S.......#...#.......S
+D:S.......+...+.......S
+D:S.......#...#.......S
+D:SS#+#...S##+S...##+SS
+D: S..#...S...S...#..S
+D: So.#...S...S...#.oS
+D: SSSS...S...S...SSSS
+D:    SSSSS%%%SSSSS
+
+N:Round1
+F:15
+D:      %%SSSS%%      
+D:   %%%%..##..%%%%   
+D: %%%....####....%%% 
+D:%%......#.o#......%%
+D:%.....##+##+##.....%
+D:%.....#o#o.#.#.....%
+D:%.....#.#.o#o#.....%
+D:%.....##+##+##.....%
+D:%%......#o.#......%%
+D: %%%....####....%%% 
+D:   %%%%..##..%%%%   
+D:      %%SSSS%%      

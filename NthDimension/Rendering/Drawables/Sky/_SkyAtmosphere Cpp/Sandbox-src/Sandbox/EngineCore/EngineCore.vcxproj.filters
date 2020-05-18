@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{b2cd4c1d-6a2f-482d-8aed-5fd4ffe453de}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6ccf9500-25f2-4a62-ba04-6ffa3c46b201}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Utility Files">
+      <UniqueIdentifier>{99f1e2fe-99f8-487d-a653-7d3381a23fba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kernel Files">
+      <UniqueIdentifier>{6a488de6-1689-4145-8f97-f602361c7029}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Noise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommonDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonIncludes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLBufferObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFrameBufferObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLShaderObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Noise.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DateTime.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Functor.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertySet.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Reference.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Utility Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraTask.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptureTask.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleTask.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputTask.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolator.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernel.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerTask.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoTask.h">
+      <Filter>Kernel Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

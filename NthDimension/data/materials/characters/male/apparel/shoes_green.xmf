@@ -1,0 +1,11 @@
+<material shader	="character_animated.xsp" 
+		  ssnshader	="ssnormals_animated.xsp" 		 
+		  selection	="selection_animated.xsp" 
+		  shadow	="shadow_animated.xsp" 
+		  defInfo	="defInfo_animated.xsp" >
+	
+	<textures base	 ="characters\male\apparel\male_shoes_green.dds" 
+			  normal ="characters\male\apparel\male_shoes_n.dds"
+			  definfo="characters\male\apparel\male_shoes_green.dds" />
+
+<lighted/></material>

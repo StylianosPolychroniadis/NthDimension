@@ -1,0 +1,16 @@
+<template>
+	<material source="firstperson\spotlight.xmf"/>
+	<mesh source="firstperson\spotlight.obj"/>
+	<pmesh source="firstperson\spotlight_pbox.obj"/>
+	<position offset="-0.1"/>
+	<light color="0.8|0.3|0.8"/>
+	<normal/>
+	<static/>
+
+  <!-- WORKING -->
+  <!-- <material source="defShading\volSpot.xmf"/> --> 
+  
+  <material source="defShading\lightSpot.xmf"/>
+  <mesh source="base\spotlight_cone.obj" />
+  <position offset="-0.1" />
+</template>

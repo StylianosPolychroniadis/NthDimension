@@ -1,0 +1,8 @@
+<template>
+	<material source="firstperson\metroid.xmf"/>
+	<mesh source="firstperson\metroid.obj"/>
+	<material source="firstperson\metroid_cap.xmf"/>
+	<mesh source="firstperson\metroid_cap.obj"/>
+	<pmesh source="firstperson\metroid_pbox.obj"/>
+	<position offset="1"/>
+</template>

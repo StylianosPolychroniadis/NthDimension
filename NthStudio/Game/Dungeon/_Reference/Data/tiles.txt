@@ -1,0 +1,2205 @@
+﻿// tiles.txt
+//		Tile definition file.
+//		Defines the names and indexes of graphical tiles used to display map features and monsters.
+
+*BEGIN*
+Image File	:= Data\32x32.png
+Tile Size	:= 32
+
+Index		:= 0
+Name		:= Empty
+
+Index		:= 1
+Name		:= Red Cloak
+
+Index		:= 2
+Name		:= Blue Cloak
+
+Index		:= 3
+Name		:= Brown Cloak
+
+Index		:= 4
+Name		:= Grey Cloak
+
+Index		:= 5
+Name		:= Purple Cloak
+
+Index		:= 6
+Name		:= Cyan Cloak
+
+Index		:= 7
+Name		:= White Cloak
+
+Index		:= 8
+Name		:= Black Cloak
+
+Index		:= 9
+Name		:= Leather Cap
+
+Index		:= 10
+Name		:= Leather Helm
+
+Index		:= 11
+Name		:= Metal Cap
+
+Index		:= 12
+Name		:= Iron Helm
+
+Index		:= 13
+Name		:= Steel Helm
+
+Index		:= 14
+Name		:= Dragon Helm
+
+Index		:= 15
+Name		:= Iron Crown
+
+Index		:= 16
+Name		:= Golden Crown
+
+Index		:= 17
+Name		:= Jewel-Encrusted Crown
+
+Index		:= 18
+Name		:= Ornate Crown
+
+Index		:= 19
+Name		:= Cloth Boots
+
+Index		:= 20
+Name		:= Soft Leather Boots
+
+Index		:= 21
+Name		:= Hard Leather Boots
+
+Index		:= 22
+Name		:= Metal Shod Boots
+
+Index		:= 23
+Name		:= Leather Gloves
+
+Index		:= 26
+Name		:= Cesti
+
+Index		:= 28
+Name		:= Small Leather Shield
+
+Index		:= 29
+Name		:= Large Leather Shield
+
+Index		:= 30
+Name		:= Small Metal Shield
+
+Index		:= 31
+Name		:= Large Metal Shield
+
+Index		:= 32
+Name		:= Kite Shield
+
+Index		:= 34
+Name		:= Red Robe
+
+Index		:= 37
+Name		:= Blue Robe
+
+Index		:= 38
+Name		:= Soft Leather Armor
+
+Index		:= 39
+Name		:= Soft Studded Leather
+
+Index		:= 40
+Name		:= Hard Leather Armor
+
+Index		:= 41
+Name		:= Hard Studded Leather
+
+Index		:= 42
+Name		:= Leather Scale Mail
+
+Index		:= 43
+Name		:= Metal Scale Mail
+
+Index		:= 45
+Name		:= Chain Mail
+
+Index		:= 47
+Name		:= Augmented Chain Mail
+
+Index		:= 48
+Name		:= Bar Chain Mail
+
+Index		:= 49
+Name		:= Metal Brigandine Armor
+
+Index		:= 50
+Name		:= Partial Plate Armor
+
+Index		:= 53
+Name		:= Ribbed Plate Armor
+
+Index		:= 55
+Name		:= Mithril Shirt
+
+Index		:= 100
+Name		:= Buckler
+
+Index		:= 101
+Name		:= Gauntlets
+
+Index		:= 102
+Name		:= Leather Sandals
+
+Index		:= 103
+Name		:= Leather Bracelets
+
+Index		:= 104
+Name		:= Copper Bracelets
+
+Index		:= 105
+Name		:= Gold Bracelets
+
+Index		:= 106
+Name		:= Silver Bracelets
+
+Index		:= 107
+Name		:= Mithril Bracelets
+
+Index		:= 108
+Name		:= Greaves
+
+Index		:= 109
+Name		:= Vambraces
+
+Index		:= 128
+Name		:= White Zap Dir 2
+
+Index		:= 129
+Name		:= White Zap Dir 0
+
+Index		:= 130
+Name		:= White Zap Dir 1
+
+Index		:= 131
+Name		:= White Zap Dir 3
+
+Index		:= 136
+Name		:= Dark Zap Dir 2
+
+Index		:= 137
+Name		:= Dark Zap Dir 0
+
+Index		:= 138
+Name		:= Dark Zap Dir 1
+
+Index		:= 139
+Name		:= Dark Zap Dir 3
+
+Index		:= 140
+Name		:= Red Zap Dir 2
+
+Index		:= 141
+Name		:= Red Zap Dir 0
+
+Index		:= 142
+Name		:= Red Zap Dir 1
+
+Index		:= 143
+Name		:= Red Zap Dir 3
+
+Index		:= 144
+Name		:= Green Zap Dir 2
+
+Index		:= 145
+Name		:= Green Zap Dir 0
+
+Index		:= 146
+Name		:= Green Zap Dir 1
+
+Index		:= 147
+Name		:= Green Zap Dir 3
+
+Index		:= 148
+Name		:= Blue Zap Dir 2
+
+Index		:= 149
+Name		:= Blue Zap Dir 0
+
+Index		:= 150
+Name		:= Blue Zap Dir 1
+
+Index		:= 151
+Name		:= Blue Zap Dir 3
+
+Index		:= 152
+Name		:= Cyan Zap Dir 2
+
+Index		:= 153
+Name		:= Cyan Zap Dir 0
+
+Index		:= 154
+Name		:= Cyan Zap Dir 1
+
+Index		:= 155
+Name		:= Cyan Zap Dir 3
+
+Index		:= 156
+Name		:= Brown Zap Dir 2
+
+Index		:= 157
+Name		:= Brown Zap Dir 0
+
+Index		:= 158
+Name		:= Brown Zap Dir 1
+
+Index		:= 159
+Name		:= Brown Zap Dir 3
+
+Index		:= 160
+Name		:= Purple Zap Dir 2
+
+Index		:= 161
+Name		:= Purple Zap Dir 0
+
+Index		:= 162
+Name		:= Purple Zap Dir 1
+
+Index		:= 163
+Name		:= Purple Zap Dir 3
+
+Index		:= 164
+Name		:= Yellow Zap Dir 2
+
+Index		:= 165
+Name		:= Yellow Zap Dir 0
+
+Index		:= 166
+Name		:= Yellow Zap Dir 1
+
+Index		:= 167
+Name		:= Yellow Zap Dir 3
+
+Index		:= 168
+Name		:= Orange Zap Dir 2
+
+Index		:= 169
+Name		:= Orange Zap Dir 0
+
+Index		:= 170
+Name		:= Orange Zap Dir 1
+
+Index		:= 171
+Name		:= Orange Zap Dir 3
+
+Index		:= 188
+Name		:= Red Burst Effect
+
+Index		:= 189
+Name		:= Green Burst Effect
+
+Index		:= 190
+Name		:= Blue Burst Effect
+
+Index		:= 191
+Name		:= Cyan Burst Effect
+
+Index		:= 192
+Name		:= Orange Burst Effect
+
+Index		:= 194
+Name		:= Yellow Burst Effect
+
+Index		:= 198
+Name		:= White Burst Effect
+
+Index		:= 199
+Name		:= Dark Burst Effect
+
+Index		:= 212
+Name		:= Shimmering Burst Effect
+
+Index		:= 213
+Name		:= Nether Burst Effect
+
+Index		:= 230
+Name		:= Meteor Effect
+
+Index		:= 236
+Name		:= Arrow Effect Dir 5
+
+Index		:= 237
+Name		:= Arrow Effect Dir 6
+
+Index		:= 238
+Name		:= Arrow Effect Dir 7
+
+Index		:= 239
+Name		:= Arrow Effect Dir 4
+
+Index		:= 240
+Name		:= Arrow Effect Dir 0
+
+Index		:= 241
+Name		:= Arrow Effect Dir 3
+
+Index		:= 242
+Name		:= Arrow Effect Dir 2
+
+Index		:= 243
+Name		:= Arrow Effect Dir 1
+
+Index		:= 244
+Name		:= Bolt Effect Dir 5
+
+Index		:= 245
+Name		:= Bolt Effect Dir 6
+
+Index		:= 246
+Name		:= Bolt Effect Dir 7
+
+Index		:= 247
+Name		:= Bolt Effect Dir 4
+
+Index		:= 248
+Name		:= Bolt Effect Dir 0
+
+Index		:= 249
+Name		:= Bolt Effect Dir 3
+
+Index		:= 250
+Name		:= Bolt Effect Dir 2
+
+Index		:= 251
+Name		:= Bolt Effect Dir 1
+
+Index		:= 256
+Name		:= Ale
+
+Index		:= 257
+Name		:= Oil
+
+Index		:= 258
+Name		:= Biscuit
+
+Index		:= 259
+Name		:= Jerky
+
+Index		:= 260
+Name		:= Ration
+
+Index		:= 262
+Name		:= Bread
+
+Index		:= 263
+Name		:= Black Mushroom
+
+Index		:= 264
+Name		:= White Mushroom
+
+Index		:= 265
+Name		:= Grey Mushroom
+
+Index		:= 266
+Name		:= Orange Mushroom
+
+Index		:= 267
+Name		:= Red Mushroom
+
+Index		:= 268
+Name		:= Green Mushroom
+
+Index		:= 269
+Name		:= Blue Mushroom
+
+Index		:= 270
+Name		:= Brown Mushroom
+
+Index		:= 273
+Name		:= Purple Mushroom
+
+Index		:= 280
+Name		:= Exclamation
+
+Index		:= 281
+Name		:= Flame Effect
+
+Index		:= 391
+Name		:= Blacksmith
+
+Index		:= 399
+Name		:= Traveler
+
+Index		:= 404
+Name		:= Sage
+
+Index		:= 406
+Name		:= Lunatic
+
+Index		:= 512
+Name		:= Thug
+
+Index		:= 513
+Name		:= Rogue
+
+Index		:= 514
+Name		:= Cultist Acolyte
+
+Index		:= 515
+Name		:= Novice Mage
+
+Index		:= 525
+Name		:= Bandit
+
+Index		:= 527
+Name		:= Cultist Priest
+
+Index		:= 528
+Name		:= Cultist Swordsman
+
+Index		:= 529
+Name		:= Illusionist
+
+Index		:= 530
+Name		:= Druid
+
+Index		:= 531
+Name		:= Cultist Warrior
+
+Index		:= 532
+Name		:= Master Rogue
+
+Index		:= 533
+Name		:= Black Knight
+
+Index		:= 534
+Name		:= Mage
+
+Index		:= 541
+Name		:= Death Knight
+
+Index		:= 544
+Name		:= Sorcerer
+
+Index		:= 545
+Name		:= Cultist High Priest
+
+Index		:= 546
+Name		:= Master Mystic
+
+Index		:= 640
+Name		:= Silver Ring
+
+Index		:= 641
+Name		:= Iron Ring
+
+Index		:= 642
+Name		:= Tiger Eye Ring
+
+Index		:= 643
+Name		:= Ruby Ring
+
+Index		:= 644
+Name		:= Emerald Ring
+
+Index		:= 645
+Name		:= Azure Ring
+
+Index		:= 646
+Name		:= Garnet Ring
+
+Index		:= 647
+Name		:= Bloodstone Ring
+
+Index		:= 648
+Name		:= Obsidian Ring
+
+Index		:= 649
+Name		:= Amethyst Ring
+
+Index		:= 650
+Name		:= Gold Ring
+
+Index		:= 651
+Name		:= Rose Gold Ring
+
+Index		:= 652
+Name		:= Jade Ring
+
+Index		:= 653
+Name		:= Sapphire Ring
+
+Index		:= 654
+Name		:= Copper Ring
+
+Index		:= 655
+Name		:= Rhodonite Ring
+
+Index		:= 656
+Name		:= Carnelian Ring
+
+Index		:= 657
+Name		:= Opal Ring
+
+Index		:= 658
+Name		:= Turquoise Ring
+
+Index		:= 664
+Name		:= Crystal Amulet
+
+Index		:= 665
+Name		:= Silver Amulet
+
+Index		:= 666
+Name		:= Driftwood Amulet
+
+Index		:= 667
+Name		:= Obsidian Amulet
+
+Index		:= 668
+Name		:= Amber Amulet
+
+Index		:= 669
+Name		:= Bronze Amulet
+
+Index		:= 670
+Name		:= Flint Stone Amulet
+
+Index		:= 671
+Name		:= Coral Amulet
+
+Index		:= 672
+Name		:= Pewter Amulet
+
+Index		:= 673
+Name		:= Amethyst Amulet
+
+Index		:= 674
+Name		:= Ruby Amulet
+
+Index		:= 675
+Name		:= Sea Shell Amulet
+
+Index		:= 676
+Name		:= Bone Amulet
+
+Index		:= 677
+Name		:= Azure Amulet
+
+Index		:= 678
+Name		:= Emerald Amulet
+
+Index		:= 679
+Name		:= Carved Oak Amulet
+
+Index		:= 768
+Name		:= Red Book 1
+
+Index		:= 777
+Name		:= Grey Book 1
+
+Index		:= 778
+Name		:= Grey Book 2
+
+Index		:= 781
+Name		:= Grey Book 5
+
+Index		:= 786
+Name		:= Blue Book 1
+
+Index		:= 795
+Name		:= Green Book 1
+
+Index		:= 804
+Name		:= Orange Book 1
+
+Index		:= 813
+Name		:= Cyan Book 1
+
+Index		:= 822
+Name		:= Purple Book 1
+
+Index		:= 831
+Name		:= White Book 1
+
+Index		:= 896
+Name		:= Small Wooden Chest
+
+Index		:= 897
+Name		:= Large Wooden Chest
+
+Index		:= 898
+Name		:= Small Iron Chest
+
+Index		:= 899
+Name		:= Large Iron Chest
+
+Index		:= 900
+Name		:= Small Steel Chest
+
+Index		:= 901
+Name		:= Large Steel Chest
+
+Index		:= 903
+Name		:= Treasure Copper
+
+Index		:= 904
+Name		:= Treasure Silver
+
+Index		:= 905
+Name		:= Treasure Gold
+
+Index		:= 906
+Name		:= Treasure Mithril
+
+Index		:= 907
+Name		:= Treasure Adamantine
+
+Index		:= 909
+Name		:= Treasure Amethyst
+
+Index		:= 910
+Name		:= Treasure Beryl
+
+Index		:= 911
+Name		:= Treasure Ruby
+
+Index		:= 912
+Name		:= Treasure Sapphire
+
+Index		:= 913
+Name		:= Treasure Emerald
+
+Index		:= 914
+Name		:= Unknown Scroll 1
+
+Index		:= 915
+Name		:= Unknown Scroll 2
+
+Index		:= 916
+Name		:= Unknown Scroll 3
+
+Index		:= 917
+Name		:= Unknown Scroll 4
+
+Index		:= 921
+Name		:= Brass Lantern
+
+Index		:= 922
+Name		:= Wooden Torch
+
+Index		:= 931
+Name		:= Trap Scorch
+
+Index		:= 932
+Name		:= Trap Pit
+
+Index		:= 933
+Name		:= Trap Spiked Pit
+
+Index		:= 934
+Name		:= Trap Door
+
+Index		:= 935
+Name		:= Trap Rune Summon
+
+Index		:= 936
+Name		:= Trap Rune Noise
+
+Index		:= 937
+Name		:= Trap Rune Teleport
+
+Index		:= 939
+Name		:= Junk Skull
+
+Index		:= 940
+Name		:= Junk Broken Bone
+
+Index		:= 941
+Name		:= Junk Large Skeleton
+
+Index		:= 942
+Name		:= Junk Medium Skeleton 1
+
+Index		:= 943
+Name		:= Junk Medium Skeleton 2
+
+Index		:= 944
+Name		:= Junk Small Skeleton
+
+Index		:= 945
+Name		:= Junk Canine Skeleton
+
+Index		:= 951
+Name		:= Rubble
+
+Index		:= 952
+Name		:= Trap Dart
+
+Index		:= 973
+Name		:= ?Identify
+
+Index		:= 978
+Name		:= ?Enchantment
+
+Index		:= 979
+Name		:= ?Light
+
+Index		:= 980
+Name		:= ?SummonMonster
+
+Index		:= 981
+Name		:= ?PhaseDoor
+
+Index		:= 982
+Name		:= ?Teleportation
+
+Index		:= 985
+Name		:= ?MagicMapping
+
+Index		:= 987
+Name		:= ?Recharging
+
+Index		:= 990
+Name		:= ?SummonUndead
+
+Index		:= 994
+Name		:= ?RevealHidden
+
+Index		:= 996
+Name		:= ?Banishment
+
+Index		:= 998
+Name		:= ?SatisfyHunger
+
+Index		:= 999
+Name		:= ?Darkness
+
+Index		:= 1004
+Name		:= ?DispelUndead
+
+Index		:= 1005
+Name		:= ?RemoveCurse
+
+Index		:= 1010
+Name		:= ?TrapDoorDestruction
+
+Index		:= 1015
+Name		:= ?Entrapment
+
+Index		:= 1028
+Name		:= Light Blue Potion
+
+Index		:= 1029
+Name		:= Blue Potion
+
+Index		:= 1030
+Name		:= Blue Speckled Potion
+
+Index		:= 1031
+Name		:= Black Potion
+
+Index		:= 1032
+Name		:= Brown Potion
+
+Index		:= 1033
+Name		:= Brown Speckled Potion
+
+Index		:= 1034
+Name		:= Red Speckled Potion
+
+Index		:= 1035
+Name		:= Yellow Potion
+
+Index		:= 1036
+Name		:= Cloudy Potion
+
+Index		:= 1037
+Name		:= Orange Speckled Potion
+
+Index		:= 1038
+Name		:= Magenta Potion
+
+Index		:= 1040
+Name		:= Dark Blue Potion
+
+Index		:= 1041
+Name		:= Dark Green Potion
+
+Index		:= 1042
+Name		:= Dark Red Potion
+
+Index		:= 1043
+Name		:= Yellow Speckled Potion
+
+Index		:= 1044
+Name		:= Green Potion
+
+Index		:= 1045
+Name		:= Green Speckled Potion
+
+Index		:= 1046
+Name		:= Grey Potion
+
+Index		:= 1047
+Name		:= Grey Speckled Potion
+
+Index		:= 1049
+Name		:= Metallic Blue Potion
+
+Index		:= 1152
+Name		:= Silver Wand
+
+Index		:= 1153
+Name		:= Grey Wand
+
+Index		:= 1154
+Name		:= Dark Grey Wand
+
+Index		:= 1155
+Name		:= Black Wand
+
+Index		:= 1156
+Name		:= Light Brown Wand
+
+Index		:= 1157
+Name		:= Brown Wand
+
+Index		:= 1158
+Name		:= Dark Brown Wand
+
+Index		:= 1159
+Name		:= Blue Wand
+
+Index		:= 1160
+Name		:= Gold Wand
+
+Index		:= 1161
+Name		:= Purple Tipped Rod
+
+Index		:= 1162
+Name		:= Yellow Tipped Rod
+
+Index		:= 1163
+Name		:= Green Tipped Rod
+
+Index		:= 1164
+Name		:= Red Tipped Rod
+
+Index		:= 1165
+Name		:= Silver Tipped Brown Rod
+
+Index		:= 1166
+Name		:= Orange Tipped Brown Rod
+
+Index		:= 1167
+Name		:= Red Tipped Brown Rod
+
+Index		:= 1168
+Name		:= Blue Tipped Blue Rod
+
+Index		:= 1169
+Name		:= Yellow Tipped Brown Rod
+
+Index		:= 1170
+Name		:= Brown Staff
+
+Index		:= 1171
+Name		:= Striped Staff
+
+Index		:= 1172
+Name		:= Red Staff
+
+Index		:= 1173
+Name		:= Dark Brown Staff
+
+Index		:= 1174
+Name		:= Gold Striped Staff
+
+Index		:= 1175
+Name		:= Grey Striped Staff
+
+Index		:= 1176
+Name		:= Red Striped Staff
+
+Index		:= 1283
+Name		:= Dagger
+
+Index		:= 1284
+Name		:= Main Gauche
+
+Index		:= 1285
+Name		:= Rapier
+
+Index		:= 1286
+Name		:= Darksword
+
+Index		:= 1287
+Name		:= Saber
+
+Index		:= 1288
+Name		:= Broadsword
+
+Index		:= 1289
+Name		:= Tulwar
+
+Index		:= 1290
+Name		:= Bastard Sword
+
+Index		:= 1291
+Name		:= Scimitar
+
+Index		:= 1292
+Name		:= Longsword
+
+Index		:= 1293
+Name		:= Two-Handed Sword
+
+Index		:= 1295
+Name		:= Executioner's Sword
+
+Index		:= 1296
+Name		:= Flamberge
+
+Index		:= 1299
+Name		:= Maul
+
+Index		:= 1300
+Name		:= Club
+
+Index		:= 1301
+Name		:= Quarterstaff
+
+Index		:= 1302
+Name		:= Flail
+
+Index		:= 1304
+Name		:= Mace
+
+Index		:= 1323
+Name		:= Hunting Bow
+
+Index		:= 1324
+Name		:= Longbow
+
+Index		:= 1325
+Name		:= Light Crossbow
+
+Index		:= 1326
+Name		:= Heavy Crossbow
+
+Index		:= 1327
+Name		:= Sling
+
+Index		:= 1329
+Name		:= Bolt
+
+Index		:= 1330
+Name		:= Steel Bolt
+
+Index		:= 1331
+Name		:= Arrow
+
+Index		:= 1332
+Name		:= Seeker Arrow
+
+Index		:= 1333
+Name		:= Stone Pebble
+
+Index		:= 1334
+Name		:= Iron Shot
+
+Index		:= 1350
+Name		:= Sacrificial Dagger
+
+Index		:= 1417
+Name		:= Merchant
+
+Index		:= 1536
+Name		:= Baby Blue Dragon
+
+Index		:= 1538
+Name		:= Baby White Dragon
+
+Index		:= 1539
+Name		:= Baby Green Dragon
+
+Index		:= 1540
+Name		:= Baby Black Dragon
+
+Index		:= 1541
+Name		:= Baby Red Dragon
+
+Index		:= 1543
+Name		:= Baby Multi-Hued Dragon
+
+Index		:= 1544
+Name		:= Young Blue Dragon
+
+Index		:= 1546
+Name		:= Young White Dragon
+
+Index		:= 1547
+Name		:= Young Green Dragon
+
+Index		:= 1548
+Name		:= Young Black Dragon
+
+Index		:= 1549
+Name		:= Young Red Dragon
+
+Index		:= 1551
+Name		:= Young Multi-Hued Dragon
+
+Index		:= 1552
+Name		:= Mature Blue Dragon
+
+Index		:= 1554
+Name		:= Mature White Dragon
+
+Index		:= 1555
+Name		:= Mature Green Dragon
+
+Index		:= 1556
+Name		:= Mature Black Dragon
+
+Index		:= 1557
+Name		:= Mature Red Dragon
+
+Index		:= 1559
+Name		:= Mature Multi-Hued Dragon
+
+Index		:= 1560
+Name		:= Ancient Blue Dragon
+
+Index		:= 1562
+Name		:= Ancient White Dragon
+
+Index		:= 1563
+Name		:= Ancient Green Dragon
+
+Index		:= 1564
+Name		:= Ancient Black Dragon
+
+Index		:= 1565
+Name		:= Ancient Red Dragon
+
+Index		:= 1567
+Name		:= Ancient Multi-Hued Dragon
+
+Index		:= 1575
+Name		:= Ethereal Drake
+
+Index		:= 1584
+Name		:= Bone Dragon
+
+Index		:= 1666
+Name		:= Mage Apprentice
+
+Index		:= 1668
+Name		:= Conjurer
+
+Index		:= 1675
+Name		:= Small Goblin
+
+Index		:= 1676
+Name		:= Medium Goblin
+
+Index		:= 1677
+Name		:= Large Goblin
+
+Index		:= 1678
+Name		:= Ogre
+
+Index		:= 1679
+Name		:= Black Ogre
+
+Index		:= 1680
+Name		:= Cave Ogre
+
+Index		:= 1681
+Name		:= Ogre Mage
+
+Index		:= 1688
+Name		:= White Rat
+
+Index		:= 1689
+Name		:= Grey Rat
+
+Index		:= 1690
+Name		:= Tan Rat
+
+Index		:= 1691
+Name		:= Brown Rat
+
+Index		:= 1794
+Name		:= Swordsman
+
+Index		:= 1858
+Name		:= Grey Mold
+
+Index		:= 1859
+Name		:= Purple Mold
+
+Index		:= 1860
+Name		:= Red Mold
+
+Index		:= 1861
+Name		:= Blue Mold
+
+Index		:= 1862
+Name		:= Yellow Mold
+
+Index		:= 1863
+Name		:= Brown Mold
+
+Index		:= 1865
+Name		:= Green Mold
+
+Index		:= 1866
+Name		:= Black Mold
+
+Index		:= 1925
+Name		:= Gelatinous Cube
+
+Index		:= 1926
+Name		:= Blue Jelly
+
+Index		:= 1927
+Name		:= Orange Jelly
+
+Index		:= 1928
+Name		:= Bown Jelly
+
+Index		:= 1930
+Name		:= Yellow Jelly
+
+Index		:= 1931
+Name		:= Purple Jelly
+
+Index		:= 1932
+Name		:= Red Jelly
+
+Index		:= 1933
+Name		:= Black Jelly
+
+Index		:= 1937
+Name		:= Green Jelly
+
+Index		:= 1939
+Name		:= White Jelly
+
+Index		:= 1940
+Name		:= Silver Jelly
+
+Index		:= 1970
+Name		:= Purple Spider
+
+Index		:= 1971
+Name		:= Red Spider
+
+Index		:= 1972
+Name		:= Blue Spider
+
+Index		:= 1973
+Name		:= Yellow Spider
+
+Index		:= 1974
+Name		:= Pink Spider
+
+Index		:= 1975
+Name		:= Grey Spider
+
+Index		:= 1976
+Name		:= Green Spider
+
+Index		:= 1980
+Name		:= Small Green Demon
+
+Index		:= 1992
+Name		:= Brown Dog
+
+Index		:= 1993
+Name		:= Tan Dog
+
+Index		:= 1994
+Name		:= Black Dog
+
+Index		:= 1995
+Name		:= White Dog
+
+Index		:= 1996
+Name		:= Grey Dog
+
+Index		:= 2048
+Name		:= Black Bat
+
+Index		:= 2049
+Name		:= Tan Bat
+
+Index		:= 2050
+Name		:= Brown Bat
+
+Index		:= 2051
+Name		:= Blue Dragon Bat
+
+Index		:= 2052
+Name		:= Red Dragon Bat
+
+Index		:= 2053
+Name		:= Bloodshot Eye
+
+Index		:= 2057
+Name		:= Gazer
+
+Index		:= 2058
+Name		:= Beholder
+
+Index		:= 2061
+Name		:= Black Mamba
+
+Index		:= 2063
+Name		:= Copperhead Snake
+
+Index		:= 2066
+Name		:= Brown Snake
+
+Index		:= 2067
+Name		:= White Snake
+
+Index		:= 2068
+Name		:= Yellow Snake
+
+Index		:= 2069
+Name		:= Grey Snake
+
+Index		:= 2070
+Name		:= Orange Snake
+
+Index		:= 2071
+Name		:= Spitting Cobra
+
+Index		:= 2081
+Name		:= 2-Headed Hydra
+
+Index		:= 2082
+Name		:= 3-Headed Hydra
+
+Index		:= 2083
+Name		:= 4-Headed Hydra
+
+Index		:= 2084
+Name		:= 5-Headed Hydra
+
+Index		:= 2085
+Name		:= 6-Headed Hydra
+
+Index		:= 2086
+Name		:= 7-Headed Hydra
+
+Index		:= 2087
+Name		:= 8-Headed Hydra
+
+Index		:= 2088
+Name		:= 9-Headed Hydra
+
+Index		:= 2089
+Name		:= 10-Headed Hydra
+
+Index		:= 2106
+Name		:= Shadow Beast
+
+Index		:= 2111
+Name		:= Poison Beast
+
+Index		:= 2112
+Name		:= Air Beast
+
+Index		:= 2115
+Name		:= Nether Beast
+
+Index		:= 2116
+Name		:= Cold Beast
+
+Index		:= 2117
+Name		:= Fire Beast
+
+Index		:= 2119
+Name		:= Lightning Beast
+
+Index		:= 2120
+Name		:= Acid Beast
+
+Index		:= 2176
+Name		:= Giant Brown Ant
+
+Index		:= 2177
+Name		:= Giant Black Ant
+
+Index		:= 2178
+Name		:= Giant White Ant
+
+Index		:= 2179
+Name		:= Giant Pink Ant
+
+Index		:= 2184
+Name		:= Basilisk
+
+Index		:= 2208
+Name		:= Young Pede
+
+Index		:= 2209
+Name		:= Baby Pede
+
+Index		:= 2210
+Name		:= Juvenile Pede
+
+Index		:= 2211
+Name		:= Mature Pede
+
+Index		:= 2212
+Name		:= Giant Pede
+
+Index		:= 2215
+Name		:= Carrion Crawler
+
+Index		:= 2221
+Name		:= Giant Black Worm
+
+Index		:= 2224
+Name		:= Tan Mummy
+
+Index		:= 2225
+Name		:= Grey Mummy
+
+Index		:= 2226
+Name		:= Green Mummy
+
+Index		:= 2228
+Name		:= Purple Mummy
+
+Index		:= 2229
+Name		:= Cyan Mummy
+
+Index		:= 2231
+Name		:= White Mummy
+
+Index		:= 2232
+Name		:= Giant White Dragonfly
+
+Index		:= 2233
+Name		:= Giant Green Dragonfly
+
+Index		:= 2234
+Name		:= Giant Black Dragonfly
+
+Index		:= 2237
+Name		:= War Elephant
+
+Index		:= 2304
+Name		:= Flesh Golem
+
+Index		:= 2305
+Name		:= Clay Golem
+
+Index		:= 2306
+Name		:= Stone Golem
+
+Index		:= 2307
+Name		:= Iron Golem
+
+Index		:= 2314
+Name		:= Hill Giant
+
+Index		:= 2315
+Name		:= Frost Giant
+
+Index		:= 2316
+Name		:= Fire Giant
+
+Index		:= 2317
+Name		:= Stone Giant
+
+Index		:= 2318
+Name		:= Cloud Giant
+
+Index		:= 2319
+Name		:= Storm Giant
+
+Index		:= 2334
+Name		:= Hand Druj
+
+Index		:= 2336
+Name		:= Skull Druj
+
+Index		:= 2340
+Name		:= Fire Vortex
+
+Index		:= 2341
+Name		:= Water Vortex
+
+Index		:= 2342
+Name		:= Cold Vortex
+
+Index		:= 2343
+Name		:= Lightning Vortex
+
+Index		:= 2346
+Name		:= Air Vortex
+
+Index		:= 2350
+Name		:= Forest Troll
+
+Index		:= 2351
+Name		:= Stone Troll
+
+Index		:= 2352
+Name		:= Troll Priest
+
+Index		:= 2353
+Name		:= Algroth
+
+Index		:= 2354
+Name		:= Ice Troll
+
+Index		:= 2355
+Name		:= Cave Troll
+
+Index		:= 2356
+Name		:= Half-Troll
+
+Index		:= 2357
+Name		:= Water Troll
+
+Index		:= 2369
+Name		:= Floating Eye
+
+Index		:= 2370
+Name		:= Giant Snapping Turtle
+
+Index		:= 2376
+Name		:= Pink Scorpion
+
+Index		:= 2377
+Name		:= Yellow Scorpion
+
+Index		:= 2378
+Name		:= Metallic Scorpion
+
+Index		:= 2381
+Name		:= Black Scorpion
+
+Index		:= 2440
+Name		:= Green Frog
+
+Index		:= 2441
+Name		:= Pink Frog
+
+Index		:= 2444
+Name		:= Rock Lizard
+
+Index		:= 2445
+Name		:= Red Lizard
+
+Index		:= 2446
+Name		:= Brown Lizard
+
+Index		:= 2447
+Name		:= Black Lizard
+
+Index		:= 2448
+Name		:= Green Lizard
+
+Index		:= 2449
+Name		:= Brown Beetle
+
+Index		:= 2451
+Name		:= White Beetle
+
+Index		:= 2452
+Name		:= Pink Beetle
+
+Index		:= 2453
+Name		:= Fire Beetle
+
+Index		:= 2454
+Name		:= Slicer Beetle
+
+Index		:= 2456
+Name		:= Blue Beetle
+
+Index		:= 2464
+Name		:= Cave Bear
+
+Index		:= 2469
+Name		:= Giant Crow
+
+Index		:= 2562
+Name		:= Green Glutton Ghost
+
+Index		:= 2563
+Name		:= Moaning Spirit
+
+Index		:= 2569
+Name		:= Forest Wight
+
+Index		:= 2574
+Name		:= Wight
+
+Index		:= 2575
+Name		:= Nether Wraith
+
+Index		:= 2579
+Name		:= Black Reaver
+
+Index		:= 2582
+Name		:= Poltergeist
+
+Index		:= 2583
+Name		:= Banshee
+
+Index		:= 2584
+Name		:= Ghost
+
+Index		:= 2585
+Name		:= Zombie
+
+Index		:= 2586
+Name		:= Ghoul
+
+Index		:= 2587
+Name		:= Ghast
+
+Index		:= 2589
+Name		:= Skeleton Human
+
+Index		:= 2595
+Name		:= Skeleton Minion
+
+Index		:= 2601
+Name		:= Skeletal Warrior
+
+Index		:= 2610
+Name		:= Vampire
+
+Index		:= 2611
+Name		:= Master Vampire
+
+Index		:= 2612
+Name		:= Vampire Lord
+
+Index		:= 2618
+Name		:= Lich
+
+Index		:= 2624
+Name		:= Revenant
+
+Index		:= 2796
+Name		:= Portal
+
+Index		:= 2797
+Name		:= Boulder Effect
+
+Index		:= 2798
+Name		:= FountainFull
+
+Index		:= 2799
+Name		:= FountainEmpty
+
+Index		:= 2873
+Name		:= Cavern Wall
+
+Index		:= 2875
+Name		:= Cavern Wall Dark
+
+Index		:= 2909
+Name		:= Farm Plot
+
+Index		:= 2911
+Name		:= Farm Plot Dark
+
+Index		:= 2944
+Name		:= Cave Floor Plain
+
+Index		:= 2946
+Name		:= Cave Floor Plain Dark
+
+Index		:= 2948
+Name		:= Cavern Floor
+
+Index		:= 2949
+Name		:= Cavern Floor Dark
+
+Index		:= 2950
+Name		:= Cave Floor Cavern
+
+Index		:= 2952
+Name		:= Cave Floor Cavern Dark
+
+Index		:= 2953
+Name		:= Grass
+
+Index		:= 2955
+Name		:= Grass Dark
+
+Index		:= 2971
+Name		:= Dirt
+
+Index		:= 2973
+Name		:= Dirt Dark
+
+Index		:= 2998
+Name		:= Tree 1
+
+Index		:= 3000
+Name		:= Tree 1 Dark
+
+Index		:= 3001
+Name		:= Tree 2
+
+Index		:= 3003
+Name		:= Tree 2 Dark
+
+Index		:= 3004
+Name		:= Tree 3
+
+Index		:= 3006
+Name		:= Tree 3 Dark
+
+Index		:= 3061
+Name		:= Mountain
+
+Index		:= 3063
+Name		:= Mountain Dark
+
+Index		:= 3093
+Name		:= Granite Window 1
+
+Index		:= 3095
+Name		:= Granite Window 1 Dark
+
+Index		:= 3120
+Name		:= Column 1
+
+Index		:= 3122
+Name		:= Column 1 Dark
+
+Index		:= 3123
+Name		:= Column 3
+
+Index		:= 3125
+Name		:= Column 3 Dark
+
+Index		:= 3177
+Name		:= Granite Wall 1
+
+Index		:= 3179
+Name		:= Granite Wall 1 Dark
+
+Index		:= 3290
+Name		:= Wall 1
+
+Index		:= 3291
+Name		:= Wall Blood 1
+
+Index		:= 3292
+Name		:= Wall Moss 1
+
+Index		:= 3293
+Name		:= Wall Image 1
+
+Index		:= 3294
+Name		:= Wall Fountain 1
+
+Index		:= 3295
+Name		:= Wall Columns 1
+
+Index		:= 3296
+Name		:= Window 1
+
+Index		:= 3297
+Name		:= Window Bars 1
+
+Index		:= 3298
+Name		:= Door Closed 1
+
+Index		:= 3299
+Name		:= Door Open 1
+
+Index		:= 3300
+Name		:= Door Broken 1
+
+Index		:= 3301
+Name		:= Door Stone Closed 1
+
+Index		:= 3302
+Name		:= Door Stone Open 1
+
+Index		:= 3303
+Name		:= Door Stone Broken 1
+
+Index		:= 3305
+Name		:= Door Secret Closed 1
+
+Index		:= 3306
+Name		:= Door Secret Open 1
+
+Index		:= 3307
+Name		:= Stairs Up 1
+
+Index		:= 3308
+Name		:= Stairs Down 1
+
+Index		:= 3309
+Name		:= Wall 2
+
+Index		:= 3310
+Name		:= Wall Blood 2
+
+Index		:= 3311
+Name		:= Wall Moss 2
+
+Index		:= 3312
+Name		:= Wall Image 2
+
+Index		:= 3313
+Name		:= Wall Fountain 2
+
+Index		:= 3314
+Name		:= Wall Columns 2
+
+Index		:= 3315
+Name		:= Window 2
+
+Index		:= 3316
+Name		:= Window Bars 2
+
+Index		:= 3317
+Name		:= Door Closed 2
+
+Index		:= 3318
+Name		:= Door Open 2
+
+Index		:= 3319
+Name		:= Door Broken 2
+
+Index		:= 3324
+Name		:= Door Secret Closed 2
+
+Index		:= 3325
+Name		:= Door Secret Open 2
+
+Index		:= 3326
+Name		:= Stairs Up 2
+
+Index		:= 3327
+Name		:= Stairs Down 2
+
+Index		:= 3331
+Name		:= Shop General
+
+Index		:= 3332
+Name		:= Shop Armor
+
+Index		:= 3333
+Name		:= Shop Weapons
+
+Index		:= 3334
+Name		:= Shop Temple
+
+Index		:= 3335
+Name		:= Shop Potions
+
+Index		:= 3336
+Name		:= Shop Magic
+
+Index		:= 3337
+Name		:= Shop Book
+
+Index		:= 3400
+Name		:= Grass Dirt Blend 0
+
+Index		:= 3401
+Name		:= Grass Dirt Blend 1
+
+Index		:= 3402
+Name		:= Grass Dirt Blend 2
+
+Index		:= 3403
+Name		:= Grass Dirt Blend 3
+
+Index		:= 3404
+Name		:= Grass Dirt Blend 4
+
+Index		:= 3405
+Name		:= Grass Dirt Blend 5
+
+Index		:= 3406
+Name		:= Grass Dirt Blend 6
+
+Index		:= 3407
+Name		:= Grass Dirt Blend 7
+
+Index		:= 3408
+Name		:= Grass Dirt Blend 8
+
+Index		:= 3409
+Name		:= Grass Dirt Blend 9
+
+Index		:= 3410
+Name		:= Grass Dirt Blend 10
+
+Index		:= 3411
+Name		:= Grass Dirt Blend 11
+
+Index		:= 3418
+Name		:= Wall 1 Dark
+
+Index		:= 3419
+Name		:= Wall Blood 1 Dark
+
+Index		:= 3420
+Name		:= Wall Moss 1 Dark
+
+Index		:= 3421
+Name		:= Wall Image 1 Dark
+
+Index		:= 3422
+Name		:= Wall Fountain 1 Dark
+
+Index		:= 3423
+Name		:= Wall Columns 1 Dark
+
+Index		:= 3424
+Name		:= Window 1 Dark
+
+Index		:= 3425
+Name		:= Window Bars 1 Dark
+
+Index		:= 3426
+Name		:= Door Closed 1 Dark
+
+Index		:= 3427
+Name		:= Door Open 1 Dark
+
+Index		:= 3428
+Name		:= Door Broken 1 Dark
+
+Index		:= 3429
+Name		:= Door Stone Closed 1 Dark
+
+Index		:= 3430
+Name		:= Door Stone Open 1 Dark
+
+Index		:= 3431
+Name		:= Door Stone Broken 1 Dark
+
+Index		:= 3433
+Name		:= Door Secret Closed 1 Dark
+
+Index		:= 3434
+Name		:= Door Secret Open 1 Dark
+
+Index		:= 3435
+Name		:= Stairs Up 1 Dark
+
+Index		:= 3436
+Name		:= Stairs Down 1 Dark
+
+Index		:= 3437
+Name		:= Wall 2 Dark
+
+Index		:= 3438
+Name		:= Wall Blood 2 Dark
+
+Index		:= 3439
+Name		:= Wall Moss 2 Dark
+
+Index		:= 3440
+Name		:= Wall Image 2 Dark
+
+Index		:= 3441
+Name		:= Wall Fountain 2 Dark
+
+Index		:= 3442
+Name		:= Wall Columns 2 Dark
+
+Index		:= 3443
+Name		:= Window 2 Dark
+
+Index		:= 3444
+Name		:= Window Bars 2 Dark
+
+Index		:= 3445
+Name		:= Door Closed 2 Dark
+
+Index		:= 3446
+Name		:= Door Open 2 Dark
+
+Index		:= 3447
+Name		:= Door Broken 2 Dark
+
+Index		:= 3452
+Name		:= Door Secret Closed 2 Dark
+
+Index		:= 3453
+Name		:= Door Secret Open 2 Dark
+
+Index		:= 3454
+Name		:= Stairs Up 2 Dark
+
+Index		:= 3455
+Name		:= Stairs Down 2 Dark
+
+Index		:= 3528
+Name		:= Grass Dirt Blend 0 Dark
+
+Index		:= 3529
+Name		:= Grass Dirt Blend 1 Dark
+
+Index		:= 3530
+Name		:= Grass Dirt Blend 2 Dark
+
+Index		:= 3531
+Name		:= Grass Dirt Blend 3 Dark
+
+Index		:= 3532
+Name		:= Grass Dirt Blend 4 Dark
+
+Index		:= 3533
+Name		:= Grass Dirt Blend 5 Dark
+
+Index		:= 3534
+Name		:= Grass Dirt Blend 6 Dark
+
+Index		:= 3535
+Name		:= Grass Dirt Blend 7 Dark
+
+Index		:= 3536
+Name		:= Grass Dirt Blend 8 Dark
+
+Index		:= 3537
+Name		:= Grass Dirt Blend 9 Dark
+
+Index		:= 3538
+Name		:= Grass Dirt Blend 10 Dark
+
+Index		:= 3539
+Name		:= Grass Dirt Blend 11 Dark
+
+Index		:= 3546
+Name		:= Wall 3
+
+Index		:= 3547
+Name		:= Wall Blood 3
+
+Index		:= 3548
+Name		:= Wall Moss 3
+
+Index		:= 3549
+Name		:= Wall Image 3
+
+Index		:= 3550
+Name		:= Wall Fountain 3
+
+Index		:= 3551
+Name		:= Wall Columns 3
+
+Index		:= 3552
+Name		:= Window 3
+
+Index		:= 3553
+Name		:= Window Bars 3
+
+Index		:= 3554
+Name		:= Door Closed 3
+
+Index		:= 3555
+Name		:= Door Open 3
+
+Index		:= 3556
+Name		:= Door Broken 3
+
+Index		:= 3557
+Name		:= Door Gate Closed 3
+
+Index		:= 3558
+Name		:= Door Gate Open 3
+
+Index		:= 3559
+Name		:= Door Gate Broken 3
+
+Index		:= 3561
+Name		:= Door Secret Closed 3
+
+Index		:= 3562
+Name		:= Door Secret Open 3
+
+Index		:= 3563
+Name		:= Stairs Up 3
+
+Index		:= 3564
+Name		:= Stairs Down 3
+
+Index		:= 3565
+Name		:= Wall 4
+
+Index		:= 3566
+Name		:= Wall Blood 4
+
+Index		:= 3567
+Name		:= Wall Moss 4
+
+Index		:= 3568
+Name		:= Wall Image 4
+
+Index		:= 3569
+Name		:= Wall Fountain 4
+
+Index		:= 3570
+Name		:= Wall Columns 4
+
+Index		:= 3571
+Name		:= Window 4
+
+Index		:= 3572
+Name		:= Window Bars 4
+
+Index		:= 3573
+Name		:= Door Closed 4
+
+Index		:= 3574
+Name		:= Door Open 4
+
+Index		:= 3575
+Name		:= Door Broken 4
+
+Index		:= 3576
+Name		:= Door Stone Closed 4
+
+Index		:= 3577
+Name		:= Door Stone Open 4
+
+Index		:= 3578
+Name		:= Door Stone Broken 4
+
+Index		:= 3580
+Name		:= Door Secret Closed 4
+
+Index		:= 3581
+Name		:= Door Secret Open 4
+
+Index		:= 3582
+Name		:= Stairs Up 4
+
+Index		:= 3583
+Name		:= Stairs Down 4
+
+Index		:= 3674
+Name		:= Wall 3 Dark
+
+Index		:= 3675
+Name		:= Wall Blood 3 Dark
+
+Index		:= 3676
+Name		:= Wall Moss 3 Dark
+
+Index		:= 3677
+Name		:= Wall Image 3 Dark
+
+Index		:= 3678
+Name		:= Wall Fountain 3 Dark
+
+Index		:= 3679
+Name		:= Wall Columns 3 Dark
+
+Index		:= 3680
+Name		:= Window 3 Dark
+
+Index		:= 3681
+Name		:= Window Bars 3 Dark
+
+Index		:= 3682
+Name		:= Door Closed 3 Dark
+
+Index		:= 3683
+Name		:= Door Open 3 Dark
+
+Index		:= 3684
+Name		:= Door Broken 3 Dark
+
+Index		:= 3685
+Name		:= Door Gate Closed 3 Dark
+
+Index		:= 3686
+Name		:= Door Gate Open 3 Dark
+
+Index		:= 3687
+Name		:= Door Gate Broken 3 Dark
+
+Index		:= 3689
+Name		:= Door Secret Closed 3 Dark
+
+Index		:= 3690
+Name		:= Door Secret Open 3 Dark
+
+Index		:= 3691
+Name		:= Stairs Up 3 Dark
+
+Index		:= 3692
+Name		:= Stairs Down 3 Dark
+
+Index		:= 3693
+Name		:= Wall 4 Dark
+
+Index		:= 3694
+Name		:= Wall Blood 4 Dark
+
+Index		:= 3695
+Name		:= Wall Moss 4 Dark
+
+Index		:= 3696
+Name		:= Wall Image 4 Dark
+
+Index		:= 3697
+Name		:= Wall Fountain 4 Dark
+
+Index		:= 3698
+Name		:= Wall Columns 4 Dark
+
+Index		:= 3699
+Name		:= Window 4 Dark
+
+Index		:= 3700
+Name		:= Window Bars 4 Dark
+
+Index		:= 3701
+Name		:= Door Closed 4 Dark
+
+Index		:= 3702
+Name		:= Door Open 4 Dark
+
+Index		:= 3703
+Name		:= Door Broken 4 Dark
+
+Index		:= 3704
+Name		:= Door Stone Closed 4 Dark
+
+Index		:= 3705
+Name		:= Door Stone Open 4 Dark
+
+Index		:= 3706
+Name		:= Door Stone Broken 4 Dark
+
+Index		:= 3708
+Name		:= Door Secret Closed 4 Dark
+
+Index		:= 3709
+Name		:= Door Secret Open 4 Dark
+
+Index		:= 3710
+Name		:= Stairs Up 4 Dark
+
+Index		:= 3711
+Name		:= Stairs Down 4 Dark
+
+*END*

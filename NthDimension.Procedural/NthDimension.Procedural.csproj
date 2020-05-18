@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0F7BFE9-E33B-4956-A7A6-D9F05CD54B2D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NthDimension.Procedural</RootNamespace>
+    <AssemblyName>NthDimension.Procedural</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CityGenerator.cs" />
+    <Compile Include="City\Allotment.cs" />
+    <Compile Include="City\Block.cs" />
+    <Compile Include="City\BlockSet.cs" />
+    <Compile Include="City\Building.cs" />
+    <Compile Include="City\BuildingSet.cs" />
+    <Compile Include="City\City.cs" />
+    <Compile Include="City\Crossing.cs" />
+    <Compile Include="City\Density.cs" />
+    <Compile Include="City\Environment.cs" />
+    <Compile Include="City\Generators\CommandFrame.cs" />
+    <Compile Include="City\Generators\GenEnvironment.cs" />
+    <Compile Include="City\Geometry.cs" />
+    <Compile Include="City\MockTBD\AgentSet.cs" />
+    <Compile Include="City\MockTBD\IndexBuffer.cs" />
+    <Compile Include="City\MockTBD\MediaManager.cs" />
+    <Compile Include="City\MockTBD\VertexBuffer.cs" />
+    <Compile Include="City\Road.cs" />
+    <Compile Include="City\RoadNetwork.cs" />
+    <Compile Include="City\ZoneType.cs" />
+    <Compile Include="DungeonGenerator.cs" />
+    <Compile Include="Dungeon\Direction.cs" />
+    <Compile Include="Dungeon\Edge.cs" />
+    <Compile Include="Dungeon\GenerationStep.cs" />
+    <Compile Include="Dungeon\JsonLevel.cs" />
+    <Compile Include="Dungeon\LevelGraph.cs" />
+    <Compile Include="Dungeon\LevelMapCorridor.cs" />
+    <Compile Include="Dungeon\LevelMapRender.cs" />
+    <Compile Include="Dungeon\LevelMapTemplate.cs" />
+    <Compile Include="Dungeon\LevelObject.cs" />
+    <Compile Include="Dungeon\LevelObjectType.cs" />
+    <Compile Include="Dungeon\LevelRoom.cs" />
+    <Compile Include="Dungeon\LevelRoomType.cs" />
+    <Compile Include="Dungeon\LevelRootRoom.cs" />
+    <Compile Include="Dungeon\LevelTile.cs" />
+    <Compile Include="Dungeon\LevelTileType.cs" />
+    <Compile Include="Dungeon\Link.cs" />
+    <Compile Include="Dungeon\Obsolete\BitmapRasterizer.cs" />
+    <Compile Include="Dungeon\Obsolete\Rasterizer.cs" />
+    <Compile Include="Dungeon\Range.cs" />
+    <Compile Include="Dungeon\Rect.cs" />
+    <Compile Include="Dungeon\RoomCollision.cs" />
+    <Compile Include="Dungeon\Templates\Abyss\Corridor.cs" />
+    <Compile Include="Dungeon\Templates\Abyss\Overlay.cs" />
+    <Compile Include="Dungeon\Templates\Abyss\Room.cs" />
+    <Compile Include="Dungeon\Templates\Abyss\RoomBoss.cs" />
+    <Compile Include="Dungeon\Templates\Abyss\RoomRoot.cs" />
+    <Compile Include="Dungeon\Templates\Abyss\RoomTeasure.cs" />
+    <Compile Include="Dungeon\Templates\Abyss\Template.cs" />
+    <Compile Include="Dungeon\Templates\Cave\Background.cs" />
+    <Compile Include="Dungeon\Templates\Cave\Corridor.cs" />
+    <Compile Include="Dungeon\Templates\Cave\Overlay.cs" />
+    <Compile Include="Dungeon\Templates\Cave\Room.cs" />
+    <Compile Include="Dungeon\Templates\Cave\RoomBoss.cs" />
+    <Compile Include="Dungeon\Templates\Cave\RoomRoot.cs" />
+    <Compile Include="Dungeon\Templates\Cave\Template.cs" />
+    <Compile Include="Dungeon\Templates\Lab\Corridor.cs" />
+    <Compile Include="Dungeon\Templates\Lab\Overlay.cs" />
+    <Compile Include="Dungeon\Templates\Lab\Room.cs" />
+    <Compile Include="Dungeon\Templates\Lab\RoomBoss.cs" />
+    <Compile Include="Dungeon\Templates\Lab\RoomRoot.cs" />
+    <Compile Include="Dungeon\Templates\Lab\Template.cs" />
+    <Compile Include="Floor\FloorGenerator.cs" />
+    <Compile Include="Floorplan\FloorPlan.cs" />
+    <Compile Include="Floorplan\FloorplanDirectionalSegment.cs" />
+    <Compile Include="Floor\CorridorGroup.cs" />
+    <Compile Include="Floor\CorridorSegment.cs" />
+    <Compile Include="Floor\Direction.cs" />
+    <Compile Include="Floor\DirectionalSegment.cs" />
+    <Compile Include="Floor\DirectionFlags.cs" />
+    <Compile Include="Floor\EligibleDoor.cs" />
+    <Compile Include="Floor\FloorSegment.cs" />
+    <Compile Include="Floor\Room.cs" />
+    <Compile Include="Floor\SegmentPos.cs" />
+    <Compile Include="IGenerator.cs" />
+    <Compile Include="QuestGenerator.cs" />
+    <Compile Include="Quest\Actions\Capture.cs" />
+    <Compile Include="Quest\Actions\Comfort\KillPests.cs" />
+    <Compile Include="Quest\Actions\Comfort\ObtainLuxuries.cs" />
+    <Compile Include="Quest\Actions\Conquest\Attack.cs" />
+    <Compile Include="Quest\Actions\Conquest\Steal.cs" />
+    <Compile Include="Quest\Actions\Damage.cs" />
+    <Compile Include="Quest\Actions\Defend.cs" />
+    <Compile Include="Quest\Actions\Equipment\Assemble.cs" />
+    <Compile Include="Quest\Actions\Equipment\Deliver.cs" />
+    <Compile Include="Quest\Actions\Equipment\Steal.cs" />
+    <Compile Include="Quest\Actions\Equipment\Trade.cs" />
+    <Compile Include="Quest\Actions\Escort.cs" />
+    <Compile Include="Quest\Actions\Exchange.cs" />
+    <Compile Include="Quest\Actions\Explore.cs" />
+    <Compile Include="Quest\Actions\Gather.cs" />
+    <Compile Include="Quest\Actions\Get.cs" />
+    <Compile Include="Quest\Actions\Give.cs" />
+    <Compile Include="Quest\Actions\GoTo.cs" />
+    <Compile Include="Quest\Actions\Kill.cs" />
+    <Compile Include="Quest\Actions\Knowledge\DeliverItemForStudy.cs" />
+    <Compile Include="Quest\Actions\Knowledge\InterviewNPC.cs" />
+    <Compile Include="Quest\Actions\Knowledge\Spy.cs" />
+    <Compile Include="Quest\Actions\Knowledge\UseItemInTheField.cs" />
+    <Compile Include="Quest\Actions\Learn.cs" />
+    <Compile Include="Quest\Actions\Listen.cs" />
+    <Compile Include="Quest\Actions\None.cs" />
+    <Compile Include="Quest\Actions\Protection\AssembleFortification.cs" />
+    <Compile Include="Quest\Actions\Protection\Attack.cs" />
+    <Compile Include="Quest\Actions\Protection\CreateDiversion1.cs" />
+    <Compile Include="Quest\Actions\Protection\CreateDiversion2.cs" />
+    <Compile Include="Quest\Actions\Protection\Guard.cs" />
+    <Compile Include="Quest\Actions\Protection\TreatOrRepair1.cs" />
+    <Compile Include="Quest\Actions\Protection\TreatOrRepair2.cs" />
+    <Compile Include="Quest\Actions\Read.cs" />
+    <Compile Include="Quest\Actions\Repair.cs" />
+    <Compile Include="Quest\Actions\Report.cs" />
+    <Compile Include="Quest\Actions\Reputation\KillEnemies.cs" />
+    <Compile Include="Quest\Actions\Reputation\ObtainRareItems.cs" />
+    <Compile Include="Quest\Actions\Reputation\VisitDangerousPlace.cs" />
+    <Compile Include="Quest\Actions\Serenity\Capture1.cs" />
+    <Compile Include="Quest\Actions\Serenity\Capture2.cs" />
+    <Compile Include="Quest\Actions\Serenity\CheckOnNPC1.cs" />
+    <Compile Include="Quest\Actions\Serenity\CheckOnNPC2.cs" />
+    <Compile Include="Quest\Actions\Serenity\RecoverLost.cs" />
+    <Compile Include="Quest\Actions\Serenity\RescueCaptured.cs" />
+    <Compile Include="Quest\Actions\Serenity\Revenge.cs" />
+    <Compile Include="Quest\Actions\Spy.cs" />
+    <Compile Include="Quest\Actions\Steal.cs" />
+    <Compile Include="Quest\Actions\Stealth.cs" />
+    <Compile Include="Quest\Actions\SubQuest.cs" />
+    <Compile Include="Quest\Actions\Take.cs" />
+    <Compile Include="Quest\Actions\Use.cs" />
+    <Compile Include="Quest\Actions\Wealth\GatherRawMaterials.cs" />
+    <Compile Include="Quest\Actions\Wealth\MakeValuablesForResale.cs" />
+    <Compile Include="Quest\Actions\Wealth\StealValuablesForResale.cs" />
+    <Compile Include="Quest\IQuestAction.cs" />
+    <Compile Include="Quest\IQuestObject.cs" />
+    <Compile Include="Quest\ISimpleQuest.cs" />
+    <Compile Include="Quest\Objects\Item.cs" />
+    <Compile Include="Quest\Objects\NPC.cs" />
+    <Compile Include="Quest\Objects\WallsOrGates.cs" />
+    <Compile Include="Quest\QuestAction.cs" />
+    <Compile Include="Quest\QuestObject.cs" />
+    <Compile Include="Quest\Quests\Comfort.cs" />
+    <Compile Include="Quest\Quests\Conquest.cs" />
+    <Compile Include="Quest\Quests\Equipment.cs" />
+    <Compile Include="Quest\Quests\Knowledge.cs" />
+    <Compile Include="Quest\Quests\Protection.cs" />
+    <Compile Include="Quest\Quests\Reputation.cs" />
+    <Compile Include="Quest\Quests\Serenity.cs" />
+    <Compile Include="Quest\Quests\Wealth.cs" />
+    <Compile Include="Quest\questType.cs" />
+    <Compile Include="Quest\StartingActions.cs" />
+    <Compile Include="Room\BoundingBox3D.cs" />
+    <Compile Include="Room\Door.cs" />
+    <Compile Include="Room\Face.cs" />
+    <Compile Include="Room\FaceType.cs" />
+    <Compile Include="Room\Facings.cs" />
+    <Compile Include="Room\Fitting.cs" />
+    <Compile Include="Room\FittingLayout.cs" />
+    <Compile Include="Room\FittingModel.cs" />
+    <Compile Include="Room\FittingPlacement.cs" />
+    <Compile Include="Room\FittingType.cs" />
+    <Compile Include="Room\Furnisher.cs" />
+    <Compile Include="Room\ParticularFace.cs" />
+    <Compile Include="Room\PlacementUnit.cs" />
+    <Compile Include="Room\RepresentationObject.cs" />
+    <Compile Include="Room\Room.cs" />
+    <Compile Include="Room\SpatialRelation.cs" />
+    <Compile Include="Room\StaticFace.cs" />
+    <Compile Include="Room\Vector2D.cs" />
+    <Compile Include="Room\Vector3D.cs" />
+    <Compile Include="Room\Wall.cs" />
+    <Compile Include="Room\Window.cs" />
+    <Compile Include="SolarGenerator.cs" />
+    <Compile Include="Celestial\Planet.cs" />
+    <Compile Include="Text\Casing.cs" />
+    <Compile Include="Text\Extensions.cs" />
+    <Compile Include="Text\WordBank.cs" />
+    <Compile Include="Text\WordRepos\AdjectivesRepository.cs" />
+    <Compile Include="Text\WordRepos\AdverbsRepository.cs" />
+    <Compile Include="Text\WordRepos\CitiesRepository.cs" />
+    <Compile Include="Text\WordRepos\CountriesRepository.cs" />
+    <Compile Include="Text\WordRepos\DaysRepository.cs" />
+    <Compile Include="Text\WordRepos\FemaleFirstNameRepository.cs" />
+    <Compile Include="Text\WordRepos\FemaleTitleRepository.cs" />
+    <Compile Include="Text\WordRepos\FirstNamesRepository.cs" />
+    <Compile Include="Text\WordRepos\JobTitlesRepository.cs" />
+    <Compile Include="Text\WordRepos\LastNamesRepository.cs" />
+    <Compile Include="Text\WordRepos\MaleFirstNameRepository.cs" />
+    <Compile Include="Text\WordRepos\MaleTitleRepository.cs" />
+    <Compile Include="Text\WordRepos\MonthRepository.cs" />
+    <Compile Include="Text\WordRepos\NounsRepository.cs" />
+    <Compile Include="Text\WordRepos\StateNamesRepository.cs" />
+    <Compile Include="Text\WordRepos\TitleRepository.cs" />
+    <Compile Include="Text\WordRepos\VerbsRepository.cs" />
+    <Compile Include="Text\WordRepos\WordRepository.cs" />
+    <Compile Include="Text\WordType.cs" />
+    <Compile Include="Traffic\LaneMesh.cs" />
+    <Compile Include="Traffic\RoadMath.cs" />
+    <Compile Include="TreeGeometry\Branch.cs" />
+    <Compile Include="TreeGeometry\ITreeShape.cs" />
+    <Compile Include="TreeGeometry\Leaf.cs" />
+    <Compile Include="TreeGeometry\Tree.cs" />
+    <Compile Include="TreeGeometry\TreeShapes.cs" />
+    <Compile Include="WordGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NthDimension.Math\NthDimension.Math.csproj">
+      <Project>{9d509ca6-5635-4c05-ad73-76f97cfbaba7}</Project>
+      <Name>NthDimension.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.OpenGL\NthDimension.Rasterizer.csproj">
+      <Project>{8fa1bc9b-47ed-4838-95b3-03589355eafb}</Project>
+      <Name>NthDimension.Rasterizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension\NthDimension.csproj">
+      <Project>{239e7ffd-bd08-4572-abcf-e3f291213798}</Project>
+      <Name>NthDimension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dungeon\Templates\Abyss\template.jm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dungeon\Templates\Lab\template.jm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Quest\SampleUsage.txt" />
+    <Content Include="Room\FittingDatabase.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

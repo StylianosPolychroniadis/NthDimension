@@ -1,0 +1,5 @@
+<material shader="sky.xsp">
+	<textures base="skybox\nissi\negy_1024.dds"/>
+	<lighted/>
+	<nocull/>
+</material>

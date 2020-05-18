@@ -1,0 +1,12 @@
+<material 	shader	  ="defaultnongeo.xsp" 
+			ssnshader ="ssnormals.xsp"
+			selection ="selection.xsp"
+			shadow    ="shadow.xsp"
+			defInfo   ="defInfo.xsp">
+	
+	<textures base	 ="characters\female\hair_medium_black.dds" 
+			  normal ="characters\female\hair_medium_n.dds"  
+			  definfo="characters\female\hair_medium_black.dds" />
+
+	<lighted/>
+</material>

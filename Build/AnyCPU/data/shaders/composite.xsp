@@ -1,0 +1,9 @@
+﻿<!-- SYSCON NthDimension Shader Definition File -->
+<!-- Rev.2.0 Code name: Kalamai					-->
+<!-- fragment:	ok								-->
+<!-- vertex:	ok								-->
+<!-- geometry:	disabled						-->
+<!-- tessel:	disabled						-->
+<!-- compute:	disabled						-->
+
+<shaderpair fragment="composite.fs" vertex="composite.vs" />

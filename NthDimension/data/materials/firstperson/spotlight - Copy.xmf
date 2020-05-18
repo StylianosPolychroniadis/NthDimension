@@ -1,0 +1,6 @@
+<material shader="defaultnongeo.xsp" ssnshader="ssnormals.xsp" selection="selection.xsp" shadow="shadow.xsp" definfo="defInfo.xsp">
+	<textures base="base\spotlight.png" normal="base\spotlight_n.png" definfo="base\spotlight_i.png"/>
+	<emit  tint="0.2|0.2|1"/>
+	<lighted/>
+	<envmap  tint="0.5|0.5|0.5" />
+</material>

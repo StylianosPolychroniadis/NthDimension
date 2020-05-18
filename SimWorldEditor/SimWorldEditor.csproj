@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D705CF86-B97C-47A7-A340-9D929FC64433}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SimWorldEditor</RootNamespace>
+    <AssemblyName>SimWorldEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NthDimension.Forms\NthDimension.Forms.csproj">
+      <Project>{4a53f318-33fa-4d2e-9bd9-dab371f010be}</Project>
+      <Name>NthDimension.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Math.Extended\NthDimension.Math.Extended.csproj">
+      <Project>{ddebd4a4-3232-4f28-a674-9cc75a7f49e0}</Project>
+      <Name>NthDimension.Math.Extended</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Math\NthDimension.Math.csproj">
+      <Project>{9d509ca6-5635-4c05-ad73-76f97cfbaba7}</Project>
+      <Name>NthDimension.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.OpenGL.Windows\NthDimension.Rasterizer.WindowsGL.csproj">
+      <Project>{c7270c8d-83c5-441e-a22a-889f013a4be5}</Project>
+      <Name>NthDimension.Rasterizer.WindowsGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.OpenGL\NthDimension.Rasterizer.csproj">
+      <Project>{8fa1bc9b-47ed-4838-95b3-03589355eafb}</Project>
+      <Name>NthDimension.Rasterizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Procedural\NthDimension.Procedural.csproj">
+      <Project>{f0f7bfe9-e33b-4956-a7a6-d9f05cd54b2d}</Project>
+      <Name>NthDimension.Procedural</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension\NthDimension.csproj">
+      <Project>{239e7ffd-bd08-4572-abcf-e3f291213798}</Project>
+      <Name>NthDimension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,7 @@
+<material shader="defaultnongeo.xsp" selection="selection.xsp">
+	<textures base="firstperson\metroid_cap.dds" normal="firstperson\metroid_cap_n.dds" />
+	<envmap  tint="0.5|0.5|0.5" />
+	<emit  tint="0.5|0.2|0.5" />
+	<transparency refraction="0.35" blur="35" fresnel="0.5"/>
+	<lighted/>
+</material>

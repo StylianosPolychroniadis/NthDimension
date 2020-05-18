@@ -1,0 +1,5 @@
+<material shader="sky.xsp">
+	<textures base="skybox\glacier\posy_512.dds"/>
+	<lighted/>
+	<nocull/>
+</material>

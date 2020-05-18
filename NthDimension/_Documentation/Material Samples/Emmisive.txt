@@ -1,0 +1,16 @@
+﻿<material shader="defaultlight.xsp" 
+	      ssnshader="ssnormals.xsp" 
+		  selection="selection.xsp" 
+		  shadow="shadow.xsp" 
+		  defInfo="defInfo.xsp">
+		  
+	<textures base="scenes\empty\neonv_d.png" 
+			  normal="scenes\empty\neonv_n.png" 
+			  definfo="scenes\empty\neonv_s.png" 
+			  emit="scenes\empty\neonv_e.png" />
+	
+	<emit tint="1|0.01|0.01" />
+	
+	<lighted/>
+
+</material>

@@ -1,0 +1,1030 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ECB1D628-C0CF-419C-AABA-B6277658828D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NthStudio</RootNamespace>
+    <AssemblyName>NthStudio</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\nSphere.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\PhysicsSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PhysicsSettings.Designer.cs">
+      <DependentUpon>PhysicsSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game\City\CityDrawable.cs" />
+    <Compile Include="Game\City\CityFactory.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Actor.cs" />
+    <Compile Include="Game\Dungeon\_TODO_\ActorItem.cs" />
+    <Compile Include="Game\Dungeon\_Reference\DungeonGenerator.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Globals.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Cave.cs" />
+    <Compile Include="Game\Dungeon\_Reference\DungeonLevel.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Data\ColorDefinitions.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Data\RoomDefinitions.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Data\TileDefinitions.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Dice.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Direction.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Encounter.cs" />
+    <Compile Include="Game\Dungeon\_Reference\ExpandableGrid.cs" />
+    <Compile Include="Game\Dungeon\_Reference\FeatureFlag.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Data\FeatureTiles.cs" />
+    <Compile Include="Game\Dungeon\_Reference\FlexGrid.cs" />
+    <Compile Include="Game\Dungeon\_Reference\GridAttribute.cs" />
+    <Compile Include="Game\Dungeon\_Reference\IChoosable.cs" />
+    <Compile Include="Game\Dungeon\_Reference\IGrid.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Triangulation\Delauney.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Triangulation\Geometry\Edge.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Triangulation\Geometry\Point.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Triangulation\Geometry\Triangle.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Utilities.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\Decorate.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInfo.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstance.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstanceCavern.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstanceDungeon.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstanceEnclosure.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstanceFarm.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstanceFromFile.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstanceIntersection.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstanceNormal.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomInstanceShop.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomType.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomTypeCavern.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomTypeEnclosure.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomTypeFromFile.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomTypeIntersection.cs" />
+    <Compile Include="Game\Dungeon\_Reference\Worldgen\RoomTypeNormal.cs" />
+    <Compile Include="Game\PlayerStats.cs" />
+    <Compile Include="Game\Procedural\Road.cs" />
+    <Compile Include="Gui\Dialogs\ClientPanel.cs" />
+    <Compile Include="Gui\Dialogs\CodeViewer.cs" />
+    <Compile Include="Gui\Dialogs\ConsoleView.cs" />
+    <Compile Include="Gui\Dialogs\KeyFrameView.cs" />
+    <Compile Include="Gui\Dialogs\MusicPlayer.cs" />
+    <Compile Include="Gui\Dialogs\ServerPanel.cs" />
+    <Compile Include="Gui\Dialogs\WorldMapViewer.cs" />
+    <None Include="Gui\GraphPlot\_OBSOLETE\BackBuffer.cs" />
+    <None Include="Gui\GraphPlot\_OBSOLETE\PlotterGraphEx.cs">
+      <SubType>UserControl</SubType>
+    </None>
+    <None Include="Gui\GraphPlot\_OBSOLETE\PlotterGraphEx.designer.cs">
+      <DependentUpon>PlotterGraphEx.cs</DependentUpon>
+    </None>
+    <None Include="Gui\GraphPlot\_OBSOLETE\PlotterGraphPaneEx.cs">
+      <SubType>UserControl</SubType>
+    </None>
+    <None Include="Gui\GraphPlot\_OBSOLETE\PlotterGraphPaneEx.Designer.cs">
+      <DependentUpon>PlotterGraphPaneEx.cs</DependentUpon>
+    </None>
+    <None Include="Gui\GraphPlot\_OBSOLETE\PlotterGraphPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="Gui\GraphPlot\_OBSOLETE\PlotterGraphPropertiesForm.Designer.cs">
+      <DependentUpon>PlotterGraphPropertiesForm.cs</DependentUpon>
+    </None>
+    <None Include="Gui\GraphPlot\_OBSOLETE\PlotterGraphTypes.cs" />
+    <None Include="Gui\GraphPlot\_OBSOLETE\PrecisionTimer.cs" />
+    <None Include="Gui\GraphPlot\_OBSOLETE\PrintPreviewForm.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="Gui\GraphPlot\_OBSOLETE\PrintPreviewForm.Designer.cs">
+      <DependentUpon>PrintPreviewForm.cs</DependentUpon>
+    </None>
+    <None Include="Gui\GraphPlot\_OBSOLETE\Utils.cs" />
+    <Compile Include="Gui\GraphPlot\BackBuffer.cs" />
+    <Compile Include="Gui\GraphPlot\DataSource.cs" />
+    <Compile Include="Gui\GraphPlot\gPoint.cs" />
+    <Compile Include="Gui\GraphPlot\PlotterDisplayEx.cs" />
+    <Compile Include="Gui\GraphPlot\PlotterGraphPaneEx.cs" />
+    <Compile Include="Gui\NodeGraph\NodeGraphWindow.cs" />
+    <Compile Include="Gui\TextureViewer.cs" />
+    <Compile Include="Gui\Timeline\TimeLine.cs" />
+    <Compile Include="Gui\Toolbars\WorldLocalSelector.cs" />
+    <Compile Include="Kernels\Fluid2D.cs" />
+    <Compile Include="NodeGraph\NodeGraphListData.cs" />
+    <Compile Include="Gui\NodeGraph\Model\FloatNode.cs" />
+    <Compile Include="Gui\NodeGraph\Model\MaterialNode.cs" />
+    <Compile Include="NodeGraph\Types\NodeGraphDataTypeDefault.cs" />
+    <Compile Include="Gui\Widgets\ObjectExplorer\ExplorerItem.cs" />
+    <Compile Include="Gui\Widgets\ObjectExplorer\ProjectExplorer.cs" />
+    <Compile Include="Gui\Widgets\RadioButton\RadioButton.cs" />
+    <Compile Include="Kernel.cs" />
+    <Compile Include="Debug\ColorPickerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debug\ColorPickerDialog.Designer.cs">
+      <DependentUpon>ColorPickerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enumerators.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="GameInput.cs" />
+    <Compile Include="Game\Avatar\AvatarFactory.cs" />
+    <Compile Include="Game\Crowd\Behaviour\AgentDecisionBehaviour.cs" />
+    <Compile Include="Game\Crowd\Behaviour\AgentMovementBehaviour.cs" />
+    <Compile Include="Game\Crowd\Behaviour\DeadMovementBehaviour.cs" />
+    <Compile Include="Game\Crowd\Behaviour\EvadeMovementBehaviour.cs" />
+    <Compile Include="Game\Crowd\Behaviour\IDecisionBehaviour.cs" />
+    <Compile Include="Game\Crowd\Behaviour\IMovementBehaviour.cs" />
+    <Compile Include="Game\Crowd\Behaviour\UsualDecisionBehaviour.cs" />
+    <Compile Include="Game\Crowd\Behaviour\UsualMovementBehaviour.cs" />
+    <Compile Include="Game\Crowd\Crowdsimulator.cs" />
+    <Compile Include="Game\Crowd\Field.cs" />
+    <Compile Include="Game\Crowd\Human Factories\AgentFactory.cs" />
+    <Compile Include="Game\Crowd\Human Factories\HumanFactory.cs" />
+    <Compile Include="Game\Crowd\Human Factories\IHumanFactory.cs" />
+    <Compile Include="Game\Crowd\Human.cs" />
+    <Compile Include="Game\IGame.cs" />
+    <Compile Include="Game\Dungeon\DungeonFactory.cs" />
+    <Compile Include="Game\Floorplan\FloorFactory.cs" />
+    <Compile Include="Gui\Dialogs\AssetsViewer.cs" />
+    <Compile Include="Gui\Delegates.cs" />
+    <Compile Include="Gui\Dialogs\ColorPicker.cs" />
+    <Compile Include="Gui\Dialogs\NodeGraphDialog.cs" />
+    <Compile Include="Gui\Displays\WorkspaceDisplay.cs" />
+    <Compile Include="Gui\Displays\WorkspaceDisplayController.cs" />
+    <Compile Include="Gui\Enumerators.cs" />
+    <Compile Include="Gui\EventArgs.cs" />
+    <Compile Include="Gui\FboViewer.cs" />
+    <Compile Include="Gui\Fonts.cs" />
+    <Content Include="data\FittingDatabase.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\asgalt.regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\neuropol.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\PCap Terminal.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\saregular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\grid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\plane\Planar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\plane\PlaneXY.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\plane\PlaneXZ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\plane\PlaneZY.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\plane\XYPlane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\plane\XYZPlane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\plane\XZPlane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\plane\YZPlane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\capsule.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\cone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\cube.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\cylinder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\icosahedron.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\plane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\prism.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\tank.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\torus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\triangle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\primitives\tube.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\projection\Orthographic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\projection\Perspective.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\projection\Projection.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\script\file16dark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\script\folder16dark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\script\project16dark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\script\solution16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\script\solution16dark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\allSelect.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\edge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\edgeSelect.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\face.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\faceSelect.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\noneSelect.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\SelAll.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\SelNone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\vertex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\vertexSelect.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\solid\_SelEdge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\transforms\Local.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\transforms\Rotate.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\transforms\Scale.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\transforms\Select.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\transforms\Translate.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\icons\transforms\World.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\defaultGenericFace.xmf" />
+    <Content Include="data\materials\characters\face_female_ebony_00.xmf" />
+    <Content Include="data\materials\characters\face_male_fit_00.xmf" />
+    <Content Include="data\materials\characters\female\apparel\leggings_black.xmf" />
+    <Content Include="data\materials\characters\female\apparel\leggings_blue.xmf" />
+    <Content Include="data\materials\characters\female\apparel\leggings_green.xmf" />
+    <Content Include="data\materials\characters\female\apparel\leggings_red.xmf" />
+    <Content Include="data\materials\characters\female\apparel\leggings_white.xmf" />
+    <Content Include="data\materials\characters\female\apparel\shoes_black.xmf" />
+    <Content Include="data\materials\characters\female\apparel\shoes_blue.xmf" />
+    <Content Include="data\materials\characters\female\apparel\shoes_green.xmf" />
+    <Content Include="data\materials\characters\female\apparel\shoes_red.xmf" />
+    <Content Include="data\materials\characters\female\apparel\shoes_white.xmf" />
+    <Content Include="data\materials\characters\female\apparel\tshirt_black.xmf" />
+    <Content Include="data\materials\characters\female\apparel\tshirt_blue.xmf" />
+    <Content Include="data\materials\characters\female\apparel\tshirt_green.xmf" />
+    <Content Include="data\materials\characters\female\apparel\tshirt_red.xmf" />
+    <Content Include="data\materials\characters\female\apparel\tshirt_white.xmf" />
+    <Content Include="data\materials\characters\female\fat_generic.xmf" />
+    <Content Include="data\materials\characters\female\fit_generic.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_long_black.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_long_blonde.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_long_brown.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_long_red.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_medium_black.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_medium_blonde.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_medium_brown.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_medium_red.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_short_black.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_short_blonde.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_short_brown.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_short_red.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_tail_black.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_tail_blonde.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_tail_brown.xmf" />
+    <Content Include="data\materials\characters\female\hairstyle_tail_red.xmf" />
+    <Content Include="data\materials\characters\female\normal_generic.xmf" />
+    <Content Include="data\materials\characters\male\apparel\leggings_black.xmf" />
+    <Content Include="data\materials\characters\male\apparel\leggings_blue.xmf" />
+    <Content Include="data\materials\characters\male\apparel\leggings_brown.xmf" />
+    <Content Include="data\materials\characters\male\apparel\leggings_green.xmf" />
+    <Content Include="data\materials\characters\male\apparel\leggings_red.xmf" />
+    <Content Include="data\materials\characters\male\apparel\shoes_black.xmf" />
+    <Content Include="data\materials\characters\male\apparel\shoes_blue.xmf" />
+    <Content Include="data\materials\characters\male\apparel\shoes_brown.xmf" />
+    <Content Include="data\materials\characters\male\apparel\shoes_green.xmf" />
+    <Content Include="data\materials\characters\male\apparel\shoes_red.xmf" />
+    <Content Include="data\materials\characters\male\apparel\tshirt_blue.xmf" />
+    <Content Include="data\materials\characters\male\apparel\tshirt_brown.xmf" />
+    <Content Include="data\materials\characters\male\apparel\tshirt_green.xmf" />
+    <Content Include="data\materials\characters\male\apparel\tshirt_multicolor.xmf" />
+    <Content Include="data\materials\characters\male\apparel\tshirt_red.xmf" />
+    <Content Include="data\materials\characters\male\fat_generic.xmf" />
+    <Content Include="data\materials\characters\male\fit_generic.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_medium_black.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_medium_blonde.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_medium_brown.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_medium_red.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_short_black.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_short_blonde.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_short_brown.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_short_red.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_tail_black.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_tail_blonde.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_tail_brown.xmf" />
+    <Content Include="data\materials\characters\male\hairstyle_tail_red.xmf" />
+    <Content Include="data\materials\characters\male\normal_generic.xmf" />
+    <None Include="Gui\MonoFlat_Controls.cs" />
+    <Compile Include="Gui\PluginRefreshPopup.cs" />
+    <Compile Include="Gui\SystemInformation.cs" />
+    <Compile Include="Gui\Widgets\ColorWheel\ColorWheel.cs" />
+    <Compile Include="Gui\Widgets\ComboBox\ComboBox.cs" />
+    <Compile Include="Gui\Widgets\LabelProgress\LabelProgress.cs" />
+    <Compile Include="Gui\Widgets\Picture\Picture.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\BoundPropertyDescriptor.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\DefaultObjectAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gui\Widgets\PropertyGrid\DefaultPropertyEditorMap.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\IPropertyGridItemCollection.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\IPropertyGridObjectAdapter.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\IPropertyGridSection.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\IPropertyGridSectionCollection.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\IValidator.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyEditorAttribute.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyEditorBase.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyEditors\BoolEditor.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyEditors\CustomSourceListEditor.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyEditors\EnumEditor.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyEditors\PointEditor.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyEditors\ValidatingStringEditor.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyGrid.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyGridItem.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\PropertyGridSection.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\Validators\DefaultValidator.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\Validators\DoubleValidator.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\Validators\FloatValidator.cs" />
+    <Compile Include="Gui\Widgets\PropertyGrid\Validators\RangedValueValidator.cs" />
+    <Compile Include="Gui\Widgets\Slider\Slider.cs" />
+    <Compile Include="Gui\Widgets\Source\Tree\FileBaseNode.cs" />
+    <Compile Include="Gui\Widgets\Source\Tree\FileNode.cs" />
+    <Compile Include="Gui\Widgets\Source\Tree\FolderNode.cs" />
+    <Compile Include="Gui\Widgets\Source\Tree\ProjectNode.cs" />
+    <Compile Include="Gui\Widgets\Source\Tree\SolutionNode.cs" />
+    <Compile Include="Gui\Widgets\TabbedDocs\TabbedDocs.cs" />
+    <Compile Include="Gui\Widgets\TabStrip\Delegates.cs" />
+    <Compile Include="Gui\Widgets\TabStrip\EventArgs.cs" />
+    <Compile Include="Gui\Widgets\TabStrip\TabStrip.cs" />
+    <Compile Include="Gui\Widgets\TabStrip\TabStripCloseButton.cs" />
+    <Compile Include="Gui\Widgets\TabStrip\TabStripItem.cs" />
+    <Compile Include="Gui\Widgets\TabStrip\TabStripItemCollection.cs" />
+    <Compile Include="Gui\Widgets\TabStrip\TabStripMenuGlyph.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\Bookmark.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\Caret.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\Clipboard.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\Fold.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\Format.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\HomeEnd.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\IEditAction.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\Misc.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Actions\Selection.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Caret.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\DefaultProperties.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Delegates.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\AbstractSegment.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\BookmarkManagement\Bookmark.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\BookmarkManagement\BookmarkManager.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\DefaultDocument.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\DefaultFormattingStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\Factory.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\FoldingStrategy\FoldingManager.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\FoldingStrategy\FoldMarker.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\FoldingStrategy\IFoldingStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\FoldingStrategy\RegionFoldingStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\FormattingStrategy\IFormattingStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\Highlight.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\DefaultHighlightStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\Exceptions.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\HighlightBackground.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\HighlightColor.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\HighlightDefinitionParser.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\HighlightManager.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\HighlightRuleSet.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\HighlightStrategyFactory.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\IHighlightStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\NextMarker.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\PrevMarker.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\Span.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\SpanStack.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\SyntaxModes\FileSyntaxModeProvider.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\SyntaxModes\ISyntaxModeFileProvider.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\SyntaxModes\ResourceSyntaxModeProvider.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\HighlightStrategy\SyntaxModes\SyntaxMode.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\IDocument.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\ISegment.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\LineManagement\DeferredEventList.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\LineManagement\EventArgs.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\LineManagement\LineManager.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\LineManagement\LineSegment.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\LineManagement\LineSegmentTree.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\MarkingStrategy\MarkerStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\MarkingStrategy\TextMarker.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\Selection\ColumnRange.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\Selection\DefaultSelection.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\Selection\ISelection.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\Selection\SelectionManager.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\TextAnchor.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\TextBufferStrategy\GapTextBufferStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\TextBufferStrategy\ITextBufferStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\TextBufferStrategy\StringTextBufferStrategy.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\TextLocation.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Document\TextWord.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Enumerators.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\EventArgs.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\FoldMargin.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\ITextEditorProperties.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Margins\AbstractMargin.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Margins\FoldMargin.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Margins\GutterMargin.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Margins\IconBarMargin.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Margins\TextViewMargin.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\StringConstants.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\TextArea.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\TextCanvas.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\TextCanvasMouseHandler.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\TextEditor.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\TextEditorBase.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\TextAreaUpdate.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Undo\IUndoableOperation.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Undo\UndoableDelete.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Undo\UndoableInsert.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Undo\UndoableReplace.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Undo\UndoQueue.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Undo\UndoStack.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Util\AugmentableRedBlackTree.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Util\MouseWheelHandler.cs" />
+    <Compile Include="Gui\Widgets\TextEditor\Util\TextUtility.cs" />
+    <Compile Include="Gui\Widgets\TextInput\TextInput.cs" />
+    <Compile Include="Gui\Widgets\ToolButton\ToolButton.cs" />
+    <Compile Include="Kernels\Mandelbrot.cs" />
+    <Compile Include="Gui\NodeGraph\Model\BoolNode.cs" />
+    <Compile Include="Gui\NodeGraph\Type\NodeGraphDataTypeBool.cs" />
+    <Compile Include="Gui\NodeGraph\Type\NodeGraphDataTypeFloat.cs" />
+    <Compile Include="Gui\NodeGraph\Type\NodeGraphDataTypeMaterial.cs" />
+    <Compile Include="Plugins\PluginFactory.cs" />
+    <Compile Include="Plugins\PluginStoreManager.cs" />
+    <Compile Include="Plugins\EnvironmentSettings.cs" />
+    <Compile Include="Plugins\PluginInfo.cs" />
+    <Compile Include="Plugins\PluginStore.cs" />
+    <Compile Include="Plugins\PluginStore.EventArgs.cs" />
+    <Compile Include="Plugins\PluginStore.EventHandlers.cs" />
+    <Compile Include="Plugins\PluginWidget.cs" />
+    <Compile Include="Program.Exception.cs" />
+    <Compile Include="Program.Server.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SceneItem.cs" />
+    <Compile Include="ScenePackage.cs" />
+    <Compile Include="SciterHost.cs" />
+    <Compile Include="StudioServer.cs" />
+    <Compile Include="StudioWindow.cs" />
+    <Compile Include="Gui\Displays\DisplayMySoci.cs" />
+    <None Include="NodeGraph\NodeViews\AbsNode.cs" />
+    <None Include="NodeGraph\NodeViews\AdditionInt32Node.cs" />
+    <None Include="NodeGraph\NodeViews\DivideNode.cs" />
+    <None Include="NodeGraph\NodeViews\ESISystemNode.cs" />
+    <None Include="NodeGraph\NodeViews\FciNode.cs" />
+    <None Include="Gui\NodeGraph\Model\Obsolete\_SwitchFloatNode.cs" />
+    <None Include="NodeGraph\NodeViews\IfNode.cs" />
+    <None Include="NodeGraph\NodeViews\MultiplyNode.cs" />
+    <Compile Include="Gui\NodeGraph\Data\OBSOLETE\NewTData.cs" />
+    <Compile Include="Gui\NodeGraph\Data\BoolData.cs" />
+    <Compile Include="Gui\NodeGraph\Data\FloatData.cs" />
+    <None Include="NodeGraph\NodeViews\PowerNode.cs" />
+    <None Include="NodeGraph\NodeViews\SubtractNode.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudioWindow.Debug.cs" />
+    <Compile Include="StudioWindow.GUI.cs" />
+    <Compile Include="StudioWindow.Load.cs" />
+    <Compile Include="StudioWindow.Picking.cs" />
+    <Compile Include="StudioWindow.Scitter.cs" />
+    <Compile Include="StudioWindow.Sound.cs" />
+    <Compile Include="StudioWindowInput.cs" />
+    <Compile Include="TransformationWidgets2D.cs" />
+    <Compile Include="UserInfoDesc.cs" />
+    <Compile Include="Utilities\ColorUtil.cs" />
+    <Compile Include="Utilities\FileReader.cs" />
+    <Compile Include="Utilities\GenericUtils.cs" />
+    <Compile Include="Utilities\HardwareMonitor.cs" />
+    <Compile Include="Utilities\LookupTable.cs" />
+    <Compile Include="Utilities\PathUtil.cs" />
+    <Compile Include="Utilities\PropertySorter.cs" />
+    <Compile Include="NodeGraph\FloatingTextItem.cs" />
+    <Compile Include="NodeGraph\enuOPERATORS.cs" />
+    <Compile Include="NodeGraph\INodeGraphPlug.cs" />
+    <Compile Include="NodeGraph\NodeGraphData.cs" />
+    <Compile Include="NodeGraph\NodeGraphDataType.cs" />
+    <Compile Include="NodeGraph\NodeGraphLink.cs" />
+    <Compile Include="NodeGraph\NodeGraphNode.cs" />
+    <Compile Include="NodeGraph\NodeGraphPanel.cs" />
+    <Compile Include="NodeGraph\NodeGraphPlug.cs" />
+    <Compile Include="NodeGraph\NodeViewState.cs" />
+    <Compile Include="NodeGraph\SelectedLine.cs" />
+    <Compile Include="NodeGraph\Xml\SerializationUtils.cs" />
+    <Compile Include="NodeGraph\Xml\XmlTree.cs" />
+    <Compile Include="NodeGraph\Xml\XmlTreeNode.cs" />
+    <Compile Include="NodeGraph\Xml\XmlTreeNodeParameterAlreadyExistsException.cs" />
+    <Compile Include="NodeGraph\Xml\XmlTreeNodeUnexpectedNodeException.cs" />
+    <Compile Include="Utilities\ResourceUtil.cs" />
+    <Compile Include="Utilities\StringUtil.cs" />
+    <Compile Include="Utilities\WeakCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NthDimension.Cloo\NthDimension.Compute.csproj">
+      <Project>{73a2f09d-9bcf-4fda-9428-4d0e239f858d}</Project>
+      <Name>NthDimension.Compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.FFMpeg\NthDimension.FFMpeg.csproj">
+      <Project>{b20726d0-f6b5-4028-9e10-20d2aa51277e}</Project>
+      <Name>NthDimension.FFMpeg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Forms\NthDimension.Forms.csproj">
+      <Project>{4a53f318-33fa-4d2e-9bd9-dab371f010be}</Project>
+      <Name>NthDimension.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Math\NthDimension.Math.csproj">
+      <Project>{9d509ca6-5635-4c05-ad73-76f97cfbaba7}</Project>
+      <Name>NthDimension.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Network\NthDimension.Network.csproj">
+      <Project>{9e92ac80-5200-4db5-9c91-b2ec1fdb930f}</Project>
+      <Name>NthDimension.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.OpenGL.Windows\NthDimension.Rasterizer.WindowsGL.csproj">
+      <Project>{c7270c8d-83c5-441e-a22a-889f013a4be5}</Project>
+      <Name>NthDimension.Rasterizer.WindowsGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.OpenGL\NthDimension.Rasterizer.csproj">
+      <Project>{8fa1bc9b-47ed-4838-95b3-03589355eafb}</Project>
+      <Name>NthDimension.Rasterizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Procedural\NthDimension.Procedural.csproj">
+      <Project>{f0f7bfe9-e33b-4956-a7a6-d9f05cd54b2d}</Project>
+      <Name>NthDimension.Procedural</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Server\NthDimension.Server.csproj">
+      <Project>{2f07df26-fd0f-46a4-9d04-1269a692a5ac}</Project>
+      <Name>NthDimension.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension\NthDimension.csproj">
+      <Project>{239e7ffd-bd08-4572-abcf-e3f291213798}</Project>
+      <Name>NthDimension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthStudio.IoC\NthStudio.IoC.csproj">
+      <Project>{9ad90867-191a-41c0-850f-4ca7a501c615}</Project>
+      <Name>NthStudio.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthStudio.WinForms\NthStudio.WinForms.csproj">
+      <Project>{816801c1-6cb2-4a0a-9975-7c1a497ecfac}</Project>
+      <Name>NthStudio.WinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFormsUI\WinFormsUI.csproj">
+      <Project>{73e019ac-98dd-43d6-a8a3-2483806262b5}</Project>
+      <Name>WinFormsUI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\icons\nodes\" />
+    <Folder Include="data\models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Debug\ColorPickerDialog.resx">
+      <DependentUpon>ColorPickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Gui\GraphPlot\_OBSOLETE\PrintPreviewForm.resx">
+      <DependentUpon>PrintPreviewForm.cs</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Forms\PhysicsSettings.resx">
+      <DependentUpon>PhysicsSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="data\textEditor\syntax\Coco-Mode.xshd" />
+    <None Include="data\textEditor\copy\CSharp-Mode.xshd" />
+    <None Include="data\textEditor\copy\CSharp-Mode1.xshd" />
+    <None Include="data\textEditor\copy\CSharp-Mode2.xshd" />
+    <None Include="data\textEditor\copy\CSharp-Mode3.xshd" />
+    <None Include="data\textEditor\copy\CSharp-Mode4.xshd" />
+    <None Include="data\textEditor\copy\CSharp-Mode5.xshd" />
+    <EmbeddedResource Include="data\textEditor\syntax\CSharp-Mode.xshd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\textEditor\syntax\Mode.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\textEditor\syntax\Silang-Mode.xshd" />
+    <None Include="OpenTK.dll.config" />
+    <None Include="Resources\110.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\216.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddCurve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCopy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnItalic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPaste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSelect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUnderline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\collapse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursor_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursor_scale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Decimals.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fire0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flash.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foreColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\format.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeatExchanger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InfoIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layers16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NodeInvalid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NodeShadow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NodeValid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saregular.ttf" />
+    <None Include="Resources\SingleMulti.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SinkFluidT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SourceFluidT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stack2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Translate %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Translate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Turbine1a.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Turbine1aNew.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Turbine2a.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Turbine3a.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nSphere.ico" />
+    <EmbeddedResource Include="data\textEditor\syntax\SyntaxModes.xml" />
+    <Content Include="data\kernels\Mandelbrot.c">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\face_female_ebony_00_d.dds" />
+    <Content Include="data\textures\characters\face_female_ebony_00_n.dds" />
+    <Content Include="data\textures\characters\face_female_ebony_00_s.dds" />
+    <Content Include="data\textures\characters\face_male_normal_d.dds" />
+    <Content Include="data\textures\characters\face_male_normal_n.dds" />
+    <Content Include="data\textures\characters\face_male_normal_s.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_leggings_black.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_leggings_blue.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_leggings_green.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_leggings_n.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_leggings_red.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_leggings_white.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_shoes_black.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_shoes_blue.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_shoes_green.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_shoes_n.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_shoes_red.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_shoes_white.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_black.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_blue.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_green.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_n.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_red.dds" />
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_white.dds" />
+    <Content Include="data\textures\characters\female\female_fat_generic_d.dds" />
+    <Content Include="data\textures\characters\female\female_fat_generic_n.dds" />
+    <Content Include="data\textures\characters\female\female_fat_generic_s.dds" />
+    <Content Include="data\textures\characters\female\female_fit_generic_d.dds" />
+    <Content Include="data\textures\characters\female\female_fit_generic_n.dds" />
+    <Content Include="data\textures\characters\female\female_fit_generic_s.dds" />
+    <Content Include="data\textures\characters\female\female_normal_generic_d.dds" />
+    <Content Include="data\textures\characters\female\female_normal_generic_n.dds" />
+    <Content Include="data\textures\characters\female\female_normal_generic_s.dds" />
+    <Content Include="data\textures\characters\female\hair_long_black.dds" />
+    <Content Include="data\textures\characters\female\hair_long_blonde.dds" />
+    <Content Include="data\textures\characters\female\hair_long_brown.dds" />
+    <Content Include="data\textures\characters\female\hair_long_n.dds" />
+    <Content Include="data\textures\characters\female\hair_long_red.dds" />
+    <Content Include="data\textures\characters\female\hair_medium_black.dds" />
+    <Content Include="data\textures\characters\female\hair_medium_blonde.dds" />
+    <Content Include="data\textures\characters\female\hair_medium_brown.dds" />
+    <Content Include="data\textures\characters\female\hair_medium_n.dds" />
+    <Content Include="data\textures\characters\female\hair_medium_red.dds" />
+    <Content Include="data\textures\characters\female\hair_short_black.dds" />
+    <Content Include="data\textures\characters\female\hair_short_blonde.dds" />
+    <Content Include="data\textures\characters\female\hair_short_brown.dds" />
+    <Content Include="data\textures\characters\female\hair_short_n.dds" />
+    <Content Include="data\textures\characters\female\hair_short_red.dds" />
+    <Content Include="data\textures\characters\male\0hair_tail_black.dds" />
+    <Content Include="data\textures\characters\male\0hair_tail_blonde.dds" />
+    <Content Include="data\textures\characters\male\0hair_tail_brown.dds" />
+    <Content Include="data\textures\characters\male\0hair_tail_n.dds" />
+    <Content Include="data\textures\characters\male\0hair_tail_red.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shoes_black.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shoes_blue.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shoes_brown.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shoes_green.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shoes_n.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shoes_red.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shorts_black.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shorts_blue.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shorts_brown.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shorts_green.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shorts_n.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shorts_s32.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_shorts_s8.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_blue.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_brown.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_multicolor.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_n.dds" />
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_red.dds" />
+    <Content Include="data\textures\characters\male\hair_medium_black.dds" />
+    <Content Include="data\textures\characters\male\hair_medium_blonde.dds" />
+    <Content Include="data\textures\characters\male\hair_medium_brown.dds" />
+    <Content Include="data\textures\characters\male\hair_medium_n.dds" />
+    <Content Include="data\textures\characters\male\hair_medium_red.dds" />
+    <Content Include="data\textures\characters\male\hair_short_black.dds" />
+    <Content Include="data\textures\characters\male\hair_short_blonde.dds" />
+    <Content Include="data\textures\characters\male\hair_short_brown.dds" />
+    <Content Include="data\textures\characters\male\hair_short_n.dds" />
+    <Content Include="data\textures\characters\male\hair_short_red.dds" />
+    <Content Include="data\textures\characters\male\male_fat_generic_d.dds" />
+    <Content Include="data\textures\characters\male\male_fat_generic_n.dds" />
+    <Content Include="data\textures\characters\male\male_fat_generic_s.dds" />
+    <Content Include="data\textures\characters\male\male_fit_generic_d.dds" />
+    <Content Include="data\textures\characters\male\male_fit_generic_n.dds" />
+    <Content Include="data\textures\characters\male\male_fit_generic_s.dds" />
+    <Content Include="data\textures\characters\male\male_fit_generic_s8.dds" />
+    <Content Include="data\textures\characters\male\male_normal_generic_d.dds" />
+    <Content Include="data\textures\characters\male\male_normal_generic_n.dds" />
+    <Content Include="data\textures\characters\male\male_normal_generic_s.dds" />
+    <Content Include="data\textures\characters\male\male_slim_generic_d.dds" />
+    <Content Include="data\textures\characters\male\male_slim_generic_n.dds" />
+    <Content Include="data\textures\characters\male\male_slim_generic_s.dds" />
+    <Content Include="data\textures\characters\meshGenericFace.dds" />
+    <Content Include="data\textures\characters\meshGenericFace.png" />
+    <Content Include="data\textures\characters\meshGenericFace_n.dds" />
+    <Content Include="data\textures\characters\meshGenericFace_n.png" />
+    <Content Include="data\textures\characters\meshGenericFace_s.dds" />
+    <Content Include="data\textures\characters\meshGenericFace_s.png" />
+    <Content Include="Game\Dungeon\_Reference\Data\color.txt" />
+    <Content Include="Game\Dungeon\_Reference\Data\features.txt" />
+    <Content Include="Game\Dungeon\_Reference\Data\rooms.txt" />
+    <Content Include="Game\Dungeon\_Reference\Data\tiles.txt" />
+    <Content Include="Plugins\PluginStore.xml" />
+    <None Include="Resources\EquirMap_2048.jpg" />
+    <Content Include="Resources\file16.png" />
+    <None Include="Resources\solution16dark.png" />
+    <None Include="Resources\solution16.png" />
+    <None Include="Resources\project16dark.png" />
+    <EmbeddedResource Include="Resources\folder16dark.png" />
+    <EmbeddedResource Include="Resources\file16dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\project16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+  </Target>
+</Project>

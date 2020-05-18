@@ -1,0 +1,4 @@
+<material shader="defaultnongeo.xsp" ssnshader="ssnormals.xsp" selection="selection.xsp" shadow="shadow.xsp">
+	<textures base="firstperson\metroid.dds" normal="firstperson\metroid_n.dds" />
+	<lighted/>
+</material>

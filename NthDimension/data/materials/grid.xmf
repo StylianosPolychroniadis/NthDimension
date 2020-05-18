@@ -1,0 +1,7 @@
+<material shader="unlitGeneric.xsp">
+	<textures base="base\grid.png"/>
+	<nodepthmask/>
+	<additive/>
+	<nocull/>
+	<transparency/>
+</material>

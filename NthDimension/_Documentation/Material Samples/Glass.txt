@@ -1,0 +1,9 @@
+﻿<material shader="defaultlight.xsp" >
+		  
+	<textures base="scenes\empty\glassgreen_d.png" 
+			  normal="scenes\empty\glass5_n.png" /> <!-- Optional -->
+			  
+	<transparency />			<!-- Makes the object translucent, requires 'transparent' in scene definition --> 
+    <additive />    			<!-- Allows skybox to be properly displayed -->
+	<nocull />					<!-- Allows emissive surfaces to display properly behind this translucent object -->
+</material>

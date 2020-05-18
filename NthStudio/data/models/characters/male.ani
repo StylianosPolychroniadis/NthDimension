@@ -1,0 +1,39 @@
+<sequences>
+
+	<!-- Fat Generic 	-->
+
+	<animation 	source="male\animations\body_fat_generic_idle.dae" 			frames="38" name="male_fat_generic_idle" 				playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fat_generic_tshirt_idle.dae" 		frames="38" name="male_fat_generic_tshirt_idle" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fat_generic_leggings_idle.dae" 		frames="38" name="male_fat_generic_leggings_idle" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fat_generic_shoes_idle.dae" 		frames="38" name="male_fat_generic_shoes_idle" 			playback="loop" 	speed="0.7" />
+	
+	<animation 	source="male\animations\body_fat_generic_walk.dae" 			frames="23" name="male_fat_generic_walk" 				playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fat_generic_tshirt_walk.dae" 		frames="23" name="male_fat_generic_tshirt_walk" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fat_generic_leggings_walk.dae" 		frames="23" name="male_fat_generic_leggings_walk" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fat_generic_shoes_walk.dae" 		frames="23" name="male_fat_generic_shoes_walk" 			playback="loop" 	speed="0.7" />
+	
+	<!-- Fit Generic	-->
+	
+	<animation 	source="male\animations\body_fit_generic_idle.dae" 			frames="42" name="male_fit_generic_idle" 				playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fit_generic_tshirt_idle.dae" 		frames="42" name="male_fit_generic_tshirt_idle" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fit_generic_leggings_idle.dae" 		frames="42" name="male_fit_generic_leggings_idle" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fit_generic_shoes_idle.dae" 		frames="42" name="male_fit_generic_shoes_idle" 			playback="loop" 	speed="0.7" />
+	
+	<animation 	source="male\animations\body_fit_generic_walk.dae" 			frames="29" name="male_fit_generic_walk" 				playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fit_generic_tshirt_walk.dae" 		frames="29" name="male_fit_generic_tshirt_walk" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fit_generic_leggings_walk.dae" 		frames="29" name="male_fit_generic_leggings_walk" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\fit_generic_shoes_walk.dae" 		frames="29" name="male_fit_generic_shoes_walk" 			playback="loop" 	speed="0.7" />
+	
+	<!-- Normal Generic	-->
+	
+	<animation 	source="male\animations\body_normal_generic_idle.dae"		frames="38" name="male_normal_generic_idle" 			playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\normal_generic_tshirt_idle.dae" 	frames="38" name="male_normal_generic_tshirt_idle" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\normal_generic_leggings_idle.dae" 	frames="38" name="male_normal_generic_leggings_idle" 	playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\normal_generic_shoes_idle.dae" 		frames="38" name="male_normal_generic_shoes_idle" 		playback="loop" 	speed="0.7" />
+	
+	<animation 	source="male\animations\body_normal_generic_walk.dae" 		frames="28" name="male_normal_generic_walk" 			playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\normal_generic_tshirt_walk.dae" 	frames="28" name="male_normal_generic_tshirt_walk" 		playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\normal_generic_leggings_walk.dae" 	frames="28" name="male_normal_generic_leggings_walk" 	playback="loop" 	speed="0.7" />
+	<animation 	source="male\animations\normal_generic_shoes_walk.dae" 		frames="28" name="male_normal_generic_shoes_walk" 		playback="loop" 	speed="0.7" />
+		
+</sequences>

@@ -1,0 +1,15 @@
+<material shader	="defaultlight.xsp"  
+		  ssnshader	="ssnormals.xsp" 
+		  selection	="selection.xsp" 
+		  shadow	="shadow.xsp" 
+		  definfo   ="defInfo.xsp">
+	
+	<textures base		="characters\female\female_normal_generic_d.dds" 
+			  normal	="characters\female\female_normal_generic_n.dds" 
+			  definfo	="characters\female\female_normal_generic_s.dds" />
+			  
+	
+	
+			  
+	<lighted/>
+</material>

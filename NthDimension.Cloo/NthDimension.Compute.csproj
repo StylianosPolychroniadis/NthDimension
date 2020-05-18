@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{73A2F09D-9BCF-4FDA-9428-4D0E239F858D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <LangVersion>5</LangVersion>
+    <AssemblyName>NthDimension.Compute</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\Build\AnyCPU\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Build\AnyCPU\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>5</LangVersion>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>5</LangVersion>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>NthDimension.Compute</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bindings\CL10.cs" />
+    <Compile Include="Bindings\CL11.cs" />
+    <Compile Include="Bindings\CLCommandQueueHandle.cs" />
+    <Compile Include="Bindings\CLContextHandle.cs" />
+    <Compile Include="Bindings\CLDeviceHandle.cs" />
+    <Compile Include="Bindings\CLEventHandle.cs" />
+    <Compile Include="Bindings\CLKernelHandle.cs" />
+    <Compile Include="Bindings\CLMemoryHandle.cs" />
+    <Compile Include="Bindings\CLPlatformHandle.cs" />
+    <Compile Include="Bindings\CLProgramHandle.cs" />
+    <Compile Include="Bindings\CLSamplerHandle.cs" />
+    <Compile Include="Bindings\CLx.cs" />
+    <Compile Include="Bindings\ComputeContextNotifier.cs" />
+    <Compile Include="Bindings\ComputeEventCallback.cs" />
+    <Compile Include="Bindings\ComputeMemoryDestructorNotifer.cs" />
+    <Compile Include="Bindings\ComputeProgramBuildNotifier.cs" />
+    <Compile Include="BuildProgramFailureComputeException.cs" />
+    <Compile Include="CLFunctionNames.cs" />
+    <Compile Include="cl_device_partition_property_ext.cs" />
+    <Compile Include="cl_mem_migration_flags_ext.cs" />
+    <Compile Include="CompilerNotAvailableComputeException.cs" />
+    <Compile Include="ComputeBoolean.cs" />
+    <Compile Include="ComputeBuffer.cs" />
+    <Compile Include="ComputeBufferBase.cs" />
+    <Compile Include="ComputeBufferCreateType.cs" />
+    <Compile Include="ComputeCommandExecutionStatus.cs" />
+    <Compile Include="ComputeCommandProfilingInfo.cs" />
+    <Compile Include="ComputeCommandQueue.cs" />
+    <Compile Include="ComputeCommandQueueFlags.cs" />
+    <Compile Include="ComputeCommandQueueInfo.cs" />
+    <Compile Include="ComputeCommandStatusArgs.cs" />
+    <Compile Include="ComputeCommandStatusChanged.cs" />
+    <Compile Include="ComputeCommandType.cs" />
+    <Compile Include="ComputeCompiler.cs" />
+    <Compile Include="ComputeContext.cs" />
+    <Compile Include="ComputeContextInfo.cs" />
+    <Compile Include="ComputeContextProperty.cs" />
+    <Compile Include="ComputeContextPropertyList.cs" />
+    <Compile Include="ComputeContextPropertyName.cs" />
+    <Compile Include="ComputeDevice.cs" />
+    <Compile Include="ComputeDeviceExecutionCapabilities.cs" />
+    <Compile Include="ComputeDeviceInfo.cs" />
+    <Compile Include="ComputeDeviceLocalMemoryType.cs" />
+    <Compile Include="ComputeDeviceMemoryCacheType.cs" />
+    <Compile Include="ComputeDeviceSingleCapabilities.cs" />
+    <Compile Include="ComputeDeviceTypes.cs" />
+    <Compile Include="ComputeErrorCode.cs" />
+    <Compile Include="ComputeEvent.cs" />
+    <Compile Include="ComputeEventBase.cs" />
+    <Compile Include="ComputeEventInfo.cs" />
+    <Compile Include="ComputeEventList.cs" />
+    <Compile Include="ComputeException.cs" />
+    <Compile Include="ComputeGLContextInfo.cs" />
+    <Compile Include="ComputeGLObjectType.cs" />
+    <Compile Include="ComputeGLTextureInfo.cs" />
+    <Compile Include="ComputeImage.cs" />
+    <Compile Include="ComputeImage2D.cs" />
+    <Compile Include="ComputeImage3D.cs" />
+    <Compile Include="ComputeImageAddressing.cs" />
+    <Compile Include="ComputeImageChannelOrder.cs" />
+    <Compile Include="ComputeImageChannelType.cs" />
+    <Compile Include="ComputeImageFiltering.cs" />
+    <Compile Include="ComputeImageFormat.cs" />
+    <Compile Include="ComputeImageInfo.cs" />
+    <Compile Include="ComputeKernel.cs" />
+    <Compile Include="ComputeKernelInfo.cs" />
+    <Compile Include="ComputeKernelWorkGroupInfo.cs" />
+    <Compile Include="ComputeMemory.cs" />
+    <Compile Include="ComputeMemoryFlags.cs" />
+    <Compile Include="ComputeMemoryInfo.cs" />
+    <Compile Include="ComputeMemoryMappingFlags.cs" />
+    <Compile Include="ComputeMemoryType.cs" />
+    <Compile Include="ComputeObject.cs" />
+    <Compile Include="ComputePlatform.cs" />
+    <Compile Include="ComputePlatformInfo.cs" />
+    <Compile Include="ComputeProgram.cs" />
+    <Compile Include="ComputeProgramBuildInfo.cs" />
+    <Compile Include="ComputeProgramBuildStatus.cs" />
+    <Compile Include="ComputeProgramInfo.cs" />
+    <Compile Include="ComputeResource.cs" />
+    <Compile Include="ComputeSampler.cs" />
+    <Compile Include="ComputeSamplerInfo.cs" />
+    <Compile Include="ComputeSubBuffer.cs" />
+    <Compile Include="ComputeUserEvent.cs" />
+    <Compile Include="DeviceNotAvailableComputeException.cs" />
+    <Compile Include="DeviceNotFoundComputeException.cs" />
+    <Compile Include="ImageFormatMismatchComputeException.cs" />
+    <Compile Include="ImageFormatNotSupportedComputeException.cs" />
+    <Compile Include="InvalidArgumentIndexComputeException.cs" />
+    <Compile Include="InvalidArgumentSizeComputeException.cs" />
+    <Compile Include="InvalidArgumentValueComputeException.cs" />
+    <Compile Include="InvalidBinaryComputeException.cs" />
+    <Compile Include="InvalidBufferSizeComputeException.cs" />
+    <Compile Include="InvalidBuildOptionsComputeException.cs" />
+    <Compile Include="InvalidCommandQueueComputeException.cs" />
+    <Compile Include="InvalidCommandQueueFlagsComputeException.cs" />
+    <Compile Include="InvalidContextComputeException.cs" />
+    <Compile Include="InvalidDeviceComputeException.cs" />
+    <Compile Include="InvalidDeviceTypeComputeException.cs" />
+    <Compile Include="InvalidEventComputeException.cs" />
+    <Compile Include="InvalidEventWaitListComputeException.cs" />
+    <Compile Include="InvalidGlobalOffsetComputeException.cs" />
+    <Compile Include="InvalidGLObjectComputeException.cs" />
+    <Compile Include="InvalidHostPointerComputeException.cs" />
+    <Compile Include="InvalidImageFormatDescriptorComputeException.cs" />
+    <Compile Include="InvalidImageSizeComputeException.cs" />
+    <Compile Include="InvalidKernelArgumentsComputeException.cs" />
+    <Compile Include="InvalidKernelComputeException.cs" />
+    <Compile Include="InvalidKernelDefinitionComputeException.cs" />
+    <Compile Include="InvalidKernelNameComputeException.cs" />
+    <Compile Include="InvalidMemoryObjectComputeException.cs" />
+    <Compile Include="InvalidMipLevelComputeException.cs" />
+    <Compile Include="InvalidOperationComputeException.cs" />
+    <Compile Include="InvalidPlatformComputeException.cs" />
+    <Compile Include="InvalidProgramComputeException.cs" />
+    <Compile Include="InvalidProgramExecutableComputeException.cs" />
+    <Compile Include="InvalidSamplerComputeException.cs" />
+    <Compile Include="InvalidValueComputeException.cs" />
+    <Compile Include="InvalidWorkDimensionsComputeException.cs" />
+    <Compile Include="InvalidWorkGroupSizeComputeException.cs" />
+    <Compile Include="InvalidWorkItemSizeComputeException.cs" />
+    <Compile Include="MapFailureComputeException.cs" />
+    <Compile Include="MemoryCopyOverlapComputeException.cs" />
+    <Compile Include="MemoryObjectAllocationFailureComputeException.cs" />
+    <Compile Include="OpenCLVersion.cs" />
+    <Compile Include="OutOfHostMemoryComputeException.cs" />
+    <Compile Include="OutOfResourcesComputeException.cs" />
+    <Compile Include="ProfilingInfoNotAvailableComputeException.cs" />
+    <Compile Include="SysIntX2.cs" />
+    <Compile Include="SysIntX3.cs" />
+    <Compile Include="Tools.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,2307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{239E7FFD-BD08-4572-ABCF-E3F291213798}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NthDimension</RootNamespace>
+    <AssemblyName>NthDimension</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;_WINDOWS_; VOXELS; OPTIMIZED</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>_WINDOWS_; VOXELS; OPTIMIZED</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalcEngine\CalculationEngine.cs" />
+    <Compile Include="CalcEngine\Expressions\BinaryExpression.cs" />
+    <Compile Include="CalcEngine\Expressions\BindingExpression.cs" />
+    <Compile Include="CalcEngine\Expressions\BindingInfo.cs" />
+    <Compile Include="CalcEngine\Expressions\Expression.cs" />
+    <Compile Include="CalcEngine\Expressions\ExpressionCache.cs" />
+    <Compile Include="CalcEngine\Expressions\FunctionExpression.cs" />
+    <Compile Include="CalcEngine\Expressions\IValueObject.cs" />
+    <Compile Include="CalcEngine\Expressions\Token.cs" />
+    <Compile Include="CalcEngine\Expressions\TokenId.cs" />
+    <Compile Include="CalcEngine\Expressions\TokenType.cs" />
+    <Compile Include="CalcEngine\Expressions\UnaryExpression.cs" />
+    <Compile Include="CalcEngine\Expressions\VariableExpression.cs" />
+    <Compile Include="CalcEngine\Expressions\XObjectExpression.cs" />
+    <Compile Include="CalcEngine\Functions\CalcEngineFunction.cs" />
+    <Compile Include="CalcEngine\Functions\ConversionFunctions.cs" />
+    <Compile Include="Rendering\Culling\Boundary.cs" />
+    <Compile Include="Rendering\Culling\BoundingAABB.cs" />
+    <Compile Include="Rendering\Culling\BoundingCylinderXY.cs" />
+    <Compile Include="Rendering\Culling\BoundingFrustum.cs" />
+    <Compile Include="Rendering\Culling\BoundingOctree.cs" />
+    <Compile Include="Rendering\Culling\BoundingOctreeObject.cs" />
+    <Compile Include="Rendering\Culling\BoundingSphere.cs" />
+    <Compile Include="Rendering\Scenegraph\SceneGame.Octree.cs" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CloudsLess.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CloudsLots.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CubeNormalizer_ULQ.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\Glow.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\Moon.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\Rays.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\Starmap.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\Sun.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\FluidTypes.txt" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\shaders\CloudsShader.fx" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\shaders\SkyShader.fx" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\CloudsLess.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\CloudsLots.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\CubeNormalizer_ULQ.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Glow.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Moon.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Rays.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Starmap.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Sun.dds" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\Atmosphere.cs" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\DirectionalLight.cs" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\HoursInOperation.cs" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\meshes\hemisphere.tvm" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\Sky.cs" />
+    <None Include="_Documentation\All Shaders\TV3D\nGraphics\SkyMath.cs" />
+    <None Include="CalcEngine\Functions\Exergetic\EsiAirFunctions.cs" />
+    <None Include="CalcEngine\Functions\Exergetic\EsiFlowFunctions.cs" />
+    <None Include="CalcEngine\Functions\Exergetic\EsiLFactorFunctions.cs" />
+    <None Include="CalcEngine\Functions\Exergetic\EsiOpcFunctions.cs" />
+    <None Include="CalcEngine\Functions\Exergetic\EsiSteamFunctions.cs" />
+    <Compile Include="CalcEngine\Functions\FunctionDefinition.cs" />
+    <Compile Include="CalcEngine\Functions\Logical.cs" />
+    <Compile Include="CalcEngine\Functions\MathTrig.cs" />
+    <Compile Include="CalcEngine\Functions\SpreadsheetFunctions.cs" />
+    <Compile Include="CalcEngine\Functions\Statistical.cs" />
+    <Compile Include="CalcEngine\Functions\Tally.cs" />
+    <Compile Include="CalcEngine\Functions\Text.cs" />
+    <Compile Include="CodeGen\CodeCompletion\AmbienceReflectionDecorator.cs" />
+    <Compile Include="CodeGen\Converter\CodeConverter.cs" />
+    <Compile Include="CodeGen\Converter\TlbImp.cs" />
+    <Compile Include="CodeGen\CSharpEngine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CodeGen\Dom\Ambience.cs" />
+    <Compile Include="CodeGen\Dom\ClassFinder.cs" />
+    <Compile Include="CodeGen\Dom\CSharp\CSharpAmbience.cs" />
+    <Compile Include="CodeGen\Dom\CSharp\CSharpExpressionFinder.cs" />
+    <Compile Include="CodeGen\Dom\CtrlSpaceResolveHelper.cs" />
+    <Compile Include="CodeGen\Dom\DiffUtility.cs" />
+    <Compile Include="CodeGen\Dom\ExpressionContext.cs" />
+    <Compile Include="CodeGen\Dom\ExpressionResult.cs" />
+    <Compile Include="CodeGen\Dom\FilePosition.cs" />
+    <Compile Include="CodeGen\Dom\FoldingRegion.cs" />
+    <Compile Include="CodeGen\Dom\Functional.cs" />
+    <Compile Include="CodeGen\Dom\GacAssemblyName.cs" />
+    <Compile Include="CodeGen\Dom\GacInterop.cs" />
+    <Compile Include="CodeGen\Dom\GacNative.cs" />
+    <Compile Include="CodeGen\Dom\HostCallback.cs" />
+    <Compile Include="CodeGen\Dom\IExpressionFinder.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\AbstractDecoration.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\AbstractMember.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\AbstractNamedEntity.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\AbstractReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\AnonymousMethodReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\ArrayReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\CombinedReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\CompoundClass.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\ConstructedReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\Constructor.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultAttribute.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultClass.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultCompilationUnit.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultEvent.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultField.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultMethod.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultParameter.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultProperty.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultTypeParameter.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\DefaultUsing.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\Destructor.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\GenericReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\GetClassReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\NullReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\ProxyReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\SearchClassReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\SystemTypes.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\VoidClass.cs" />
+    <Compile Include="CodeGen\Dom\Implementations\VoidReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\ClassType.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\DomRegion.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\ExplicitInterfaceImplementation.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IAttribute.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IClass.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IComment.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\ICompilationUnit.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IDecoration.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IEvent.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IField.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IMember.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IMethod.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IParameter.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IProperty.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IReturnType.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\ITypeParameter.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\IUsing.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\ModifierEnum.cs" />
+    <Compile Include="CodeGen\Dom\Interfaces\ParameterModifiers.cs" />
+    <Compile Include="CodeGen\Dom\IResolver.cs" />
+    <Compile Include="CodeGen\Dom\LanguageProperties.cs" />
+    <Compile Include="CodeGen\Dom\LoggingService.cs" />
+    <Compile Include="CodeGen\Dom\MemberLookupHelper.cs" />
+    <Compile Include="CodeGen\Dom\NRefactoryResolver\NRefactoryASTConvertVisitor.cs" />
+    <Compile Include="CodeGen\Dom\NRefactoryResolver\NRefactoryResolver.cs" />
+    <Compile Include="CodeGen\Dom\NRefactoryResolver\TypeVisitor.cs" />
+    <Compile Include="CodeGen\Dom\ProjectContent\DefaultProjectContent.cs" />
+    <Compile Include="CodeGen\Dom\ProjectContent\DomAssemblyName.cs" />
+    <Compile Include="CodeGen\Dom\ProjectContent\IProjectContent.cs" />
+    <Compile Include="CodeGen\Dom\ProjectContent\ParseInformation.cs" />
+    <Compile Include="CodeGen\Dom\ProjectContent\ProjectContentRegistry.cs" />
+    <Compile Include="CodeGen\Dom\ProjectContent\ReflectionProjectContent.cs" />
+    <Compile Include="CodeGen\Dom\Refactoring\CodeGenerator.cs" />
+    <Compile Include="CodeGen\Dom\Refactoring\CodeGeneratorOptions.cs" />
+    <Compile Include="CodeGen\Dom\Refactoring\CSharpCodeGenerator.cs" />
+    <Compile Include="CodeGen\Dom\Refactoring\IDocument.cs" />
+    <Compile Include="CodeGen\Dom\Refactoring\NRefactoryCodeGenerator.cs" />
+    <Compile Include="CodeGen\Dom\Refactoring\NRefactoryRefactoringProvider.cs" />
+    <Compile Include="CodeGen\Dom\Refactoring\RefactoringProvider.cs" />
+    <Compile Include="CodeGen\Dom\Refactoring\VBNetCodeGenerator.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\DomPersistence.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\ReflectionClass.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\ReflectionEvent.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\ReflectionField.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\ReflectionLoader.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\ReflectionMethod.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\ReflectionParameter.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\ReflectionProperty.cs" />
+    <Compile Include="CodeGen\Dom\ReflectionLayer\ReflectionReturnType.cs" />
+    <Compile Include="CodeGen\Dom\ResolveResult.cs" />
+    <Compile Include="CodeGen\Dom\TagComment.cs" />
+    <Compile Include="CodeGen\Dom\VBNet\VbExpressionFinder.cs" />
+    <Compile Include="CodeGen\Dom\VBNet\VBNetAmbience.cs" />
+    <Compile Include="CodeGen\Dom\XmlDoc.cs" />
+    <Compile Include="CodeGen\Interface\IExecutable.cs" />
+    <Compile Include="CodeGen\Interface\ScriptInstance.cs" />
+    <Compile Include="CodeGen\IParser.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\AbstractNode.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\Enums.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\General\BlockStatement.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\General\CompilationUnit.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\General\Expression.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\General\LocalVariableDeclaration.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\General\PrimitiveExpression.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\General\Statement.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\Generated.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\INode.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\INullable.cs" />
+    <Compile Include="CodeGen\NRefactory\Ast\TypeReference.cs" />
+    <Compile Include="CodeGen\NRefactory\EnvironmentInformationProvider.cs" />
+    <Compile Include="CodeGen\NRefactory\IAstVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\AbstractLexer.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\CSharp\Keywords.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\CSharp\Lexer.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\CSharp\Tokens.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\ILexer.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\LookupTable.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\Special\BlankLine.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\Special\Comment.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\Special\CommentType.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\Special\ISpecial.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\Special\PreProcessingDirective.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\Special\SpecialTracker.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\Special\TagComment.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\Token.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\VBNet\Keywords.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\VBNet\Lexer.cs" />
+    <Compile Include="CodeGen\NRefactory\Lexer\VBNet\Tokens.cs" />
+    <Compile Include="CodeGen\NRefactory\Location.cs" />
+    <Compile Include="CodeGen\NRefactory\ParserFactory.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\AbstractParser.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\CSharp\CSharpParser.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\CSharp\Parser.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\Errors.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\IParser.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\ModifierList.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\VBNet\ParamModifierList.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\VBNet\Parser.cs" />
+    <Compile Include="CodeGen\NRefactory\Parser\VBNet\VBNetParser.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\AbstractOutputFormatter.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\AbstractPrettyPrintOptions.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\CSharp\CSharpOutputVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\CSharp\OutputFormatter.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\CSharp\PrettyPrintOptions.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\IOutputAstVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\NodeInformVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\SpecialNodesInserter.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\VBNet\VBNetOutputFormatter.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\VBNet\VBNetOutputVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\PrettyPrinter\VBNet\VBNetPrettyPrintOptions.cs" />
+    <Compile Include="CodeGen\NRefactory\SnippetParser.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\AbstractAstTransformer.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\AbstractASTVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\CodeDOMOutputVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\CodeDOMVerboseOutputGenerator.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\CSharpConstructsVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\CSharpToVBNetConvertVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\LookupTableVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\NodeTrackingAstVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\PrefixFieldsVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\ToCSharpConvertVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\ToVBNetConvertVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\VBNetConstructsConvertVisitor.cs" />
+    <Compile Include="CodeGen\NRefactory\Visitors\VBNetToCSharpConvertVisitor.cs" />
+    <Compile Include="CodeGen\Parser\CSharpParser.cs" />
+    <Compile Include="CodeGen\Parser\IParser.cs" />
+    <Compile Include="CodeGen\Parser\ProjectContentItem.cs" />
+    <Compile Include="CodeGen\Parser\ProjectParser.cs" />
+    <Compile Include="CodeGen\Parser\VbParser.cs" />
+    <Compile Include="CodeGen\Project\ComReferenceProjectItem.cs" />
+    <Compile Include="CodeGen\Project\DefaultProject.cs" />
+    <Compile Include="CodeGen\Project\FileProjectItem.cs" />
+    <Compile Include="CodeGen\Project\IProject.cs" />
+    <Compile Include="CodeGen\Project\ItemType.cs" />
+    <Compile Include="CodeGen\Project\ProjectItem.cs" />
+    <Compile Include="CodeGen\Project\ProjectReferenceProjectItem.cs" />
+    <Compile Include="CodeGen\Project\ReferenceProjectItem.cs" />
+    <Compile Include="CodeGen\Project\TypeLibrary.cs" />
+    <Compile Include="CodeGen\Project\WebReferenceProjectItem.cs" />
+    <Compile Include="CodeGen\Project\WebReferenceUrl.cs" />
+    <Compile Include="CodeGen\ReferenceAssemblyException.cs" />
+    <Compile Include="CodeGen\ScriptLanguage.cs" />
+    <Content Include="data\templates\CSharpApplicationTemplate.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="EasingTimer.cs" />
+    <Compile Include="ICommandStack.cs" />
+    <Compile Include="Rendering\ApplicationCommand.cs" />
+    <Compile Include="Collections\ReadOnlyCollectionWrapper.cs" />
+    <Compile Include="Collections\Set.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="Rendering\ApplicationCompiler.cs" />
+    <Compile Include="Rendering\ApplicationObject.Children.cs" />
+    <Compile Include="Rendering\ApplicationObject.Reset.cs" />
+    <Compile Include="Rendering\ApplicationObject.Update.cs" />
+    <Compile Include="Rendering\ApplicationObjectScript.cs" />
+    <Compile Include="Rendering\ApplicationStack.cs" />
+    <Compile Include="Rendering\Audio\AudioSource.cs" />
+    <Compile Include="Collections\CollectionWithEvents.cs" />
+    <Compile Include="Collections\Empty.cs" />
+    <Compile Include="Collections\Extensions.cs" />
+    <Compile Include="Collections\PriorityQueue.cs" />
+    <Compile Include="Collections\ThreadSafeDictionary.cs" />
+    <Compile Include="Collections\ThreadSafeList.cs" />
+    <Compile Include="Collections\WeakCollection.cs" />
+    <Compile Include="Rendering\Drawables\Effects\SpriteSheet.cs" />
+    <Compile Include="Rendering\Drawables\Lights\LightPoint.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\AnimatedModel.Picking.cs" />
+    <Compile Include="Rendering\Drawables\Models\Cube.cs" />
+    <Compile Include="Rendering\Drawables\Models\NonPlayerModel.cs" />
+    <Compile Include="Rendering\Drawables\Sky\SkyAtmosphere.cs" />
+    <None Include="Rendering\Drawables\Sky\_Unity_SkyProcedural\SkyProcedural.cs" />
+    <Compile Include="Rendering\ICommandRendering.cs" />
+    <Compile Include="Rendering\RenderDriver.cs" />
+    <Compile Include="Rendering\Scenegraph\IScene.cs" />
+    <Compile Include="Rendering\Scenegraph\SceneGame.Navigation.cs" />
+    <Compile Include="Rendering\Scenegraph\SceneGame.Rendering.cs" />
+    <Compile Include="Rendering\Audio\WavSound.cs" />
+    <Compile Include="Rendering\Serialization\BufferPendingNPCs.cs" />
+    <Compile Include="Scripting\ReferenceAssemblyCollection.cs" />
+    <Compile Include="Scripting\Script.cs" />
+    <Compile Include="Scripting\ScriptCompiler.cs" />
+    <Compile Include="Scripting\ScriptTemplate.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Utilities\ConsoleUtil.Effects.cs" />
+    <Compile Include="Utilities\FileAccessUtility.cs" />
+    <Compile Include="Utilities\GenericConverter.cs" />
+    <Compile Include="Utilities\PrecisionTimer.cs" />
+    <Compile Include="Utilities\StackUtil.cs" />
+    <Compile Include="_ThirdParty\IoC\Context\Async\AsyncEventHub.cs" />
+    <Compile Include="_ThirdParty\IoC\Context\Async\Extensions.cs" />
+    <Compile Include="_ThirdParty\IoC\Context\IoCContainer.cs" />
+    <Compile Include="_ThirdParty\IoC\Context\IServiceRegistry.cs" />
+    <Compile Include="_ThirdParty\IoC\Context\LifeTimeOptions.cs" />
+    <Compile Include="_ThirdParty\IoC\Context\ResolvedTypeWithLifeTime.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Rendering\Drawables\Level\CeilingModel.cs" />
+    <Compile Include="Rendering\Drawables\Level\FloorModel.cs" />
+    <Compile Include="Rendering\Drawables\Level\RoomModel.cs" />
+    <Compile Include="Rendering\Drawables\Level\WallDoorModel.cs" />
+    <Compile Include="Rendering\Drawables\Level\WallModel.cs" />
+    <Compile Include="Rendering\Drawables\Level\WallWindowModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\CityModel.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\Terrain.cs" />
+    <Compile Include="Rendering\Imaging\TGAImage.cs" />
+    <Compile Include="Rendering\Geometry\IMesh.cs" />
+    <Compile Include="Rendering\Scenegraph\PendingAvatar.cs" />
+    <Compile Include="Utilities\BinUtils.cs" />
+    <Compile Include="Rendering\Imaging\DirectBitmap.cs" />
+    <Compile Include="Rendering\Imaging\LockBitmap.cs" />
+    <Compile Include="Utilities\SimpleJson.cs" />
+    <Compile Include="Utilities\Utils.cs" />
+    <Compile Include="Utilities\Zlib.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\DVector.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\DVectorArray.cs" />
+    <Compile Include="Enumerators.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\GenericMaterial.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Indexing\ConstantIndexMap.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Indexing\IdentityIndexMap.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Indexing\IIndexMap.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Indexing\IndexFlagSet.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Indexing\IndexHashSet.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Indexing\IndexMap.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Indexing\IndexRangeEnumerator.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Indexing\ShiftIndexMap.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\MaterialOBJ.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Mesh\DMesh3.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Mesh\Enumerators.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Mesh\IMesh.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Mesh\IMeshBuilder.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Mesh\IMeshDeformable.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Mesh\IPointSet.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\Mesh\NewVertexInfo.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\RefCountVector.cs" />
+    <Compile Include="Rendering\Animation\AnimationData.cs" />
+    <Compile Include="Rendering\Animation\Attachment.cs" />
+    <Compile Include="Rendering\Animation\BvhAnimation.cs" />
+    <Compile Include="Rendering\Configuration\GameSettings.cs" />
+    <Compile Include="Rendering\Configuration\MeshSettings.cs" />
+    <Compile Include="Rendering\Configuration\Preset.cs" />
+    <Compile Include="Rendering\Configuration\QualityLevel.cs" />
+    <Compile Include="Rendering\Configuration\RenderOptions.cs" />
+    <Compile Include="Rendering\Configuration\Setting.cs" />
+    <Compile Include="Rendering\Configuration\Settings.cs" />
+    <Compile Include="Rendering\Configuration\SettingTypes.cs" />
+    <Compile Include="Rendering\Configuration\SoundSettings.cs" />
+    <Compile Include="Rendering\Configuration\VideoSettings.cs" />
+    <Compile Include="Rendering\Configuration\ViewSettings.cs" />
+    <Compile Include="Rendering\Culling\Frustum.cs" />
+    <Compile Include="Rendering\Culling\VisibleFrustum.cs" />
+    <Compile Include="Rendering\DeviceCapabilities.cs" />
+    <Compile Include="Rendering\Drawables\Drawable.cs" />
+    <Compile Include="Rendering\Drawables\DrawablePerformance.cs" />
+    <Compile Include="Rendering\Drawables\Framebuffers\DefaultFramebuffer.cs" />
+    <Compile Include="Rendering\Drawables\Framebuffers\FrameBuffer.cs" />
+    <Compile Include="Rendering\Drawables\Framebuffers\Sets\CubemapBufferSet.cs" />
+    <Compile Include="Rendering\Drawables\Framebuffers\Sets\FramebufferSet.cs" />
+    <Compile Include="Rendering\Drawables\Gui\Button.cs" />
+    <Compile Include="Rendering\Drawables\Gui\ButtonList.cs" />
+    <Compile Include="Rendering\Drawables\Gui\Gui.cs" />
+    <Compile Include="Rendering\Drawables\Gui\GuiElement.cs" />
+    <Compile Include="Rendering\Drawables\Gui\GuiEvents.cs" />
+    <Compile Include="Rendering\Drawables\Gui\Hud.cs" />
+    <Compile Include="Rendering\Drawables\Gui\HudNumber.cs" />
+    <Compile Include="Rendering\Drawables\Gui\Menu.cs" />
+    <Compile Include="Rendering\Drawables\Lights\Light.cs" />
+    <Compile Include="Rendering\Drawables\Lights\LightSpot.cs" />
+    <Compile Include="Rendering\Drawables\Lights\LightSun.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\AnimatedModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\AnimatedModelAttachment.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\Avatar\Attachments\AvatarFaceModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\Avatar\Attachments\AvatarHairModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\Avatar\AvatarModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\Avatar\Attachments\AvatarPantsModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\Avatar\Attachments\AvatarShirtModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\Animated\Avatar\Attachments\AvatarShoesModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\Vehicle\CarModel.cs" />
+    <Compile Include="Rendering\Drawables\Effects\DissolvingModel.cs" />
+    <Compile Include="Rendering\Drawables\Effects\GhostModel.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\GroundPlane.cs" />
+    <Compile Include="Rendering\Drawables\Lights\LightVolume.cs" />
+    <Compile Include="Rendering\Drawables\Voxel\VoxelModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\Model.cs" />
+    <Compile Include="Rendering\Drawables\Models\PhysModel.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\Planet\PlanetModel.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\Planet\Planet.Effects.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\Planet\Planet.Terrain.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\Planet\Planet.Terrain.Patch.cs" />
+    <Compile Include="Rendering\Drawables\Models\PlayerModel.cs" />
+    <Compile Include="Rendering\Drawables\Models\PlayerModel.Picking.cs" />
+    <Compile Include="Rendering\Drawables\Models\PlayerRemoteModel.cs" />
+    <Compile Include="Rendering\Drawables\Effects\ArcModel.cs" />
+    <Compile Include="Rendering\Drawables\2D\Quad2d.cs" />
+    <Compile Include="Rendering\Drawables\Sky\Skybox.cs" />
+    <Compile Include="Rendering\Drawables\Sky\SkySphere.cs" />
+    <Compile Include="Rendering\Drawables\Models\StaticModel.cs" />
+    <Compile Include="Rendering\Drawables\Particles\Affectors\ParticleAffector.cs" />
+    <Compile Include="Rendering\Drawables\Particles\Affectors\ParticleAffectorFloorKiller.cs" />
+    <Compile Include="Rendering\Drawables\Particles\Affectors\ParticleAffectorFriction.cs" />
+    <Compile Include="Rendering\Drawables\Particles\Affectors\ParticleAffectorGravity.cs" />
+    <Compile Include="Rendering\Drawables\Particles\Affectors\ParticleAffectorLifeTimeKiller.cs" />
+    <Compile Include="Rendering\Drawables\Particles\Affectors\ParticleAffectorWind.cs" />
+    <Compile Include="Rendering\Drawables\Particles\Particle.cs" />
+    <Compile Include="Rendering\Drawables\Particles\ParticleGenerator.cs" />
+    <Compile Include="Rendering\Drawables\Particles\ParticleSystem.cs" />
+    <Compile Include="Rendering\Drawables\Tools\GameMenu.cs" />
+    <Compile Include="Rendering\Drawables\Tools\Grabber.cs" />
+    <Compile Include="Rendering\Drawables\Tools\Remover.cs" />
+    <Compile Include="Rendering\Drawables\Tools\Spawner.cs" />
+    <Compile Include="Rendering\Drawables\Tools\VoxelGun.cs" />
+    <Compile Include="Rendering\Drawables\Voxel\VoxelChunk.cs" />
+    <Compile Include="Rendering\Drawables\Voxel\VoxelDataGenerator.cs" />
+    <Compile Include="Rendering\Drawables\Voxel\VoxelManager.cs" />
+    <Compile Include="Rendering\Drawables\Voxel\VoxelMeshGenerator.cs" />
+    <Compile Include="Rendering\Drawables\Voxel\VoxelVolume.cs" />
+    <Compile Include="Rendering\Drawables\Voxel\VoxelVolumeSphere.cs" />
+    <Compile Include="Rendering\Factories\AnimationLoader.cs" />
+    <Compile Include="Rendering\Factories\ColladaScene.cs" />
+    <Compile Include="Rendering\Factories\DDSLoader.cs" />
+    <Compile Include="Rendering\Factories\FramebufferCreator.cs" />
+    <Compile Include="Rendering\Factories\MaterialLoader.cs" />
+    <Compile Include="Rendering\Factories\MeshLoader.Autodesk.cs" />
+    <Compile Include="Rendering\Factories\MeshLoader.Collada.cs" />
+    <Compile Include="Rendering\Factories\MeshLoader.cs" />
+    <Compile Include="Rendering\Factories\ShaderLoader.cs" />
+    <Compile Include="Rendering\Factories\ShaderLoader.Debug.cs" />
+    <Compile Include="Rendering\Factories\TemplateLoader.cs" />
+    <Compile Include="Rendering\Factories\TextureLoader.cs" />
+    <Compile Include="Rendering\ApplicationBase.Cache.cs" />
+    <Compile Include="Rendering\ApplicationBase.cs" />
+    <Compile Include="Rendering\ApplicationBase.Debug.cs" />
+    <Compile Include="Rendering\ApplicationBase.Load.cs" />
+    <Compile Include="Rendering\ApplicationBase.Network.cs" />
+    <Compile Include="Rendering\ApplicationBase.Render.cs" />
+    <Compile Include="Rendering\ApplicationBase.Update.cs" />
+    <Compile Include="Rendering\_ApplicationUserInput.cs" />
+    <Compile Include="Rendering\ApplicationObject.cs" />
+    <Compile Include="Rendering\ApplicationState.cs" />
+    <Compile Include="Rendering\GameViews\ViewInfoSun.cs" />
+    <Compile Include="Rendering\GameViews\ViewInfo.cs" />
+    <Compile Include="Rendering\Geometry\Face.cs" />
+    <Compile Include="Rendering\Geometry\MeshVbo.cs" />
+    <Compile Include="Rendering\Geometry\MeshVboData.cs" />
+    <Compile Include="Rendering\Geometry\Plane.cs" />
+    <Compile Include="Rendering\Geometry\Ray.cs" />
+    <Compile Include="Rendering\Geometry\Simplification\PairContraction\Pair.cs" />
+    <Compile Include="Rendering\Geometry\Simplification\PairContraction\PairContract.cs" />
+    <Compile Include="Rendering\Geometry\Simplification\PairContraction\VertexSplit.cs" />
+    <Compile Include="Rendering\Vertex.cs" />
+    <Compile Include="Rendering\Geometry\FaceDataSet.cs" />
+    <Compile Include="Rendering\ICamera.cs" />
+    <Compile Include="Rendering\Imaging\CavityGenerator.cs" />
+    <Compile Include="Rendering\Imaging\ColorChannel.cs" />
+    <Compile Include="Rendering\Imaging\DDSImage.cs" />
+    <Compile Include="Rendering\Imaging\ImageFast.cs" />
+    <Compile Include="Rendering\Imaging\NormalGenerator.cs" />
+    <Compile Include="Rendering\Imaging\SkinDetector.cs" />
+    <Compile Include="Rendering\Material.cs" />
+    <Compile Include="Rendering\_Math2.cs" />
+    <Compile Include="Rendering\Partition\BoxObject.cs" />
+    <Compile Include="Rendering\Partition\Octree.cs" />
+    <Compile Include="Rendering\Partition\OctreeBox.cs" />
+    <Compile Include="Rendering\Partition\OctreeLeaf.cs" />
+    <Compile Include="Rendering\Partition\OctreeObject.cs" />
+    <Compile Include="Rendering\Partition\OctreeWorld.cs" />
+    <Compile Include="Rendering\Partition\QuadTree.cs" />
+    <Compile Include="Rendering\Partition\QuadTreeNode.cs" />
+    <Compile Include="Rendering\ApplicationUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\Scenegraph\IClickable.cs" />
+    <Compile Include="Rendering\Scenegraph\SceneGame.cs" />
+    <Compile Include="Rendering\Scenegraph\SceneOctree.cs" />
+    <Compile Include="Rendering\Serialization\BufferPendingAvatars.cs" />
+    <Compile Include="Rendering\Serialization\BufferRemotePlayers.cs" />
+    <Compile Include="Rendering\Serialization\ListAnimationData.cs" />
+    <Compile Include="Rendering\Serialization\ListAnimationRuntime.cs" />
+    <Compile Include="Rendering\Serialization\ListFace.cs" />
+    <Compile Include="Rendering\Serialization\ListMaterial.cs" />
+    <Compile Include="Rendering\Serialization\ListMesh.cs" />
+    <Compile Include="Rendering\Serialization\ListShader.cs" />
+    <Compile Include="Rendering\Serialization\ListSnippet.cs" />
+    <Compile Include="Rendering\Serialization\ListString.cs" />
+    <Compile Include="Rendering\Serialization\ListTexture.cs" />
+    <Compile Include="Rendering\Serialization\ListVector2.cs" />
+    <Compile Include="Rendering\Serialization\ListVector3.cs" />
+    <Compile Include="Rendering\Serialization\ListVertex.cs" />
+    <Compile Include="Rendering\Serialization\NestedLists.cs" />
+    <Compile Include="Rendering\Serialization\ProtoArray.cs" />
+    <Compile Include="Rendering\Shaders\Shader.cs" />
+    <Compile Include="Rendering\Shaders\ShaderCacheObject.cs" />
+    <Compile Include="Rendering\Shaders\Snipet.cs" />
+    <Compile Include="Rendering\Shaders\Uniforms.cs" />
+    <Compile Include="Rendering\Template.cs" />
+    <Compile Include="Rendering\Texture.cs" />
+    <Compile Include="Rendering\Utilities\Timer.cs" />
+    <Compile Include="Rendering\Utilities\GenericMethods.cs" />
+    <Compile Include="Rendering\Utilities\RayHelper.cs" />
+    <Compile Include="Rendering\Utilities\TextureHelper.cs" />
+    <Compile Include="Collections\PropertiesMatrix.cs" />
+    <Content Include="CodeGen\NRefactory\Lexer\CSharp\KeywordList.txt" />
+    <Content Include="CodeGen\NRefactory\Lexer\VBNet\KeywordList.txt" />
+    <Content Include="CodeGen\NRefactory\Parser\CSharp\trace.txt" />
+    <Content Include="CodeGen\NRefactory\Parser\Frames\SharpCoco.exe" />
+    <Content Include="data\models\base\unitbox_1mm.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\uvbox.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\unitboxinv_1mm.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\cloud\sky1.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\cloud\sky2.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\cloud\sky3.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\cloud\sky4.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\cloud\sky5.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\cloud\sky6.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\glacier\sky1.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\glacier\sky2.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\glacier\sky3.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\glacier\sky4.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\glacier\sky5.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\glacier\sky6.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\nissi\sky1.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\nissi\sky2.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\nissi\sky3.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\nissi\sky4.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\nissi\sky5.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\nissi\sky6.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\uvboxgreen.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\uvboxred.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\uvboxyellow.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\face_female_ebony_00.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\leggings_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\leggings_blue.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\leggings_green.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\leggings_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\leggings_white.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\shoes_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\shoes_blue.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\shoes_green.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\shoes_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\shoes_white.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\tshirt_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\tshirt_blue.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\tshirt_green.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\tshirt_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\apparel\tshirt_white.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\fat_generic.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\fit_generic.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_long_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_long_blonde.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_long_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_long_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_medium_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_medium_blonde.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_medium_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_medium_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_short_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_short_blonde.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_short_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_short_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_tail_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_tail_blonde.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_tail_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\hairstyle_tail_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\female\normal_generic.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\leggings_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\leggings_blue.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\leggings_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\leggings_green.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\leggings_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\shoes_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\shoes_blue.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\shoes_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\shoes_green.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\shoes_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\tshirt_blue.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\tshirt_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\tshirt_green.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\tshirt_multicolor.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\apparel\tshirt_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\fat_generic.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\fit_generic.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_medium_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_medium_blonde.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_medium_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_medium_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_short_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_short_blonde.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_short_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_short_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_tail_black.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_tail_blonde.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_tail_brown.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\hairstyle_tail_red.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\male\normal_generic.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\characters\face_male_fit_00.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultgeo.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultlight - Copy.fs" />
+    <Content Include="data\shaders\defaultlight.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defSun.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defSun_mesa.fs" />
+    <Content Include="data\shaders\lightrays.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\shadow.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\shadow_nonmesa.fs" />
+    <Content Include="data\shaders\sky_nonmesa.fs" />
+    <Content Include="data\shaders\sky.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\ssao.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\ssMaker.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\terrainsimple.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\terrainsimple.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\video.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\videoprogress.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\watersimple.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\watersimple.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\terrainsimple.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\watersimple.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\voxel\rock_small.dae" />
+    <Content Include="data\models\voxel\rock_small_pbox.dae" />
+    <Content Include="data\materials\firstperson\toolgun.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\toolgun_arc.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\toolgun_muzzle.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\catwalk.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\handrail.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\lamp.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\lamp_2.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\metaModel1.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\metaModel2.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\metroid.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="data\templates\pillar.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="data\templates\plate.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="data\templates\rock.xtmp">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\sphere.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="data\templates\toolgun.xtmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="data\models\firstperson\toolgun.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\toolgun_arc.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\toolgun_muzzle.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\toolgun_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\grabber_muzzle.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\voxel\rock_small.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\voxel\rock_small_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\catwalk.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\crosshair.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\effects\dissolve.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\floor_module.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\goto.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\goto_new.xmf" />
+    <Content Include="data\materials\grid.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\handrail.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\marker.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\metroid.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\metroid_cap.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\voxel\rock_face.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\firstperson\sphere.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="data\materials\firstperson\temple_pillar.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\defShading\lightSpot.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\defShading\lightSun.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\defShading\volSpot.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skydome\skydome.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\skydome\skydome.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\skydome.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\skydome.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\skydome.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.cpp" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.dsp" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.vcxproj.filters" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.vcxproj.user" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\StdAfx.cpp" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\StdAfx.h" />
+    <Content Include="data\textures\skysphere\clouds1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skysphere\clouds2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skysphere\moon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skysphere\sun.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skysphere\tint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skysphere\tint2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_Documentation\Animations\Avatar animations.txt" />
+    <Content Include="_Documentation\Animations\Blender Export.txt" />
+    <Content Include="_Documentation\Compilation Symbols.txt" />
+    <None Include="_Documentation\Fitting\Algorithm flow chart simplified.png" />
+    <None Include="_Documentation\Fitting\Class UML Schematic - incomplete overview.png" />
+    <None Include="_Documentation\Fitting\FittingDatabase.xml" />
+    <Content Include="_Documentation\Material Samples\Emmisive.txt" />
+    <Content Include="_Documentation\Material Samples\Glass.txt" />
+    <None Include="app.config" />
+    <None Include="CodeGen\NRefactory\Lexer\BuildKeywords.pl" />
+    <None Include="CodeGen\NRefactory\Parser\CSharp\cs.ATG" />
+    <None Include="CodeGen\NRefactory\Parser\Frames\Parser.frame" />
+    <None Include="CodeGen\NRefactory\Parser\Frames\Scanner.frame" />
+    <None Include="CodeGen\NRefactory\Parser\VBNet\VBNET.ATG" />
+    <None Include="data\materials\firstperson\spotlight - Copy.xmf" />
+    <Content Include="data\materials\firstperson\spotlight.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\catwalk.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\catwalk_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\floor_module.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\floor_module_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\handrail.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\handrail_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\metroid.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\metroid_cap.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\metroid_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\sphere.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\sphere_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\spotlight.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\spotlightCone.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\spotlight_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\stones.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\stones_pbox1.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\temple_pillar.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\firstperson\temple_pillar_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\voxel\rock_volume_1.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\voxel\rock_volume_1_big.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="data\materials\particles\particle_a.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\materials\particles\particle_b.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="data\materials\terrain\terrainsimple.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\spotlight.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\spotlight_cone.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\spotlight_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\vanilla\sky1.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\vanilla\sky2.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\vanilla\sky3.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\vanilla\sky4.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\vanilla\sky5.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\skybox\vanilla\sky6.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="data\models\voxel\rock_volume_big_pbox_1.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\models\voxel\rock_volume_pbox_1.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="data\shaders\volLight.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\volLight.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\volSpot.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\templates\lamp_2 - Copy.xtmp" />
+    <Content Include="data\templates\lamp - Copy.xtmp" />
+    <Content Include="data\shaders\defSpot.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defSpot.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defSpot.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defSun_mesa.vs" />
+    <Content Include="data\shaders\defSun.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defSun.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defBase.snip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\ssao.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\ssMaker.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\shadow.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\shadow.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\shadow_animated.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\shadow_animated.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\shadow_nonmesa.vs" />
+    <Content Include="data\shaders\sky_nonmesa.vs" />
+    <Content Include="data\shaders\sky.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\sky.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\lightrays.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\lightrays.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\base.snip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultgeo.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultgeo.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="data\shaders\defaultgeo.xsp_" />
+    <Content Include="data\shaders\defaultgeo_animated.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultgeo_animated.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="data\shaders\defaultlight - Copy.vs" />
+    <Content Include="data\shaders\defaultlight.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\vBase.snip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\video.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\video.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\videoprogress.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\videoprogress.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="data\textures\skybox\glacier\hw_glacier.shader" />
+    <Compile Include="Rendering\ApplicationBase.Compiler.cs" />
+    <Compile Include="Rendering\ApplicationObject.Terminate.cs" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\BillboardFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\BillboardVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\BumpFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\BumpGroundFromAtmoFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\BumpGroundFromAtmoVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\BumpGroundFromSpaceFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\BumpGroundFromSpaceVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\BumpVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\GroundFromAtmosphereFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\GroundFromAtmosphereVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\GroundFromSpaceFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\GroundFromSpaceVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\HDRFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\HDRVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\SkyFromAtmosphereFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\SkyFromAtmosphereVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\SkyFromSpaceFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\SkyFromSpaceVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\SwellFrag.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-exe\shaders\SwellVert.glsl" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\Makefile" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.plg" />
+    <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.vcxproj" />
+    <None Include="Rendering\ViewControllers\FirstPersonViewController %28old%29.cs" />
+    <Compile Include="Rendering\ViewControllers\FirstPersonViewController.cs" />
+    <Compile Include="Rendering\ViewControllers\ThirdPersonViewController.cs" />
+    <Compile Include="Rendering\ViewControllers\VehicleViewController.cs" />
+    <Compile Include="Rendering\ApplicationUserView.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\IConfigurable.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\IInversionApi.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\ILog.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\INotifyWidget.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\IReader.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\IRunnable.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\IService.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\ServiceContext.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\ServiceManager.cs" />
+    <Compile Include="_ThirdParty\IoC\Service\ServiceManager.Exceptions.cs" />
+    <Compile Include="_ThirdParty\Graphics.ForkOlder\SmallListSet.cs" />
+    <Compile Include="Utilities\ArrayHelper.cs" />
+    <Compile Include="Utilities\AssemblyUtil.cs" />
+    <Compile Include="Rendering\Utilities\AutodeskHelper.cs" />
+    <Compile Include="Utilities\BitmapUtils.cs" />
+    <Compile Include="Utilities\CompressionUtil.cs" />
+    <Compile Include="Utilities\ConsoleUtil.cs" />
+    <Compile Include="Utilities\DirectoryUtil.cs" />
+    <Compile Include="Utilities\Encryption.cs" />
+    <Compile Include="Utilities\FileSeeker.cs" />
+    <Compile Include="Utilities\FileSizeUtil.cs" />
+    <Compile Include="Utilities\ImageUtil.cs" />
+    <Compile Include="Utilities\KnownFoldersUtil.cs" />
+    <Compile Include="Utilities\Localization.cs" />
+    <Compile Include="Utilities\Log.cs" />
+    <Compile Include="Utilities\MD5Tool.cs" />
+    <Compile Include="Utilities\NativeMethods.cs" />
+    <Compile Include="Utilities\RestartManager.cs" />
+    <Compile Include="Utilities\StringUtil.cs" />
+    <Compile Include="Utilities\TimeSpanUtil.cs" />
+    <Compile Include="Utilities\XmlUtil.cs" />
+    <None Include="_Documentation\All Shaders\shaders.rar" />
+    <None Include="_Documentation\MaterialDefinition_July-2017.rtf" />
+    <None Include="_Documentation\Physics\Jitter Physics - Tutorial.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\textures\base\basenormal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\engine_back.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\engine_back_h.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\generic_i.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\grid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\noise.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\noise.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\noise_pixel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\uvmap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\uvmap_green.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\uvmap_red.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\base\uvmap_yellow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\face_female_ebony_00_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\face_female_ebony_00_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\face_female_ebony_00_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\face_male_normal_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\face_male_normal_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\face_male_normal_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_leggings_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_leggings_blue.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_leggings_green.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_leggings_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_leggings_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_leggings_white.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_shoes_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_shoes_blue.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_shoes_green.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_shoes_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_shoes_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_shoes_white.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_blue.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_green.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\apparel\female_tshirt_white.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_fat_generic_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_fat_generic_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_fat_generic_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_fit_generic_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_fit_generic_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_fit_generic_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_normal_generic_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_normal_generic_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\female_normal_generic_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_long_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_long_blonde.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_long_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_long_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_long_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_medium_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_medium_blonde.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_medium_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_medium_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_medium_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_short_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_short_blonde.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_short_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_short_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\female\hair_short_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\0hair_tail_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\0hair_tail_blonde.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\0hair_tail_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\0hair_tail_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\0hair_tail_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shoes_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shoes_blue.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shoes_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shoes_green.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shoes_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shoes_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shorts_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shorts_blue.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shorts_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shorts_green.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shorts_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shorts_s32.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_shorts_s8.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_blue.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_multicolor.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\apparel\male_tshirt_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_medium_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_medium_blonde.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_medium_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_medium_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_medium_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_short_black.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_short_blonde.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_short_brown.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_short_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\hair_short_red.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_fat_generic_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_fat_generic_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_fat_generic_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_fit_generic_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_fit_generic_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_fit_generic_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_fit_generic_s8.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_normal_generic_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_normal_generic_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_normal_generic_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_slim_generic_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_slim_generic_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\male\male_slim_generic_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\meshGenericFace.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\meshGenericFace_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\characters\meshGenericFace_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\effects\dissolve.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\effects\dissolve_b.png" />
+    <Content Include="data\textures\firstperson\catwalk.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\catwalk_i.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\catwalk_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\catwalk_n.png" />
+    <Content Include="data\textures\firstperson\crosshair.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\crosshair0.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\electric_arc.dds" />
+    <Content Include="data\textures\firstperson\electric_arc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\electric_arc_displace.dds" />
+    <Content Include="data\textures\firstperson\electric_arc_displace.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\floor_module.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\floor_module_i.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\floor_module_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\grey.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\handrail.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\handrail_i.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\handrail_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\handrail_n.png" />
+    <Content Include="data\textures\firstperson\hexa.png" />
+    <Content Include="data\textures\firstperson\hex_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\metroid.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\metroid_cap.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\metroid_cap_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\metroid_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\muzzle_a.dds" />
+    <Content Include="data\textures\firstperson\muzzle_a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\muzzle_b.dds" />
+    <Content Include="data\textures\firstperson\muzzle_b.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\muzzle_b_2.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\muzzle_b_2.png" />
+    <Content Include="data\textures\firstperson\spotlight.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\spotlight_e.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\spotlight_i.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\spotlight_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\temple_pillar.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\temple_pillar_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\toolgun.dds" />
+    <Content Include="data\textures\firstperson\toolgun.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\toolgun_cav.png" />
+    <Content Include="data\textures\firstperson\toolgun_i.dds" />
+    <Content Include="data\textures\firstperson\toolgun_i.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\firstperson\toolgun_n.dds" />
+    <Content Include="data\textures\firstperson\toolgun_n.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\particles\particle_a.dds" />
+    <Content Include="data\textures\particles\particle_a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\particles\particle_b.dds" />
+    <Content Include="data\textures\particles\particle_b.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\planet\earth\base_0001.dds" />
+    <Content Include="data\textures\planet\earth\base_0002.dds" />
+    <Content Include="data\textures\planet\earth\base_0003.dds" />
+    <Content Include="data\textures\planet\earth\base_0004.dds" />
+    <Content Include="data\textures\planet\earth\base_0005.dds" />
+    <Content Include="data\textures\planet\earth\base_0006.dds" />
+    <Content Include="data\textures\planet\earth\detail.dds" />
+    <Content Include="data\textures\planet\earth\heightmap_0001.dds" />
+    <Content Include="data\textures\planet\earth\heightmap_0002.dds" />
+    <Content Include="data\textures\planet\earth\heightmap_0003.dds" />
+    <Content Include="data\textures\planet\earth\heightmap_0004.dds" />
+    <Content Include="data\textures\planet\earth\heightmap_0005.dds" />
+    <Content Include="data\textures\planet\earth\heightmap_0006.dds" />
+    <Content Include="data\textures\scenes\sponza\arch_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\arch_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\arch_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\bricks_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\bricks_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\bricks_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\ceiling_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\ceiling_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\ceiling_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\chain_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\chain_m.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\chain_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\chain_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\coatarms_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\coatarms_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\coatarms_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columna_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columna_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columna_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columnb_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columnb_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columnb_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columnc_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columnc_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\columnc_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\curtainblue_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\curtaingreen_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\curtainred_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\curtain_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\curtain_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\doors_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\doors_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\doors_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\fabricblue_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\fabricgreen_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\fabricred_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\fabric_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\fabric_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\flagpole_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\flagpole_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\flagpole_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\floor_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\floor_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\floor_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\flowers_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\flowers_m.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\flowers_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\leaf_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\leaf_m.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\leaf_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\leaf_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\lion_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\lion_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\lion_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\roof_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\roof_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\roof_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vaseh_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vaseh_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vaseh_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vaser_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vaser_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vaser_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vase_d.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vase_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\scenes\sponza\vase_s.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud9_0001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud9_0002.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud9_0003.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud9_0004.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud9_0005.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud9_0006.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud\cloud9_0001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud\cloud9_0002.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud\cloud9_0003.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud\cloud9_0004.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud\cloud9_0005.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\cloud\cloud9_0006.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\glacier\license.txt" />
+    <Content Include="data\textures\skybox\glacier\negx_512.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\glacier\negy_512.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\glacier\negz_512.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\glacier\posx_512.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\glacier\posy_512.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\glacier\posz_512.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\nissi\negx_1024.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\nissi\negy_1024.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\nissi\negz_1024.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\nissi\posx_1024.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\nissi\posy_1024.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\nissi\posz_1024.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\nissi\readme.txt" />
+    <Content Include="data\textures\skybox\vanilla\sky_0001.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\vanilla\sky_0002.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\vanilla\sky_0003.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\vanilla\sky_0004.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\vanilla\sky_0005.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\vanilla\sky_0006.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\terrain\colormap.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\terrain\heightmap.dds" />
+    <Content Include="data\textures\terrain\water-diffuse.dds" />
+    <Content Include="data\textures\terrain\water-normal.dds" />
+    <Content Include="data\textures\thirdperson\cursor-final.dds" />
+    <Content Include="data\textures\thirdperson\cursor-final.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\voxel\rock_face.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\voxel\rock_face_i.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\voxel\rock_face_n.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\voxel\rock_face_n.png" />
+    <Content Include="Rendering\Drawables\Models\AtmoPlanet.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NthDimension.Cloo\NthDimension.Compute.csproj">
+      <Project>{73a2f09d-9bcf-4fda-9428-4d0e239f858d}</Project>
+      <Name>NthDimension.Compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.FFMpeg\NthDimension.FFMpeg.csproj">
+      <Project>{b20726d0-f6b5-4028-9e10-20d2aa51277e}</Project>
+      <Name>NthDimension.FFMpeg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Math\NthDimension.Math.csproj">
+      <Project>{9d509ca6-5635-4c05-ad73-76f97cfbaba7}</Project>
+      <Name>NthDimension.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Network\NthDimension.Network.csproj">
+      <Project>{9e92ac80-5200-4db5-9c91-b2ec1fdb930f}</Project>
+      <Name>NthDimension.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.OpenGL.Windows\NthDimension.Rasterizer.WindowsGL.csproj">
+      <Project>{c7270c8d-83c5-441e-a22a-889f013a4be5}</Project>
+      <Name>NthDimension.Rasterizer.WindowsGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.OpenGL\NthDimension.Rasterizer.csproj">
+      <Project>{8fa1bc9b-47ed-4838-95b3-03589355eafb}</Project>
+      <Name>NthDimension.Rasterizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NthDimension.Server\NthDimension.Server.csproj">
+      <Project>{2F07DF26-FD0F-46A4-9D04-1269A692A5AC}</Project>
+      <Name>NthDimension.Server</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\shaders\composite.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\shaders\composite.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\composite.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\shaders\splash_shader.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\fonts\Attractive-Italic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\Attractive-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\Cmu-Bright-Roman.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\DroidSansJapanese.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\DroidSerif-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\DroidSerif-Italic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\DroidSerif-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\entypo.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\NotoEmoji-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\OpenSansEmoji.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\Roboto-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\Roboto-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\Roboto-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\composite.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\sphere.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\materials\unlit.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\grid.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\shadow_plane.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\sphere.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\sphere_pbox.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\sprite_plane.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\base\water_plane.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\skybox\sky_1.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\skybox\sky_2.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\skybox\sky_3.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\skybox\sky_4.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\skybox\sky_5.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\skybox\sky_6.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\composite.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\composite.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\composite.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\sMapWipe.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\sMapWipe.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\ssao.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\ssaoBlendShader.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\ssaoShader.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\ssao_blend.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\ssMaker.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\SceneFilters\wipingShader.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CodeGen\Exceptions\" />
+    <Folder Include="data\models\tiles\scifi\" />
+    <Folder Include="data\shaders\skydome\" />
+    <Folder Include="Rendering\Drawables\Models\Animated.Player\" />
+    <Folder Include="Rendering\Drawables\Sky\_SkyShpere\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

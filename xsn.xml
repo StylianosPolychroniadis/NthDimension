@@ -1,0 +1,40 @@
+﻿<scene>
+  <pmodel name='GameObject1'>
+    <position>3.452976|3.926491|-1.008879</position>
+    <rotation>1|1.400662E-05|-6.890303E-05|-1.401613E-05|1|-0.0001380637|6.89011E-05|0.0001380646|1</rotation>
+    <materials>floor_module.xmf</materials>
+    <meshes>floor_module.obj</meshes>
+    <pboxes>floor_module_pbox.obj</pboxes>
+    <isstatic/>
+  </pmodel>
+  <pmodel name='GameObject2'>
+    <position>4.082599|8.23098|14.36845</position>
+    <rotation>1|0|0|0|1|0|0|0|1</rotation>
+    <materials>floor_module.xmf</materials>
+    <meshes>floor_module.obj</meshes>
+    <pboxes>floor_module_pbox.obj</pboxes>
+    <isstatic/>
+  </pmodel>
+  <pmodel name='GameObject3'>
+    <position>2.802327|6.890879|6.648344</position>
+    <rotation>0.9994155|0.02036586|-0.02747081|-0.03207255|0.8369411|-0.546353|0.01186453|0.5469142|0.8371048</rotation>
+    <materials>catwalk.xmf</materials>
+    <meshes>catwalk.obj</meshes>
+    <pboxes>catwalk_pbox.obj</pboxes>
+    <isstatic/>
+  </pmodel>
+  <smodel name='GameObject4'>
+    <position>4.811121|5.265415|11.40314</position>
+    <materials>rock_face.xmf</materials>
+    <meshes>rock_volume_1.obj</meshes>
+    <pboxes>rock_volume_pbox_1.obj</pboxes>
+    <vradius>3</vradius>
+  </smodel>
+  <metamodel name='GameObject5'>
+    <position>2.720694|6.086802|13.05067</position>
+    <materials>rock_face.xmf</materials>
+    <meshes>rock_volume_1.obj</meshes>
+    <pboxes>rock_volume_pbox_1.obj</pboxes>
+    <vradius>3</vradius>
+  </metamodel>
+</scene>

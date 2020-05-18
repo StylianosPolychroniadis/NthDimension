@@ -1,0 +1,24 @@
+Mar-16-2020	-Added to NthDimension.Algebra.Quaternion the functions 
+				public static Vector3 GetRotationEuler(ref Quaternion q)
+			-Added to NthDimension.Algebra.Quaterniond the functions
+				public static Vector3d GetRotationEuler(ref Quaterniond q)
+			-Disabled code (un-comment all once to restore) in NthDimension.Procedural.City.Density
+															   NthDimension.Procedural.City.Crossing
+			-De-coupling NthDimension.Rendering.ApplicationUser from ViewControllers. Now I have to
+			 modify NthDimension.ApplicationUser (FirstPersonView & ThirdPersonView) to be universally 
+			 used
+			-Created NthDimension.Rendering.Scenegraph.SceneGame_Navigation 
+				TODO:: Implement proper colliders and pass to ApplicationUser controllers accordingly (ie by heightFunction<> ?)
+			-Modified Terrain.cs Added function public float GetHeightAt(float x, float z). I had to make global these vars:
+				 //int wide = 0, tall = 0;
+                 //byte[] imagePixels = null;
+			-Some progress on TerrainShape for NavigationMesh but only for 1st person view
+			-Added Scene.PhysicsSettings
+Mar-17-2020 -Added NthDimension.FFMpeg.VideoSource consoleDebug, swithed in the Ctor.
+			 Added NthDimension.FFMpeg.VideoGL3x.Read and ReadFolder #if DEBUG clauses
+			 This is to eliminate weird bugs when app launches with no focus
+			-Trying to figure out TerrainShape ScaleX and ScaleY SceneGame.Navigation
+			 i)  Looks like this value matches subdivisions when set to 1f
+			 ii) Terrain Shape starts at 0,0 and expands to whatever I set to Scale(?). Need to
+			     find a way to set its center to 0,0 
+			 iii) No success yet

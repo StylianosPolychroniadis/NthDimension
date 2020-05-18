@@ -1,0 +1,15 @@
+<material shader	="character_animated.xsp" 
+		  ssnshader	="ssnormals_animated.xsp" 
+		  selection	="selection_animated.xsp" 
+		  shadow	="shadow_animated.xsp" 
+		  definfo   ="defInfo_animated.xsp">
+	
+	<textures base		="characters\female\female_fat_generic_d.dds" 
+			  normal	="characters\female\female_fat_generic_n.dds" 
+			  definfo	="characters\female\female_fat_generic_s.dds" />
+			  
+	
+	
+			  
+	<lighted/>
+</material>
