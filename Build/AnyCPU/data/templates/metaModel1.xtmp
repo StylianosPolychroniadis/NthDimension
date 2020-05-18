@@ -1,6 +1,0 @@
-<template type="meta">
-	<material source="voxel\rock_face.xmf"/>
-	<mesh source="voxel\rock_volume_1.obj"/>
-	<pmesh source="voxel\rock_volume_pbox_1.obj"/>
-	<volume radius="3"/>
-</template>

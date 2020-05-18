@@ -1,5 +1,0 @@
-<material shader="defaultnongeo.xsp" ssnshader="ssnormals.xsp" selection="selection.xsp" shadow="shadow.xsp" definfo="defInfo.xsp">
-	<textures base="voxel\rock_face.dds" normal="voxel\rock_face_n.dds" definfo="voxel\rock_face_i.dds"/>
-	<lighted/>
-	<fresnel exp="3" strength="7"/>
-</material>

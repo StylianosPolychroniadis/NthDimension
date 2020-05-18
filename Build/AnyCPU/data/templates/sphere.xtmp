@@ -1,6 +1,0 @@
-<template>
-	<material source="firstperson\sphere.xmf"/>
-	<mesh source="firstperson\sphere.obj"/>
-	<pmesh source="firstperson\sphere_pbox.obj"/>
-	<position offset="3"/>
-</template>

@@ -1,9 +1,0 @@
-<!-- SYSCON NthDimension Shader Definition File -->
-<!-- Rev.3.0 Code name: Karyes					-->
-<!-- fragment:	ok								-->
-<!-- vertex:	ok								-->
-<!-- geometry:	disabled						-->
-<!-- tessel:	disabled						-->
-<!-- compute:	disabled						-->
-
-<shaderpair fragment="lightrays.fs" vertex="lightrays.vs" />

@@ -1,4 +1,0 @@
-<material shader="defaultnongeo.xsp" selection="selection.xsp" ssnshader="ssnormals.xsp" definfo="defInfo.xsp">
-	<textures base="firstperson\toolgun.png" normal="firstperson\toolgun_n.png" definfo="firstperson\toolgun_i.png"/>
-	<lighted/>
-</material>

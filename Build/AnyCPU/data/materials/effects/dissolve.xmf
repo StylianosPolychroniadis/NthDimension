@@ -1,7 +1,0 @@
-<material shader="dissolve.xsp">
-	<textures base="effects\dissolve.dds"/>
-	<transparency/>
-	<nodepthmask/>
-	<additive/>
-	<nocull/>
-</material>

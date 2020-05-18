@@ -1,7 +1,0 @@
-<material shader="unlitGeneric.xsp">
-	<textures base="thirdperson\cursor-final.png"/>
-	<nodepthmask/>
-	<additive/>
-	<nocull/>
-	<transparency/>
-</material>

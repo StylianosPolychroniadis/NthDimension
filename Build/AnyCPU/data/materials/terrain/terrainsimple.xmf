@@ -1,3 +1,0 @@
-﻿<material shader="unlitGeneric.xsp">
-	<textures base="terrain\colormap.dds"/>
-</material>

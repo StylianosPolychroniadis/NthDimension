@@ -1,6 +1,0 @@
-<template>
-	<material source="voxel\rock_face.xmf"/>
-	<mesh source="voxel\rock_small.obj"/>
-	<pmesh source="voxel\rock_small_pbox.obj"/>
-	<position offset="1"/>
-</template>

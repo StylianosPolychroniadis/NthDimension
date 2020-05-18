@@ -1,5 +1,0 @@
-<material shader="hud.xsp">
-	<textures base="firstperson\crosshair0.dds" />
-	<nocull/>
-	<additive/>
-</material>

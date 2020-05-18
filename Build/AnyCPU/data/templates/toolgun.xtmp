@@ -1,6 +1,0 @@
-<template>
-	<material source="firstperson\toolgun.xmf"/>
-	<mesh source="firstperson\toolgun.obj"/>
-	<pmesh source="firstperson\toolgun_pbox.obj"/>
-	<position offset="0.8"/>
-</template>

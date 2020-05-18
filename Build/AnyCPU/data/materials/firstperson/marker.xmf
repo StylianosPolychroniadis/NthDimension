@@ -1,7 +1,0 @@
-<material shader="sprite.xsp">
-	<textures base="firstperson\crosshair0.dds"/>
-	<transparency/>
-	<nodepthmask/>
-	<additive/>
-	<nocull/>
-</material>
