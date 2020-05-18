@@ -11,9 +11,8 @@ using NthDimension.Forms.Events;
 using NthDimension.Forms.Widgets;
 using NthDimension.Rendering.Utilities;
 using NthDimension.Rasterizer.NanoVG;
-using NthDimension.Service;
 
-using NthStudio.Plugins;
+//using NthStudio.Plugins;
 using NthStudio.Gui.Dialogs;
 using NthStudio.Gui.Widgets;
 using NthStudio.Gui.Widgets.PropertyGrid;
@@ -179,8 +178,8 @@ namespace NthStudio.Gui.Displays
 
         #region Plugin Variables
 #pragma warning disable CS0162
-        private PluginStoreRefreshDialog m_refresher;
-        private PluginStore m_pluginStore;
+        //private PluginStoreRefreshDialog m_refresher;
+        //private PluginStore m_pluginStore;
         private Widget m_pluginWidget;
         #endregion Plugin Variables
 
@@ -377,24 +376,24 @@ namespace NthStudio.Gui.Displays
         }
 
         #region Plugins List
-        public void PluginsRefresh()
-        {
-            Program.PluginStore = m_refresher.RefreshPluginStore(this);
+        //public void PluginsRefresh()
+        //{
+        //    Program.PluginStore = m_refresher.RefreshPluginStore(this);
 
-            if (m_pluginStore.Plugins.Count > 0)
-                this.loadPluginsList();
+        //    if (m_pluginStore.Plugins.Count > 0)
+        //        this.loadPluginsList();
 
 
-            foreach (Widget plugin in m_pluginWidget.Widgets)
-                if (plugin is INotifyWidget)
-                    ((INotifyWidget)plugin).OnNotify += this.OnNotify;
+        //    foreach (Widget plugin in m_pluginWidget.Widgets)
+        //        if (plugin is INotifyWidget)
+        //            ((INotifyWidget)plugin).OnNotify += this.OnNotify;
 
-        }
+        //}
 
         private void loadPluginsList()
         {
-            foreach (PluginInfo plugin in Program.PluginStore.Plugins)
-                doPluginLoad(plugin);
+            //foreach (PluginInfo plugin in Program.PluginStore.Plugins)
+            //    doPluginLoad(plugin);
         }
         /// <summary>
         /// Sets up interfaces as well
@@ -402,74 +401,74 @@ namespace NthStudio.Gui.Displays
         /// <param name="plugin"></param>
         private void doPluginLoad(object plugin)
         {
-            //if (this.InvokeRequired)
-            //    this.Invoke(new PluginAction(doPluginLoad), new object[] { plugin });
-            //else
-            {
-                //this.Cursor = Cursors.AppStarting;
-                PluginInfo p = (PluginInfo)plugin;
+            ////if (this.InvokeRequired)
+            ////    this.Invoke(new PluginAction(doPluginLoad), new object[] { plugin });
+            ////else
+            //{
+            //    //this.Cursor = Cursors.AppStarting;
+            //    PluginInfo p = (PluginInfo)plugin;
 
-                #region Interface setup IoC
+            //    #region Interface setup IoC
 
-                // TODO:: IInputService and IOutputService
+            //    // TODO:: IInputService and IOutputService
 
-                ServiceManager.SingleInstance.Services = new List<IService>();
+            //    ServiceManager.SingleInstance.Services = new List<IService>();
 
-                if (p is IService)
-                {
-                    ServiceManager.SingleInstance.Services.Add(p as IService);
+            //    if (p is IService)
+            //    {
+            //        ServiceManager.SingleInstance.Services.Add(p as IService);
 
-                    //this.Subscribe<ping>(
-                    //    async ap =>
-                    //        {
-                    //            Console.WriteLine("Ping...");
-                    //            await Task.Delay(100);
-                    //            await this.Publish(TaskExtensions.AsTask(new pong()));
-                    //        }
+            //        //this.Subscribe<ping>(
+            //        //    async ap =>
+            //        //        {
+            //        //            Console.WriteLine("Ping...");
+            //        //            await Task.Delay(100);
+            //        //            await this.Publish(TaskExtensions.AsTask(new pong()));
+            //        //        }
 
-                    //    );
-                }
+            //        //    );
+            //    }
 
-                #endregion
+            //    #endregion
 
-                #region 1xControl Create the Plugin Control gui
+            //    #region 1xControl Create the Plugin Control gui
 
-                Widget pluginControl = (Widget)Activator.CreateInstance(Assembly.LoadFile(Plugins.EnvironmentSettings.GetFullPath(p.AssemblyFile)).GetType(p.Type));
-                //pluginControl.SuspendLayout();
-                pluginControl.Anchor = EAnchorStyle.Top & EAnchorStyle.Left;
-                //pluginControl.AutoSize = true;
-                //pluginControl.Top = 0;
-                //pluginControl.Left = 0;
+            //    Widget pluginControl = (Widget)Activator.CreateInstance(Assembly.LoadFile(Plugins.EnvironmentSettings.GetFullPath(p.AssemblyFile)).GetType(p.Type));
+            //    //pluginControl.SuspendLayout();
+            //    pluginControl.Anchor = EAnchorStyle.Top & EAnchorStyle.Left;
+            //    //pluginControl.AutoSize = true;
+            //    //pluginControl.Top = 0;
+            //    //pluginControl.Left = 0;
 
-                pluginControl.Dock = EDocking.Fill;
-
-
-                throw new NotImplementedException();
-
-                #region Setup gui control INotify
-
-                //if (pluginControl is INotifyWidget)
-                //    ((INotifyWidget)pluginControl).OnNotify += this.OnNotify;
-
-                #endregion
-
-                //m_controls.Add(pluginControl);
-                // ???  //this.Widgets.Add(pluginControl);
-
-                #endregion
-
-                //this.iocPanel.SuspendLayout();
-                //this.iocPanel.Controls.Add(pluginControl);
-
-                //pluginControl.ResumeLayout();
-
-                //this.iocPanel.ResumeLayout();
-
-                //pluginControl.Refresh();
+            //    pluginControl.Dock = EDocking.Fill;
 
 
-                //this.Cursor = Cursors.Default;
-            }
+            //    throw new NotImplementedException();
+
+            //    #region Setup gui control INotify
+
+            //    //if (pluginControl is INotifyWidget)
+            //    //    ((INotifyWidget)pluginControl).OnNotify += this.OnNotify;
+
+            //    #endregion
+
+            //    //m_controls.Add(pluginControl);
+            //    // ???  //this.Widgets.Add(pluginControl);
+
+            //    #endregion
+
+            //    //this.iocPanel.SuspendLayout();
+            //    //this.iocPanel.Controls.Add(pluginControl);
+
+            //    //pluginControl.ResumeLayout();
+
+            //    //this.iocPanel.ResumeLayout();
+
+            //    //pluginControl.Refresh();
+
+
+            //    //this.Cursor = Cursors.Default;
+            //}
         }
         #endregion Plugins List
 
@@ -694,30 +693,30 @@ namespace NthStudio.Gui.Displays
         #region Plugin Notify
         #region Framework UI Event Handlers
         //public Action<INotificationSource, NotificationEventArgs> OnNotify(NotificationEventArgs notificationEventArgs)
-        private void OnNotify(INotifyWidget notifyControl, NotificationEventArgs notificationEventArgs)
-        {
-            //MonoFlat_NotificationBox nfb = new MonoFlat_NotificationBox();
-            //if (notificationEventArgs.Type == NotificationType.Error)
-            //    nfb.NotificationType = MonoFlat_NotificationBox.Type.Error;
-            //if (notificationEventArgs.Type == NotificationType.Notice)
-            //    nfb.NotificationType = MonoFlat_NotificationBox.Type.Notice;
-            //if (notificationEventArgs.Type == NotificationType.Success)
-            //    nfb.NotificationType = MonoFlat_NotificationBox.Type.Success;
-            //if (notificationEventArgs.Type == NotificationType.Warning)
-            //    nfb.NotificationType = MonoFlat_NotificationBox.Type.Warning;
+        //private void OnNotify(INotifyWidget notifyControl, NotificationEventArgs notificationEventArgs)
+        //{
+        //    //MonoFlat_NotificationBox nfb = new MonoFlat_NotificationBox();
+        //    //if (notificationEventArgs.Type == NotificationType.Error)
+        //    //    nfb.NotificationType = MonoFlat_NotificationBox.Type.Error;
+        //    //if (notificationEventArgs.Type == NotificationType.Notice)
+        //    //    nfb.NotificationType = MonoFlat_NotificationBox.Type.Notice;
+        //    //if (notificationEventArgs.Type == NotificationType.Success)
+        //    //    nfb.NotificationType = MonoFlat_NotificationBox.Type.Success;
+        //    //if (notificationEventArgs.Type == NotificationType.Warning)
+        //    //    nfb.NotificationType = MonoFlat_NotificationBox.Type.Warning;
 
-            //nfb.Size = new Size(200, 60);
-            //nfb.Text = notificationEventArgs.Text;
-
-
+        //    //nfb.Size = new Size(200, 60);
+        //    //nfb.Text = notificationEventArgs.Text;
 
 
-            //this.m_pluginWidget.Widgets.Add(nfb);
-
-            ConsoleUtil.log(notificationEventArgs.Text);
 
 
-        }
+        //    //this.m_pluginWidget.Widgets.Add(nfb);
+
+        //    ConsoleUtil.log(notificationEventArgs.Text);
+
+
+        //}
         #endregion
         #endregion Plugin Notify
 

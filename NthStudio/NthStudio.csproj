@@ -582,14 +582,6 @@
     <Compile Include="Gui\NodeGraph\Type\NodeGraphDataTypeBool.cs" />
     <Compile Include="Gui\NodeGraph\Type\NodeGraphDataTypeFloat.cs" />
     <Compile Include="Gui\NodeGraph\Type\NodeGraphDataTypeMaterial.cs" />
-    <Compile Include="Plugins\PluginFactory.cs" />
-    <Compile Include="Plugins\PluginStoreManager.cs" />
-    <Compile Include="Plugins\EnvironmentSettings.cs" />
-    <Compile Include="Plugins\PluginInfo.cs" />
-    <Compile Include="Plugins\PluginStore.cs" />
-    <Compile Include="Plugins\PluginStore.EventArgs.cs" />
-    <Compile Include="Plugins\PluginStore.EventHandlers.cs" />
-    <Compile Include="Plugins\PluginWidget.cs" />
     <Compile Include="Program.Exception.cs" />
     <Compile Include="Program.Server.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -697,10 +689,6 @@
     <ProjectReference Include="..\NthDimension\NthDimension.csproj">
       <Project>{239e7ffd-bd08-4572-abcf-e3f291213798}</Project>
       <Name>NthDimension</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NthStudio.IoC\NthStudio.IoC.csproj">
-      <Project>{9ad90867-191a-41c0-850f-4ca7a501c615}</Project>
-      <Name>NthStudio.IoC</Name>
     </ProjectReference>
     <ProjectReference Include="..\NthStudio.WinForms\NthStudio.WinForms.csproj">
       <Project>{816801c1-6cb2-4a0a-9975-7c1a497ecfac}</Project>
@@ -1004,7 +992,6 @@
     <Content Include="Game\Dungeon\_Reference\Data\features.txt" />
     <Content Include="Game\Dungeon\_Reference\Data\rooms.txt" />
     <Content Include="Game\Dungeon\_Reference\Data\tiles.txt" />
-    <Content Include="Plugins\PluginStore.xml" />
     <None Include="Resources\EquirMap_2048.jpg" />
     <Content Include="Resources\file16.png" />
     <None Include="Resources\solution16dark.png" />

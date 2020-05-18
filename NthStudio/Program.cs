@@ -4,10 +4,9 @@ using System.IO;
 using System.Reflection;
 using System.Linq;
 
-using NthStudio.Plugins;
+//using NthStudio.Plugins;
 using NthDimension.FFMpeg;
 using NthDimension.Utilities;
-using NthDimension.Context;
 using NthDimension.Rasterizer.Windows;
 using NthDimension.Rendering.Configuration;
 
@@ -20,12 +19,12 @@ namespace NthStudio
     partial class Program
     {
         // Application Scope
-        private static PluginStore              pluginStore;
-        public static PluginStore               PluginStore // TODO:: Refactor and move to Project Code (Each Project, it's own plugins? -OR- Plugins per Studio application?)
-        {
-            get { return pluginStore; }
-            set { pluginStore = value; }
-        }
+        //private static PluginStore              pluginStore;
+        //public static PluginStore               PluginStore // TODO:: Refactor and move to Project Code (Each Project, it's own plugins? -OR- Plugins per Studio application?)
+        //{
+        //    get { return pluginStore; }
+        //    set { pluginStore = value; }
+        //}
         
         // OpenGL Scope
         static OpenTK.ToolkitOptions            tkOptions;
@@ -53,23 +52,22 @@ namespace NthStudio
                                             {
                                                 new string('-', title.Length)
                                             }));
-            //Plugins();
 
-            if(null != pluginStore)
-                if (pluginStore.Plugins.Count > 0)
-                {
-                    Console.WriteLine(":Plugins ({0}){1}", pluginStore.Plugins.Count, Environment.NewLine);                
-                    foreach (PluginInfo pi in pluginStore.Plugins)
-                        Console.WriteLine(string.Format(" - {3}{0}   {2}{0}   [ {4} ]{0}   [ {1}, Version {6} {7} ]{0}   [ Type: {5} ]{0}",
-                                                            Environment.NewLine,
-                                                            pi.AssemblyFile,
-                                                            pi.Description,
-                                                            pi.Name,
-                                                            pi.InstallPath,
-                                                            pi.Type,
-                                                            pi.AssemblyVersion,
-                                                            pi.AssemblyDate));
-                }
+            //if(null != pluginStore)
+            //    if (pluginStore.Plugins.Count > 0)
+            //    {
+            //        Console.WriteLine(":Plugins ({0}){1}", pluginStore.Plugins.Count, Environment.NewLine);                
+            //        foreach (PluginInfo pi in pluginStore.Plugins)
+            //            Console.WriteLine(string.Format(" - {3}{0}   {2}{0}   [ {4} ]{0}   [ {1}, Version {6} {7} ]{0}   [ Type: {5} ]{0}",
+            //                                                Environment.NewLine,
+            //                                                pi.AssemblyFile,
+            //                                                pi.Description,
+            //                                                pi.Name,
+            //                                                pi.InstallPath,
+            //                                                pi.Type,
+            //                                                pi.AssemblyVersion,
+            //                                                pi.AssemblyDate));
+            //    }
 
             
 
@@ -94,103 +92,103 @@ namespace NthStudio
         /// <returns></returns>
         static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
-            //PluginStore pluginStore = PluginStoreManager.LoadPuginStore();
-            pluginStore = PluginStoreManager.LoadPuginStore();
-            if (null == pluginStore) return null;
+            ////PluginStore pluginStore = PluginStoreManager.LoadPuginStore();
+            //pluginStore = PluginStoreManager.LoadPuginStore();
+            //if (null == pluginStore) return null;
 
-            int index = args.Name.IndexOf(',');
-            string assemblyName;
-            if (index > 0)
-            {
-                assemblyName = args.Name.Substring(0, args.Name.IndexOf(',')) + ".dll";
-            }
-            else
-                assemblyName = args.Name + ".dll";
+            //int index = args.Name.IndexOf(',');
+            //string assemblyName;
+            //if (index > 0)
+            //{
+            //    assemblyName = args.Name.Substring(0, args.Name.IndexOf(',')) + ".dll";
+            //}
+            //else
+            //    assemblyName = args.Name + ".dll";
 
-            foreach (PluginInfo plugin in pluginStore.Plugins)
-            {
-                string assemblyFile             = Path.Combine(plugin.InstallPath, assemblyName);
-                assemblyFile                    = EnvironmentSettings.GetFullPath(Path.Combine(plugin.InstallPath, assemblyName));
-                if (File.Exists(assemblyFile))
-                {
-                    Assembly asm        = Assembly.LoadFile(assemblyFile);
-                    FileInfo fi         = new FileInfo(assemblyFile);
+            //foreach (PluginInfo plugin in pluginStore.Plugins)
+            //{
+            //    string assemblyFile             = Path.Combine(plugin.InstallPath, assemblyName);
+            //    assemblyFile                    = EnvironmentSettings.GetFullPath(Path.Combine(plugin.InstallPath, assemblyName));
+            //    if (File.Exists(assemblyFile))
+            //    {
+            //        Assembly asm        = Assembly.LoadFile(assemblyFile);
+            //        FileInfo fi         = new FileInfo(assemblyFile);
 
-                    plugin.AssemblyVersion          = asm.ImageRuntimeVersion;
-                    plugin.AssemblyDate             = fi.CreationTime.ToString();               // WARNING! BUGPRONE! No culture has been set
+            //        plugin.AssemblyVersion          = asm.ImageRuntimeVersion;
+            //        plugin.AssemblyDate             = fi.CreationTime.ToString();               // WARNING! BUGPRONE! No culture has been set
 
-                    return asm;
-                }
-            }
+            //        return asm;
+            //    }
+            //}
             return null;
         }
         #endregion
 
         #region DIRegistration
-        static void DIRegistration(IoCContainer container)
-        {
-            pluginStore = PluginStoreManager.LoadPuginStore();
+        //static void DIRegistration(IoCContainer container)
+        //{
+        //    pluginStore = PluginStoreManager.LoadPuginStore();
 
-            foreach (PluginInfo plugin in pluginStore.Plugins)
-            {
-                Assembly assembly       = null;
-                string assemblyFile     = EnvironmentSettings.GetFullPath(plugin.AssemblyFile);
-                string assemblyVersion  = "(Not Set)";
-                string assemblyDate     = "(Not Set)";
-                if (File.Exists(assemblyFile))
-                    assembly            = Assembly.LoadFile(assemblyFile);
+        //    foreach (PluginInfo plugin in pluginStore.Plugins)
+        //    {
+        //        Assembly assembly       = null;
+        //        string assemblyFile     = EnvironmentSettings.GetFullPath(plugin.AssemblyFile);
+        //        string assemblyVersion  = "(Not Set)";
+        //        string assemblyDate     = "(Not Set)";
+        //        if (File.Exists(assemblyFile))
+        //            assembly            = Assembly.LoadFile(assemblyFile);
 
-                if (null != assembly)
-                {
-                    FileInfo fi = new FileInfo(assemblyFile);
-                    assemblyVersion = assembly.ImageRuntimeVersion;
-                    assemblyDate    = fi.CreationTime.ToString();
+        //        if (null != assembly)
+        //        {
+        //            FileInfo fi = new FileInfo(assemblyFile);
+        //            assemblyVersion = assembly.ImageRuntimeVersion;
+        //            assemblyDate    = fi.CreationTime.ToString();
 
-                    var q = from t in assembly.GetTypes()
-                            where t.IsClass
-                            select t;
+        //            var q = from t in assembly.GetTypes()
+        //                    where t.IsClass
+        //                    select t;
 
-                    List<Type> assemblyClasses = q.ToList();
+        //            List<Type> assemblyClasses = q.ToList();
 
-                    foreach (Type clss in assemblyClasses)
-                    {
-                        //TODO:: Populate IReaders list and handle later on control creation?
+        //            foreach (Type clss in assemblyClasses)
+        //            {
+        //                //TODO:: Populate IReaders list and handle later on control creation?
 
-                        //if(clss is IReader)
-                        //    container.Register<IReader, 
-                        //        Activator.CreateInstance(Assembly.LoadFile(EnvironmentSettings.GetFullPath(plugin.AssemblyFile)).GetType(plugin.Type))
-                        //        >(LifeTimeOptions.ContainerControlledLifeTimeOption);
+        //                //if(clss is IReader)
+        //                //    container.Register<IReader, 
+        //                //        Activator.CreateInstance(Assembly.LoadFile(EnvironmentSettings.GetFullPath(plugin.AssemblyFile)).GetType(plugin.Type))
+        //                //        >(LifeTimeOptions.ContainerControlledLifeTimeOption);
 
-                        //if(clss.GetType() is INotifyControl)
-                        //    container.Register<INotifyControl, >(LifeTimeOptions.ContainerControlledLifeTimeOption);
+        //                //if(clss.GetType() is INotifyControl)
+        //                //    container.Register<INotifyControl, >(LifeTimeOptions.ContainerControlledLifeTimeOption);
 
-                        //if (clss is BaseIocForm)
-                        //{
-                        //    if (clss is INotifyControl)
-                        //    {
+        //                //if (clss is BaseIocForm)
+        //                //{
+        //                //    if (clss is INotifyControl)
+        //                //    {
 
-                        //    }
+        //                //    }
 
-                        //}
-                    }
-                }
-            }
+        //                //}
+        //            }
+        //        }
+        //    }
 
-            //container.Register<IReader, KeyboardReader>(LifeTimeOptions.ContainerControlledLifeTimeOption);
-            //container.Register<IWriter, PrinterWriter>(LifeTimeOptions.TransientLifeTimeOption);
-        }
+        //    //container.Register<IReader, KeyboardReader>(LifeTimeOptions.ContainerControlledLifeTimeOption);
+        //    //container.Register<IWriter, PrinterWriter>(LifeTimeOptions.TransientLifeTimeOption);
+        //}
         #endregion
       
         static void Plugins()
         {
-            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
-            // Create the container object
-            IoCContainer        container           = new IoCContainer();
-            List<Type>          interfaces          = PluginFactory.GetInversionInterfaces();
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+            //// Create the container object
+            //IoCContainer        container           = new IoCContainer();
+            //List<Type>          interfaces          = PluginFactory.GetInversionInterfaces();
 
-            DIRegistration(container);
+            //DIRegistration(container);
 
-            AppDomain.CurrentDomain.AssemblyResolve -= (CurrentDomain_AssemblyResolve);
+            //AppDomain.CurrentDomain.AssemblyResolve -= (CurrentDomain_AssemblyResolve);
         }
         static void Graphics3D_Init()
         {
