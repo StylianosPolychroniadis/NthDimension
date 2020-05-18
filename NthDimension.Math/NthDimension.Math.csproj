@@ -103,7 +103,6 @@
     <Compile Include="Algebra\Rect.cs" />
     <Compile Include="Algebra\Rectangle.cs" />
     <Compile Include="Algebra\Size.cs" />
-    <Compile Include="Algebra\Tensor.cs" />
     <Compile Include="Algebra\Transform.cs" />
     <Compile Include="Algebra\Uvw.cs" />
     <Compile Include="Algebra\Vector2.cs" />
