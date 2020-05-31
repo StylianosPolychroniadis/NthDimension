@@ -13,5 +13,26 @@ General purpose OpenGL deferred rendering for .Net Framework
 
 Features
 
+-Progressive Mesh Level of Detail
+-Octree Frustum Culling
+-Parallel Split Shadow Maps*
+-Collada Skeletal Animations
+-Rigid and Non-Rigid Physics Engine
+-Spot & Directional Lighting
+-Real-Time Light Volumes
+-Voxel Mesh Generator
+-Shader Based Materials
+-DDS Textures with Mip Map support
+-Screen-Space Ambient Occlussion
+-Bloom Filter
+-Depth of Field with Bokeh Filter*
+-2D User Interface with True-Type UTF8 font support
+-Real-Time Distributed Network Engine with Streaming support
+-Real-Time Constructive Solid Geometry editor*
+-Real-Time node-graph Material/Shader Editor* 
+-Google Protobuf assets cache file storage
+-Pure C# and OpenGL 3.0 implementation
+
+
 Download a compiled copy here {TODO}
 Download assets here {TODO}
