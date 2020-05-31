@@ -11,28 +11,28 @@ General purpose OpenGL deferred rendering for .Net Framework
 
 ![alt text](https://scontent.fskg3-1.fna.fbcdn.net/v/t1.0-9/s960x960/79147368_2529684520465091_5311152439359963136_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_ohc=NNI5XYJmyoYAX_9BHQh&_nc_ht=scontent.fskg3-1.fna&_nc_tp=7&oh=ccd00b8585cb3f817887f9f36993e328&oe=5EFA286F)
 
-Features
+<b>Features</b>
 
--Progressive Mesh Level of Detail
--Octree Frustum Culling
--Parallel Split Shadow Maps*
--Collada Skeletal Animations
--Rigid and Non-Rigid Physics Engine
--Spot & Directional Lighting
--Real-Time Light Volumes
--Voxel Mesh Generator
--Shader Based Materials
--DDS Textures with Mip Map support
--Screen-Space Ambient Occlussion
--Bloom Filter
--Depth of Field with Bokeh Filter*
--2D User Interface with True-Type UTF8 font support
--Real-Time Distributed Network Engine with Streaming support
--Real-Time Constructive Solid Geometry editor*
--Real-Time node-graph Material/Shader Editor* 
--Google Protobuf assets cache file storage
--Pure C# and OpenGL 3.0 implementation
+-Progressive Mesh Level of Detail<br>
+-Octree Frustum Culling<br>
+-Parallel Split Shadow Maps*<br>
+-Collada Skeletal Animations<br>
+-Rigid and Non-Rigid Physics Engine<br>
+-Spot & Directional Lighting<br>
+-Real-Time Light Volumes<br>
+-Voxel Mesh Generator<br>
+-Shader Based Materials<br>
+-DDS Textures with Mip Map support<br>
+-Screen-Space Ambient Occlussion<br>
+-Bloom Filter<br>
+-Depth of Field with Bokeh Filter*<br>
+-2D User Interface with True-Type UTF8 font support<br>
+-Real-Time Distributed Network Engine with Streaming support<br>
+-Real-Time Constructive Solid Geometry editor*<br>
+-Real-Time node-graph Material/Shader Editor*<br>
+-Google Protobuf assets cache file storage<br>
+-Pure C# and OpenGL 3.0 implementation<br>
 
 
-Download a compiled copy here {TODO}
-Download assets here {TODO}
+Download a compiled copy here {TODO}<br>
+Download assets here {TODO}<br>
