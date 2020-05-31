@@ -17,7 +17,7 @@ General purpose OpenGL deferred rendering for .Net Framework
 -Octree Frustum Culling*<br>
 -Parallel Split Shadow Maps*<br>
 -Collada Skeletal Animations<br>
--Rigid and Non-Rigid Physics Engine<br>
+-Rigid-Body Physics Engine<br>
 -Spot & Directional Lighting<br>
 -Real-Time Light Volumes<br>
 -Voxel Mesh Generator<br>
