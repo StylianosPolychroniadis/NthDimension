@@ -14,7 +14,7 @@ General purpose OpenGL deferred rendering for .Net Framework
 <b>Features</b>
 
 -Progressive Mesh Level of Detail<br>
--Octree Frustum Culling<br>
+-Octree Frustum Culling<br>*
 -Parallel Split Shadow Maps*<br>
 -Collada Skeletal Animations<br>
 -Rigid and Non-Rigid Physics Engine<br>
