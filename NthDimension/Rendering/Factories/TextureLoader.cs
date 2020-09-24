@@ -323,11 +323,15 @@ namespace NthDimension.Rendering.Loaders
             catch
             {
                 if (fromMaterial.Length > 0)
-                    //throw new Exception(string.Format("Texture Loader: Fatal error in material {0} definition. Texture not found {1}", fromMaterial, name));
+                {   // Do not throw exception, resume gracefully (warning as this will propagate the error higher on)
                     ConsoleUtil.errorlog("Texture Loader Error: ", string.Format("Material {0} definition. Texture not found {1}", fromMaterial, name));
+
+                }
                 else
-                    //throw new Exception(string.Format("Texture Loader: Texture not found {0}", name));
+                {   // Do not throw exception, resume gracefully (warning as this will propagate the error higher on)
                     ConsoleUtil.errorlog("Texture Loader Error: ", string.Format("Texture not found {0}", name));
+
+                }
 
             }
 

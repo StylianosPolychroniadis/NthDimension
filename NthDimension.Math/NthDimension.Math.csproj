@@ -119,6 +119,7 @@
     <Compile Include="Algebra\Vector4i.cs" />
     <Compile Include="Easing.cs" />
     <Compile Include="Enumerators.cs" />
+    <None Include="SolverInt.cs" />
     <Compile Include="MathHelper.cs" />
     <Compile Include="Physics\Collision\CollisionIsland.cs" />
     <Compile Include="Physics\Collision\CollisionSystem.cs" />

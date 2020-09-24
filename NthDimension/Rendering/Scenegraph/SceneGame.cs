@@ -125,7 +125,7 @@ namespace NthDimension.Rendering.Scenegraph
 #endif
 
 
-        public Vector3                              SpawnAt_REFACTOR_TODO = new Vector3(13.5f, 0f, -1f); // turn to null to start at 0 always
+        public Vector3                              SpawnAt_REFACTOR_TODO = new Vector3(13.5f, 10f, -1f); // turn to null to start at 0 always
         public Vector3                              EyePos;
         public Matrix4                              WaterMatrix;
         //public Matrix4 ProjectionMatrix;

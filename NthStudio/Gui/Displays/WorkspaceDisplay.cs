@@ -1479,7 +1479,40 @@ namespace NthStudio.Gui.Displays
             miSimulation_ProceduralPlanet.Name = "Planet";
             miSimulation_ProceduralPlanet.ItemClickedEvent += delegate
             {
-                NthDimension.Procedural.SolarGenerator solar = new NthDimension.Procedural.SolarGenerator(ApplicationBase.Instance.Scene);
+                //NthDimension.Procedural.SolarGenerator solar = new NthDimension.Procedural.SolarGenerator(ApplicationBase.Instance.Scene);
+                PlanetModel planet = new PlanetModel(//"Earth (Gaia)",
+                                                    //new Vector3d(0d, -20000d, 0d),
+                                                    90000f,       // 6371 km = 6371000 m
+                                                    //new CubeTexturePaths()
+                                                    //{
+                                                    //    Front = "Resources\\Textures\\Planets\\Earth\\base_0001.png",
+                                                    //    Left = "Resources\\Textures\\Planets\\Earth\\base_0002.png",
+                                                    //    Back = "Resources\\Textures\\Planets\\Earth\\base_0003.png",
+                                                    //    Right = "Resources\\Textures\\Planets\\Earth\\base_0004.png",
+                                                    //    Bottom = "Resources\\Textures\\Planets\\Earth\\base_0005.png",
+                                                    //    Top = "Resources\\Textures\\Planets\\Earth\\base_0006.png",
+                                                    //}
+                                                    new PlanetModel.CubeTextureIndices() // THESE MUST BE MATERIALS
+                                                    {
+                                                        Front   = NthStudio.StudioWindow.Instance.TextureLoader.getTextureId("planets\\earth\\base_0001.png"),
+                                                        Left    = NthStudio.StudioWindow.Instance.TextureLoader.getTextureId("planets\\earth\\base_0002.png"),
+                                                        Back    = NthStudio.StudioWindow.Instance.TextureLoader.getTextureId("planets\\earth\\base_0003.png"),
+                                                        Right   = NthStudio.StudioWindow.Instance.TextureLoader.getTextureId("planets\\earth\\base_0004.png"),
+                                                        Bottom  = NthStudio.StudioWindow.Instance.TextureLoader.getTextureId("planets\\earth\\base_0006.png"),
+                                                    }, 
+                                                    new PlanetModel.CubeTexturePaths()                                                    
+                                                    {
+                                                        Front   = "planets\\earth\\heightmap_0001.png",
+                                                        Left    = "planets\\earth\\heightmap_0002.png",
+                                                        Back    = "planets\\earth\\heightmap_0003.png",
+                                                        Right   = "planets\\earth\\heightmap_0004.png",
+                                                        Bottom  = "planets\\earth\\heightmap_0005.png",
+                                                        Top     = "planets\\earth\\heightmap_0006.png",
+                                                    },
+                                                    "planets\\earth\\detail.jpg");
+
+                ApplicationBase.Instance.Scene.AddDrawable(planet);
+
             };
 
             MenuStripItem miSimulation_Terrain = new MenuStripItem("Terrain");

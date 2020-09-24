@@ -21,26 +21,23 @@ namespace NthDimension.Rendering
     using System.Linq;
     using System.Drawing;
     using System.Diagnostics;
+    using System.Collections.Generic;
 
-    //using OpenTK;
+
     using OpenTK.Graphics;
 
     using NthDimension.Algebra;
     using NthDimension.Rasterizer;
 
-    using Rendering.Drawables;
-    using Rendering.Configuration;
-    using Rendering.GameViews;
-    using Rendering.Scenegraph;
-    using Rendering.Drawables.Framebuffers;
-    using Rendering.Loaders;
-    using Rendering.Shaders;
-    using Rendering.Utilities;
-    using Geometry;
+    using NthDimension.Rendering.Drawables;
+    using NthDimension.Rendering.Configuration;
+    using NthDimension.Rendering.Scenegraph;
+    using NthDimension.Rendering.Drawables.Framebuffers;
+    using NthDimension.Rendering.Loaders;
+    using NthDimension.Rendering.Utilities;
     using NthDimension.Utilities;
     using NthDimension.Compute;
-    using System.Collections.Generic;
-    using NthDimension.FFMpeg;
+
 
     //    using Launcher;
     //using Launcher.Plugin;

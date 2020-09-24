@@ -29,7 +29,8 @@ namespace NthDimension.Rendering.Drawables.Models
         // TODO:: Refactor (eliminate System.Drawing interface and System.Drawing.Bitmap. Texture flow through static TextureLoader)
         public partial class Terrain
         {
-            private HeightMesh heighMesh;
+            private HeightMesh  heighMesh;          // TODO:: Switch this to MeshVboData
+            private MeshVboData terrainMesh;
 
             private float                   heightMult                      = 7.8f;     ////9.2f; //0.012f;  // TDB
 
@@ -87,14 +88,23 @@ namespace NthDimension.Rendering.Drawables.Models
                     if (null == _uvsFast)
                         _uvsFast = new List<Vector2>(heighMesh.UV);
                     return _uvsFast; } }
+
+            protected List<Vector3> _normalsFast;
+            public List<Vector3> Normals
+            {
+                get
+                {
+                    if (null == _normalsFast)
+                        _normalsFast = new List<Vector3>();
+                    return _normalsFast;
+                }
+            }
             public int TextureID
             { get { return texID; } }
-            #endregion
-
             public int DetailTextureID
             { get { return detailtexID; } }
 
-
+            #endregion
 
             public Terrain(Vector3 centerPos, Vector3 axisX, Vector3 axisZ, int LODLevels, int terrainSize, int patchSize, float planetRadius, int textureID, string heightmapURL, string detailURL)
             {
@@ -140,6 +150,11 @@ namespace NthDimension.Rendering.Drawables.Models
                         heighMesh.UV[index]         = new Vector2((float)(1.0 / terrainSize * x), (float)(1.0 / terrainSize * z));
                     }
 
+                // Transfer Data to NthDimension
+                terrainMesh.Indices     = heighMesh.Indices;
+                terrainMesh.Positions   = heighMesh.Vertices;
+                terrainMesh.Textures    = heighMesh.UV;
+                // TODO:: Normals
                 
 
                 #endregion create HeightMesh
@@ -196,8 +211,6 @@ namespace NthDimension.Rendering.Drawables.Models
 
                 Console.WriteLine("(Class: Terrain) Terrain created");
             }
-
-            MeshVboData terrainMesh;
 
 
             private void BuildIBO(int resolution)
@@ -497,31 +510,23 @@ namespace NthDimension.Rendering.Drawables.Models
                 }*/
             }
 
-            //public struct Vertex3
-            //{
-            //    public float X;
-            //    public float Y;
-            //    public float Z;
-            //}
+            //// STELIOS INTERFACE FUNCTIONS
+            //private MeshVbo meshTerrain;
+            //private MeshVbo meshHorizontalRightBridge;
+            //private MeshVbo meshHorizontalLeftBridge;
+            //private MeshVbo meshVerticalTopBridge;
+            //private MeshVbo meshVerticalBottomBridge;
 
-            // STELIOS INTERFACE FUNCTIONS
-            private MeshVbo meshTerrain;
-            private MeshVbo meshHorizontalRightBridge;
-            private MeshVbo meshHorizontalLeftBridge;
-            private MeshVbo meshVerticalTopBridge;
-            private MeshVbo meshVerticalBottomBridge;
-
-            private MeshVbo meshLowerHorizontalRightBridge;
-            private MeshVbo meshLowerHorizontalLeftBridge;
-            private MeshVbo meshLowerVerticalTopBridge;
-            private MeshVbo meshLowerVerticalBottomBridge;
-
-            
+            //private MeshVbo meshLowerHorizontalRightBridge;
+            //private MeshVbo meshLowerHorizontalLeftBridge;
+            //private MeshVbo meshLowerVerticalTopBridge;
+            //private MeshVbo meshLowerVerticalBottomBridge;
           
-            sealed class HeightMesh
+            sealed class HeightMesh // The MeshData equivalent but lacks Normal data
             {
                 protected Vector3[]     vertArray;
                 protected Vector2[]     uvArray;
+                protected Vector3[]     normArray;          // Instanciate appropriately
                 protected Int32[]       indexBuffer;
                 protected Int32[]       indexCount;
                 protected Int32[]       indices;
@@ -543,6 +548,7 @@ namespace NthDimension.Rendering.Drawables.Models
 
                     vertArray       = new Vector3[tSize];
                     uvArray         = new Vector2[tSize];
+                    normArray       = new Vector3[tSize / 3]; // BUG BUG BUG
                 }
 
                 public Vector3[] Vertices

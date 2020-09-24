@@ -38,13 +38,6 @@ namespace NthDimension.Rendering
     using NthDimension.Physics.Dynamics;
     using NthDimension.Rendering.Drawables.Particles;
 
-
-
-
-
-    //using System.Collections.Concurrent;
-    //using System.Threading.Tasks;
-
     public abstract partial class ApplicationObject // : OctreeObject // This is a GraphNode object 
     {
 
@@ -289,6 +282,22 @@ namespace NthDimension.Rendering
                 child.load(ref reader, _nodesunlight);
             }
 
+            if (reader.Name == LightSpot.nodename)
+            {
+                string childname = scene.GetUniqueName(); // Common API function call, todo extract functionality
+
+                while (reader.MoveToNextAttribute()) // Common API function call, todo extract functionality
+                {
+                    if (reader.Name == _nodeAttributename)
+                        childname = reader.Value;
+                }
+
+                ApplicationObject child = new LightSpot(this);
+                child.Name = childname;
+                child.load(ref reader, _nodelamp);
+                child.wasUpdated = true;
+            }
+
             if (reader.Name == StaticModel.nodename)
             {
                 string childname = scene.GetUniqueName(); // Common API function call, todo extract functionality
@@ -380,42 +389,12 @@ namespace NthDimension.Rendering
                 child.load(ref reader, _nodeMetamodel);
             }
 #endif
-            if (reader.Name == LightSpot.nodename)
-            {
-                string childname = scene.GetUniqueName(); // Common API function call, todo extract functionality
 
-                while (reader.MoveToNextAttribute()) // Common API function call, todo extract functionality
-                {
-                    if (reader.Name == _nodeAttributename)
-                        childname = reader.Value;
-                }
-
-                ApplicationObject child = new LightSpot(this);
-                child.Name = childname;
-                child.load(ref reader, _nodelamp);
-                child.wasUpdated = true;
-            }
 
             if (reader.Name == Terrain.nodename)
             {
                 // todo
-            }
-
-            if(reader.Name == ApplicationScript.nodename)
-            {
-                string childname = scene.GetUniqueName(); // Common API function call, todo extract functionality
-
-                while (reader.MoveToNextAttribute()) // Common API function call, todo extract functionality
-                {
-                    if (reader.Name == _nodeAttributename)
-                        childname = reader.Value;
-                }
-
-                ApplicationObject child = new ApplicationScript();
-                child.Name = childname;
-                child.load(ref reader, ApplicationScript.nodename);
-                child.wasUpdated = true;
-            }
+            }            
 
             if(reader.Name == ParticleSystem.nodename)
             {
@@ -433,6 +412,24 @@ namespace NthDimension.Rendering
                 child.wasUpdated = true;
 
             }
+
+            if (reader.Name == ApplicationScript.nodename)
+            {
+                string childname = scene.GetUniqueName(); // Common API function call, todo extract functionality
+
+                while (reader.MoveToNextAttribute()) // Common API function call, todo extract functionality
+                {
+                    if (reader.Name == _nodeAttributename)
+                        childname = reader.Value;
+                }
+
+                ApplicationObject child = new ApplicationScript();
+                child.Name = childname;
+                child.load(ref reader, ApplicationScript.nodename);
+                child.wasUpdated = true;
+            }
+            
+            
             // Only for debug
             //if(reader.Name == "cull" && reader.NodeType != XmlNodeType.EndElement)
             //{
@@ -447,6 +444,8 @@ namespace NthDimension.Rendering
 
 
         }
+
+
         #endregion
     }
 }

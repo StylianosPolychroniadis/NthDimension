@@ -23,6 +23,7 @@ namespace NthDimension.Rendering.Drawables.Models
 
     public partial class PlanetModel : Model // TODO:: Implement Model Routines
     {
+        private Frustum                 frustum;
         private Terrain[]               planetFace;
         private TerrainQuadTree[]              planetFaceQT;
         private TerrainQuadTreeNode            mainNode;
@@ -330,20 +331,14 @@ namespace NthDimension.Rendering.Drawables.Models
             LookupNeighbors[(int)LODCubeFaceDirection.BACK, (int)LODCubeEdgeDirection.WEST] = planetFaceQT[(int)LODCubeFaceDirection.RIGHT].MainNode;
         }
 
-        public void Render(ref Frustum frustum)
+      
+        public override void draw(GameViews.ViewInfo curView)
         {
             for (int i = 0; i < planetFaceQT.Length; i++)
             {
                 //throw new NotImplementedException("Ref passign a Frustum object");
                 if (planetFaceQT[i] != null) planetFaceQT[i].Render(ref frustum);
-
-
             }
-        }
-        public override void draw(GameViews.ViewInfo curView)
-        {
-            // TODO:: See if you I create a visible frustum from the curView and draw calls as usual
-            //base.draw(curView);
         }
         public override void draw()
         {
@@ -396,9 +391,22 @@ namespace NthDimension.Rendering.Drawables.Models
             // base.draw();
         }
 
+        public override void Update()
+        {
+            base.Update();
+            this.recalculateFrustum();
+        }
+
         public void Destroy()
         {
 
+        }
+
+        private void recalculateFrustum()
+        {
+            if (null == frustum)
+                frustum = new Frustum();
+            frustum.CalculateFrustum();
         }
     }
 

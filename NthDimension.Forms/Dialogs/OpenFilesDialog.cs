@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using NthDimension.Forms.Events;
@@ -449,6 +450,8 @@ namespace NthDimension.Forms.Dialogs
         void PopulateNode(TreeNode node)
         {
             var di = node.Tag as DirectoryInfo;
+
+            if (di.FullName.ToLower().Contains("recycle.bin")) return;
 #if OPTIMIZEDIO
             //DirectoryInfo[] diArray;
             List<DirectoryInfo> diArray = new List<DirectoryInfo>();

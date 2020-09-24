@@ -1,20 +1,17 @@
-﻿using NthDimension;
-using NthDimension.Forms;
-using NthDimension.Forms.Delegates;
-using NthDimension.Forms.Events;
-using NthDimension.Forms.Widgets;
-using NthStudio.NodeGraph.Xml;
-using System;
-using System.Collections.Generic;
-            using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-
-namespace NthStudio.NodeGraph
+﻿namespace NthStudio.NodeGraph
 {
+    using NthDimension;
+    using NthDimension.Forms;
+    using NthDimension.Forms.Delegates;
+    using NthDimension.Forms.Events;
+    using NthDimension.Forms.Widgets;
+    using NthStudio.NodeGraph.Xml;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Xml.Serialization;
+
     [Flags]
     public enum enuToolbarEditMode
     {
@@ -1987,225 +1984,11 @@ namespace NthStudio.NodeGraph
             xmlTree.LoadXML(p_FileName);
             this.View = new NodeViewState(xmlTree.m_rootNode.GetFirstChild(SerializationUtils.GetFullTypeName(this.View)), this);
 
-            this.InitializeNodegraphPanel(false);
+            this.InitializeNodegraphPanel(false);            
 
-            this.RestructureHxsGasPath();
-            this.RestructureHxsFluidPath();
-            this.RestructureHxsAirPath();
-
-            this.UpdateFontSize();
-            //this.Invalidate();
+            this.UpdateFontSize();            
         }
         #endregion
-
-
-
-
-
-
-        #region Heat Exchanger Logic
-        public void RestructureHxsGasPath(string removeId = "0")
-        {
-            //foreach (NodeGraphLink link in this.View.Links)
-            //{
-            //    if (link.Input.ParentNode is IHeatExchangerNode &&
-            //        link.Input.PlugType == ConnectorType._GasOutlet)
-            //    {
-            //        // TODO:: Check here if HxsIdFromGasPath has alredy a value
-
-
-            //        if (link.Output.ParentNode is IHeatExchangerGasComponent)
-            //        {
-            //            // Checks if HxsIdFromGasPath has already a value ( .Length != 0) and append a ';' character if it does before the new HxsId
-            //            if (((IHeatExchangerGasComponent)link.Output.ParentNode).HxsIdFromGasPath.Length == 0)
-            //                // HxsIdFromGasPath is Empty
-            //                ((IHeatExchangerGasComponent)link.Output.ParentNode).HxsIdFromGasPath +=
-            //                    ((IHeatExchangerNode)link.Input.ParentNode).HxsId;
-            //            else
-            //            {
-            //                string candidate = ((IHeatExchangerNode)link.Input.ParentNode).HxsId.ToString();
-            //                string tPaths = ((IHeatExchangerGasComponent)link.Output.ParentNode).HxsIdFromGasPath;
-            //                bool bExists = false;
-
-            //                if (tPaths.Contains(";"))
-            //                {
-            //                    string[] sPaths = tPaths.Split(';');
-
-            //                    for (int p = 0; p < sPaths.Length; p++)
-            //                    {
-            //                        if (sPaths[p] == candidate)
-            //                            bExists = true;
-
-            //                    }
-            //                }
-
-            //                if (!bExists)
-            //                {
-            //                    if (((IHeatExchangerGasComponent)link.Output.ParentNode).HxsIdFromGasPath == removeId)
-            //                    {
-            //                        ((IHeatExchangerGasComponent)link.Output.ParentNode).HxsIdFromGasPath = candidate;
-            //                    }
-            //                    else
-            //                    {
-            //                        ((IHeatExchangerGasComponent)link.Output.ParentNode).HxsIdFromGasPath += ";" + candidate;
-            //                    }
-
-
-            //                    //if (((IHeatExchangerGasComponent)link.Output.ParentNode).HxsIdFromGasPath.Contains(";;"))
-            //                    //    ((IHeatExchangerGasComponent)link.Output.ParentNode).HxsIdFromGasPath.Replace(";;", ";");
-
-            //                    //if (((IHeatExchangerGasComponent) link.Output.ParentNode).HxsIdFromGasPath.StartsWith(";"))
-            //                    //    ((IHeatExchangerGasComponent) link.Output.ParentNode).HxsIdFromGasPath.Remove(0,1);
-
-            //                }
-            //            }
-
-
-            //        }
-
-
-            //    }
-            //}
-
-            //// Remove Duplicates
-            //foreach (NodeGraphNode node in this.View.NodeCollection)
-            //{
-            //    if (node is IHeatExchangerGasComponent)
-            //    {
-            //        string tPaths = ((IHeatExchangerGasComponent)node).HxsIdFromGasPath;
-            //        if (tPaths.Contains(";"))
-            //        {
-            //            string[] sPaths = tPaths.Split(';');
-            //            string[] unique = sPaths.Distinct().ToArray();
-
-            //            ((IHeatExchangerGasComponent)node).HxsIdFromGasPath = String.Join(";", unique);
-            //        }
-            //    }
-
-            //}
-
-        }
-
-        //public List<IHeatExchangerFluidComponent> sortedFluidComponents = new List<IHeatExchangerFluidComponent>();
-        public void RestructureHxsFluidPath()
-        {
-            //foreach (NodeGraphLink link in this.View.Links)
-            //{
-            //    if (link.Input.ParentNode is IHeatExchangerNode)
-            //    {
-            //        if (link.Input.PlugType == ConnectorType.FluidOutletBottom ||
-            //            link.Input.PlugType == ConnectorType.FluidOutlet)
-            //            if (link.Output.ParentNode is IHeatExchangerFluidComponent)
-            //                ((IHeatExchangerFluidComponent)link.Output.ParentNode).HxsIdFromFluidPath =
-            //                    ((IHeatExchangerNode)link.Input.ParentNode).HxsId;
-            //    }
-            //}
-
-            //int fluidComponentsCount = 0;
-
-            //List<IHeatExchangerFluidComponent> temp = new List<IHeatExchangerFluidComponent>();
-
-            //for (int i = 0; i < this.View.NodeCollection.Count; i++)
-            //    if (this.View.NodeCollection[i] is IHeatExchangerFluidComponent)
-            //        temp.Add(this.View.NodeCollection[i] as IHeatExchangerFluidComponent);
-
-
-
-            //sortedFluidComponents.Clear();
-            //int start = int.Parse(Properties.Settings.Default.iStartID1);
-
-            //// Add 1st
-
-
-            //sortedFluidComponents.Add(temp.First(a => ((IHeatExchangerNode)a).HxsId == start));
-
-            //int nextIdx = start;
-            //int loop = 0;
-            //while (loop <= this.View.NodeCollection.Count)
-            //{
-            //    try
-            //    {
-            //        IHeatExchangerFluidComponent next = temp.First(a => a.HxsIdFromFluidPath == nextIdx);
-            //        sortedFluidComponents.Add(next);
-            //        nextIdx = ((IHeatExchangerNode)next).HxsId;
-
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        //EsiApplication.Instance.LOG_ESI_Msg("NextId " + nextIdx.ToString() + " " + e.Message);
-            //        //throw;
-            //        System.Diagnostics.Debug.Print("NextId " + nextIdx.ToString() + " " + e.Message);
-            //    }
-            //    finally
-            //    {
-            //        loop++;
-            //    }
-
-
-            //}
-        }
-        public void RestructureHxsAirPath()
-        {
-            //foreach (NodeGraphLink link in this.View.Links)
-            //{
-
-            //    if (link.Input.ParentNode is IHeatExchangerNode)
-            //    {
-            //        if (link.Input.PlugType == ConnectorType.AirOutlet)
-            //            if (link.Output.ParentNode is IHeatExchangerAirComponent)
-            //                ((IHeatExchangerAirComponent)link.Output.ParentNode).HxsIdFromAirPath =
-            //                    ((IHeatExchangerNode)link.Input.ParentNode).HxsId;
-            //    }
-            //}
-        }
-        public int GetNextAvailableHxsIndex()
-        {
-            // Use LINQ to retrieve the first available index!
-            int res = -1;
-
-            //List<int> all = new List<int>(EsiApplication.Instance.HxsIndices);
-
-            //List<int> taken = new List<int>();
-
-            //foreach (NodeGraphNode n in this.View.NodeCollection)
-            //{
-            //    if (n is IHeatExchangerNode)
-            //        taken.Add(((IHeatExchangerNode)n).HxsId);
-            //}
-
-            //taken.Add(0);
-
-            //List<int> remains = all.Except(taken).ToList();
-
-            //if (remains.Count > 0)
-            //    res = remains[0];
-
-            return res;// = candidateId;
-        }
-        public int[] GetAllAvailableHxsIndices()
-        {
-            // Use LINQ to retrieve the first available index!
-            int res = -1;
-
-            //List<int> all = new List<int>(EsiApplication.Instance.HxsIndices);
-
-            //List<int> taken = new List<int>();
-            //taken.Add(0);
-
-            //foreach (NodeGraphNode n in this.View.NodeCollection)
-            //{
-            //    if (n is IHeatExchangerNode)
-            //        taken.Add(((IHeatExchangerNode)n).HxsId);
-            //}
-
-            //List<int> remains = all.Except(taken).ToList();
-
-
-
-            //return remains.ToArray();
-
-            return new int[0];
-        }
-        #endregion
+        
     }
 }

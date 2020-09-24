@@ -11,13 +11,7 @@
  * for use is subject to civil and criminal prosecution. 
 */
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using NthDimension.Rendering.Scenegraph;
 
 namespace NthDimension.Rendering

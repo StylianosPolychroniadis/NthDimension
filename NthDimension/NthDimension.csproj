@@ -83,6 +83,16 @@
     <Compile Include="Rendering\Culling\BoundingOctreeObject.cs" />
     <Compile Include="Rendering\Culling\BoundingSphere.cs" />
     <Compile Include="Rendering\Scenegraph\SceneGame.Octree.cs" />
+    <Content Include="_Documentation\Screenshots\Cyberpunk.png" />
+    <Content Include="_Documentation\Screenshots\GpuBound.png" />
+    <Content Include="_Documentation\Screenshots\Sponza.png" />
+    <Content Include="_Documentation\Screenshots\UI.png" />
+    <Content Include="_Documentation\Screenshots\UI2.png" />
+    <Content Include="_Documentation\Screenshots\Untitled.png" />
+    <Content Include="_Documentation\Screenshots\Untitled2.png" />
+    <Content Include="_Documentation\Screenshots\Untitled3.png" />
+    <Content Include="_Documentation\Screenshots\Untitled4.png" />
+    <Content Include="_Documentation\Screenshots\Untitled5.png" />
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CloudsLess.dds" />
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CloudsLots.dds" />
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CubeNormalizer_ULQ.dds" />
