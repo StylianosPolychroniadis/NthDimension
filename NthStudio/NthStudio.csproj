@@ -93,6 +93,7 @@
     <Compile Include="Forms\PhysicsSettings.Designer.cs">
       <DependentUpon>PhysicsSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Framebuffers\WorldMapBuffer.cs" />
     <Compile Include="Game\City\CityDrawable.cs" />
     <Compile Include="Game\City\CityFactory.cs" />
     <Compile Include="Game\Dungeon\_Reference\Actor.cs" />
