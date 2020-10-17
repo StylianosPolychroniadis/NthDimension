@@ -53,6 +53,7 @@ namespace NthDimension.Physics.Collision.Shapes
     {
         private float[,] heights;
         private float scaleX, scaleZ;
+        private float width, length;
         private int heightsLength0, heightsLength1;
 
         private int minX, maxX;
@@ -73,24 +74,33 @@ namespace NthDimension.Physics.Collision.Shapes
             set { sphericalExpansion = value; }
         }
 
+
         /// <summary>
-        /// Initializes a new instance of the TerrainShape class.
+        /// NOTE: ERRONEOUS!    Initializes a new instance of the TerrainShape class.
         /// </summary>
         /// <param name="heights">An array containing the heights of the terrain surface.</param>
         /// <param name="scaleX">The x-scale factor. (The x-space between neighbour heights)</param>
         /// <param name="scaleZ">The y-scale factor. (The y-space between neighbour heights)</param>
-        public TerrainShape(float[,] heights, float scaleX, float scaleZ)
+        public TerrainShape(float[,] heights, float scaleX, float scaleZ, float width, float length)
         {
-            heightsLength0 = heights.GetLength(0);
-            heightsLength1 = heights.GetLength(1);
+            //heightsLength0 = heights.GetLength(0);
+            //heightsLength1 = heights.GetLength(1);
+
+            heightsLength0 = (int)(width * scaleX);
+            heightsLength1 = (int)(length * scaleZ);
 
             #region Bounding Box
             boundings = JBBox.SmallBox;
 
             for (int i = 0; i < heightsLength0; i++)
-            {
+            {                
                 for (int e = 0; e < heightsLength1; e++)
                 {
+                    if (heights[i, e] > boundings.Max.Y)
+                        boundings.Max.Y = heights[i, e];
+                    else if (heights[i, e] < boundings.Min.Y)
+                        boundings.Min.Y = heights[i, e];
+
                     if (heights[i, e] > boundings.Max.Y)
                         boundings.Max.Y = heights[i, e];
                     else if (heights[i, e] < boundings.Min.Y)
@@ -98,22 +108,32 @@ namespace NthDimension.Physics.Collision.Shapes
                 }
             }
 
-            boundings.Min.X = 0.0f;
-            boundings.Min.Z = 0.0f;
+            //boundings.Min.X = checked((-length/2) * scaleX);
+            //boundings.Min.Z = checked((-width/2) * scaleZ);
 
-            boundings.Max.X = checked(heightsLength0 * scaleX);
-            boundings.Max.Z = checked(heightsLength1 * scaleZ);
+            //boundings.Max.X = checked(heightsLength0 * scaleX);
+            //boundings.Max.Z = checked(heightsLength1 * scaleZ);
 
-            
+            boundings.Min.X = ((-length / 2) * scaleX);
+            boundings.Min.Z = ((-width / 2) * scaleZ);
 
-            #endregion
+            boundings.Max.X = (heightsLength0 * scaleX);
+            boundings.Max.Z = (heightsLength1 * scaleZ);
+
+
+#endregion
 
             this.heights = heights;
             this.scaleX = scaleX;
             this.scaleZ = scaleZ;
+            this.width = width;
+            this.length = length;
+
 
             UpdateShape();
         }
+
+      
 
         public TerrainShape(Vector3[] points, float[,] heights, float scaleX, float scaleZ)
         {
@@ -293,14 +313,14 @@ namespace NthDimension.Physics.Collision.Shapes
         {
             box = boundings;
 
-            #region Expand Spherical
+#region Expand Spherical
             box.Min.X -= sphericalExpansion;
             box.Min.Y -= sphericalExpansion;
             box.Min.Z -= sphericalExpansion;
             box.Max.X += sphericalExpansion;
             box.Max.Y += sphericalExpansion;
             box.Max.Z += sphericalExpansion;
-            #endregion
+#endregion
 
             box.Transform(ref orientation);
         }
@@ -363,11 +383,11 @@ namespace NthDimension.Physics.Collision.Shapes
         {
             JBBox box = JBBox.SmallBox;
 
-            #region RayEnd + Expand Spherical
+#region RayEnd + Expand Spherical
             JVector rayEnd;
             JVector.Normalize(ref rayDelta, out rayEnd);
             rayEnd = rayOrigin + rayDelta + rayEnd * sphericalExpansion;
-            #endregion
+#endregion
 
             box.AddPoint(ref rayOrigin);
             box.AddPoint(ref rayEnd);

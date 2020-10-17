@@ -33,6 +33,7 @@ namespace NthDimension.Rendering.Drawables.Models
 
         public delegate float HeightFunc(float x, float z);
 
+        uint[] indices;
         ListVector3 positions           = new ListVector3();
         ListVector2 uvs                 = new ListVector2();
         ListVector3 normals             = new ListVector3();
@@ -40,10 +41,12 @@ namespace NthDimension.Rendering.Drawables.Models
 
         int textureId = -1;
 
+        public Vector3  Min             { get; private set; }   = Vector3.Zero;
+        public Vector3  Max             { get; private set; }   = Vector3.Zero;
         public float    TextureScale    { get; private set; }
         public float    HeightScale     { get; private set; }
         public float    Width           { get; private set; }
-        public float    Height          { get; private set; }
+        public float    Length          { get; private set; }
         public int      NumVertices     { get; private set; }
         public int      NumTriangles    { get; private set; }
 
@@ -53,11 +56,12 @@ namespace NthDimension.Rendering.Drawables.Models
         public float[,] Heights;
 
         public ListVector3 Points {  get { return positions; } }
+        public uint[] Indices {  get { return indices; } }
 
         byte[] imagePixels = null; // Hacked to acquire height by x,z
         int wide = 0, tall = 0; // Hacked to acquire height by x,z
 
-        public Terrain(float width, float height,
+        public Terrain(float width, float length,
                         int subdivisionsWide, int subdivisionsTall,
                         string heightMapFile, 
                         float heightScale,
@@ -76,11 +80,11 @@ namespace NthDimension.Rendering.Drawables.Models
             this.setMaterial(material);
             //this.setMaterial("unlit.xmf");
 
-            Vertex[] verts  = null;
+            Vertex[] verts = null;
 
             if (string.IsNullOrEmpty(heightMapFile))
             {
-                verts = this.createPlane(width, height,
+                verts = this.createPlane(width, length,
                                          subdivisionsWide, subdivisionsTall,
                                          (x, y) => 0.0f);
             } else {
@@ -93,7 +97,7 @@ namespace NthDimension.Rendering.Drawables.Models
                     tall = bitmap.Height;
 
                     Width = wide;
-                    Height = tall;
+                    Length = tall;
 
                     System.Drawing.Imaging.BitmapData data =
                         bitmap.LockBits(
@@ -109,7 +113,7 @@ namespace NthDimension.Rendering.Drawables.Models
                     bitmap.UnlockBits(data);
                 }
 
-                verts = createPlane(width, height, 
+                verts = createPlane(width, length, 
                                     subdivisionsWide, subdivisionsTall, 
                                     (x, y) => {
                                         float bx = x * wide;
@@ -125,7 +129,7 @@ namespace NthDimension.Rendering.Drawables.Models
                                     });
             }
 
-            uint[] indices = createIndices(subdivisionsWide, subdivisionsTall);
+            /*uint[]*/ indices = createIndices(subdivisionsWide, subdivisionsTall);
 
             this.generateNormals(verts, indices);
 
@@ -172,18 +176,18 @@ namespace NthDimension.Rendering.Drawables.Models
             return ApplicationBase.Instance.TextureLoader.getTextureId(texture);
         }
 
-        private Vertex[] createPlane(float width, float height, int subX, int subZ, HeightFunc func)
+        private Vertex[] createPlane(float width, float length, int subX, int subZ, HeightFunc func)
         {
             int numVerts = (subX + 1) * (subZ + 1);
             Vertex[] verts = new Vertex[numVerts];
 
             float xSubSize = width / subX;
-            float zSubSize = height / subZ;
+            float zSubSize = length / subZ;
             float sInc = 1.0f / subX;
             float tInc = 1.0f / subZ;
 
             float curX = -width / 2.0f;
-            float curZ = -height / 2.0f;
+            float curZ = -length / 2.0f;
             float curU = 0.0f;
             float curV = 0.0f;
 

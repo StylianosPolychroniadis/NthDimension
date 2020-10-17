@@ -75,12 +75,25 @@
                 worldPhysics.ContactSettings.MinimumVelocity            = contactSettings.MinimumVelocity;
             }
 
-            // Calculate TerrainShape Scale (rough approximation, TODO improve)
-            float sclX = terrain.Width; //   (terrain.Width / terrain.SubdivisionsWide) / 2;
-            float sclZ = terrain.Height; // (terrain.Height / terrain.SubdivisionsTall) / 2;
-            // Create the groundShape and the body.
-            navigationMeshShape = new TerrainShape(terrain.Heights, sclX, sclZ);
-            //navigationMeshShape = new TerrainShape(terrain.Points.ToArray(), terrain.Heights, sclX, sclZ);
+            System.Collections.Generic.List<JVector> jvectors = new System.Collections.Generic.List<JVector>();
+
+            foreach (var point in terrain.Points)
+                jvectors.Add(new JVector(point));
+
+            System.Collections.Generic.List<TriangleVertexIndices> tidx = new System.Collections.Generic.List<TriangleVertexIndices>();
+
+            for (int t = 0; t < terrain.Indices.Length; t += 2)
+            {
+                if (t + 2 < terrain.Indices.Length)
+                    tidx.Add(new TriangleVertexIndices((int)terrain.Indices[t],
+                                                       (int)terrain.Indices[t + 1],
+                                                       (int)terrain.Indices[t + 2]));
+
+            }
+
+            Octree terrainOctree = new Octree(jvectors, tidx);
+
+            navigationMeshShape = new TriangleMeshShape(terrainOctree);
 
             navigationMesh = new RigidBody(navigationMeshShape);
 

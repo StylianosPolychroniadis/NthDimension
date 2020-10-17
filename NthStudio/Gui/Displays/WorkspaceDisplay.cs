@@ -1519,9 +1519,9 @@ namespace NthStudio.Gui.Displays
             miSimulation_Terrain.Name = "Terrain";
             miSimulation_Terrain.ItemClickedEvent += delegate
             {
-                float size = 2048;
+                float size = 256;
                 int subdv = 32;
-                float heightScale = 2.0f;
+                float heightScale = 10.0f;
                 float textureScale = 1.0f;
                 Terrain terrain = new Terrain(size, size, //4096, 4096, //512, 512  //1024, 1024,
                                               subdv, subdv,  //128, 128,
