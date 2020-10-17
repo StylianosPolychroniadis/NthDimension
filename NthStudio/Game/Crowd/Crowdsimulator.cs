@@ -67,12 +67,14 @@ namespace NthStudio.Game.Crowd
 
             for (int i = 0; i < Humans; i++)
             {
-                humans.Add(humanFactory.CreateHuman());
+                Human human = humanFactory.CreateHuman();
+                humans.Add(human);
             }
 
             for (int i = 0; i < Assassins; i++)
             {
-                humans.Add(agentFactory.CreateHuman(humans));
+                Human assasin = agentFactory.CreateHuman(humans);
+                humans.Add(assasin);
             }
 
             field.Update(this.humans);
@@ -89,12 +91,12 @@ namespace NthStudio.Game.Crowd
 
             if (frameCount >= 10)
             {
+                frameCount = 0;
                 try
                 {
                     field.Update(this.humans);
                 }
-                catch { }
-                frameCount = 0;
+                catch { }                
             }
 
             //this.Draw();
@@ -136,8 +138,10 @@ namespace NthStudio.Game.Crowd
 
         public static Vector2 GetRandomPosition()
         {
-            
-            return new Vector2(Rnd.Next(widthNegative, widthPositive), Rnd.Next(lengthNegative, lengthPositive));
+            float x = Rnd.Next(widthNegative, widthPositive);
+            float z = Rnd.Next(lengthNegative, lengthPositive);
+
+            return new Vector2(x, z);
         }
     }
 }

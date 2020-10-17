@@ -32,7 +32,7 @@ namespace NthStudio
                 (key.IsKeyDown(OpenTK.Input.Key.LControl) ||
                 key.IsKeyDown(OpenTK.Input.Key.RControl)))
             {
-                if (lastCtrlF1.AddMilliseconds(200) < DateTime.Now)
+                if (lastCtrlF1.AddMilliseconds(250) < DateTime.Now)
                 {
                     DrawPerformance = !DrawPerformance;
                     lastCtrlF1 = DateTime.Now;

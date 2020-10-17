@@ -102,7 +102,7 @@
 
             // add the ground to the world.
             worldPhysics.AddBody(navigationMesh);
-            navigationMesh.Tag = "NavigationMesh";
+            navigationMesh.Tag = terrain;
         }
 
 
@@ -164,5 +164,15 @@
             return result;
         }
 
+        public float GetHeightAtNavMesh(float x, float z)
+        {
+            float ret = 0.5f;
+            if(navigationMesh.Tag is Terrain)
+            {
+                Terrain terrain = (Terrain)navigationMesh.Tag;
+                ret = terrain.GetHeightAt(x, z);
+            }
+            return ret;
+        }
     }
 }

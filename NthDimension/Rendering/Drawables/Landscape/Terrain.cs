@@ -65,9 +65,9 @@ namespace NthDimension.Rendering.Drawables.Models
                         int subdivisionsWide, int subdivisionsTall,
                         string heightMapFile, 
                         float heightScale,
-                        string textureFile,
+                        //string textureFile,
                         float textureScale,
-                        string material = "terrain\\terrainsimple.xmf")
+                        string material)
         {
             PrimitiveType = Rasterizer.PrimitiveType.TriangleStrip;
 
@@ -75,10 +75,10 @@ namespace NthDimension.Rendering.Drawables.Models
             SubdivisionsTall = subdivisionsTall;
             TextureScale    = textureScale;
             HeightScale     = heightScale;
-            textureId       = loadTexture(textureFile);
+            //textureId       = loadTexture(textureFile);
 
             this.setMaterial(material);
-            //this.setMaterial("unlit.xmf");
+            //////this.setMaterial("unlit.xmf");
 
             Vertex[] verts = null;
 
@@ -137,7 +137,7 @@ namespace NthDimension.Rendering.Drawables.Models
             {
                 positions.Add(new Vector3(v.X, v.Y, v.Z));
                 uvs.Add(new Vector2(v.U, v.V));
-                normals.Add(v.Normal);
+                //normals.Add(v.Normal);
             }
 
             for (int f = 0; f < indices.Length; f += 3)
@@ -152,14 +152,16 @@ namespace NthDimension.Rendering.Drawables.Models
                 catch { }
             }
 
-            MeshVbo mterrain = ApplicationBase.Instance.MeshLoader.FromMesh(positions, normals, uvs, faces);
+            MeshVbo mterrain = ApplicationBase.Instance.MeshLoader.FromMesh(positions, normals, uvs, faces, 
+                                                                            "Terrain v1.0",
+                                                                            false, false, false, false);
 
             this.meshes = new MeshVbo[1]
             {
                 mterrain
             };
 
-            this.CreateVAO();                        
+            this.CreateVAO();
         }
 
         private int loadTexture(string textureFile)
@@ -187,18 +189,20 @@ namespace NthDimension.Rendering.Drawables.Models
             float tInc = 1.0f / subZ;
 
             float curX = -width / 2.0f;
-            float curZ = -length / 2.0f;
+            float curZ = -length / 2.0f;                       
             float curU = 0.0f;
             float curV = 0.0f;
-
             int curVert = 0;
 
             Heights = new float[subX+1, subZ+1];
+
 
             for (int z = 0; z <= subZ; z++)
             {
                 for (int x = 0; x <= subX; x++)
                 {
+                   
+
                     verts[curVert++] = new Vertex()
                     {
                         X = curX,
@@ -306,21 +310,29 @@ namespace NthDimension.Rendering.Drawables.Models
 
         private void generateNormals(Vertex[] verts, uint[] indices)
         {
+            Utilities.ConsoleUtil.log("(*) GENERATING TERRAIN NORMALS...");
             for (int i = 2; i < indices.Length; i++)
             {
                 uint index1 = indices[i - 2],
                      index2 = indices[i - 1],
                      index3 = indices[i];
 
-                Vector3 normal = calcNormal(verts[index1], verts[index2], verts[index3]);
+                Vector3 normal = Vector3.Zero; // Eliminates empty(null) normal values from func calcNormals?
+                normal = calcNormal(verts[index1], verts[index2], verts[index3]);
 
                 if (normal.Y < 0)
-                    normal *= -1.0f;
-                
+                    normal *= -1.0f;                
 
-                verts[index1].Normal += normal;
-                verts[index2].Normal += normal;
-                verts[index3].Normal += normal;
+                normal.NormalizeFast();
+
+                verts[index1].Normal = normal; 
+                verts[index2].Normal = normal; 
+                verts[index3].Normal = normal; 
+
+                normals.Add(normal);
+
+                //Utilities.ConsoleUtil.log($"Indices [\t{index1}\t{index2}\t{index3}\t] Normal X:\t{normal.X:##.#######}\tY:\t{normal.Y:##.#######}\tZ:\t{normal.Z:##.#######}");
+                Utilities.ConsoleUtil.log($"Indices [\t{index1}\t{index2}\t{index3}\t] Normal \t{normal}");
             }
 
             #region for visualization, do not use
@@ -349,7 +361,7 @@ namespace NthDimension.Rendering.Drawables.Models
         {
             Vector3 first = new Vector3(v2.X - v1.X, v2.Y - v1.Y, v2.Z - v1.Z);
             Vector3 second = new Vector3(v3.X - v1.X, v3.Y - v1.Y, v3.Z - v1.Z);
-            return Vector3.NormalizeFast(Vector3.Cross(first, second));
+            return Vector3.Normalize(Vector3.Cross(first, second));
         }
 
         public float GetHeightAt(float x, float z)

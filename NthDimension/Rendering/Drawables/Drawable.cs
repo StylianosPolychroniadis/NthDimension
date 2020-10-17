@@ -849,7 +849,7 @@ namespace NthDimension.Rendering.Drawables
 
                 if (vaoHandle[i] == 0)
                     ApplicationBase.Instance.Renderer.GenVertexArrays(1, out vaoHandle[i]);
-meshes[i].MeshData.vaoHandle = vaoHandle;
+                meshes[i].MeshData.vaoHandle = vaoHandle;
                 ApplicationBase.Instance.Renderer.BindVertexArray(vaoHandle[i]);
 
 #region Bones

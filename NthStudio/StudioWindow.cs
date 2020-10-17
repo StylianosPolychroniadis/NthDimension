@@ -839,6 +839,12 @@ namespace NthStudio
         {
             base.OnUpdateFrame(e);
 
+            // TODO:: Create a stack of IUpdate actions and call here
+            // ie IUpdateFrame[] updateObjects = Scene.GetUpdateable();
+            //    foreach(var upd in updateObjects)
+            //        upd.UpdateFrame(e.Time);
+            // 
+
             #region UI Updates
             this.updatePerformanceTrends(e.Time);
             if (null != m_screen)
@@ -887,7 +893,8 @@ namespace NthStudio
 
             DateTime cNow = DateTime.Now;
             ConsoleUtil.log(string.Format("Creating Crowd..."));
-            crowd = new CrowdSimulator(-2, 2, -45, 10);
+            //crowd = new CrowdSimulator(-2, 2, -45, 10);
+            crowd = new CrowdSimulator(-50, 50, -50, 50);
             crowd.Init(humanCount, assasinCount);
             ConsoleUtil.log(string.Format("Creating Crowd... Done! (Total time {0})", (DateTime.Now - cNow)), false);
         }

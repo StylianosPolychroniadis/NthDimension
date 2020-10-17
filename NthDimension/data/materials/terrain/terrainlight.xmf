@@ -1,0 +1,14 @@
+﻿<material shader="defaultlight.xsp"
+	        ssnshader="ssnormals.xsp"
+		      selection="selection.xsp"
+		      shadow="shadow.xsp"
+		      defInfo="defInfo.xsp">
+
+  <textures base="terrain\colormap.dds"
+            normal="terrain\normalmap.png"
+						definfo="terrain\specularmap.png" />
+
+  <lighted/>
+
+</material>
+

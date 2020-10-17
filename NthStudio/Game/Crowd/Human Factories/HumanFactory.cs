@@ -22,7 +22,7 @@ namespace NthStudio.Game.Crowd.Human_Factories
         public Human CreateHuman()
         {
             var human = new Human(HumanType.Normal, CrowdSimulator.GetRandomPosition(), CrowdSimulator.GetRandomPosition());
-            
+
             return human;
         }
     }

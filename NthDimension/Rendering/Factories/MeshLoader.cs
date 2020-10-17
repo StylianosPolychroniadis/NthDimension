@@ -1394,12 +1394,17 @@ namespace NthDimension.Rendering.Loaders
             return FromMesh(pos, nor, tex, tri);
         }
 
-        public MeshVbo FromMesh(ListVector3 vertex, ListVector3 normal, ListVector2 textureUv, ListFace polygon)
+        public MeshVbo FromMesh(ListVector3 vertex, ListVector3 normal, ListVector2 textureUv, ListFace polygon, 
+                                string name = "//Generated//", 
+                                bool genNormal = true, 
+                                bool triangulate = false, 
+                                bool reduce = false, 
+                                bool smoothing = false)
         {
             swfullObj.Start();
 
-            MeshVbo ret = this.createMesh(vertex, normal, textureUv, polygon);
-            ret.Name = "//Generated//";
+            MeshVbo ret = this.createMesh(vertex, normal, textureUv, polygon, genNormal, triangulate, reduce, smoothing);
+            ret.Name = name;
             ret.Type = MeshVbo.MeshType.Generated;
             ret.Pointer = string.Empty;
             ret.CurrentLod = MeshVbo.MeshLod.Level0;
@@ -1544,7 +1549,8 @@ namespace NthDimension.Rendering.Loaders
 
             return target;
         }
-        private MeshVbo createMesh(ListVector3 positionData, ListVector3 normalData, ListVector2 textureData, ListFace faceData)
+        private MeshVbo createMesh(ListVector3 positionData, ListVector3 normalData, ListVector2 textureData, ListFace faceData,
+                                    bool genNormal = true, bool triangulate = false, bool reduce = false, bool smoothing = false)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -1572,7 +1578,7 @@ namespace NthDimension.Rendering.Loaders
             target.MeshData.Faces.AddRange(faceData);
             #endregion
 
-            ParseFaceList(ref target, true, MeshVbo.MeshLod.Level0, false, false, false);
+            ParseFaceList(ref target, genNormal, MeshVbo.MeshLod.Level0, triangulate, reduce, smoothing);
             GenerateVBO(ref target, MeshVbo.MeshLod.Level0);
             
             Utilities.ConsoleUtil.log(string.Format(@"   " + ConsoleUtil.bulletWhite + "Build polygon    ({2}): Done " + ConsoleUtil.tick + "\t\t\t\t\t| {0} {1}", sw.ToHumanReadable(), Environment.NewLine, MeshVbo.MeshLod.Level0));

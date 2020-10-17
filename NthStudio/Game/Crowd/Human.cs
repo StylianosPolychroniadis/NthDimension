@@ -86,22 +86,31 @@ namespace NthStudio.Game.Crowd
 
         public IDecisionBehaviour   DecisionBehaviour { get; set; }
 
+        private Vector3 prevPos;
+
         public void Update(List<Human> NearestNeighbour)
         {
             try
             {
-                Vector3 prevPos = new Vector3(Position.X, 0, Position.Y);
+                if (null == prevPos)
+                {
+                    prevPos = new Vector3(Position.X,
+                                          StudioWindow.Instance.Scene.GetHeightAtNavMesh(Position.X, Position.Y) + 10, 
+                                          Position.Y);
+                }
 
                 var humanInSight = NearestNeighbour.Where(OnPredicate).ToList();
                 this.DecisionBehaviour.CheckSurrounding(this, humanInSight);
                 this.Position = this.MovementBehaviour.Move(this, NearestNeighbour);
+
+                float navMeshY = StudioWindow.Instance.Scene.GetHeightAtNavMesh(Position.X, Position.Y);
 
                 if (null == model)
                     model = StudioWindow.Instance.Scene.RemotePlayers.Where(x => x.UserId == avatarInfo.UserId).FirstOrDefault();
                 if (null != model)
                 {
                     Vector3 position = prevPos;
-                    Vector3 go = new Vector3(Position.X, 0, Position.Y);
+                    Vector3 go = new Vector3(Position.X, navMeshY, Position.Y);
                     float dot = Vector3.Dot(position, go);
                     float l0 = Math.Abs(position.LengthFast);
                     float l1 = Math.Abs(go.LengthFast);
@@ -117,6 +126,8 @@ namespace NthStudio.Game.Crowd
                         this.model.SetAnimationWalk();
                     else
                         this.model.SetAnimationIdle();
+
+                    prevPos = new Vector3(Position.X, navMeshY, Position.Y);
                 }
 
                 // Update Colors

@@ -83,6 +83,18 @@
     <Compile Include="Rendering\Culling\BoundingOctreeObject.cs" />
     <Compile Include="Rendering\Culling\BoundingSphere.cs" />
     <Compile Include="Rendering\Scenegraph\SceneGame.Octree.cs" />
+    <Content Include="data\textures\terrain\colormap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\terrain\heightmap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\terrain\normalmap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\terrain\specularmap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="_Documentation\Screenshots\Cyberpunk.png" />
     <Content Include="_Documentation\Screenshots\GpuBound.png" />
     <Content Include="_Documentation\Screenshots\Sponza.png" />
@@ -93,6 +105,9 @@
     <Content Include="_Documentation\Screenshots\Untitled3.png" />
     <Content Include="_Documentation\Screenshots\Untitled4.png" />
     <Content Include="_Documentation\Screenshots\Untitled5.png" />
+    <Content Include="data\materials\terrain\terrainlight.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CloudsLess.dds" />
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CloudsLots.dds" />
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CubeNormalizer_ULQ.dds" />
