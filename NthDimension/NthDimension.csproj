@@ -86,10 +86,22 @@
     <Content Include="data\textures\terrain\colormap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\textures\terrain\dirt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\terrain\grass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\textures\terrain\heightmap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\textures\terrain\normalmap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\terrain\rock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\terrain\snow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\textures\terrain\specularmap.png">
@@ -108,6 +120,37 @@
     <Content Include="data\materials\terrain\terrainlight.xmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\shaders\terrainmultitextured.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\terrainmultitextured.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\terrainmultitextured.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultlight.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="data\materials\terrain\terrainmultitex.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\shaders\defLighting.snip" />
+    <None Include="data\shaders\defReflections.snip" />
+    <None Include="data\shaders\lighting.snip" />
+    <None Include="data\shaders\reflections.snip" />
+    <Content Include="data\shaders\unlitGeneric.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\unlitGeneric.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\unlitGeneric.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="data\shaders\vAnimation.snip" />
+    <None Include="data\shaders\vAnimationNormals.snip" />
+    <None Include="data\shaders\vLightCalc.snip" />
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CloudsLess.dds" />
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CloudsLots.dds" />
     <None Include="_Documentation\All Shaders\TV3D\nGraphics\textures\Atmosphere\CubeNormalizer_ULQ.dds" />

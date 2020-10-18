@@ -1,9 +1,12 @@
+// Fragment Shader Base Snippet
+
 #variables
 precision lowp float;
 
 uniform vec3 in_lightambient;
 
-in vec4 g_pos;
+in vec4 g_pos;					// ModelView space vertex position
+in vec4 g_normal;				// ModelView space vertex normal
 in vec3 v_eyedirection;
 in vec3 v_normal;
 in vec2 v_texture;
@@ -13,6 +16,9 @@ in vec3 v_bnormal;
 in float v_depth;
 
 uniform sampler2D baseTexture;
+uniform sampler2D baseTextureTwo;
+uniform sampler2D baseTextureThree;
+uniform sampler2D baseTextureFour;
 uniform sampler2D normalTexture;
 uniform sampler2D emitTexture;
 uniform sampler2D definfoTexture;
@@ -45,4 +51,7 @@ vec2 screenpos(){
 	vec2 screenposition = screenpos();
 	//vec3 refn = reflect(v_eyedirection,N);
 	vec4 base = texture(baseTexture, v_texture);
+	vec4 base2 = texture(baseTextureTwo, v_texture);
+	vec4 base3 = texture(baseTextureThree, v_texture);
+	vec4 base4 = texture(baseTextureFour, v_texture);
 	vec4 info = texture(definfoTexture,v_texture);

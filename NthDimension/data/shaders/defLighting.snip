@@ -1,0 +1,9 @@
+#variables
+uniform sampler2D lightMap;
+#functions
+
+#code
+	vec4 light = texture(lightMap,screenposition);
+	vec3 all_lights = light.rgb;
+	vec3 all_spec = light.rgb*light.a*info.r*info.r*10.0;	// Mar-23-18
+	//vec3 all_spec = light.rgb*light.a*info.r*info.r*2.0;

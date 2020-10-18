@@ -413,8 +413,9 @@ namespace NthDimension.Rendering.Drawables
             int emit = propertys.useEmit ? 1 : 0;
 
             curMat.activateTexture(Material.TexType.baseTexture,        ref texunit, ref handle);
-            curMat.activateTexture(Material.TexType.base2Texture,       ref texunit, ref handle);
-            curMat.activateTexture(Material.TexType.base3Texture,       ref texunit, ref handle);
+            curMat.activateTexture(Material.TexType.baseTextureTwo,       ref texunit, ref handle);
+            curMat.activateTexture(Material.TexType.baseTextureThree,       ref texunit, ref handle);
+            curMat.activateTexture(Material.TexType.baseTextureFour,       ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.definfoTexture,     ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.reflectionTexture,  ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.normalTexture,      ref texunit, ref handle);

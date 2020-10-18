@@ -1519,35 +1519,31 @@ namespace NthStudio.Gui.Displays
             miSimulation_Terrain.Name = "Terrain";
             miSimulation_Terrain.ItemClickedEvent += delegate
             {
-                float size = 512;
-                int subdv = 32;
-                float heightScale = 20.0f;
-                float textureScale = 100.0f;
+                float heightScale   = 70.0f;
+                float hMin          = -10;
+                float hMax          = 80;
+                float size          = 512;
+                int subdv           = 128;
                 
-                Terrain terrain = new Terrain(size, size,           //4096, 4096, //512, 512  //1024, 1024,
-                                              subdv, subdv,         //128, 128, // LOD
-                                              @"data\textures\terrain\sand_h.png", 
-                                              heightScale,          
-                                              textureScale,
-                                              "terrain\\terrainsimple.xmf"
-                                              )
-                {
-                    Size = new Vector3(1f, 1f, 1f)
-                };
+                float textureScale  = .01f; // This 
+
+                Terrain terrain = new Terrain(@"data\textures\terrain\heightmap.png",
+                                              "terrain\\terrainmultitex.xmf",                                               
+                                               size, size,           //4096, 4096, //512, 512  //1024, 1024,
+                                               subdv, subdv,         //128, 128, // LOD                                              
+                                               heightScale,
+                                               hMin,
+                                               hMax,
+                                               textureScale);
                 
                 ApplicationBase.Instance.Scene.AddDrawable(terrain);
                 ApplicationBase.Instance.Scene.CreatePhysics(terrain, new ContactSettings()
                 {
-                    //AllowedPenetration = .01f,
-                    //BiasFactor = .001f,
-                    //BreakThreshold = .01f,
-                    //MaximumBias = 10.0f,
-                    //MinimumVelocity = .01f
-                    AllowedPenetration = .1f,
-                    BiasFactor = 1f,
-                    BreakThreshold = 1.5f,
-                    MaximumBias = 2.0f,
-                    MinimumVelocity = .1f
+                    AllowedPenetration = .01f,
+                    BiasFactor = .001f,
+                    BreakThreshold = .01f,
+                    MaximumBias = 10.0f,
+                    MinimumVelocity = .01f
                 });                
 
             };

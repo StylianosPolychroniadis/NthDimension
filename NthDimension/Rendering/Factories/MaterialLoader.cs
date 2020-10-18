@@ -426,27 +426,23 @@ namespace NthDimension.Rendering.Loaders
                     {
                         try
                         {
-                            if (reader.Name == "base")
+                            if (reader.Name         == "base")
                                 target.setTexture(Material.TexType.baseTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
-                            else if (reader.Name == "base2")
-                                target.setTexture(Material.TexType.base2Texture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
-
-                            else if (reader.Name == "base3")
-                                target.setTexture(Material.TexType.base3Texture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
-
-                            else if (reader.Name == "normal")
+                            else if (reader.Name    == "base2")
+                                target.setTexture(Material.TexType.baseTextureTwo, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                            else if (reader.Name    == "base3")
+                                target.setTexture(Material.TexType.baseTextureThree, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                            else if (reader.Name    == "base4")
+                                target.setTexture(Material.TexType.baseTextureFour, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                            else if (reader.Name    == "normal")
                                 target.setTexture(Material.TexType.normalTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
-
-                            else if (reader.Name == "reflection")
+                            else if (reader.Name    == "reflection")
                                 target.setTexture(Material.TexType.reflectionTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
-
-                            else if (reader.Name == "definfo")
+                            else if (reader.Name    == "definfo")
                                 target.setTexture(Material.TexType.definfoTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
-
-                            else if (reader.Name == "emit")
+                            else if (reader.Name    == "emit")
                                 target.setTexture(Material.TexType.emitTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
-
-                            else if (reader.Name == "video" || reader.Name == "videoloop")
+                            else if (reader.Name    == "video" || reader.Name == "videoloop")
                             {
                                 if (!ApplicationBase.Instance.IsIntegratedGpu)
                                 {
@@ -494,27 +490,6 @@ namespace NthDimension.Rendering.Loaders
                                     ConsoleUtil.log(string.Format("<!> No ffmpeg support on integrated graphics Gpu ", reader.Value));
                                 }
                             }
-                            
-                            //// Should those be here????
-                            //else if (reader.Name == "skyboxfront")
-                            //    throw new NotImplementedException("Material skyboxfront");
-                            ////target.setTexture();
-                            //else if (reader.Name == "skyback")
-                            //    throw new NotImplementedException("Material skyback");
-                            ////target.setTexture();
-                            //else if (reader.Name == "skyleft")
-                            //    throw new NotImplementedException("Material skyleft");
-                            ////target.setTexture();
-                            //else if (reader.Name == "skyright")
-                            //    throw new NotImplementedException("Material skyright");
-                            ////target.setTexture();
-                            //else if (reader.Name == "skyup")
-                            //    throw new NotImplementedException("Material skyup");
-                            ////target.setTexture();
-                            //else if (reader.Name == "skydown")
-                            //    throw new NotImplementedException("Material skydown");
-                            ////target.setTexture();
-
                         }
                         catch(Exception e)
                         {
@@ -525,9 +500,6 @@ namespace NthDimension.Rendering.Loaders
                             continue;
                         }
                     }
-
-                    //Utilities.ConsoleUtil.log("    base: " + target.getTextureName(Material.TexType.baseTexture));
-                    //Utilities.ConsoleUtil.log("    normal: " + target.getTextureName(Material.TexType.normalTexture));
                     // TODO:: Log the rest textures
                     reader.MoveToElement();
                 }

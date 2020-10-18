@@ -1,14 +1,16 @@
-﻿<material shader="defaultlight.xsp"
+﻿<material shader="terrainmultitextured.xsp"
 	        ssnshader="ssnormals.xsp"
 		      selection="selection.xsp"
 		      shadow="shadow.xsp"
 		      defInfo="defInfo.xsp">
 
-  <textures base="base\uvmap.png"
+  <textures base="terrain\grass.png"
+			base2="terrain\snow.png"
+			base3="terrain\dirt.png"
+			base4="terrain\rock.png"
             normal="terrain\normalmap.png"
 						definfo="terrain\specularmap.png" />
 
   <lighted/>
 
 </material>
-

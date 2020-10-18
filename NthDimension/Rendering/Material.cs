@@ -95,9 +95,11 @@ namespace NthDimension.Rendering
             [ProtoMember(40)]
             baseTexture,
             [ProtoMember(50)]
-            base2Texture,
+            baseTextureTwo,
             [ProtoMember(60)]
-            base3Texture,
+            baseTextureThree,
+            [ProtoMember(65)]
+            baseTextureFour,
             [ProtoMember(70)]
             normalTexture,
             [ProtoMember(80)]

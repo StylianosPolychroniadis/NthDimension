@@ -52,8 +52,8 @@ _assetsLoaded = false;
 		            wr.WriteLine("<min>30</min>");
 		            wr.WriteLine("<max>160</max>");
 		            wr.WriteLine("<color>1|1|1|1</color>");
-                //wr.WriteLine("<ambient>0.88|0.82|0.83</ambient>");      // Light
-                wr.WriteLine("<ambient>0.38|0.32|0.33</ambient>");    // Dark
+                wr.WriteLine("<ambient>0.88|0.82|0.83</ambient>");      // Light
+                //wr.WriteLine("<ambient>0.38|0.32|0.33</ambient>");    // Dark
                 //wr.WriteLine("<position>0|60|0</position>");
 		            wr.WriteLine("<direction>-0.04817817|-0.4817817|0.085</direction>");
 	            wr.WriteLine("</sunlight>");

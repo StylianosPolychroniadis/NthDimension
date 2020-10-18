@@ -37,6 +37,7 @@ namespace NthDimension.Rendering.Shaders
         in_rendersize,
         in_lightambient,                    // TODO!!!:: Per Material [ Addition To Material Format ]  
         in_lightsun,                        // TODO!!!:: Per Material [ Addition To Material Format ]  
+        
         //shadow_quality,
 
         in_particlepos,
@@ -112,6 +113,9 @@ namespace NthDimension.Rendering.Shaders
         // Skin Color
         in_skinColor,
 
-            
+        terrain_minHeight,                  // float
+        terrain_maxHeight,                  // float
+        terrain_uvScale,                    // vec2
+        terrain_lightDir                    // vec3
     }
 }

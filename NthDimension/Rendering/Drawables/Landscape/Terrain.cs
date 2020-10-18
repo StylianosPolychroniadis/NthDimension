@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 
 namespace NthDimension.Rendering.Drawables.Models
 {
+    /// <summary>
+    /// Simple Terrain class. Makes use of 4 different textures (see material definition)
+    /// Class is MeshData LOD excluded. Using dynamic terrain LOD
+    /// </summary>
     public class Terrain : Model
     {
         new public static string nodename = "tmodel";
@@ -33,64 +37,68 @@ namespace NthDimension.Rendering.Drawables.Models
 
         public delegate float HeightFunc(float x, float z);
 
-        uint[] indices;
+        uint[]      indices;
         ListVector3 positions           = new ListVector3();
         ListVector2 uvs                 = new ListVector2();
         ListVector3 normals             = new ListVector3();
         ListFace    faces               = new ListFace();
 
-        int textureId = -1;
+        byte[]      imagePixels         = null;      // Hacked to acquire height by x,z
+        int         wide = 0, tall      = 0;         // Hacked to acquire height by x,z
 
-        public Vector3  Min             { get; private set; }   = Vector3.Zero;
-        public Vector3  Max             { get; private set; }   = Vector3.Zero;
-        public float    TextureScale    { get; private set; }
-        public float    HeightScale     { get; private set; }
-        public float    Width           { get; private set; }
-        public float    Length          { get; private set; }
-        public int      NumVertices     { get; private set; }
-        public int      NumTriangles    { get; private set; }
+        public Vector3      Min                 { get; private set; }   = Vector3.Zero;
+        public Vector3      Max                 { get; private set; }   = Vector3.Zero;
+        public float        TextureScale        { get; private set; }
+        public float        HeightScale         { get; private set; }
+        public float        Width               { get; private set; }
+        public float        Length              { get; private set; }
+        public int          NumVertices         { get; private set; }
+        public int          NumTriangles        { get; private set; }
 
-        public int SubdivisionsWide { get; private set; }
-        public int SubdivisionsTall { get; private set; }
+        public int          SubdivisionsWide    { get; private set; }
+        public int          SubdivisionsTall    { get; private set; }
 
-        public float[,] Heights;
+        public float[,]     Heights;
 
-        public ListVector3 Points {  get { return positions; } }
-        public uint[] Indices {  get { return indices; } }
+        public float        HeightMin           { get; set; } = 0f;
+        public float        HeightMax { get; set; } = 100;
 
-        byte[] imagePixels = null; // Hacked to acquire height by x,z
-        int wide = 0, tall = 0; // Hacked to acquire height by x,z
+        public ListVector3  Points {  get { return positions; } }
+        public uint[]       Indices {  get { return indices; } }
 
-        public Terrain(float width, float length,
-                        int subdivisionsWide, int subdivisionsTall,
-                        string heightMapFile, 
+       
+
+        public Terrain(string heightMapFile,
+                       string material,
+                        float width, float length,
+                        int subdivisionsWide, int subdivisionsTall,                         
                         float heightScale,
-                        //string textureFile,
-                        float textureScale,
-                        string material)
+                        float heightMin,
+                        float heightMax,
+                        float textureScale)
         {
-            PrimitiveType = Rasterizer.PrimitiveType.TriangleStrip;
+            PrimitiveType       = Rasterizer.PrimitiveType.TriangleStrip;
+            IgnoreLod           = true;
 
-            SubdivisionsWide = subdivisionsWide;
-            SubdivisionsTall = subdivisionsTall;
-            TextureScale    = textureScale;
-            HeightScale     = heightScale;
-            //textureId       = loadTexture(textureFile);
+            SubdivisionsWide    = subdivisionsWide;
+            SubdivisionsTall    = subdivisionsTall;
+            TextureScale        = textureScale;
+            HeightScale         = heightScale;
+            HeightMin           = heightMin;
+            HeightMax           = heightMax;
 
             this.setMaterial(material);
-            //////this.setMaterial("unlit.xmf");
-
-            Vertex[] verts = null;
+            
+            Vertex[] verts      = null;
 
             if (string.IsNullOrEmpty(heightMapFile))
             {
                 verts = this.createPlane(width, length,
                                          subdivisionsWide, subdivisionsTall,
                                          (x, y) => 0.0f);
-            } else {
-                //int wide = 0, tall = 0;
-                //byte[] imagePixels = null;
-
+            } 
+            else 
+            {
                 using (Bitmap bitmap = new Bitmap(heightMapFile))
                 {
                     wide = bitmap.Width;
@@ -129,7 +137,7 @@ namespace NthDimension.Rendering.Drawables.Models
                                     });
             }
 
-            /*uint[]*/ indices = createIndices(subdivisionsWide, subdivisionsTall);
+            indices = createIndices(subdivisionsWide, subdivisionsTall);
 
             this.generateNormals(verts, indices);
 
@@ -137,7 +145,6 @@ namespace NthDimension.Rendering.Drawables.Models
             {
                 positions.Add(new Vector3(v.X, v.Y, v.Z));
                 uvs.Add(new Vector2(v.U, v.V));
-                //normals.Add(v.Normal);
             }
 
             for (int f = 0; f < indices.Length; f += 3)
@@ -164,6 +171,7 @@ namespace NthDimension.Rendering.Drawables.Models
             this.CreateVAO();
         }
 
+        [Obsolete("Old fixed-pipeline function. REMOVE ")]
         private int loadTexture(string textureFile)
         {
             string texture = textureFile.Replace(Configuration.GameSettings.TextureFolder, string.Empty);
@@ -310,14 +318,13 @@ namespace NthDimension.Rendering.Drawables.Models
 
         private void generateNormals(Vertex[] verts, uint[] indices)
         {
-            Utilities.ConsoleUtil.log("(*) GENERATING TERRAIN NORMALS...");
             for (int i = 2; i < indices.Length; i++)
             {
                 uint index1 = indices[i - 2],
                      index2 = indices[i - 1],
                      index3 = indices[i];
 
-                Vector3 normal = Vector3.Zero; // Eliminates empty(null) normal values from func calcNormals?
+                Vector3 normal = Vector3.Zero; 
                 normal = calcNormal(verts[index1], verts[index2], verts[index3]);
 
                 if (normal.Y < 0)
@@ -330,9 +337,6 @@ namespace NthDimension.Rendering.Drawables.Models
                 verts[index3].Normal = normal; 
 
                 normals.Add(normal);
-
-                //Utilities.ConsoleUtil.log($"Indices [\t{index1}\t{index2}\t{index3}\t] Normal X:\t{normal.X:##.#######}\tY:\t{normal.Y:##.#######}\tZ:\t{normal.Z:##.#######}");
-                Utilities.ConsoleUtil.log($"Indices [\t{index1}\t{index2}\t{index3}\t] Normal \t{normal}");
             }
 
             #region for visualization, do not use
@@ -385,12 +389,24 @@ namespace NthDimension.Rendering.Drawables.Models
 
             if (curShader.Loaded)
             {
-                Vector3 eyepos = ApplicationBase.Instance.Scene.EyePos;
-                Vector4 skinColor = new Vector4(0f, 0f, 0f, 0f);
-                curShader.InsertUniform(Uniform.in_eyepos, ref eyepos);
+                float heightMin = HeightMin;
+                float heightMax = HeightMax;
+                Vector2 uvScale = new Vector2(TextureScale, TextureScale);
 
+                curShader.InsertUniform(Uniform.terrain_minHeight,  ref heightMin);
+                curShader.InsertUniform(Uniform.terrain_maxHeight,  ref heightMax);
+                curShader.InsertUniform(Uniform.terrain_uvScale,    ref uvScale);
+                if(ApplicationBase.Instance.Scene.DirectionalLights.Count > 0)
+                {   
+                    // NOTE:: Assumes that sun in always directional light [0]
+                    // NOTE:: Works only on DirectionalLight[0]
+                    Vector3 sun = ApplicationBase.Instance.Scene.DirectionalLights[0].PointingDirection.Normalized();
+                    curShader.InsertUniform(Uniform.terrain_uvScale, ref uvScale);
+                }
             }
         }
+
+        
 
     }
 }

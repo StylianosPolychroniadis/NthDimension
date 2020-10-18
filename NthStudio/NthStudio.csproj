@@ -87,6 +87,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FloatTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\PhysicsSettings.cs">
       <SubType>Form</SubType>
     </Compile>
