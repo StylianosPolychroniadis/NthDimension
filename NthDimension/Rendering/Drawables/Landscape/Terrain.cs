@@ -37,6 +37,8 @@ namespace NthDimension.Rendering.Drawables.Models
 
         public delegate float HeightFunc(float x, float z);
 
+        const float meshUv              = 1f;
+
         uint[]      indices;
         ListVector3 positions           = new ListVector3();
         ListVector2 uvs                 = new ListVector2();
@@ -48,7 +50,6 @@ namespace NthDimension.Rendering.Drawables.Models
 
         public Vector3      Min                 { get; private set; }   = Vector3.Zero;
         public Vector3      Max                 { get; private set; }   = Vector3.Zero;
-        public float        TextureScale        { get; private set; }
         public float        HeightScale         { get; private set; }
         public float        Width               { get; private set; }
         public float        Length              { get; private set; }
@@ -58,31 +59,30 @@ namespace NthDimension.Rendering.Drawables.Models
         public int          SubdivisionsWide    { get; private set; }
         public int          SubdivisionsTall    { get; private set; }
 
-        public float[,]     Heights;
+        public float[,]     Heights             { get; private set; }
 
-        public float        HeightMin           { get; set; } = 0f;
-        public float        HeightMax { get; set; } = 100;
+        public float        HeightMin           { get; private set; } 
+        public float        HeightMax           { get; private set; } 
 
         public ListVector3  Points {  get { return positions; } }
         public uint[]       Indices {  get { return indices; } }
 
-       
+        public Vector2      UVScale { get; set; } = new Vector2(1.0f, 1.0f);
 
         public Terrain(string heightMapFile,
                        string material,
                         float width, float length,
-                        int subdivisionsWide, int subdivisionsTall,                         
+                        int subdivisionsWide, int subdivisionsLong,                         
                         float heightScale,
                         float heightMin,
-                        float heightMax,
-                        float textureScale)
+                        float heightMax)
         {
             PrimitiveType       = Rasterizer.PrimitiveType.TriangleStrip;
             IgnoreLod           = true;
 
             SubdivisionsWide    = subdivisionsWide;
-            SubdivisionsTall    = subdivisionsTall;
-            TextureScale        = textureScale;
+            SubdivisionsTall    = subdivisionsLong;
+         
             HeightScale         = heightScale;
             HeightMin           = heightMin;
             HeightMax           = heightMax;
@@ -94,7 +94,7 @@ namespace NthDimension.Rendering.Drawables.Models
             if (string.IsNullOrEmpty(heightMapFile))
             {
                 verts = this.createPlane(width, length,
-                                         subdivisionsWide, subdivisionsTall,
+                                         subdivisionsWide, subdivisionsLong,
                                          (x, y) => 0.0f);
             } 
             else 
@@ -122,7 +122,7 @@ namespace NthDimension.Rendering.Drawables.Models
                 }
 
                 verts = createPlane(width, length, 
-                                    subdivisionsWide, subdivisionsTall, 
+                                    subdivisionsWide, subdivisionsLong, 
                                     (x, y) => {
                                         float bx = x * wide;
                                         float by = y * tall;
@@ -137,7 +137,7 @@ namespace NthDimension.Rendering.Drawables.Models
                                     });
             }
 
-            indices = createIndices(subdivisionsWide, subdivisionsTall);
+            indices = createIndices(subdivisionsWide, subdivisionsLong);
 
             this.generateNormals(verts, indices);
 
@@ -216,8 +216,8 @@ namespace NthDimension.Rendering.Drawables.Models
                         X = curX,
                         Y = func(curU, curV),                        
                         Z = curZ,
-                        U = curU * TextureScale,
-                        V = curV * TextureScale
+                        U = curU * meshUv,
+                        V = curV * meshUv
                     };
                     curU += sInc;
                     curX += xSubSize;
@@ -390,18 +390,24 @@ namespace NthDimension.Rendering.Drawables.Models
             if (curShader.Loaded)
             {
                 float heightMin = HeightMin;
-                float heightMax = HeightMax;
-                Vector2 uvScale = new Vector2(TextureScale, TextureScale);
+                float heightMax = HeightMax;                
+                Vector2 uvScale = UVScale;
 
                 curShader.InsertUniform(Uniform.terrain_minHeight,  ref heightMin);
                 curShader.InsertUniform(Uniform.terrain_maxHeight,  ref heightMax);
                 curShader.InsertUniform(Uniform.terrain_uvScale,    ref uvScale);
-                if(ApplicationBase.Instance.Scene.DirectionalLights.Count > 0)
+                
+                if (ApplicationBase.Instance.Scene.DirectionalLights.Count > 0)
                 {   
                     // NOTE:: Assumes that sun in always directional light [0]
                     // NOTE:: Works only on DirectionalLight[0]
                     Vector3 sun = ApplicationBase.Instance.Scene.DirectionalLights[0].PointingDirection.Normalized();
-                    curShader.InsertUniform(Uniform.terrain_uvScale, ref uvScale);
+                    curShader.InsertUniform(Uniform.terrain_lightDir, ref sun);
+                }
+                else
+                {
+                    Vector3 sun = new Vector3(0f, -1f, 0.05f);
+                    curShader.InsertUniform(Uniform.terrain_lightDir, ref sun);
                 }
             }
         }

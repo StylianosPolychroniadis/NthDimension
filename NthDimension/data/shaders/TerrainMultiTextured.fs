@@ -7,8 +7,8 @@ in vec3 vertexNormal;
 
 uniform float terrain_minHeight;
 uniform float terrain_maxHeight;
-uniform vec2  terrain_uvScale = vec2(1.0, 1.0);
-uniform vec3  terrain_lightDir = vec3(-1, -1, -1);
+uniform vec2  terrain_uvScale	= vec2(0.01, 0.01);		// TODO:: clear instanciation
+uniform vec3  terrain_lightDir	= vec3(-1, -1, -1);		// TODO:: clear instantiation
 
 //baseTexture  -	grass
 //baseTexture2 -	snow
@@ -55,7 +55,6 @@ void main()
 		//normalize
 		float slopeFactor = abs(slope - .3) / .3;
 		color = slopeFactor * grassSlope + (1 - slopeFactor) * color;
-		color = color * intensity;	// factor in phong
 	}
 
 	//high flat areas have snow
@@ -63,7 +62,6 @@ void main()
 		//normalize
 		float slopeFactor = abs(slope - .3) / .3;
 		color = slopeFactor * snowSlope + (1 - slopeFactor) * color;
-		color = color * intensity;	// factor in phong
 	}
 
 	//middle ground
@@ -72,13 +70,14 @@ void main()
 		float slopeFactor = abs(slope - .3) / .3;
 		float posFactor2 = (posFactor - .4)/ .4;
 
-		color = slopeFactor * (posFactor2 * snowSlope + (1-posFactor2) * grassSlope) + (1 - slopeFactor) * color;
-		color = color * intensity;	// factor in phong
+		color = slopeFactor * (posFactor2 * snowSlope + (1-posFactor2) * grassSlope) + (1 - slopeFactor) * color;		
 	}
 	else
 	{
 		color = vec3(0,1,0);
+		intensity = 1;
 	}
 
+	color = color * intensity;	// factor in phong	
 	out_frag_color = vec4(color, 0);
 }
