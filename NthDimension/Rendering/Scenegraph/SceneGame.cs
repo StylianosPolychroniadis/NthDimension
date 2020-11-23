@@ -342,7 +342,7 @@ namespace NthDimension.Rendering.Scenegraph
             }
             catch (Exception lxe)
             {
-                ConsoleUtil.errorlog("ERROR Loading Scene ", string.Format("Error establishing scene '{0}'. Please check definition file and try again.", SceneXsnFile));
+                ConsoleUtil.errorlog("ERROR Loading Scene ", string.Format("Error establishing scene '{0} Line Number:{1} Line Position:{2}'. Please check definition file and try again.", SceneXsnFile, reader.LineNumber, reader.LinePosition));
                 ConsoleUtil.errorlog(string.Format("{0}Reason: {1}", Environment.NewLine, lxe.Message), string.Format("{0}Stack Trace: {1}  ", Environment.NewLine, lxe.StackTrace));
                 Console.WriteLine(string.Format("{0} {1}", Environment.NewLine, "Press Enter to Exit..."));
                 Console.ReadLine();

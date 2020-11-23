@@ -38,6 +38,7 @@ namespace NthDimension.Rendering.Drawables.Models
 
         public bool                         grabable = true;
 
+        private float mass = 1f;
         
 
         public PhysModel(ApplicationObject parent)
@@ -135,7 +136,7 @@ namespace NthDimension.Rendering.Drawables.Models
             setPhysMesh(objShape);
         }
 
-        public void setPhysMesh(Shape newShape, float mass = 20f)   // ISSUE here: do not pass the hardcoded value. Instead oblige every PhysModel to specify its own mass
+        public void setPhysMesh(Shape newShape)   // ISSUE here: do not pass the hardcoded value. Instead oblige every PhysModel to specify its own mass
         {
             RigidBody newBody = new RigidBody(newShape);
 
@@ -317,8 +318,13 @@ namespace NthDimension.Rendering.Drawables.Models
             if (reader.Name.ToLower() == "noshadow")
                 CastShadows = false;
 
-            if (reader.Name.ToLower() == "mass")
-                RigidBody.Mass = GenericMethods.FloatFromString(reader.Value);
+            if (reader.Name.ToLower() == "mass" && reader.NodeType != XmlNodeType.EndElement)
+            {
+                reader.Read();                
+                mass = GenericMethods.FloatFromString(reader.Value);
+                if (null != RigidBody)
+                    RigidBody.Mass = mass;
+            }
         }
     }
 }
