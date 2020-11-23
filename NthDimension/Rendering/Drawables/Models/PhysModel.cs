@@ -127,19 +127,20 @@ namespace NthDimension.Rendering.Drawables.Models
 
             pBoxList.Add(name);
 
-            MeshVbo pboxMesh = ApplicationBase.Instance.MeshLoader.GetMeshByName(name);
+            MeshVbo pboxMesh = ApplicationBase.Instance.MeshLoader.GetMeshByName(name);            
             pboxMesh.CurrentLod = MeshVbo.MeshLod.Level0;
             Shape objShape = new ConvexHullShape(GenericMethods.FromOpenTKVecArToJVecList(pboxMesh.GetPositions(MeshVbo.MeshLod.Level0)));
+            
 
             setPhysMesh(objShape);
         }
 
-        public void setPhysMesh(Shape newShape)
+        public void setPhysMesh(Shape newShape, float mass = 20f)   // ISSUE here: do not pass the hardcoded value. Instead oblige every PhysModel to specify its own mass
         {
             RigidBody newBody = new RigidBody(newShape);
 
             newBody.Position = GenericMethods.FromOpenTKVector(Position);
-            newBody.Mass = 20f;
+            newBody.Mass = mass;
 
             newBody.Tag = this;
             newBody.Orientation = GenericMethods.FromOpenTKMatrix(Orientation);
