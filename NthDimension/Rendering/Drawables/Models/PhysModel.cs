@@ -63,6 +63,7 @@ namespace NthDimension.Rendering.Drawables.Models
             string tab2 = GenericMethods.tabify(level);
 
             sb.AppendLine(tab + "<" + nodename + " name='" + Name + "'>");
+            sb.AppendLine(tab2 + "<mass>" + RigidBody.Mass + "</mass>" );
             sb.AppendLine(tab2 + "<position>" + position + "</position>");
             sb.AppendLine(tab2 + "<rotation>" + rotation + "</rotation>");
             sb.AppendLine(tab2 + "<size>" + size + "</size>");
@@ -314,6 +315,9 @@ namespace NthDimension.Rendering.Drawables.Models
 
             if (reader.Name.ToLower() == "noshadow")
                 CastShadows = false;
+
+            if (reader.Name.ToLower() == "mass")
+                RigidBody.Mass = GenericMethods.FloatFromString(reader.Value);
         }
     }
 }
