@@ -12,11 +12,24 @@ using NthDimension.Rendering.Drawables.Framebuffers;
 using NthDimension.Rendering.Utilities;
 using System.Collections.Generic;
 using NthDimension.Forms.Events;
+using System;
 
 namespace NthStudio.Gui
 {
     public class AssetsViewer : DialogBase
     {
+        #region Singleton
+        protected static AssetsViewer _instance;
+        public static AssetsViewer Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
+        #endregion Singleton
+
         #region Tree Nodes Classes
         class MeshesNode : TreeNode
         {
@@ -64,11 +77,13 @@ namespace NthStudio.Gui
                     //
                 }
 
-                public override void OnMouseDoubleClick(MouseEventArgs e)
+                public override void OnMouseClick(MouseEventArgs e)
                 {
-                    ConsoleUtil.log(string.Format("TextureViewer id {0} name {1}", ftexture.texture, ftexture.name));
-                    texView = new TextureViewer(ftexture);
-                    texView.Show(((StudioWindow)StudioWindow.Instance).Screen2D);
+                    //ConsoleUtil.log(string.Format("TextureViewer id {0} name {1}", ftexture.texture, ftexture.name));
+                    //texView = new TextureViewer(ftexture);
+                    //texView.Show(((StudioWindow)StudioWindow.Instance).Screen2D);
+
+                    AssetsViewer.Instance.PreviewTexture(ftexture.identifier);
                     
                 }
 
@@ -85,13 +100,20 @@ namespace NthStudio.Gui
                     Text = string.Format("[{0}] {1}", m_texture.identifier, text);                  
                 }
 
-                public override void OnMouseDoubleClick(MouseEventArgs e)
+                public override void OnMouseClick(MouseEventArgs e)
                 {
-
-                    ConsoleUtil.log(string.Format("TextureViewer id {0} name {1}", m_texture.texture, m_texture.name));
-                    texView = new TextureViewer(m_texture);
-                    texView.Show(((StudioWindow)StudioWindow.Instance).Screen2D);
+                    AssetsViewer.Instance.PreviewTexture(m_texture.texture);
                 }
+
+                //public override void OnMouseDoubleClick(MouseEventArgs e)
+                //{
+
+                    
+
+                //    ConsoleUtil.log(string.Format("TextureViewer id {0} name {1}", m_texture.texture, m_texture.name));
+                //    texView = new TextureViewer(m_texture);
+                //    texView.Show(((StudioWindow)StudioWindow.Instance).Screen2D);
+                //}
             }
 
             public TexturesNode()
@@ -177,6 +199,11 @@ namespace NthStudio.Gui
                     this.Text = "Fragment";
                     m_source = fragment;
                 }
+
+                public override void OnMouseClick(MouseEventArgs e)
+                {
+                    AssetsViewer.Instance.PreviewText(m_source);
+                }
             }
             class VertexShaderNode : TreeNode
             {
@@ -187,6 +214,11 @@ namespace NthStudio.Gui
                 {
                     this.Text = "Vertex";
                     m_source = vertex;
+                }
+
+                public override void OnMouseClick(MouseEventArgs e)
+                {
+                    AssetsViewer.Instance.PreviewText(m_source);
                 }
             }
             class UniformNode : TreeNode
@@ -215,9 +247,8 @@ namespace NthStudio.Gui
 
                     this.ForeColor = (m_shader.Loaded ? Color.ForestGreen : Color.DarkRed);
 
-                    this.Nodes.Add(new FragmentShaderNode(m_shader.FragmentShader));
                     this.Nodes.Add(new VertexShaderNode(m_shader.VertexShader));
-
+                    this.Nodes.Add(new FragmentShaderNode(m_shader.FragmentShader));
 
                     TreeNode uniforms = new TreeNode("Uniforms");
                     if(null != m_shader.Uniforms)
@@ -356,6 +387,9 @@ namespace NthStudio.Gui
         private Panel m_statusStrip;
         private Label m_statusLabel;
         private SplitterBox m_splitDisplayH;
+        private Panel m_previewPanel;
+        private Widgets.Picture m_previewPicture;
+        private Widgets.TextEditor.TextEditor m_previewText;
 
         private TreeView            m_treeAssets;
         private MeshesNode          m_meshAssets;
@@ -384,6 +418,7 @@ namespace NthStudio.Gui
 
         public AssetsViewer()
         {
+            _instance = this;
             Title   = "Assets Viewer";
             Size    = new Size(900, 600);
             this.InitializeComponent();
@@ -448,6 +483,7 @@ namespace NthStudio.Gui
             m_textureAssets = new TexturesNode();
             m_available.Nodes.Add(m_textureAssets);
             m_textureAssets.Text = string.Format("Textures ({0})", m_textureAssets.TextureCount); // -1 IF textures contains Framebuffers
+           
             //m_textureAssets.MouseClickEvent += delegate (object sender, NthDimension.Forms.Events.MouseEventArgs e)
             //{
             //    ////this.OnMouseDoubleClick(e);
@@ -610,24 +646,29 @@ namespace NthStudio.Gui
             assetsCacheSplit.Panel1.Widgets.Add(panelCacheFiles);
 
             m_splitDisplayH.Panel0.Widgets.Add(assetsCacheSplit);
-            m_splitDisplayH.Panel1.Widgets.Add(new Panel() 
-                                                        { 
-                                                            BGColor = Color.LightSlateGray,
-                                                            Dock = EDocking.Fill
-                                                        });
+
+            m_previewPanel = new Panel()
+            {
+                BGColor = Color.LightSlateGray,
+                Dock = EDocking.Fill
+            };
+
+            
+
+            m_splitDisplayH.Panel1.Widgets.Add(m_previewPanel);
             m_splitDisplayH.SplitterBarLocation = 0.35f;
             #endregion
 
             Widgets.Add(m_statusStrip);
             Widgets.Add(m_splitDisplayH);
 
-           
-            m_treeAssets.NodeMouseDoubleClick += delegate (object sender, NthDimension.Forms.Events.TreeNodeMouseClickEventArgs e)
+            //Each Node handles the Mouse Click events. The lines below resulted in firring the events twice
+            //m_treeAssets.NodeMouseDoubleClick += delegate (object sender, NthDimension.Forms.Events.TreeNodeMouseClickEventArgs e)
                     
-            {
-                if (e.Node.IsExpanded) e.Node.Collapse(true); else e.Node.Expand();
-                e.Node.OnMouseDoubleClick(e);
-            };   
+            //{
+            //    if (e.Node.IsExpanded) e.Node.Collapse(true); else e.Node.Expand();
+            //    e.Node.OnMouseDoubleClick(e);
+            //};   
         }
 
 
@@ -636,6 +677,28 @@ namespace NthStudio.Gui
         {
             // Not Used
             // m_treeAssets.OnSelectionChanged += m_tree_SelectionChanged;     
+        }
+
+        public void PreviewTexture(int textureHandle)
+        {
+            this.m_previewPanel.Widgets.Clear();
+            this.m_previewPicture = new Widgets.Picture(textureHandle);
+            this.m_previewPicture.Dock = EDocking.Fill;
+            this.m_previewPanel.Widgets.Add(m_previewPicture);
+        }
+        public void PreviewText(string text)
+        {
+            this.m_previewPanel.Widgets.Clear();
+            this.m_previewText = new Widgets.TextEditor.TextEditor();
+            if (Environment.OSVersion.Platform != PlatformID.Unix)
+                m_previewText.Font = new NanoFont(NanoFont.DefaultRegular, 11f);
+
+            m_previewText.Dock = EDocking.Fill;
+            m_previewText.IsReadOnly = true;
+            m_previewText.Text = text;
+
+            this.m_previewPanel.Widgets.Add(m_previewText);
+
         }
 
 

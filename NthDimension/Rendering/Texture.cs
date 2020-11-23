@@ -34,7 +34,8 @@ namespace NthDimension.Rendering
             [ProtoMember(10)] fromPng,
             [ProtoMember(20)] fromFramebuffer,
             [ProtoMember(30)] fromDds,
-            [ProtoMember(40)] fromVideo
+            [ProtoMember(40)] fromVideo,
+            [ProtoMember(50)] fromBitmap
         };
 
         [ProtoMember(40)] public int            texture;
@@ -131,7 +132,7 @@ namespace NthDimension.Rendering
             set
             {
                 using (MemoryStream ms = new MemoryStream())
-                {
+                {                    
                     value.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // Convert Image to byte[]
                     cacheBitmap = ms.ToArray();
                 }

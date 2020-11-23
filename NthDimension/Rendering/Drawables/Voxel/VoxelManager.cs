@@ -23,7 +23,7 @@ namespace NthDimension.Rendering.Drawables.Voxel
 
         VoxelManager parent;
 
-        public List<VoxelVolume> voulumetrics = new List<VoxelVolume> { };
+        public List<VoxelVolume> volumetrics = new List<VoxelVolume> { };
 
         public VoxelManager(ApplicationObject parent)
             : base(parent)
@@ -86,7 +86,7 @@ namespace NthDimension.Rendering.Drawables.Voxel
 
         public virtual int GetData(Vector3 pos)
         {
-            foreach (var Volume in voulumetrics)
+            foreach (var Volume in volumetrics)
             {
                 int type = Volume.check(pos);
 
@@ -102,7 +102,7 @@ namespace NthDimension.Rendering.Drawables.Voxel
             {
                 if (chunk.isAffected(voxelVolume))
                 {
-                    chunk.voulumetrics.Add(voxelVolume);
+                    chunk.volumetrics.Add(voxelVolume);
                     chunk.wasUpdated = true;
                     wasUpdated = true;
                 }
@@ -114,9 +114,9 @@ namespace NthDimension.Rendering.Drawables.Voxel
         {
             foreach (var chunk in chunks)
             {
-                if (chunk.voulumetrics.Contains(voxelVolume))
+                if (chunk.volumetrics.Contains(voxelVolume))
                 {
-                    chunk.voulumetrics.Remove(voxelVolume);
+                    chunk.volumetrics.Remove(voxelVolume);
                     chunk.wasUpdated = true;
                     wasUpdated = true;
                 }

@@ -46,7 +46,7 @@ namespace NthDimension.Rendering.Drawables.Models
         {
             // reading Object Atrributes and Converting them to Strings
             string position = GenericMethods.StringFromVector3(this.Position);
-            string rotation = GenericMethods.StringFromJMatrix(AvatarBody.Orientation);
+            string rotation = GenericMethods.StringFromJMatrix(RigidBody.Orientation);
             string stringMaterial = GenericMethods.StringFromStringList(Materials);
             string meshes = GenericMethods.StringFromStringList(Meshes);
             string pboxes = GenericMethods.StringFromStringList(PhysBoxes);
@@ -85,7 +85,7 @@ namespace NthDimension.Rendering.Drawables.Models
                 CastShadows = false;
         }
 
-        public override RigidBody AvatarBody { get { return body; } set { body = value; forceUpdate(); body.IsStatic = true; } }
+        public override RigidBody RigidBody { get { return body; } set { body = value; forceUpdate(); body.IsStatic = true; } }
 
         public override void Update()
         {
@@ -113,21 +113,21 @@ namespace NthDimension.Rendering.Drawables.Models
             base.kill();
         }
 
-        public override void draw(ViewInfo curView, bool targetLayer)
-        {
-        }
+        //public override void draw(ViewInfo curView, bool targetLayer)
+        //{
+        //}
 
-        public override void drawNormal(ViewInfo curView)
-        {
-        }
+        //public override void drawNormal(ViewInfo curView)
+        //{
+        //}
 
-        public override void drawShadow(ViewInfo curView)
-        {
-        }
+        //public override void drawShadow(ViewInfo curView)
+        //{
+        //}
 
-        public override void drawDefInfo(ViewInfo curView)
-        {
-        }
+        //public override void drawDefInfo(ViewInfo curView)
+        //{
+        //}
     }
 #endif
 }

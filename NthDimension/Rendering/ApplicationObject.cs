@@ -67,13 +67,13 @@ namespace NthDimension.Rendering
         private const string                    _nodeskybox                     = "skybox";
         private const string                    _nodesunlight                   = "sunlight";
         private const string                    _nodeMetamodel                  = "metamodel";
-        private const string                    _nodetmodel                     = "tmodel"; // terrain
+        private const string                    _nodetmodel                     = "tmodel";         // terrain
         private const string                    _nodesmodel                     = "smodel";
         private const string                    _nodepmodel                     = "pmodel";
         private const string                    _nodeanimodel                   = "animodel";
         private const string                    _nodeplayermodel                = "playermodel";
         private const string                    _nodenpcmodel                   = "npcmodel";
-        private const string                    _nodelamp                       = "lamp";   // todo refactor to spot instead of lamp
+        private const string                    _nodelamp                       = "lamp";           // todo refactor to spot instead of lamp
         private const string                    _nodeparticles                  = "particles";
 
         private const string                    _nodeAttributename              = "name";
@@ -108,7 +108,7 @@ namespace NthDimension.Rendering
         public virtual Vector3                  Size { get { return size; } set { size = value; } }
 
         public virtual Vector4                  Color { get { return color; } set { color = value; colorRgb = value.Xyz; } }
-        public virtual RigidBody                AvatarBody { get; set; }
+        public virtual RigidBody                RigidBody { get; set; }
 
         public List<Model>                      Models
         {

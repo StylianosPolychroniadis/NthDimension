@@ -741,8 +741,10 @@ namespace NthStudio
             {
                 Scene.removeChild(Player);
             }
-            AvatarInfoDesc desc = AvatarPresets.MaleFit_Generic_0;
-            
+            AvatarInfoDesc desc = AvatarPresets.FemaleFit_Generic_0();
+            //AvatarInfoDesc desc = AvatarPresets.FemaleFit_Generic_Ebony_00;
+            //AvatarInfoDesc desc = AvatarPresets.MaleFit_Generic_0;
+
             Player = new ApplicationUser(Scene, desc, new Vector3(0, 0, -1), AppInput);
 
             Player.SetPosition(Scene.SpawnAt_REFACTOR_TODO);

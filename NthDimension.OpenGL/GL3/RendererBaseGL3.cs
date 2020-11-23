@@ -114,6 +114,7 @@ namespace NthDimension.Rasterizer
         public virtual void BindBuffer(BufferTarget target, int buffer) { }
         public virtual void BindTexture(TextureTarget target, int texture) { }
         public virtual void BindTexture(TextureTarget target, uint texture) { }
+        public virtual void BindImageTexture(int unit, int texture, int level, bool layered, int layer, TextureAccess access, SizedInternalFormat format) { }
         public virtual void BindVertexArray(int array) { }
 #if OPENTK3
         public virtual void BlendFunc(BlendingFactor src, BlendingFactor dest) { }
@@ -141,6 +142,8 @@ namespace NthDimension.Rasterizer
         public virtual void DepthMask(bool flag) { }
         public virtual void DetachShader(int program, int shader) { }
         protected virtual void Disable(EnableCap disable) { }
+        public virtual void DispatchCompute(int numGroupsX, int numGroupsY, int numGroupsZ) { }
+
         public virtual void DrawElements(PrimitiveType mode, int count, DrawElementsType type, IntPtr indices) { }
         public virtual void DrawRangeElements(PrimitiveType mode, int start, int end, int count, DrawElementsType type, IntPtr indices) { }
         public virtual void DrawArrays(PrimitiveType primitive, int start, int end) { }
@@ -193,6 +196,7 @@ namespace NthDimension.Rasterizer
         public virtual void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels) { }
         public virtual void ShaderSource(int shader, string @string) { }
         public virtual void TexImage2D(TextureTarget target, int level, PixelInternalFormat internalformat, int width, int height, int border, PixelFormat format, PixelType type, IntPtr pixels) { }
+        public virtual void TexImage3D(TextureTarget target, int level, PixelInternalFormat internalformat, int width, int height, int depth, int border, PixelFormat format, PixelType type, IntPtr pixels) { }
         public virtual void TexParameter(TextureTarget target, TextureParameterName pname, int param) { }
         public virtual void Uniform1(int location, int v0) { }
         public virtual void Uniform1(int location, int count, ref int value) { }

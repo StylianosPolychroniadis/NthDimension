@@ -1,10 +1,8 @@
-// Vertex Shader Base Snippet
-
 #variables
 
 precision lowp float;
 
-const int no_lights = 16;
+const int no_lights = 10;
 
 uniform mat4 projection_matrix;
 uniform mat4 modelview_matrix;
@@ -16,16 +14,12 @@ uniform vec3 in_eyepos;
 
 uniform int in_no_lights;
 
-uniform bool use_alpha;
-
 in vec3 in_normal;
 in vec3 in_position;
 in vec2 in_texture;
 in vec3 in_tangent;
 
-out vec4 g_pos;					// ModelView space
-out vec4 g_normal;				// ModelView space
-out vec4 gl_Position;			// ModelViewProjection space		
+out vec4 g_pos;
 out vec3 v_normal;
 out vec2 v_texture;
 out vec3 v_tangent;
@@ -33,19 +27,18 @@ out vec3 v_bnormal;
 out float v_depth;
 out float v_w;
 
-out vec3 vertexPos;				// Model (local) space				Added March-13-18
-out vec3 vertexNormal;			// Model (local)					Added Oct-17-20
+out vec3 vertexPos;				// Added March-13-18
 
-
+uniform bool use_alpha;
 #code
-	g_pos			= model_matrix * rotation_matrix * vec4(in_position, 1.0);	
-	g_normal		= model_matrix * rotation_matrix * vec4(in_normal, 0.0);
-	gl_Position		= projection_matrix * modelview_matrix * g_pos;		
-	v_normal		= normalize((rotation_matrix * vec4(in_normal, 0.0)).xyz);
-	v_texture		= in_texture;
-	v_tangent		= normalize((rotation_matrix * vec4(in_tangent, 0.0)).xyz);
-	v_bnormal		= normalize(cross(v_normal, v_tangent));		
-	vertexPos		= in_position;
-	vertexNormal	= in_normal;
-
+	vertexPos = in_position;
+	g_pos = model_matrix * rotation_matrix * vec4(in_position, 1.0);
+	gl_Position = projection_matrix * modelview_matrix * g_pos;
 	
+	v_texture = in_texture;
+	
+	v_normal = normalize((rotation_matrix * vec4(in_normal, 0.0)).xyz);
+	v_tangent = normalize((rotation_matrix * vec4(in_tangent, 0.0)).xyz);
+	v_bnormal = normalize(cross(v_normal, v_tangent));
+		
+	v_texture = in_texture;

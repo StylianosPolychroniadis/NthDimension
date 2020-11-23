@@ -15,93 +15,103 @@ using ProtoBuf;
 
 namespace NthDimension.Rendering.Shaders
 {
-    // TODO:: Revise and modify as required. Include 3rd person valid projMatrix
-    //[ProtoContract]
     public enum Uniform
     {
+        //  3 x [CONFLICTS]
+        // 10 x [TODO]
+        //  5 x [TBC]
+        //  2 x [TBD]
+        //  3 x [NOT USED]
 
-        //projection_rev_matrix,              // NOT USED
-        rotation_matrix,
-        rotation_matrix2,
-        model_matrix2,
-        model_matrix,
-        modelview_matrix,
-        projection_matrix,
+        model_matrix,                       // The Model space matrix (local rotation * transformation * scale)
+        model_matrix2,                      // Auxiliary Model space matrix                                                 // [TODO: Eliminate]
+        modelview_matrix,                   // The ModelView matrix
+        projection_matrix,                  // The Modelviewprojection matrix        
+        invPMatrix,                         // Inverse Projection matrix
+        invMMatrix,                         // Inverse Model matrix
+        invMVPMatrix,                       // Inverse ModelViewProjection 
 
-        in_eyepos,
-        in_time,
-        in_pass,                            // NOT USED
-        in_waterlevel,                      // NOT USED // TODO!!!:: Per Material [ Addition To Material Format ]  
-        in_vector,
-        in_screensize,
-        in_rendersize,
-        in_lightambient,                    // TODO!!!:: Per Material [ Addition To Material Format ]  
-        in_lightsun,                        // TODO!!!:: Per Material [ Addition To Material Format ]  
-        
-        //shadow_quality,
+        rotation_matrix,                    // The rotation matrix in model space (local)
+        rotation_matrix2,                   // Auxiliary rotation matrix                                                    // [TBC: Still used? Eliminate?]                
 
-        in_particlepos,
-        in_particlesize,
+        viewUp,                             // View vector pointing Up
+        viewRight,                          // View vector pointing Right
 
-        in_color,
-        in_mod,
+        in_near,                            // Frustum near view
+        in_far,                             // Frustum far view
 
-        use_emit,
-        emit_a_base,
-        emit_a_normal,
-        in_emitcolor,
+        viewDirection,                      // View Direction
+        viewPosition,                       // View Position                                                                // [CONFLICTS in_eyepos]
+        in_eyepos,                          // The Eye (camera) position                                                    // [CONFLICTS viewPosition]
+                
+        in_screensize,                      // The virtual screen size
+        in_rendersize,                      // The screen size
+        //shadow_quality,                   // disabled                                                                     // [TBC Disabled?]
+        shadowQuality,                      // Shadowmap resolution factor                                                  // [TODO: Refactor in_shadowQuality]
+        in_time,                            // Frame Time
+        in_pass,                            // Render pass index                                                            // [NOT USED TBC]
+        in_lightambient,                    // Ambient light color                                                          // TODO:: Update according to weather model
+        in_lightsun,                        // Sun light color                                                              // TODO:: Update according to weather model      
+        in_waterlevel,                      // Water plane height                                                           // [TODO: Implement water shader] TODO:: Update according to weather model        
+        in_vector,                          // Arbitrary input vector                                                       // [TBD: Arbitrary]
 
-        use_spec,
-        spec_a_base,
-        spec_a_normal,
-        in_speccolor,
-        in_specexp,
+                                                                     // [TBC/TODO] [REFACTOR in_shadowQuality]
 
-        use_env,
-        env_a_base,
-        env_a_normal,
-        env_tint,
+        in_particlepos,                     // Particle position
+        in_particlesize,                    // Particle size
 
-        useTexture,
-        use_alpha,
-        ref_size,
-        blur_size,
-        fresnel_str,
+        in_color,                           // Arbitrary color input
+        in_mod,                             //                                                                              // [TBD: Use appropriate term and TODO: refactor]
 
-        in_near,
-        in_far,
+        use_emit,                           // Emissive feature on/off
+        emit_a_base,                        // Emissive albedo texture
+        emit_a_normal,                      // Emissive normal texture
+        in_emitcolor,                       // Emissive color
 
-        in_hudsize,
-        in_hudpos,
-        in_hudcolor,
-        in_hudvalue,
+        use_spec,                           // Specular feature on/off
+        spec_a_base,                        // Specular albedo texture
+        spec_a_normal,                      // Specular normal texture
+        in_speccolor,                       // Specular color
+        in_specexp,                         // Specular exposure
 
-        in_no_lights,
-        curLight,
+        use_env,                            // Environment mapping feature on/off
+        env_a_base,                         // The environment-map texture rendered on an off-screen framebuffer
+        env_a_normal,                       // The environment-map normal texture rendered on an off-screen framebuffer     // [NOT USED]
+        env_tint,                           // Environment mapping tint color
+
+        useTexture,                         // Use texture feature switch on/off
+        use_alpha,                          // Use alpha component feature switch on/off
+        ref_size,                           // Reflection Size
+        rer_size,                           // Refraction Size                                                              // [TODO]
+        blur_size,                          // Blur size
+        fresnel_str,                        // Fresnel strength                                                             // [CONFLICTS 'fresnelStr']
+
+       
+
+        in_hudsize,                         // UI object size
+        in_hudpos,                          // UI object position
+        in_hudcolor,                        // UI object color
+        in_hudvalue,                        // UI object value
+
+        in_no_lights,                       // Total number of lights                                                       // [TODO find a way to eliminate]
+        curLight,                           // Current light                                                                // [TODO find a way to eliminate]
         uni_no_bones,
+            
+        defPosition,                        // Deferred lighting position
+        defDirection,                       // Deferred lighting direction
+        defColor,                           // Deferred color
 
-        defPosition,
-        defDirection,
-        defColor,           // TODO!!!:: Per Material [ Addition To Material Format ]  
 
+        defMatrix,                          // Deferred far view matrix                                                     // [TODO: Implement PSSM correctly]
+        defInnerMatrix,                     // Deferred near view matrix
+        defInvPMatrix,                      // Deferred inverse Projection matrix
+        
 
-        defMatrix,
-        defInnerMatrix,
-        defInvPMatrix,
-
-        invPMatrix,
-        invMMatrix,
-        invMVPMatrix,
-
-        viewUp,
-        viewRight,
-        viewDirection,
-        viewPosition,
 
         fresnelExp,
         fresnelStr,
 
-        shadowQuality,
+        
 
         // ShadowMap v.2.0
         shadowView,
@@ -116,6 +126,10 @@ namespace NthDimension.Rendering.Shaders
         terrain_minHeight,                  // float
         terrain_maxHeight,                  // float
         terrain_uvScale,                    // vec2
-        terrain_lightDir                    // vec3
+        terrain_lightDir,                   // vec3
+        terrain_densityMap,                 // float
+        terrain_densityFactor
+
+        //projection_rev_matrix,            // NOT USED
     }
 }

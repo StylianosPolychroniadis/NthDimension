@@ -82,7 +82,17 @@
     <Compile Include="Rendering\Culling\BoundingOctree.cs" />
     <Compile Include="Rendering\Culling\BoundingOctreeObject.cs" />
     <Compile Include="Rendering\Culling\BoundingSphere.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\Terrain.City.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\Terrain.Density.cs" />
+    <Compile Include="Rendering\Drawables\Landscape\Terrain.RoadNetwork.cs" />
+    <Compile Include="Rendering\Drawables\Models\GridPlane.cs" />
+    <Compile Include="Rendering\Drawables\Models\Vehicle\BmwX5.cs" />
+    <Compile Include="Rendering\Drawables\Volumetric\Clouds.cs" />
+    <Compile Include="Rendering\Drawables\Volumetric\VolumetricClouds.cs" />
     <Compile Include="Rendering\Scenegraph\SceneGame.Octree.cs" />
+    <Content Include="data\textures\characters\face_female.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\textures\terrain\colormap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -135,9 +145,60 @@
     <None Include="data\materials\terrain\terrainmultitex.xmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="data\models\vehicles\bmw\x5\body.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\vehicles\bmw\x5\cabin.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\vehicles\bmw\x5\needle.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\vehicles\bmw\x5\steeringwheel.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\vehicles\bmw\x5\wheel.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultnongeo.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultnongeo.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defaultnongeo.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="data\shaders\defLighting.snip" />
+    <Content Include="data\shaders\defReflections.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="data\shaders\defReflections.snip" />
+    <Content Include="data\shaders\defReflections.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\defReflections.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\electricArc.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\electricArc.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\electricArc.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="data\shaders\lighting.snip" />
+    <Content Include="data\shaders\muzzleFlash.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\muzzleFlash.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\shaders\muzzleFlash.xsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="data\shaders\reflections.snip" />
     <Content Include="data\shaders\unlitGeneric.fs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -560,7 +621,6 @@
     <Compile Include="Rendering\Imaging\NormalGenerator.cs" />
     <Compile Include="Rendering\Imaging\SkinDetector.cs" />
     <Compile Include="Rendering\Material.cs" />
-    <Compile Include="Rendering\_Math2.cs" />
     <Compile Include="Rendering\Partition\BoxObject.cs" />
     <Compile Include="Rendering\Partition\Octree.cs" />
     <Compile Include="Rendering\Partition\OctreeBox.cs" />
@@ -1281,7 +1341,6 @@
     <Content Include="data\shaders\defaultgeo.xsp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="data\shaders\defaultgeo.xsp_" />
     <Content Include="data\shaders\defaultgeo_animated.vs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1333,7 +1392,6 @@
     <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\Makefile" />
     <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.plg" />
     <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.vcxproj" />
-    <None Include="Rendering\ViewControllers\FirstPersonViewController %28old%29.cs" />
     <Compile Include="Rendering\ViewControllers\FirstPersonViewController.cs" />
     <Compile Include="Rendering\ViewControllers\ThirdPersonViewController.cs" />
     <Compile Include="Rendering\ViewControllers\VehicleViewController.cs" />

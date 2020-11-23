@@ -19,7 +19,7 @@ namespace NthDimension.Rendering.Serialization
     
 
     [ProtoContract(SkipConstructor = true)]
-    public class ListVertex : List<VertexIndices>
+    public class ListVertex : List<VertexIndex>
     {
     }
 }

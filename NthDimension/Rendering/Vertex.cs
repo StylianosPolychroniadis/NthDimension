@@ -21,7 +21,7 @@ namespace NthDimension
     /// All Vertex classes should inherit this and 
     /// output on the current Vertex properties (indexing integers)
     /// </summary>
-    public class VertexIndices
+    public class VertexIndex
     {
         [ProtoMember(10)]
         public int Vi = 0;
@@ -32,26 +32,26 @@ namespace NthDimension
         [ProtoMember(40)]
         public int Normalihelper = -1;
 
-        public VertexIndices(int vi)
+        public VertexIndex(int vi)
         {
             Vi = vi;
         }
 
-        public VertexIndices(int vi, int ti, int ni)
+        public VertexIndex(int vi, int ti, int ni)
         {
             Vi = vi;
             Ti = ti;
             Ni = ni;
         }
 
-        public VertexIndices(VertexIndices v)
+        public VertexIndex(VertexIndex v)
         {
             Vi = v.Vi;
             Ti = v.Ti;
             Ni = v.Ni;
         }
 
-        public VertexIndices()
+        public VertexIndex()
         {
         }
     }

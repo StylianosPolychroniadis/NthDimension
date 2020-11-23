@@ -5,9 +5,9 @@
 		      defInfo="defInfo.xsp">
 
   <textures base="terrain\grass.png"
-			base2="terrain\snow.png"
-			base3="terrain\dirt.png"
-			base4="terrain\rock.png"
+						base2="terrain\snow.png"
+						base3="terrain\dirt.png"
+						base4="terrain\rock.png"
             normal="terrain\normalmap.png"
 						definfo="terrain\specularmap.png" />
 

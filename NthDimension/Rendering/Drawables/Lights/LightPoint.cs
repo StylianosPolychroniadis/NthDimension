@@ -11,7 +11,7 @@ namespace NthDimension.Rendering.Drawables.Lights
 
     public class LightPoint : Light
     {
-        new public static string nodename = "lamp";
+        new public static string nodename = "pointlamp";
         public int lightId;
         public int ProjectionTexture = 0;
 

@@ -307,6 +307,14 @@ namespace NthDimension.Rasterizer.Windows
 
             return ret;
         }
+
+        public static OpenTK.Graphics.OpenGL.SizedInternalFormat ToOpenTK(this SizedInternalFormat format)
+        {
+            OpenTK.Graphics.OpenGL.SizedInternalFormat ret = OpenTK.Graphics.OpenGL.SizedInternalFormat.R8;
+            if (!OpenTK.Graphics.OpenGL.SizedInternalFormat.TryParse(format.ToString(), false, out ret))
+                throw new Exception(serr + format.ToString());
+            return ret;
+        }
 #endregion
 
 #region Pixel Extensions
@@ -408,6 +416,15 @@ namespace NthDimension.Rasterizer.Windows
 
             if (!OpenTK.Graphics.OpenGL.GetTextureParameter.TryParse(target.ToString(), false, out ret))
                 throw new Exception(serr + target.ToString());
+
+            return ret;
+        }
+        public static OpenTK.Graphics.OpenGL.TextureAccess ToOpenTK(this NthDimension.Rasterizer.TextureAccess access)
+        {
+            OpenTK.Graphics.OpenGL.TextureAccess ret = OpenTK.Graphics.OpenGL.TextureAccess.ReadOnly;
+
+            if (!OpenTK.Graphics.OpenGL.TextureAccess.TryParse(access.ToString(), false, out ret))
+                throw new Exception(serr + access.ToString());
 
             return ret;
         }

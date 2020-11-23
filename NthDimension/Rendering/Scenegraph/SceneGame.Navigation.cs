@@ -31,7 +31,9 @@
             // creating a new collision system and adding it to the new world
             collisionSystem = new CollisionSystemSAP();
             worldPhysics = new PhysicsWorld(collisionSystem);
-            worldPhysics.ContactSettings.AllowedPenetration     = .01f;
+            worldPhysics.Gravity                                = new JVector(0, -100, 0);
+            worldPhysics.AllowDeactivation                      = false;
+            worldPhysics.ContactSettings.AllowedPenetration     = .1f;
             worldPhysics.ContactSettings.BiasFactor             = .001f;
             worldPhysics.ContactSettings.BreakThreshold         = .01f;
             worldPhysics.ContactSettings.MaximumBias            = 10.0f;
@@ -60,6 +62,8 @@
             worldPhysics = new PhysicsWorld(collisionSystem);
             if (null == contactSettings)
             {
+                worldPhysics.Gravity = new JVector(0, -100, 0);
+                worldPhysics.AllowDeactivation = false;
                 worldPhysics.ContactSettings.AllowedPenetration         = .01f;
                 worldPhysics.ContactSettings.BiasFactor                 = .001f;
                 worldPhysics.ContactSettings.BreakThreshold             = .01f;
@@ -68,6 +72,8 @@
             }
             else
             {
+                worldPhysics.Gravity = new JVector(0, -100, 0);
+                worldPhysics.AllowDeactivation = false;
                 worldPhysics.ContactSettings.AllowedPenetration         = contactSettings.AllowedPenetration;
                 worldPhysics.ContactSettings.BiasFactor                 = contactSettings.BiasFactor;
                 worldPhysics.ContactSettings.BreakThreshold             = contactSettings.BreakThreshold;

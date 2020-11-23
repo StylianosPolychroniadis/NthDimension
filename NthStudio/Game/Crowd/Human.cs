@@ -103,14 +103,19 @@ namespace NthStudio.Game.Crowd
                 this.DecisionBehaviour.CheckSurrounding(this, humanInSight);
                 this.Position = this.MovementBehaviour.Move(this, NearestNeighbour);
 
-                float navMeshY = StudioWindow.Instance.Scene.GetHeightAtNavMesh(Position.X, Position.Y);
+                
+                
 
                 if (null == model)
                     model = StudioWindow.Instance.Scene.RemotePlayers.Where(x => x.UserId == avatarInfo.UserId).FirstOrDefault();
                 if (null != model)
                 {
+                    float navMeshY = StudioWindow.Instance.Scene.GetHeightAtNavMesh(Position.X, Position.Y);
                     Vector3 position = prevPos;
                     Vector3 go = new Vector3(Position.X, navMeshY, Position.Y);
+
+                    if (go == Vector3.Zero) go = prevPos;
+
                     float dot = Vector3.Dot(position, go);
                     float l0 = Math.Abs(position.LengthFast);
                     float l1 = Math.Abs(go.LengthFast);

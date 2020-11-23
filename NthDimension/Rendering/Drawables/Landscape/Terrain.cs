@@ -16,7 +16,7 @@ namespace NthDimension.Rendering.Drawables.Models
     /// Simple Terrain class. Makes use of 4 different textures (see material definition)
     /// Class is MeshData LOD excluded. Using dynamic terrain LOD
     /// </summary>
-    public class Terrain : Model
+    public partial class Terrain : Model
     {
         new public static string nodename = "tmodel";
 
@@ -37,16 +37,21 @@ namespace NthDimension.Rendering.Drawables.Models
 
         public delegate float HeightFunc(float x, float z);
 
-        const float meshUv              = 1f;
+        const float         meshUv              = 1f;
 
-        uint[]      indices;
-        ListVector3 positions           = new ListVector3();
-        ListVector2 uvs                 = new ListVector2();
-        ListVector3 normals             = new ListVector3();
-        ListFace    faces               = new ListFace();
+        uint[]              indices;
+        ListVector3         positions           = new ListVector3();
+        ListVector2         uvs                 = new ListVector2();
+        ListVector3         normals             = new ListVector3();
+        ListFace            faces               = new ListFace();
+        
+        Density             m_density;
+        RoadNetwork         m_roads;
+        List<Road>          m_roadsGrid;
+        List<Crossing>      m_crossingsGrid;
 
-        byte[]      imagePixels         = null;      // Hacked to acquire height by x,z
-        int         wide = 0, tall      = 0;         // Hacked to acquire height by x,z
+        byte[]              imagePixels         = null;      // Hacked to acquire height by x,z
+        int                 wide = 0, tall      = 0;         // Hacked to acquire height by x,z
 
         public Vector3      Min                 { get; private set; }   = Vector3.Zero;
         public Vector3      Max                 { get; private set; }   = Vector3.Zero;
@@ -151,24 +156,25 @@ namespace NthDimension.Rendering.Drawables.Models
             {
                 try
                 {
-                    VertexIndices a = new VertexIndices((int)indices[f + 0], (int)indices[f + 0], (int)indices[f + 0]);
-                    VertexIndices b = new VertexIndices((int)indices[f + 1], (int)indices[f + 1], (int)indices[f + 1]);
-                    VertexIndices c = new VertexIndices((int)indices[f + 2], (int)indices[f + 2], (int)indices[f + 2]);
+                    VertexIndex a = new VertexIndex((int)indices[f + 0], (int)indices[f + 0], (int)indices[f + 0]);
+                    VertexIndex b = new VertexIndex((int)indices[f + 1], (int)indices[f + 1], (int)indices[f + 1]);
+                    VertexIndex c = new VertexIndex((int)indices[f + 2], (int)indices[f + 2], (int)indices[f + 2]);
                     faces.Add(new Face(a, b, c));
                 }
                 catch { }
-            }
+            }            
 
             MeshVbo mterrain = ApplicationBase.Instance.MeshLoader.FromMesh(positions, normals, uvs, faces, 
                                                                             "Terrain v1.0",
                                                                             false, false, false, false);
 
-            this.meshes = new MeshVbo[1]
-            {
-                mterrain
-            };
+            this.addMesh(mterrain);
 
             this.CreateVAO();
+            
+
+            m_density = new Density(this, /*7,*/ 4);
+            m_roads = new RoadNetwork();
         }
 
         [Obsolete("Old fixed-pipeline function. REMOVE ")]
@@ -382,7 +388,8 @@ namespace NthDimension.Rendering.Drawables.Models
             return HeightScale * getHeightmapValueFunction(imagePixels, bx, by, wide, tall);
         }
 
-
+        private bool densityEnabled = true;
+      
         protected override void setSpecialUniforms(ref Shader curShader, ref MeshVbo CurMesh)  // Added Mar-12-18
         {
             base.setSpecialUniforms(ref curShader, ref CurMesh);
@@ -393,10 +400,27 @@ namespace NthDimension.Rendering.Drawables.Models
                 float heightMax = HeightMax;                
                 Vector2 uvScale = UVScale;
 
+                int densityMap = this.m_density.TextureId;
+
+
                 curShader.InsertUniform(Uniform.terrain_minHeight,  ref heightMin);
                 curShader.InsertUniform(Uniform.terrain_maxHeight,  ref heightMax);
                 curShader.InsertUniform(Uniform.terrain_uvScale,    ref uvScale);
-                
+
+                if (densityEnabled && null != m_density && densityMap > 0)
+                {
+                    ApplicationBase.Instance.Renderer.Texture2DEnabled = true;
+                    int tex0 = 9;
+                    ApplicationBase.Instance.Renderer.ActiveTexture(Rasterizer.TextureUnit.Texture0 + tex0);
+                    ApplicationBase.Instance.Renderer.BindTexture(Rasterizer.TextureTarget.Texture2D, densityMap);
+                    int location = ApplicationBase.Instance.Renderer.GetUniformLocation(curShader.Handle, "terrain_densityMap");
+                    ApplicationBase.Instance.Renderer.Uniform1(location, tex0);
+
+                    //curShader.InsertUniform(Uniform.terrain_densityMap, ref tex0);                    
+                    float factor = 0.5f;
+                    curShader.InsertUniform(Uniform.terrain_densityFactor, ref factor);
+                }
+
                 if (ApplicationBase.Instance.Scene.DirectionalLights.Count > 0)
                 {   
                     // NOTE:: Assumes that sun in always directional light [0]

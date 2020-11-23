@@ -30,6 +30,9 @@ namespace NthDimension.Rendering
 
         public bool MOVEFORWARD     = false;        //.keyboard[OpenTK.Input.Key.W])
         public bool MOVEBACKWARD    = false;        //.keyboard[OpenTK.Input.Key.S])
+        public bool RUN             = false;        //.keyboard[OpenTK.Input.Key.W])
+
+
         public bool STRAFELEFT      = false;        //.keyboard[OpenTK.Input.Key.A])
         public bool STRAFERIGHT     = false;        //.keyboard[OpenTK.Input.Key.D])
         public bool JUMP            = false;        //.keyboard[OpenTK.Input.Key.Space])

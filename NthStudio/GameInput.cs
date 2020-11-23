@@ -167,6 +167,11 @@ namespace NthStudio
             else
                 CROUCH = false;
 
+            if (_keyboard[OpenTK.Input.Key.RShift] || _keyboard[OpenTK.Input.Key.LShift])
+                RUN = true;
+            else
+                RUN = false;
+
             if (_keyboard[OpenTK.Input.Key.E])
                 INTERACT = true;
             else

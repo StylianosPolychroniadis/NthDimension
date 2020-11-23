@@ -90,12 +90,13 @@ namespace NthStudio.Gui.Widgets
             {
                 if (!string.IsNullOrEmpty(m_pictureFile))
                 {
-                    if (File.Exists(m_pictureFile))
+                    if (!string.IsNullOrEmpty(m_pictureFile) && File.Exists(m_pictureFile))
                         loadPictureFromFile(m_pictureFile);
-                    else
-                        skipRender = true;
-
                 }
+                else if (this.m_picture > 0)
+                    loadPictureFromTexture(this.m_picture, this.Width, this.Height);
+                else
+                    skipRender = true;
             }
             else
             {
@@ -136,7 +137,7 @@ namespace NthStudio.Gui.Widgets
             }
             else
             {
-                if (m_pictureFile == string.Empty)
+                if (m_pictureFile == string.Empty && m_picture == 0)
                 {
                     ConsoleUtil.errorlog("Picture.DoPaint()", " Picture filename cannot be empty");
                     return;
@@ -217,6 +218,11 @@ namespace NthStudio.Gui.Widgets
         {
             this.m_picture = NanoVG.CreateImage(StudioWindow.vg, textureId, StudioWindow.Instance.Width, StudioWindow.Instance.Height, (int)imageflags);
             
+        }
+
+        private void loadPictureFromTexture(int textureId, int width, int height)
+        {
+            this.m_picture = NanoVG.CreateImage(StudioWindow.vg, textureId, width, height, (int)imageflags);
         }
     }
 }

@@ -232,7 +232,7 @@ namespace NthDimension.Rendering.Drawables.Models
         {
             // reading Object Atrributes and Converting them to Strings
             string position = GenericMethods.StringFromVector3(this.Position);
-            string rotation = GenericMethods.StringFromJMatrix(AvatarBody.Orientation);
+            string rotation = GenericMethods.StringFromJMatrix(RigidBody.Orientation);
             string stringMaterial = GenericMethods.StringFromStringList(Materials);
             string meshes = GenericMethods.StringFromStringList(Meshes);
             string pboxes = GenericMethods.StringFromStringList(PhysBoxes);

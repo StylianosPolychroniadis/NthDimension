@@ -8,24 +8,144 @@ namespace NthDimension.Network
 {
     public static class AvatarPresets
     {
-        public const float avatarSize = .02f; // .025f original
+        public const float avatarSize = .02f; 
 
-        public static AvatarInfoDesc MaleFit_Generic_0;
-        public static AvatarInfoDesc FemaleFit_Generic_Ebony_00;
-
-        static AvatarPresets()
+        public static AvatarInfoDesc MaleFit_Generic_0()
         {
+            #region MaleFit Generic (master)
+            string m0gender = "male";
+            string m0body = "normal";
+            string m0face = "generic";
+            string m0hairtype = "short"; //"short"
+            string m0haircolor = "brown";
+            string m0shirtcolor = "blue";
+            string m0leggingscolor = "red";
+            string m0shoescolor = "red";
 
+            #region Face Attachment
+            AttachmentInfoDesc MaleFit_Generic_0_attFace = new AttachmentInfoDesc();
+            MaleFit_Generic_0_attFace = GetFaceAttachment("local", m0gender, m0body, m0face);
+            #endregion
 
+            #region Hair Attachment
+            AttachmentInfoDesc MaleFit_Generic_0_attHair = new AttachmentInfoDesc();
+            MaleFit_Generic_0_attHair = GetHairAttachment(m0gender, m0hairtype, m0haircolor);
+            #endregion
+
+            #region Shirt Attachment
+            AttachmentInfoDesc MaleFit_Generic_0_attShirt = new AttachmentInfoDesc();
+            MaleFit_Generic_0_attShirt = GetShirtAttachment(m0gender, m0body, m0face, m0shirtcolor);
+            #endregion
+
+            #region Pants Attachment
+            AttachmentInfoDesc MaleFit_Generic_0_attPants = new AttachmentInfoDesc();
+            MaleFit_Generic_0_attPants = GetLeggingsAttachment(m0gender, m0body, m0face, m0leggingscolor);
+            #endregion
+
+            #region Shoes Attachment
+            AttachmentInfoDesc MaleFit_Generic_0_attShoes = new AttachmentInfoDesc();
+            MaleFit_Generic_0_attShoes = GetShoesAttachment(m0gender, m0body, m0face, m0shoescolor);
+            #endregion
+
+            AvatarInfoDesc MaleFit_Generic_0 = new AvatarInfoDesc(new Guid().ToString(),
+                                                enuAvatarSex.Male,
+                                                string.Format(@"{0}", m0body),
+                                                @"generic",
+                                                @"Avatar",
+                                                string.Format(@"characters\male\body_{0}_generic.xmd", m0body),                                   // Body is ALWAYS .xmd
+                                                string.Format(@"characters\male\{0}_generic.xmf", m0body),
+                                                string.Format("{0}|{0}|{0}", avatarSize.ToString("###.##")),
+                                                @"-4.371139E-08|0|-1|0|0|1|0|0|1|0|-4.371139E-08|0|0|0|0|1",
+                                                @"140|0|50",
+                                                new List<AttachmentInfoDesc>()
+                                                    {
+                                                        MaleFit_Generic_0_attFace,           // 0 is ALWAYS Face
+                                                        MaleFit_Generic_0_attHair,           // 1 is ALWAYS Hair
+                                                        MaleFit_Generic_0_attShirt,          // 2 is ALWAYS Shirt
+                                                        MaleFit_Generic_0_attPants,          // 3 is ALWAYS Pants
+                                                        MaleFit_Generic_0_attShoes           // 4 is ALWAYS Shoes     
+                                                    });
+            #endregion MaleFit Generic (master)
+            return MaleFit_Generic_0;
+        }
+        public static AvatarInfoDesc FemaleFit_Generic_0()
+        {
             #region FemaleFit Generic Ebony (master)
-            string f0gender               = "female";
-            string f0body                 = "fit";
-            string f0face                 = "generic";
-            string f0hairtype             = "tail"; //"short"
-            string f0haircolor            = "blonde";
-            string f0shirtcolor           = "white";
-            string f0leggingscolor        = "white";
-            string f0shoescolor           = "red";
+            string f0gender = "female";
+            string f0body = "fit";
+            string f0face = "generic";
+            string f0hairtype = "tail"; //"short"
+            string f0haircolor = "blonde";
+            string f0shirtcolor = "white";
+            string f0leggingscolor = "white";
+            string f0shoescolor = "red";
+
+
+
+
+            #region Face Attachment
+            AttachmentInfoDesc FemaleFit_Generic_attFace = new AttachmentInfoDesc();
+            FemaleFit_Generic_attFace = GetFaceAttachment("local", f0gender, f0body, f0face);
+            #endregion
+
+            #region Hair Attachment
+            AttachmentInfoDesc FemaleFit_Generic_attHair = new AttachmentInfoDesc();
+            FemaleFit_Generic_attHair = GetHairAttachment(f0gender, f0hairtype, f0haircolor);
+            #endregion
+
+            #region Shirt Attachment
+            AttachmentInfoDesc FemaleFit_Generic_attShirt = new AttachmentInfoDesc();
+            FemaleFit_Generic_attShirt = GetShirtAttachment(f0gender, f0body, f0face, f0shirtcolor);
+            #endregion
+
+            #region Pants Attachment
+            AttachmentInfoDesc FemaleFit_Generic_attPants = new AttachmentInfoDesc();
+            FemaleFit_Generic_attPants = GetLeggingsAttachment(f0gender, f0body, f0face, f0leggingscolor);
+            #endregion
+
+            #region Shoes Attachment
+            AttachmentInfoDesc FemaleFit_Generic_attShoes = new AttachmentInfoDesc();
+            FemaleFit_Generic_attShoes = GetShoesAttachment(f0gender, f0body, f0face, f0shoescolor);
+            #endregion
+
+           
+            AvatarInfoDesc FemaleFit = new AvatarInfoDesc(new Guid().ToString(),
+                                                enuAvatarSex.Female,
+                                                string.Format(@"{0}", f0body),
+                                                @"generic",
+                                                @"Avatar",
+                                                string.Format(@"characters\female\body_{0}_generic.xmd", f0body),                                   // Body is ALWAYS .xmd
+                                                string.Format(@"characters\female\{0}_generic.xmf", f0body),
+                                                string.Format("{0}|{0}|{0}", avatarSize.ToString("###.##")),
+                                                @"-4.371139E-08|0|-1|0|0|1|0|0|1|0|-4.371139E-08|0|0|0|0|1",
+                                                @"140|0|50",
+                                                new List<AttachmentInfoDesc>()
+                                                    {
+                                                        FemaleFit_Generic_attFace,           // 0 is ALWAYS Face
+                                                        FemaleFit_Generic_attHair,           // 1 is ALWAYS Hair
+                                                        FemaleFit_Generic_attShirt,          // 2 is ALWAYS Shirt
+                                                        FemaleFit_Generic_attPants,          // 3 is ALWAYS Pants
+                                                        FemaleFit_Generic_attShoes           // 4 is ALWAYS Shoes     
+                                                    });
+
+
+
+
+
+            #endregion
+            return FemaleFit;
+        }
+        public static AvatarInfoDesc FemaleFit_Generic_Ebony_00()
+        {
+            #region FemaleFit Generic Ebony (master)
+            string f0gender = "female";
+            string f0body = "fit";
+            string f0face = "generic";
+            string f0hairtype = "tail"; //"short"
+            string f0haircolor = "blonde";
+            string f0shirtcolor = "white";
+            string f0leggingscolor = "white";
+            string f0shoescolor = "red";
 
 
 
@@ -62,7 +182,7 @@ namespace NthDimension.Network
                                                 string.Format(@"characters\male\body_{0}_generic.xmd", m0body),                                   // Body is ALWAYS .xmd
                                                 string.Format(@"characters\male\{0}_generic.xmf", m0body),
             */
-            FemaleFit_Generic_Ebony_00 = new AvatarInfoDesc(new Guid().ToString(),
+            AvatarInfoDesc FemaleFit_Generic_Ebony_00 = new AvatarInfoDesc(new Guid().ToString(),
                                                 enuAvatarSex.Female,
                                                 //@"fit",
                                                 //@"generic",
@@ -72,9 +192,9 @@ namespace NthDimension.Network
                                                 string.Format(@"{0}", f0body),
                                                 @"generic",
                                                 @"Avatar",
-                                                string.Format(@"characters\male\body_{0}_generic.xmd", f0body),                                   // Body is ALWAYS .xmd
-                                                string.Format(@"characters\male\{0}_generic.xmf", f0body),
-                                                @"0.025|0.025|0.025",
+                                                string.Format(@"characters\female\body_{0}_generic.xmd", f0body),                                   // Body is ALWAYS .xmd
+                                                string.Format(@"characters\female\{0}_generic.xmf", f0body),
+                                                string.Format("{0}|{0}|{0}", avatarSize.ToString("###.##")),
                                                 @"-4.371139E-08|0|-1|0|0|1|0|0|1|0|-4.371139E-08|0|0|0|0|1",
                                                 @"140|0|50",
                                                 new List<AttachmentInfoDesc>()
@@ -85,6 +205,8 @@ namespace NthDimension.Network
                                                         FemaleFit_Generic_Ebony_attPants,          // 3 is ALWAYS Pants
                                                         FemaleFit_Generic_Ebony_attShoes           // 4 is ALWAYS Shoes     
                                                     });
+
+
 
             #region older values
             //FemaleFit_Generic_Ebony_attFace.Name                          = "face";
@@ -157,62 +279,7 @@ namespace NthDimension.Network
 
             #endregion
 
-            #region MaleFit Generic (master)
-            string m0gender = "male";
-            string m0body = "normal";
-            string m0face = "generic";
-            string m0hairtype = "short"; //"short"
-            string m0haircolor = "brown";
-            string m0shirtcolor = "blue";
-            string m0leggingscolor = "red";
-            string m0shoescolor = "red";
-
-            #region Face Attachment
-            AttachmentInfoDesc MaleFit_Generic_0_attFace = new AttachmentInfoDesc();
-            MaleFit_Generic_0_attFace = GetFaceAttachment("local", m0gender, m0body, m0face);
-            #endregion
-
-            #region Hair Attachment
-            AttachmentInfoDesc MaleFit_Generic_0_attHair = new AttachmentInfoDesc();
-            MaleFit_Generic_0_attHair = GetHairAttachment(m0gender, m0hairtype, m0haircolor);
-            #endregion
-
-            #region Shirt Attachment
-            AttachmentInfoDesc MaleFit_Generic_0_attShirt = new AttachmentInfoDesc();
-            MaleFit_Generic_0_attShirt = GetShirtAttachment(m0gender, m0body, m0face, m0shirtcolor);
-            #endregion
-
-            #region Pants Attachment
-            AttachmentInfoDesc MaleFit_Generic_0_attPants = new AttachmentInfoDesc();
-            MaleFit_Generic_0_attPants = GetLeggingsAttachment(m0gender, m0body, m0face, m0leggingscolor);
-            #endregion
-
-            #region Shoes Attachment
-            AttachmentInfoDesc MaleFit_Generic_0_attShoes = new AttachmentInfoDesc();
-            MaleFit_Generic_0_attShoes = GetShoesAttachment(m0gender, m0body, m0face, m0shoescolor);
-            #endregion
-
-            MaleFit_Generic_0 = new AvatarInfoDesc(new Guid().ToString(),
-                                                enuAvatarSex.Male,
-                                                string.Format(@"{0}", m0body),
-                                                @"generic",
-                                                @"Avatar",
-                                                string.Format(@"characters\male\body_{0}_generic.xmd", m0body),                                   // Body is ALWAYS .xmd
-                                                string.Format(@"characters\male\{0}_generic.xmf", m0body),
-                                                string.Format("{0}|{0}|{0}", avatarSize.ToString("###.##")),
-                                                @"-4.371139E-08|0|-1|0|0|1|0|0|1|0|-4.371139E-08|0|0|0|0|1",
-                                                @"140|0|50",
-                                                new List<AttachmentInfoDesc>()
-                                                    {
-                                                        MaleFit_Generic_0_attFace,           // 0 is ALWAYS Face
-                                                        MaleFit_Generic_0_attHair,           // 1 is ALWAYS Hair
-                                                        MaleFit_Generic_0_attShirt,          // 2 is ALWAYS Shirt
-                                                        MaleFit_Generic_0_attPants,          // 3 is ALWAYS Pants
-                                                        MaleFit_Generic_0_attShoes           // 4 is ALWAYS Shoes     
-                                                    });
-            #endregion MaleFit Generic (master)
-
-            
+            return FemaleFit_Generic_Ebony_00;
         }
 
 
@@ -295,14 +362,13 @@ namespace NthDimension.Network
 
             return new AttachmentInfoDesc()
             {
-                Material    =       (gender.ToLower() == "female" ? @"characters\face_female_ebony_00.xmf" 
+                Material    =       (gender.ToLower() == "female" ? @"characters\face_female.xmf"
+                                                                  //@"characters\face_female_ebony_00.xmf" 
                                                                   : @"characters\face_male_fit_00.xmf"),
-                //Orientation =       (gender.ToLower() == "female" ? "-4.371139E-08|0|-1|0|0|1|0|0|1|0|-4.371139E-08|0|0|0|0|1" 
-                //                                                  : "1|0|0|0|0|1|0|0|0|0|1|0|0|0|0|1"),
-
+             
                 Orientation = "-4.371139E-08|0|-1|0|0|1|0|0|1|0|-4.371139E-08|0|0|0|0|1",
 
-                //Orientation = "1|0|0|0|0|1|0|0|0|0|1|0|0|0|0|1",
+                
 
                 Name = string.Format(@"{0}_face_{1}_{2}", gender, bodyType, faceType),
                 Matrix = "5",

@@ -15,7 +15,7 @@
     public class Center
     {
         public Vector2 pos = new Vector2();
-        public float innerRadius;
+        public float innerRadius;		
         public float outerRadius;
         public ECenterType type;
     }
@@ -23,45 +23,40 @@
 
 	public class Density : System.IDisposable
 	{
-		public const int NB_POINTS_CENTERS = 32;
+		public const int						NB_POINTS_CENTERS		= 32;
+		public int								Centers					{ get; set; }
 
-		private Terrain m_terrain;
-
-		private Environment m_env;
-		private int m_gridSize;		
-		private List<Center> m_centers = new List<Center>();
+		private Terrain							m_terrain;
 
 
-		//private Image<float> m_densityMap = new Image<float>();
-		//// variables graphiques
-		//private Image<ushort> m_textureMap = new Image<ushort>();
-		//private DynamicTexture m_texture;
-		//private MediaManager m_media;
-		//private Shader m_shader;
-		//private Shader m_shaderCenter;
-		//private Declaration m_declaration;
+		private int								m_gridSize;		
+		private List<Center>					m_centers				= new List<Center>();
+		private System.Drawing.Bitmap			m_densityMap;
+
+	
+
+		public float m_innerRadius = 15f;
+		public float m_innerRadiusVariance = .2f;
+		public float m_outerRadius;
+		public float m_outerRadiusVariance = .1f;
+		public float m_outerRadiusProportion = 4f;
+
+
 
 #if DEBUG_DRAW_CENTERS
 		private VertexBuffer<_D3DVECTOR>.Type m_vbCenters = ((object)0);
 		private IndexBuffer<ushort>.Type m_ibCenters = ((object)0);
 #endif
 
-		public Density(Terrain terrain, int gridSize = 7)
+		public Density(Terrain terrain, int gridSize = 7, int centers = 4)
 		{
-
-			this.m_gridSize		= gridSize;		//this.m_gridSize = 1 << env.getGridPrecision();
+			this.m_gridSize		= 1 << gridSize;				// 1 << 7 = 128
 			this.m_terrain		= terrain;
+			this.Centers		= centers;
 
-			//this.m_densityMap = new Image<float>((uint)m_gridSize, (uint)m_gridSize);
-			//this.m_textureMap = new Image<ushort>((uint)m_gridSize, (uint)m_gridSize);
-			
-			//// initialisation de la texture, du shader, de la textureMap et de la d�claration
-			//m_texture = media.getRenderer().createDynamicTexture(m_textureMap.functorMethod);
-			//m_shader = media.getObject<Shader>("TexturedLandscape.fx");
-			//m_shaderCenter = media.getObject<Shader>("Line.fx");
-			//m_declaration = media.getRenderer().createDeclaration(GlobalMembers.densityElems);
-
-			//reset();
+			reset();
+			generateCenters();
+			compute();
 		}
 
 		public void Dispose()
@@ -232,9 +227,7 @@
 			//}
 		}
 
-		/* getters et setters */
-		//C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
-		//ORIGINAL LINE: int getGridSize() const
+		/* getters et setters */		
 		public int getGridSize()
 		{
 			return m_gridSize;
@@ -271,8 +264,7 @@
 		public void addCenter(Vector2 pos, float innerRadius, float outerRadius, ECenterType type)
 		{
 			Center toAdd = new Center();
-			//C++ TO C# CONVERTER TODO TASK: The following line was determined to be a copy assignment (rather than a reference assignment) - this should be verified and a 'CopyFrom' method should be created:
-			//ORIGINAL LINE: toAdd.pos = pos;
+		
 			toAdd.pos = pos;
 			toAdd.innerRadius = innerRadius;
 			toAdd.outerRadius = outerRadius;
@@ -281,60 +273,96 @@
 			addCenter(toAdd);
 		}
 
-		//C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
-		//ORIGINAL LINE: const ClassicVector<Center> & getCenters() const
 		public List<Center> getCenters()
 		{
 			return new List<Center>(m_centers);
 		}
 
-		////C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
-		////ORIGINAL LINE: const Environment& getEnvironment() const
-		//public Environment getEnvironment()
-		//{
-		//	return m_env;
-		//}	
+		private void compute()
+		{
+			this.m_densityMap.LockBits(new System.Drawing.Rectangle(0, 0, this.m_gridSize, this.m_gridSize), 
+										System.Drawing.Imaging.ImageLockMode.WriteOnly, 
+										System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			for(int x = 0; x < this.m_gridSize; x++)
+				for(int y = 0; y < this.m_gridSize; y++)
+				{
+					float d = computeZoneDensity(x, y);
+				}
+		}
+		private float computeZoneDensity(int x, int y, int DENSITY_RADIUS = 10, float VARIANCE_AMPLIFICATION = 10.0f, float CENTER_IMPORTANCE = 0.7f)
+		{
+			float mean		= 0.0f;
+			float meanSqr	= 0.0f;
+			int   nbPoints	= 0;
 
-		// fonctions priv�es
-		//C++ TO C# CONVERTER WARNING: 'const' methods are not available in C#:
-		//ORIGINAL LINE: const float getLocalDensity(const D3DXVECTOR2& pos) const
+			for (int i = -DENSITY_RADIUS + x; i < DENSITY_RADIUS + x; i++)
+			{
+				if (i < 0 || i >= this.m_gridSize) continue;
+				for(int j = -DENSITY_RADIUS + y; j < DENSITY_RADIUS + y; j++)
+				{
+					if (j < 0 || j >= this.m_gridSize) continue;
+					Vector2 distFromPosition = new Vector2(x - i, y - j); // ? WARNING:: 
+
+					if(DENSITY_RADIUS * DENSITY_RADIUS > distFromPosition.LengthSquared)
+					{
+						nbPoints++;
+						mean += m_terrain.GetHeightAt(i, j);
+					}
+				}
+			}
+
+			return 0;
+		}
+		private void generateCenters()
+		{
+			for(int i = 0; i < Centers; i++)
+			{
+				this.genCenter();
+			}
+		}
+		private void genCenter()
+		{			
+			float innerRadius = (float)MathHelper.RandomNumber(this.m_innerRadius, this.m_innerRadiusVariance);
+			float outerRadius = innerRadius * (float)MathHelper.RandomNumber(this.m_outerRadiusProportion, this.m_outerRadiusVariance);
+			Vector2 center = new Vector2((float)MathHelper.RandomNumber(0f, this.m_gridSize),
+										 (float)MathHelper.RandomNumber(0f, this.m_gridSize));
+			this.addCenter(center, innerRadius, outerRadius, ECenterType.CENTER_BASIC);
+		}
 		private float getLocalDensity(Vector2 pos)
 		{
-			throw new NotImplementedException();
-
 			float localDensity = 0.0f;
-			//		D3DXVECTOR2 posCenter = new D3DXVECTOR2();
+			Vector2 posCenter = new Vector2();
 
-			//		// on regarde la distance du point actuel avec tous les centres
-			//		foreach (Center it in m_centers)
-			//		{
-			////C++ TO C# CONVERTER TODO TASK: The following line was determined to be a copy assignment (rather than a reference assignment) - this should be verified and a 'CopyFrom' method should be created:
-			////ORIGINAL LINE: posCenter = pos - it.pos;
-			//			posCenter.CopyFrom(pos - it.pos);
-			//			float distSq = GlobalMembers.D3DXVec2LengthSq(posCenter);
-			////C++ TO C# CONVERTER TODO TASK: Iterators are only converted within the context of 'while' and 'for' loops:
-			//			if (distSq < it.innerRadius  it.innerRadius)
-			//			{
-			//				// on a une densit� max sur le point, pas la peine de continuer
-			//				return 1.0f;
-			//			}
-			////C++ TO C# CONVERTER TODO TASK: Iterators are only converted within the context of 'while' and 'for' loops:
-			//			else if (distSq < it.outerRadius  it.outerRadius)
-			//			{
-			//				float tmp = 1 - (distSq - it.innerRadius it.innerRadius) / (it.outerRadius it.outerRadius - it.innerRadius it.innerRadius);
-			//				// si on d�passe une densit� de 1, on sort
-			//				if (tmp >= 1.0f)
-			//				{
-			//					return 1.0f;
-			//				}
-			//				else if (tmp > localDensity)
-			//				{
-			//					localDensity = tmp;
-			//				}
-			//			}
-			//		}
+			// on regarde la distance du point actuel avec tous les centres
+			foreach (Center it in m_centers)
+			{
+				posCenter = pos - it.pos;
+				float distSq = posCenter.LengthSquared;
+				if (distSq < it.innerRadius * it.innerRadius)
+				{
+					// on a une densit� max sur le point, pas la peine de continuer
+					return 1.0f;
+				}
+				else if (distSq < it.outerRadius *  it.outerRadius)
+						{
+					float tmp = 1 - (distSq - it.innerRadius * it.innerRadius) / (it.outerRadius * it.outerRadius - it.innerRadius * it.innerRadius);
+					// si on d�passe une densit� de 1, on sort
+					if (tmp >= 1.0f)
+					{
+						return 1.0f;
+					}
+					else if (tmp > localDensity)
+					{
+						localDensity = tmp;
+					}
+				}
+			}
 
 			return localDensity;
+		}
+		private void reset()
+		{
+			this.m_densityMap = new System.Drawing.Bitmap(this.m_gridSize, this.m_gridSize);
 		}
 	}
 }

@@ -44,35 +44,35 @@ namespace NthDimension.Rendering.Drawables.Models
                 new Serialization.ListFace
                 {
                     // TODO
-                    new Geometry.Face(new VertexIndices(0, 0, 0),
-                                      new VertexIndices(1, 1, 0),
-                                      new VertexIndices(2, 2, 0),
-                                      new VertexIndices(3, 3, 0)),
+                    new Geometry.Face(new VertexIndex(0, 0, 0),
+                                      new VertexIndex(1, 1, 0),
+                                      new VertexIndex(2, 2, 0),
+                                      new VertexIndex(3, 3, 0)),
 
-                    new Geometry.Face(new VertexIndices(5, 0, 1),
-                                      new VertexIndices(4, 1, 1),
-                                      new VertexIndices(7, 2, 1),
-                                      new VertexIndices(6, 3, 1)),
+                    new Geometry.Face(new VertexIndex(5, 0, 1),
+                                      new VertexIndex(4, 1, 1),
+                                      new VertexIndex(7, 2, 1),
+                                      new VertexIndex(6, 3, 1)),
 
-                    new Geometry.Face(new VertexIndices(1, 0, 2),
-                                      new VertexIndices(5, 1, 2),
-                                      new VertexIndices(6, 2, 2),
-                                      new VertexIndices(2, 3, 2)),
+                    new Geometry.Face(new VertexIndex(1, 0, 2),
+                                      new VertexIndex(5, 1, 2),
+                                      new VertexIndex(6, 2, 2),
+                                      new VertexIndex(2, 3, 2)),
 
-                    new Geometry.Face(new VertexIndices(7, 0, 3),
-                                      new VertexIndices(4, 1, 3),
-                                      new VertexIndices(0, 2, 3),
-                                      new VertexIndices(3, 3, 3)),
+                    new Geometry.Face(new VertexIndex(7, 0, 3),
+                                      new VertexIndex(4, 1, 3),
+                                      new VertexIndex(0, 2, 3),
+                                      new VertexIndex(3, 3, 3)),
 
-                    new Geometry.Face(new VertexIndices(4, 0, 4),
-                                      new VertexIndices(5, 1, 4),
-                                      new VertexIndices(1, 2, 4),
-                                      new VertexIndices(0, 3, 4)),
+                    new Geometry.Face(new VertexIndex(4, 0, 4),
+                                      new VertexIndex(5, 1, 4),
+                                      new VertexIndex(1, 2, 4),
+                                      new VertexIndex(0, 3, 4)),
 
-                    new Geometry.Face(new VertexIndices(6, 0, 5),
-                                      new VertexIndices(7, 1, 5),
-                                      new VertexIndices(3, 2, 5),
-                                      new VertexIndices(2, 3, 5))
+                    new Geometry.Face(new VertexIndex(6, 0, 5),
+                                      new VertexIndex(7, 1, 5),
+                                      new VertexIndex(3, 2, 5),
+                                      new VertexIndex(2, 3, 5))
                 });
 
             if (null == mesh)

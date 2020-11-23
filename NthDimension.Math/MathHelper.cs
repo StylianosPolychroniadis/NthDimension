@@ -418,8 +418,26 @@ namespace NthDimension.Algebra
         {
             return (int)System.Math.Pow(2, System.Math.Floor(System.Math.Log(x, 2)));
         }
+        public static bool IsPowerOfTwo(ulong x)
+        {
+            return (x != 0) && ((x & (x - 1)) == 0);
+        }
+
+        public static bool IsPowerOfTwo(int x)
+        {
+            return (x != 0) && ((x & (x - 1)) == 0);
+        }
         #endregion
 
-       
+        #region Random
+        private static Random rand = new Random();
+
+        public static double RandomNumber(double min, double max)
+        {
+            return (max - min) * rand.NextDouble() + min;
+        }
+        #endregion Random
+
+
     }
 }

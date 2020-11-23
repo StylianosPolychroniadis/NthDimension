@@ -8,11 +8,12 @@ using static NthDimension.Procedural.City.Road;
 
 namespace NthDimension.Procedural.City
 {
-    public class Crossing
+    public class Crossing 
     {
         private Vector3                 m_position;
         private List<Road>              m_roads;
         private List<Vector3>           m_junctionPositions;
+
 
         public Crossing(Vector3 position)
         {

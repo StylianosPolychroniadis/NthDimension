@@ -26,7 +26,7 @@ namespace NthDimension.Rendering.Drawables.Tools
     class VoxelGun : FirstPersonViewController
     {
         GhostModel ghost;
-        Template[] voulmeTemplates = new Template[2];
+        Template[] volumeTemplates = new Template[2];
         private Template template;
         private int tempId = 0;
 
@@ -107,12 +107,10 @@ namespace NthDimension.Rendering.Drawables.Tools
 
                 Vector3 pos = ApplicationBase.Instance.Scene.EyePos;
                 Vector3 dir = ApplicationBase.Instance.Player.PointingDirection;
-
-                //bool result = Scene.PhysicsWorld.CollisionSystem.Raycast(GenericMethods.FromOpenTKVector(Position), GenericMethods.FromOpenTKVector(PointingDirection),
+                
                 bool result = Scene.CollisionRaycast(GenericMethods.FromOpenTKVector(pos), GenericMethods.FromOpenTKVector(dir),
                                                                          raycastCallback, out body, out normal, out frac);
 
-                //Vector3 hitCoords = Position + PointingDirection * frac;
                 Vector3 hitCoords = pos + dir * frac;
 
                 if (result && ghost != null)
@@ -124,7 +122,6 @@ namespace NthDimension.Rendering.Drawables.Tools
                     Vector3 newPos = hitCoords;
 
                     ghost.Position = smoothness * ghost.Position + (1 - smoothness) * newPos;
-                    //ghost.updateModelMatrix();
                 }
 
                 ghost.IsVisible = true;

@@ -20,39 +20,42 @@ namespace NthDimension.Rendering.Geometry
     public class Face
     {
         [ProtoMember(10)]
-        public VertexIndices[] Vertex;
+        public VertexIndex[] Vertex;
         [ProtoMember(20)]
         public bool isTemp;
         [ProtoMember(30)]
         public int position;
 
-
-        public Face(VertexIndices ind1, VertexIndices ind2, VertexIndices ind3)
+        public Face(VertexIndex ind1, VertexIndex ind2)
         {
-            Vertex = new VertexIndices[3];
+            Vertex = new VertexIndex[2];
+            Vertex[0] = ind1;
+            Vertex[1] = ind2;
+        }
+        public Face(VertexIndex ind1, VertexIndex ind2, VertexIndex ind3)
+        {
+            Vertex = new VertexIndex[3];
             Vertex[0] = ind1;
             Vertex[1] = ind2;
             Vertex[2] = ind3;
-            // Log.e("VboCube",Vi+"/"+Ti+"/"+Ni);
         }
 
-        public Face(VertexIndices ind1, VertexIndices ind2, VertexIndices ind3, VertexIndices ind4)
+        public Face(VertexIndex ind1, VertexIndex ind2, VertexIndex ind3, VertexIndex ind4)
         {
-            Vertex = new VertexIndices[4];
+            Vertex = new VertexIndex[4];
             Vertex[0] = ind1;
             Vertex[1] = ind2;
             Vertex[2] = ind3;
             Vertex[3] = ind4;
-            // Log.e("VboCube",Vi+"/"+Ti+"/"+Ni);
         }
 
         public Face(int vCount, int position)
         {
-            Vertex = new VertexIndices[vCount];
+            Vertex = new VertexIndex[vCount];
             this.position = position;
 
             for (int i = 0; i < vCount; i++)
-                Vertex[i] = new VertexIndices();
+                Vertex[i] = new VertexIndex();
 
         }
     }

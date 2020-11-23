@@ -497,22 +497,22 @@ if ((vertices[i] - vertices[c]).Length < distanceThreshold)
             };
             foreach (var f in incidentFaces[p.Vertex2])
             {
-                VertexIndices nv0;
-                VertexIndices nv1;
-                VertexIndices nv2;
+                VertexIndex nv0;
+                VertexIndex nv1;
+                VertexIndex nv2;
 
                 if (f.Vertex[0].Vi == p.Vertex2)
-                    nv0 = new VertexIndices(-1);
+                    nv0 = new VertexIndex(-1);
                 else
                     nv0 = f.Vertex[0];
 
                 if (f.Vertex[1].Vi == p.Vertex2)
-                    nv1 = new VertexIndices(-1);
+                    nv1 = new VertexIndex(-1);
                 else
                     nv1 = f.Vertex[1];
 
                 if (f.Vertex[2].Vi == p.Vertex2)
-                    nv2 = new VertexIndices(-1);
+                    nv2 = new VertexIndex(-1);
                 else
                     nv2 = f.Vertex[2];
 
@@ -553,9 +553,9 @@ if ((vertices[i] - vertices[c]).Length < distanceThreshold)
                 #region Triangle
                 if (f.Vertex.Length == 3)
                 {
-                    VertexIndices Va = new VertexIndices(mapping[f.Vertex[0].Vi]);
-                    VertexIndices Vb = new VertexIndices(mapping[f.Vertex[1].Vi]);
-                    VertexIndices Vc = new VertexIndices(mapping[f.Vertex[2].Vi]);
+                    VertexIndex Va = new VertexIndex(mapping[f.Vertex[0].Vi]);
+                    VertexIndex Vb = new VertexIndex(mapping[f.Vertex[1].Vi]);
+                    VertexIndex Vc = new VertexIndex(mapping[f.Vertex[2].Vi]);
 
 
                     _faces.Add(new Face(Va, Vb, Vc));

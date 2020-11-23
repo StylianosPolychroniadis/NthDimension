@@ -159,7 +159,9 @@ namespace NthDimension.Rendering.Drawables.Tools
                     stepTemplateId();
                 }
             }
-            Utilities.ConsoleUtil.log(string.Format("Spawner Template: {0}",  template.name));
+            // output saving message
+            if (NthDimension.Settings.Instance.game.diagnostics)               
+                Utilities.ConsoleUtil.log(string.Format("Spawner Template: {0}",  template.name));
         }
 
         private void stepTemplateId()

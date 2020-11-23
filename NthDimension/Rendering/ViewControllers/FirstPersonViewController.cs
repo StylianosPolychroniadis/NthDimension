@@ -14,7 +14,8 @@ namespace NthDimension.Rendering.ViewControllers
     {
         // FPS Camera
         private readonly Vector4        fpsEyePositionDelta         = new Vector4(0.3f, -0.3f, -0.7f, 1f); // Difference from EyePos
-        private const float             fpsCameraSpeed              = 1.3f;     // 3f; // 10f slides like on ice // TODO:: Lerp instead
+        private const float             fpsCameraSpeedNormal        = 5f;
+        
         private const float             fpsRotationSmoothing        = 0.01f;    // 0.7f;
         private const float             fpsCameraHeightOffset       = 2f;
 
@@ -98,10 +99,7 @@ namespace NthDimension.Rendering.ViewControllers
 
         protected new bool mRaycastCallback(RigidBody hitbody, JVector normal, float frac)
         {
-
-            //ConsoleUtil.log("Raycast Callback");
-          
-            return (hitbody != Parent.AvatarBody);
+            return (hitbody != Parent.RigidBody);
         }
         protected int getSlot()
         {
@@ -125,30 +123,6 @@ namespace NthDimension.Rendering.ViewControllers
             return true;
         }
 
-        //public void fromFirstPerson()
-        //{
-        //    // Switching from 1st person view to 3rd person view
-        //    wasActive1stPerson = false;
-        //    weaponModel.isVisible = false;
-        //    avatarModel.isVisible = true;
-        //    avatarPosition = Position;
-        //    //avatarModel.PointingDirection = weaponModel.PointingDirection;
-        //    Parent.PlayerMode = Player.PlayerViewMode.ThirdPerson;
-        //    startUsing();
-        //}
-
-        //public void fromThirdPerson()
-        //{
-        //    // Switching from 3rd person view to 1st person view
-        //    wasActive3rdPerson = false;
-        //    weaponModel.isVisible = true;
-        //    avatarModel.isVisible = false;
-        //    //weaponModel.Position = avatarModel.Position;
-        //    weaponModel.PointingDirection = PointingDirection;
-        //    Parent.PlayerMode = Player.PlayerViewMode.FirstPerson;
-        //    startUsing();
-        //}
-
         public override Drawable[] GetAvatarModels()
         {
             return new Drawable[] { this.weaponModel };
@@ -156,12 +130,9 @@ namespace NthDimension.Rendering.ViewControllers
 
         public override void EnterView(Vector3 pos)
         {
-            //if (Parent.PlayerViewMode == Player.enuPlayerViewMode.ThirdPerson)
-            //    return;
-
             GameInput.FirstPersonCursorLock(true);
             Parent.Position = /*Parent.ViewInfo.EyePosition =*/ Position = pos;
-            Parent.AvatarBody.Position = GenericMethods.FromOpenTKVector(Parent.Position);
+            Parent.RigidBody.Position = GenericMethods.FromOpenTKVector(Parent.Position);
             weaponModel.IsVisible = true;
             weaponModel.Position = Position;
             weaponModel.PointingDirection = PointingDirection;
@@ -178,11 +149,9 @@ namespace NthDimension.Rendering.ViewControllers
 
         protected virtual void startUsing()
         {
-            weaponModel.Position = Position;
-                //GenericMethods.Mult(new Vector4(0.3f, -0.7f, -0.7f, 1f),
-                //    Matrix4.Invert(Parent.ViewInfo.modelviewMatrix)).Xyz;
-            weaponModel.Orientation = Matrix4.Mult(weaponRotationOffset,
-                GenericMethods.MatrixFromVector(PointingDirection));
+            weaponModel.Position        = Position;
+            weaponModel.Orientation     = Matrix4.Mult(weaponRotationOffset,
+                                                       GenericMethods.MatrixFromVector(PointingDirection));
         }
 
         #region First Person View
@@ -191,7 +160,7 @@ namespace NthDimension.Rendering.ViewControllers
         {
             if (Parent.PlayerViewMode == ApplicationUser.enuPlayerViewMode.ThirdPerson)
                 return;
-            //weaponModel.isVisible = true;
+
             PointingDirection = Parent.PointingDirection;
 
             float smoothness = 0.5f;
@@ -252,65 +221,65 @@ namespace NthDimension.Rendering.ViewControllers
         {
             Vector3 moveVec = new Vector3();
 
+          
 #if _WINDOWS_
+
             if (GameInput.MOVEFORWARD)
-                moveVec.X = fpsCameraSpeed;
+                moveVec.X = fpsCameraSpeedNormal;
 
             if (GameInput.MOVEBACKWARD)
-                moveVec.X = -fpsCameraSpeed;
+                moveVec.X = -fpsCameraSpeedNormal;
 
             if (GameInput.STRAFERIGHT)
-                moveVec.Z = fpsCameraSpeed;
+                moveVec.Z = fpsCameraSpeedNormal;
 
             if (GameInput.STRAFELEFT)
-                moveVec.Z = -fpsCameraSpeed;
+                moveVec.Z = -fpsCameraSpeedNormal;
 
             if (GameInput.JUMP)
-                moveVec.Y = fpsCameraSpeed;
+                moveVec.Y = fpsCameraSpeedNormal;
+
+            if (GameInput.RUN)
+            {
+                moveVec.X *= 2;
+                moveVec.Z *= 2;
+            }
+
 #endif
 
-            moveWeapon(moveVec);
+                moveBody(moveVec);
         }
-        private void moveWeapon(Vector3 move)
+       
+        private void moveBody(Vector3 move)
         {
             RigidBody   hitbody;
             JVector     normal;
             float       frac;
 
-            bool collided = Scene.CollisionRaycast(GenericMethods.FromOpenTKVector(Position),
-                                                   //GenericMethods.FromOpenTKVector(new Vector3(0, -1f, 0)),                                // Y = -1f jumps ok (low gravity)
-                                                   GenericMethods.FromOpenTKVector(PointingDirection) * 5,
-                                                   mRaycastCallback,
+            
+
+            RigidBody body = ((ApplicationUser)Parent).RigidBody;
+
+            bool collisionWithGround = Scene.CollisionRaycast(GenericMethods.FromOpenTKVector(Position),
+                                                              new JVector(Position.X, Position.Y - body.BoundingBox.Max.Y / 2 - 2, Position.Z),
+                                                                     mRaycastCallback,
                                                                      out hitbody,
                                                                      out normal,
                                                                      out frac);
 
-            JVector linearVelocity  = new JVector();
-            JVector force           = new JVector();
+            body.LinearVelocity = new JVector(move.X * Parent.VectorFwd + Parent.VectorRight * move.Z);
 
-            RigidBody body = ((ApplicationUser)Parent).AvatarBody;
+            if (collisionWithGround && frac < 3f && move.Y > 0)
+                body.LinearVelocity = new JVector(body.LinearVelocity.X, move.Y * 2, body.LinearVelocity.Z);
 
-            if (collided && frac < 2.2f)
+            if (NthDimension.Settings.Instance.game.diagnostics)
             {
-                body.AddForce(GenericMethods.FromOpenTKVector(move.X * Parent.VectorFwd + Parent.VectorRight * move.Z));
-
-                if (move.Y > 0)
-                {
-                    linearVelocity = new JVector(body.LinearVelocity.X, 5, body.LinearVelocity.Z);
-                    body.LinearVelocity = linearVelocity;                    
-                }
+                string colInfo = string.Format("Collision fraction {0} position {1}", frac, Position.ToString());
+                ConsoleUtil.log(string.Format("LinearVelocity {0}: {1}, Mass: {2}",
+                                                                               body.LinearVelocity.ToString(),
+                                                                               collisionWithGround ? colInfo : "No Collision", 
+                                                                               body.Mass), false);
             }
-            else
-            {
-                force = GenericMethods.FromOpenTKVector(move.X * Parent.VectorFwd + Parent.VectorRight * move.Z);               
-                body.AddForce(force);
-            }
-
-            string colInfo = string.Format("Collision fraction {0} position {1}", frac, Position.ToString());
-            ConsoleUtil.log(string.Format("Force {0}, LinearVelocity {1}: {2},  ", force.ToString(), 
-                                                                           linearVelocity.ToString(), 
-                                                                           collided? colInfo : "No Collision"), 
-                                                                            true);
 
         }
         #endregion
@@ -364,10 +333,6 @@ namespace NthDimension.Rendering.ViewControllers
 
         #endregion First Person View
 
-
-
-
-
         #region Properties
         public new ApplicationUser Parent
         {
@@ -380,8 +345,6 @@ namespace NthDimension.Rendering.ViewControllers
                 {
                     Parent = value;
                 }
-
-                //Parent.forceUpdate();
             }
         }
 

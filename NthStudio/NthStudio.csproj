@@ -149,6 +149,9 @@
     <Compile Include="Gui\Dialogs\MusicPlayer.cs" />
     <Compile Include="Gui\Dialogs\ServerPanel.cs" />
     <Compile Include="Gui\Dialogs\WorldMapViewer.cs" />
+    <Content Include="data\materials\characters\face_female.xmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Gui\GraphPlot\_OBSOLETE\BackBuffer.cs" />
     <None Include="Gui\GraphPlot\_OBSOLETE\PlotterGraphEx.cs">
       <SubType>UserControl</SubType>
@@ -992,6 +995,9 @@
     <Content Include="data\textures\characters\meshGenericFace_n.png" />
     <Content Include="data\textures\characters\meshGenericFace_s.dds" />
     <Content Include="data\textures\characters\meshGenericFace_s.png" />
+    <Content Include="data\textures\characters\face_female.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game\Dungeon\_Reference\Data\color.txt" />
     <Content Include="Game\Dungeon\_Reference\Data\features.txt" />
     <Content Include="Game\Dungeon\_Reference\Data\rooms.txt" />

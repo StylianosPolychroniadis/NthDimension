@@ -223,9 +223,9 @@ namespace NthDimension.Rendering.Loaders
                             int v2 = int.Parse(sline[2]) - 1;
                             int v3 = int.Parse(sline[3]) - 1;
 
-                            VertexIndices va = new VertexIndices(v1);
-                            VertexIndices vb = new VertexIndices(v2);
-                            VertexIndices vc = new VertexIndices(v3);
+                            VertexIndex va = new VertexIndex(v1);
+                            VertexIndex vb = new VertexIndex(v2);
+                            VertexIndex vc = new VertexIndex(v3);
 
                             faceData.Add(new Face(va, vb, vc));
                         }
@@ -241,12 +241,12 @@ namespace NthDimension.Rendering.Loaders
                             int v3 = int.Parse(sline[3]) - 1;
                             int v4 = int.Parse(sline[4]) - 1;
 
-                            VertexIndices va = new VertexIndices(v1);
-                            VertexIndices vb = new VertexIndices(v2);
-                            VertexIndices vc = new VertexIndices(v3);
-                            VertexIndices vd = new VertexIndices(v4);
+                            VertexIndex va = new VertexIndex(v1);
+                            VertexIndex vb = new VertexIndex(v2);
+                            VertexIndex vc = new VertexIndex(v3);
+                            VertexIndex vd = new VertexIndex(v4);
 
-                            faceData.Add(new Face(new VertexIndices(va), new VertexIndices(vb), new VertexIndices(vc), new VertexIndices(vd)));
+                            faceData.Add(new Face(new VertexIndex(va), new VertexIndex(vb), new VertexIndex(vc), new VertexIndex(vd)));
                         }
 
                         #endregion
@@ -262,7 +262,7 @@ namespace NthDimension.Rendering.Loaders
 
                             if (sline.Length == 4)
                             {
-                                VertexIndices va, vb, vc;
+                                VertexIndex va, vb, vc;
 
                                 string[] segmentVa = sline[1].Split(new string[] { "/" }, 10, StringSplitOptions.None);
                                 string[] segmentVb = sline[2].Split(new string[] { "/" }, 10, StringSplitOptions.None);
@@ -287,9 +287,9 @@ namespace NthDimension.Rendering.Loaders
                                     int.TryParse(segmentVc[1], out vc_ti);
 
 
-                                    va = new VertexIndices(va_vi - 1, va_ti - 1, 0);
-                                    vb = new VertexIndices(vb_vi - 1, vb_ti - 1, 0);
-                                    vc = new VertexIndices(vc_vi - 1, vc_ti - 1, 0);
+                                    va = new VertexIndex(va_vi - 1, va_ti - 1, 0);
+                                    vb = new VertexIndex(vb_vi - 1, vb_ti - 1, 0);
+                                    vc = new VertexIndex(vc_vi - 1, vc_ti - 1, 0);
 
                                     faceData.Add(new Face(va, vb, vc));
                                 }
@@ -318,9 +318,9 @@ namespace NthDimension.Rendering.Loaders
                                     int.TryParse(segmentVc[2], out vc_ni);
 
 
-                                    va = new VertexIndices(va_vi - 1, va_ti - 1, va_ni - 1);
-                                    vb = new VertexIndices(vb_vi - 1, vb_ti - 1, vb_ni - 1);
-                                    vc = new VertexIndices(vc_vi - 1, vc_ti - 1, vc_ni - 1);
+                                    va = new VertexIndex(va_vi - 1, va_ti - 1, va_ni - 1);
+                                    vb = new VertexIndex(vb_vi - 1, vb_ti - 1, vb_ni - 1);
+                                    vc = new VertexIndex(vc_vi - 1, vc_ti - 1, vc_ni - 1);
 
                                     faceData.Add(new Face(va, vb, vc));
                                 }
@@ -335,7 +335,7 @@ namespace NthDimension.Rendering.Loaders
 
                             if (sline.Length == 5)
                             {
-                                VertexIndices va, vb, vc, vd;
+                                VertexIndex va, vb, vc, vd;
 
                                 string[] segmentVa = sline[1].Split(new string[] { "/" }, 10, StringSplitOptions.None);
                                 string[] segmentVb = sline[2].Split(new string[] { "/" }, 10, StringSplitOptions.None);
@@ -364,10 +364,10 @@ namespace NthDimension.Rendering.Loaders
                                     int.TryParse(segmentVd[0], out vd_vi);
                                     int.TryParse(segmentVd[1], out vd_ti);
 
-                                    va = new VertexIndices(va_vi - 1, va_ti - 1, 0);
-                                    vb = new VertexIndices(vb_vi - 1, vb_ti - 1, 0);
-                                    vc = new VertexIndices(vc_vi - 1, vc_ti - 1, 0);
-                                    vd = new VertexIndices(vd_vi - 1, vd_ti - 1, 0);
+                                    va = new VertexIndex(va_vi - 1, va_ti - 1, 0);
+                                    vb = new VertexIndex(vb_vi - 1, vb_ti - 1, 0);
+                                    vc = new VertexIndex(vc_vi - 1, vc_ti - 1, 0);
+                                    vd = new VertexIndex(vd_vi - 1, vd_ti - 1, 0);
 
                                     faceData.Add(new Face(va, vb, vc, vd));
                                 }
@@ -401,10 +401,10 @@ namespace NthDimension.Rendering.Loaders
                                     int.TryParse(segmentVd[1], out vd_ti);
                                     int.TryParse(segmentVd[2], out vd_ni);
 
-                                    va = new VertexIndices(va_vi - 1, va_ti - 1, va_ni - 1);
-                                    vb = new VertexIndices(vb_vi - 1, vb_ti - 1, vb_ni - 1);
-                                    vc = new VertexIndices(vc_vi - 1, vc_ti - 1, vc_ni - 1);
-                                    vd = new VertexIndices(vd_vi - 1, vd_ti - 1, vd_ni - 1);
+                                    va = new VertexIndex(va_vi - 1, va_ti - 1, va_ni - 1);
+                                    vb = new VertexIndex(vb_vi - 1, vb_ti - 1, vb_ni - 1);
+                                    vc = new VertexIndex(vc_vi - 1, vc_ti - 1, vc_ni - 1);
+                                    vd = new VertexIndex(vd_vi - 1, vd_ti - 1, vd_ni - 1);
 
                                     faceData.Add(new Face(va, vb, vc, vd));
 

@@ -1358,7 +1358,7 @@ namespace NthDimension.Rendering.Scenegraph
             if (mesh.DistanceToCamera /*distToDrawAble*/  - range >= vi.zFar)
             {
 #if DEBUG
-                ConsoleUtil.log(string.Format("Mesh {0} visible FALSE due to: distToDrawAble - range > info.zFar ", mesh.Name));
+                ConsoleUtil.log(string.Format("Mesh {0} visible FALSE due to: distToDrawAble - range > info.zFar ", mesh.Name), false);
 #endif
                 return false;
             }
@@ -1381,7 +1381,7 @@ namespace NthDimension.Rendering.Scenegraph
             if (float.IsNaN(range) || float.IsInfinity(range))
             {
 #if DEBUG
-                ConsoleUtil.log(string.Format("Mesh {0} visible FALSE due to: float.IsNaN(range) || float.IsInfinity(range) ", mesh.Name));
+                ConsoleUtil.log(string.Format("Mesh {0} visible FALSE due to: float.IsNaN(range) || float.IsInfinity(range) ", mesh.Name), false);
 #endif
                 return false;
             }
@@ -1401,7 +1401,7 @@ namespace NthDimension.Rendering.Scenegraph
 
 #if DEBUG
             if(!ret)
-                ConsoleUtil.log(string.Format("Mesh {0} visible FALSE due to: FINAL CONDITION Range = {1} ", mesh.Name, range));
+                ConsoleUtil.log(string.Format("Mesh {0} visible FALSE due to: FINAL CONDITION Range = {1} ", mesh.Name, range), false);
 #endif
 
             //if(!ret && )

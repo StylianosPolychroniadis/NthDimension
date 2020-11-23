@@ -119,9 +119,9 @@
             {
                 try
                 {
-                    VertexIndices a = new VertexIndices((int)elements[f + 0], (int)elements[f + 0], (int)elements[f + 0]);
-                    VertexIndices b = new VertexIndices((int)elements[f + 1], (int)elements[f + 1], (int)elements[f + 1]);
-                    VertexIndices c = new VertexIndices((int)elements[f + 2], (int)elements[f + 2], (int)elements[f + 2]);
+                    VertexIndex a = new VertexIndex((int)elements[f + 0], (int)elements[f + 0], (int)elements[f + 0]);
+                    VertexIndex b = new VertexIndex((int)elements[f + 1], (int)elements[f + 1], (int)elements[f + 1]);
+                    VertexIndex c = new VertexIndex((int)elements[f + 2], (int)elements[f + 2], (int)elements[f + 2]);
                     faces.Add(new Face(a, b, c));
                 }
                 catch { }

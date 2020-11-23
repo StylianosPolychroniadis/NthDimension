@@ -525,9 +525,14 @@ namespace NthDimension.Rendering.Loaders
                         ConsoleUtil.errorlog(string.Format("(!)Error Loading Texture: {0} ", target), e.Message);
                     }
                     break;
+
                 default:
                     break;
             }
+        }
+        public void loadTexture(Texture target, Bitmap bitmap, bool force = false)
+        {            
+            loadTextureFromBitmap(ref target, bitmap, force);
         }
 
         private void loadTextureFromDds(Texture target)
@@ -604,6 +609,98 @@ namespace NthDimension.Rendering.Loaders
                 // Everything below should be executed in UI Thread
 
                 target.texture = ApplicationBase.Instance.Renderer.GenTexture();
+                ApplicationBase.Instance.Renderer.BindTexture(TextureTarget.Texture2D, target.texture);
+
+                target.bitmap = null;
+
+                BitmapData bmp_data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+                ApplicationBase.Instance.Renderer.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, bmp_data.Width, bmp_data.Height, 0, NthDimension.Rasterizer.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
+
+                bmp.UnlockBits(bmp_data);
+
+                int sampling = 0;
+                if (target.multisampling)
+                    sampling = (int)TextureMinFilter.Linear;
+                else
+                    sampling = (int)TextureMinFilter.Nearest;
+
+
+                //Game.Instance.Renderer.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, sampling);    // Commented due to mipmap use above
+                //Game.Instance.Renderer.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, sampling);
+
+                #region Mipmap
+                // We haven't uploaded mipmaps, so disable mipmapping (otherwise the texture will not appear).
+                // On newer video cards, we can use Game.Instance.Renderer.GenerateMipmaps() or Game.Instance.Renderer.Ext.GenerateMipmaps() to create
+                // mipmaps automatically. In that case, use TextureMinFilter.LinearMipmapLinear to enable them.
+
+
+
+                int[] MipMapCount = new int[1];
+                //GameBase.Instance.Renderer.Enable(EnableCap.Texture2D);
+                ApplicationBase.Instance.Renderer.Texture2DEnabled = true;
+
+
+
+
+                if (GenerateMipmaps)
+                {
+                    ApplicationBase.Instance.Renderer.GenerateMipmap(GenerateMipmapTarget.Texture2D);
+                    ApplicationBase.Instance.Renderer.GetTexParameter(TextureTarget.Texture2D, GetTextureParameter.TextureMaxLevel, out MipMapCount[0]);
+                }
+
+
+                if (!GenerateMipmaps || MipMapCount[0] == 0) // if no MipMaps are present, use linear Filter
+                {
+                    ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, sampling);
+                    ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, sampling);
+                }
+                else // MipMaps are present
+                {
+                    target.Mipmaped = true;
+                    target.Mipmaps = MipMapCount[0];
+
+                    ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
+                    ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+                    ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMinFilter.Linear);
+                    ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
+                    //Game.Instance.checkGlError("Generate Mipmap");
+                }
+                #endregion
+
+                target.loaded = true;
+                textures[target.identifier] = target;
+            }
+        }
+
+        private void loadTextureFromBitmap(ref Texture target, System.Drawing.Bitmap bmp, bool force = false)
+        {
+            if (null == bmp)
+                throw new ArgumentNullException("Bitmap bmp");
+
+            target.CacheBitmap = bmp;
+
+            #region Texture from Cache
+            if (target.cacheBitmap != null)
+            {
+                Utilities.ConsoleUtil.log(string.Format("<> Loading Texture from cache: {0} ", target.name));
+                bmp = (Bitmap)GenericMethods.byteArrayToImage(target.cacheBitmap);
+            }
+
+            #endregion
+
+
+            target.CacheBitmap = bmp;
+            target.bitmap = bmp;
+
+            if (!force)
+                Pending.Add(target);
+            else
+            {
+                // Everything below should be executed in UI Thread
+
+                target.texture = ApplicationBase.Instance.Renderer.GenTexture();
+               
                 ApplicationBase.Instance.Renderer.BindTexture(TextureTarget.Texture2D, target.texture);
 
                 target.bitmap = null;
@@ -786,6 +883,24 @@ namespace NthDimension.Rendering.Loaders
         private void extractTexture()
         {
 
+        }
+
+        public int generateTexture3D(int w, int h, int d)
+        {
+            int tex_output = -1;
+
+            ApplicationBase.Instance.Renderer.GenTextures(1, out tex_output);
+            ApplicationBase.Instance.Renderer.ActiveTexture(TextureUnit.Texture0);
+            ApplicationBase.Instance.Renderer.BindTexture(TextureTarget.Texture3D, tex_output);
+            ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture3D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
+            ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture3D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+            ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture3D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+            ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture3D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+            ApplicationBase.Instance.Renderer.TexParameter(TextureTarget.Texture3D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
+            ApplicationBase.Instance.Renderer.TexImage3D(TextureTarget.Texture3D, 0, PixelInternalFormat.Rgba8, w, h, d, 0, Rasterizer.PixelFormat.Rgba, PixelType.Float, IntPtr.Zero);
+            ApplicationBase.Instance.Renderer.GenerateMipmap(GenerateMipmapTarget.Texture3D);
+            ApplicationBase.Instance.Renderer.BindImageTexture(0, tex_output, 0, false, 0, TextureAccess.WriteOnly, SizedInternalFormat.Rgba8);
+            return tex_output;
         }
     }
 

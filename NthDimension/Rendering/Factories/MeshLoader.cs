@@ -751,11 +751,11 @@ namespace NthDimension.Rendering.Loaders
             //sw_total.Start();
             sw.Start();                                                                                                         // Start the Stopwatch
 
+            removeTempFaces(ref faceDataList);                                                                              // Remove Temporary Faces (valid for voxel mesh) 
+
             if (triangulate)
             {
-                // TODO:: Re-Validate Voxel-only usability for removeTempFaces
-                removeTempFaces(ref faceDataList);                                                                              // Remove Temporary Faces (valid for voxel mesh) 
-                                                                                                                                //int vertsBefore = faceDataList.SelectMany(f => f.Vertex).Sum(s => s.Vi);
+                //removeTempFaces(ref faceDataList);                                                                              // Remove Temporary Faces (valid for voxel mesh) 
                                                                                                                                 //int facesBefore = target.MeshData.Faces.Count;
                 convertToTriangularFace(ref faceDataList);                                                                      // Convert Quad Faces to Triangle Faces               
             }
@@ -840,7 +840,7 @@ namespace NthDimension.Rendering.Loaders
                         {
                             #region For each Vertex in Triangle
 
-                            VertexIndices curVert = curFace.Vertex[j];                                                // Put j/3 triangle vertex into curVert
+                            VertexIndex curVert = curFace.Vertex[j];                                                // Put j/3 triangle vertex into curVert
 
                             // if Normal[Normalindice] has not been assigned a uv coordinate do so and set normal
                             if (/*normalUvData.Length > 0 &&*/ normalUvData[curVert.Ni] == Vector2.Zero)
@@ -925,7 +925,7 @@ namespace NthDimension.Rendering.Loaders
                     {
                         #region try-block
 
-                        VertexIndices oldVert = curFace.Vertex[j];
+                        VertexIndex oldVert = curFace.Vertex[j];
                         FaceDataSet curVert = new FaceDataSet();
                         curVert.position = positionVboDataList[oldVert.Vi];
 

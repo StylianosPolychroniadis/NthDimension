@@ -37,8 +37,8 @@ namespace NthDimension.Rendering
         {
             FirstPerson,
             FirstPersonVehicle,
-            ThirdPerson,
-            ThirdPersonVR
+            ThirdPerson//,
+            //ThirdPersonVR
         }
         protected NthDimension.Physics.Dynamics.Constraints.SingleBody.FixedAngle mConstraint;
         protected RigidBody                         _body;
@@ -53,7 +53,7 @@ namespace NthDimension.Rendering
             get { return _renderer; }
         }
         public enuPlayerViewMode                    PlayerViewMode      = enuPlayerViewMode.ThirdPerson;
-        public override RigidBody                   AvatarBody
+        public override RigidBody                   RigidBody
                                                     { get { return _body; } set { _body = value; forceUpdate(); } }
         public Hud                                  Hud;
         public Vector3                              RotationRaw;
@@ -98,8 +98,9 @@ namespace NthDimension.Rendering
             this.gameInput          = gameInput;
             this.AvatarInfo         = avatar;
 
-            if(null == this.AvatarInfo)
-                this.AvatarInfo = avatar = AvatarPresets.MaleFit_Generic_0;
+            if (null == this.AvatarInfo)
+                //this.AvatarInfo = avatar = AvatarPresets.MaleFit_Generic_0;
+                this.AvatarInfo = avatar = AvatarPresets.FemaleFit_Generic_0();
 
             Color                   = new Vector4(0.1f, 0.1f, 0.8f, 1.0f) * 0.3f;           // TODO:: Get from user settings
 
@@ -117,27 +118,17 @@ namespace NthDimension.Rendering
 
             VectorUp                = new Vector3(0, 1, 0);
 
-            Shape boxShape          = new BoxShape(new JVector(0.5f, 2, 0.5f));
+            this.setupBodyShape();
 
-            //Shape boxShape = new BoxShape(new JVector(0.5f, 4, 0.5f));
-
-            AvatarBody                    = new RigidBody(boxShape);
-            AvatarBody.Position           = new JVector(Position.X, Position.Y, Position.Z);
-            AvatarBody.AllowDeactivation  = false;
-
-            //JMatrix mMatrix         = JMatrix.Identity;
-            //Body.SetMassProperties(mMatrix, 2,false);
-
-            mConstraint = new NthDimension.Physics.Dynamics.Constraints.SingleBody.FixedAngle(AvatarBody);
-
+            mConstraint = new NthDimension.Physics.Dynamics.Constraints.SingleBody.FixedAngle(RigidBody);
+           
             parent.AddConstraint(mConstraint);
-            parent.AddRigidBody(AvatarBody);
-            AvatarBody.Tag = this;
+            parent.AddRigidBody(RigidBody);
+            RigidBody.Tag = this;
 
             ViewInfo                = new ViewInfo(this);
             ViewInfo.aspect         = (float)ApplicationBase.Instance.Width / (float)ApplicationBase.Instance.Height;
-            //ViewInfo.zNear = 0.1f;
-            //ViewInfo.zFar = 4000f; // 2000 was working ok
+           
             ViewInfo.UpdateProjectionMatrix();
 
 #if !_DEVUI_
@@ -165,29 +156,25 @@ namespace NthDimension.Rendering
 
             if (null != mConstraint)
                 ((SceneGame)Parent).RemoveConstraint(mConstraint);
-            if (null != AvatarBody)
-                ((SceneGame)Parent).RemoveRigidBody(AvatarBody);
+            if (null != RigidBody)
+                ((SceneGame)Parent).RemoveRigidBody(RigidBody);
 
 
             Position = GenericMethods.Vector3FromString(spawnPos); //  spawnPos;
             PointingDirection = new Vector3(-1, 0,0);
 
             VectorUp = new Vector3(0, 1, 0);
-
-            Shape boxShape = new BoxShape(new JVector(0.5f, 2, 0.5f));
-
-            AvatarBody = new RigidBody(boxShape);
-            AvatarBody.Position = new JVector(Position.X, Position.Y, Position.Z);
-            AvatarBody.AllowDeactivation = false;
+         
+            this.setupBodyShape();
 
             FirstPersonView.Position = Position;
             ThirdPersonView.Position = Position;
 
-            mConstraint = new NthDimension.Physics.Dynamics.Constraints.SingleBody.FixedAngle(AvatarBody);
+            mConstraint = new NthDimension.Physics.Dynamics.Constraints.SingleBody.FixedAngle(RigidBody);
 
             ((SceneGame)Parent).AddConstraint(mConstraint);
-            ((SceneGame)Parent).AddRigidBody(AvatarBody);
-            AvatarBody.Tag = this;
+            ((SceneGame)Parent).AddRigidBody(RigidBody);
+            RigidBody.Tag = this;
 
             ViewInfo = new ViewInfo(this);
             //ViewInfo.aspect = (float)ApplicationBase.Instance.Width / (float)ApplicationBase.Instance.Height;
@@ -223,7 +210,7 @@ namespace NthDimension.Rendering
             if (PlayerViewMode == enuPlayerViewMode.ThirdPerson)
                 ThirdPersonView.EnterView(pos);
 
-            return new Vector3(AvatarBody.Position);
+            return new Vector3(RigidBody.Position);
         }
 
         
@@ -246,8 +233,8 @@ namespace NthDimension.Rendering
                     if(this.PlayerViewMode == enuPlayerViewMode.FirstPerson)
                         this.PlayerViewMode = enuPlayerViewMode.ThirdPerson;
                     else if(this.PlayerViewMode == enuPlayerViewMode.ThirdPerson)
-                        this.PlayerViewMode = enuPlayerViewMode.ThirdPersonVR;
-                    else if (this.PlayerViewMode == enuPlayerViewMode.ThirdPersonVR)
+                    //    this.PlayerViewMode = enuPlayerViewMode.ThirdPersonVR;
+                    //else if (this.PlayerViewMode == enuPlayerViewMode.ThirdPersonVR)
                         this.PlayerViewMode = enuPlayerViewMode.FirstPerson;
 
                     if (this.PlayerViewMode == enuPlayerViewMode.FirstPerson)
@@ -256,8 +243,8 @@ namespace NthDimension.Rendering
                         ThirdPersonView.LeaveView(ref xpos);
                         FirstPersonView.EnterView(xpos);
                     }
-                    else if(this.PlayerViewMode == enuPlayerViewMode.ThirdPerson ||
-                            this.PlayerViewMode == enuPlayerViewMode.ThirdPersonVR)
+                    else if(this.PlayerViewMode == enuPlayerViewMode.ThirdPerson //||
+                            /*this.PlayerViewMode == enuPlayerViewMode.ThirdPersonVR*/)
                     {
                         Vector3 xpos = new Vector3();
                         FirstPersonView.LeaveView(ref xpos);
@@ -270,8 +257,8 @@ namespace NthDimension.Rendering
                 if (PlayerViewMode == enuPlayerViewMode.FirstPerson)
                     updateFirstPersonView();
 
-                if (PlayerViewMode == enuPlayerViewMode.ThirdPerson ||
-                    PlayerViewMode == enuPlayerViewMode.ThirdPersonVR)
+                if (PlayerViewMode == enuPlayerViewMode.ThirdPerson //||
+                    /*PlayerViewMode == enuPlayerViewMode.ThirdPersonVR*/)
                     updateThirdPersonView();
             }
 
@@ -282,7 +269,7 @@ namespace NthDimension.Rendering
         private void updateFirstPersonView()
         {
             #region First Person View 
-            Position = GenericMethods.ToOpenTKVector(AvatarBody.Position);
+            Position = GenericMethods.ToOpenTKVector(RigidBody.Position);
             //Position += FirstPersonView.PositionOffset;
 #if _WINDOWS_
             if (gameInput.TOOL01)
@@ -327,6 +314,15 @@ namespace NthDimension.Rendering
 #endregion
         }
 
-        
+        private void setupBodyShape()
+        {
+            Shape boxShape = new BoxShape(new JVector(0.5f, 8f, 0.5f));
+            
+            RigidBody = new RigidBody(boxShape);
+            RigidBody.Position = new JVector(Position.X, Position.Y/* + 30*/, Position.Z);
+            RigidBody.AllowDeactivation = false;
+            //RigidBody.Mass = 70;
+            
+        }
     }
 }

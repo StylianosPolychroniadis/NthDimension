@@ -3,12 +3,13 @@
 #variables
 
 in vec3 vLightDir;
-in vec3 vertexNormal;
 
 uniform float terrain_minHeight;
 uniform float terrain_maxHeight;
 uniform vec2  terrain_uvScale	= vec2(0.01, 0.01);		// TODO:: clear instanciation
 uniform vec3  terrain_lightDir	= vec3(-1, -1, -1);		// TODO:: clear instantiation
+uniform sampler2D terrain_densityMap;
+uniform float terrain_densityFactor;
 
 //baseTexture  -	grass
 //baseTexture2 -	snow
@@ -23,7 +24,7 @@ void main()
 
 	vec3 t_pos		= g_pos.xyz;	
 	vec3 color		= vec3(0,1,0);
-	vec3 tNormal	= vertexNormal;
+	vec3 tNormal	= v_normal;
 	vec2 uv			= vec2(t_pos.x * terrain_uvScale.x, t_pos.z * terrain_uvScale.y);
 
 	float intensity = clamp(-dot(terrain_lightDir, tNormal), 0.0, 1.0);	// v_normal is already normalized
@@ -78,6 +79,9 @@ void main()
 		intensity = 1;
 	}
 
+	vec3 density = texture(terrain_densityMap, v_texture).rgb;
+
 	color = color * intensity;	// factor in phong	
+	color = mix(color.rgb, density.rgb, terrain_densityFactor);		
 	out_frag_color = vec4(color, 0);
 }

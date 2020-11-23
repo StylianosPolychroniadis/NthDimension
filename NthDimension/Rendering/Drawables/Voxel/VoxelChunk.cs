@@ -38,11 +38,8 @@ namespace NthDimension.Rendering.Drawables.Voxel
             generateSurface();
 
             wasUpdated = false;
-            //generateDebugSurface();
-            //generateSurfaceMesh();
-            //scene.generateParticleSys();
-
-            surface.IsVisible = false;
+   
+            surface.IsVisible = true;
         }
 
         private void generateSurface()
@@ -62,7 +59,7 @@ namespace NthDimension.Rendering.Drawables.Voxel
             if (wasUpdated)
             {
                 surface.setMesh(meshHelper.generateMesh(voxelData));
-                if (voulumetrics.Count > 0)
+                if (volumetrics.Count > 0)
                     surface.IsVisible = true;
             }
         }

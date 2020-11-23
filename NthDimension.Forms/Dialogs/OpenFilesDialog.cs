@@ -482,7 +482,7 @@ namespace NthDimension.Forms.Dialogs
             {
                 try
                 {
-                    PopulateNode2(tn2);
+                    PopulateNode2(tn2);         /// TOOO SLOW On First RUN!?!?!?!?
                 }
                 catch (UnauthorizedAccessException aE)
                 {

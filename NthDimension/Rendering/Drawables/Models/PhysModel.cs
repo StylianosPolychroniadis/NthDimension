@@ -46,14 +46,14 @@ namespace NthDimension.Rendering.Drawables.Models
            
         }
 
-        public override RigidBody AvatarBody { get { return body; } set { body = value; forceUpdate(); } }
+        public override RigidBody RigidBody { get { return body; } set { body = value; forceUpdate(); } }
 
         // saving body to database
         public override void save(ref StringBuilder sb, int level)
         {
             // reading Object Atrributes and Converting them to Strings
             string position = GenericMethods.StringFromVector3(this.Position);
-            string rotation = GenericMethods.StringFromJMatrix(AvatarBody.Orientation);
+            string rotation = GenericMethods.StringFromJMatrix(RigidBody.Orientation);
             string size = GenericMethods.StringFromVector3(this.Size);
             string stringMaterial = GenericMethods.StringFromStringList(Materials);
             string meshes = GenericMethods.StringFromStringList(Meshes);
@@ -76,15 +76,8 @@ namespace NthDimension.Rendering.Drawables.Models
             if(IgnoreCulling)
                 sb.AppendLine(tab2 + "<cullignore/>");
 
-            /*
-            // Creating Sql Command
-            sb.Append("INSERT INTO WorldObjects (id, name, position, rotation , material, meshes, pboxes, static )" +
-                " VALUES(NULL, '" + name + "', '" + position + "', '" + rotation + "' , '" + stringMaterial + "' , '"
-                + meshes + "' , '" + pboxes + "' , " + isstatic + ");");
-
-             */
-
-            Utilities.ConsoleUtil.log(string.Format("@ Saving Physics Model: '{0}'", Name));
+            if(NthDimension.Settings.Instance.game.diagnostics)
+                Utilities.ConsoleUtil.log(string.Format("@ Saving Physics Model: '{0}'", Name));
 
             saveChilds(ref sb, level);
 
@@ -150,7 +143,7 @@ namespace NthDimension.Rendering.Drawables.Models
             newBody.Tag = this;
             newBody.Orientation = GenericMethods.FromOpenTKMatrix(Orientation);
 
-            AvatarBody = newBody;
+            RigidBody = newBody;
             Scene.AddRigidBody(newBody);
             newBody.Tag = this;
         }
@@ -215,8 +208,8 @@ namespace NthDimension.Rendering.Drawables.Models
 
         public void updateMatrix()
         {
-            Position = GenericMethods.ToOpenTKVector(AvatarBody.Position);
-            Orientation = GenericMethods.ToOpenTKMatrix(AvatarBody.Orientation);
+            Position = GenericMethods.ToOpenTKVector(RigidBody.Position);
+            Orientation = GenericMethods.ToOpenTKMatrix(RigidBody.Orientation);
         }
 
         #endregion physicob management
@@ -227,9 +220,9 @@ namespace NthDimension.Rendering.Drawables.Models
         {
             updateSelection();
 
-            if (AvatarBody != null)
+            if (RigidBody != null)
             {
-                if (!AvatarBody.IsStaticOrInactive || Forceupdate)
+                if (!RigidBody.IsStaticOrInactive || Forceupdate)
                 {
                     wasUpdated = true;
                     updateMatrix();
@@ -242,7 +235,7 @@ namespace NthDimension.Rendering.Drawables.Models
         {
             updateSelection();
 
-            if (AvatarBody != null)
+            if (RigidBody != null)
             {
                 wasUpdated = true;
                 updateMatrix();
@@ -255,12 +248,13 @@ namespace NthDimension.Rendering.Drawables.Models
         public void dissolve()
         {
             createDisModel();
-            //kill();
+            kill();
         }
 
         public override void kill()
         {
-            Scene.RemoveRigidBody(AvatarBody);
+            Scene.RemoveRigidBody(RigidBody);
+           
             base.kill();
         }
 
@@ -274,13 +268,9 @@ namespace NthDimension.Rendering.Drawables.Models
             foreach (MeshVbo mesh in meshes)
                 disModel.addMesh(mesh);
 
-            //disModel.Size = Size;
             disModel.Position = Position;
-            //disModel.updateModelMatrix();
-
             disModel.Orientation = Orientation;
-            disModel.Scene = Scene;
-            
+            disModel.Scene = Scene;            
         }
 
         public bool IsStatic

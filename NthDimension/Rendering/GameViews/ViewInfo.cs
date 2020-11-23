@@ -36,7 +36,8 @@ namespace NthDimension.Rendering.GameViews
 
         public float            dofFocus                = 10;              // original 10
 
-        public float            fovy                    { get { return (float)Math2.degToRad(45f); } } //= (float)Math.PI / 2;
+        public float            fovy                    { get { float ret = MathHelper.DegreesToRadians(45f);
+                                                                return ret; } } //= (float)Math.PI / 2;
         public float            aspect                  = 1;
 
         public Vector3          upVec                   = new Vector3(0, 1, 0);
@@ -209,7 +210,7 @@ namespace NthDimension.Rendering.GameViews
         
         private bool raycastCallback(RigidBody body, JVector normal, float frac)
         {
-            return (body != Parent.AvatarBody);
+            return (body != Parent.RigidBody);
         }
 
         public virtual bool frustrumCheck(Drawable drawable)

@@ -55,6 +55,10 @@ namespace NthDimension.Rasterizer.Windows
         {
             OpenTK.Graphics.OpenGL.GL.BindTexture(target.ToOpenTK(), texture);
         }
+        public override void BindImageTexture(int unit, int texture, int level, bool layered, int layer, TextureAccess access, SizedInternalFormat format)
+        { 
+            OpenTK.Graphics.OpenGL.GL.BindImageTexture(unit, texture, level, layered, layer, access.ToOpenTK(), format.ToOpenTK());
+        }
         public override void BindVertexArray(int array)
         {
             OpenTK.Graphics.OpenGL.GL.BindVertexArray(array);
@@ -160,6 +164,10 @@ namespace NthDimension.Rasterizer.Windows
         protected override void Disable(EnableCap disable)
         {
             OpenTK.Graphics.OpenGL.GL.Disable(disable.ToOpenTK());
+        }
+        public override void DispatchCompute(int numGroupsX, int numGroupsY, int numGroupsZ)
+        {
+            throw new NotImplementedException("GLSL 430 not implemented");
         }
         public override void DrawElements(PrimitiveType mode, int count, DrawElementsType type, IntPtr indices) // WARNING: Func Obsolete use PrimitiveType overload
         {
@@ -338,6 +346,10 @@ namespace NthDimension.Rasterizer.Windows
         public override void TexImage2D(TextureTarget target, int level, PixelInternalFormat internalformat, int width, int height, int border, PixelFormat format, PixelType type, IntPtr pixels)
         {
             OpenTK.Graphics.OpenGL.GL.TexImage2D(target.ToOpenTK(), level, internalformat.ToOpenTK(), width, height, border, format.ToOpenTK(), type.ToOpenTK(), pixels);
+        }
+        public override void TexImage3D(TextureTarget target, int level, PixelInternalFormat internalformat, int width, int height, int depth, int border, PixelFormat format, PixelType type, IntPtr pixels)
+        {
+            OpenTK.Graphics.OpenGL.GL.TexImage3D(target.ToOpenTK(), level, internalformat.ToOpenTK(), width, height, depth, border, format.ToOpenTK(), type.ToOpenTK(), pixels);
         }
         public override void TexParameter(TextureTarget target, TextureParameterName pname, int param)
         {

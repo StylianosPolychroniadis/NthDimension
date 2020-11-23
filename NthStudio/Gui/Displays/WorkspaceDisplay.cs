@@ -1519,11 +1519,11 @@ namespace NthStudio.Gui.Displays
             miSimulation_Terrain.Name = "Terrain";
             miSimulation_Terrain.ItemClickedEvent += delegate
             {
-                float heightScale   = 70.0f;                
-                float hMin          = -10;
-                float hMax          = 80;
-                float size          = 512;
-                int subdv           = 128;
+                float heightScale   = 10.0f;                
+                float hMin          = 0;
+                float hMax          = 10;
+                float size          = 64;  // 512
+                int subdv           = 32;   // 128
 
                 Terrain terrain = new Terrain(@"data\textures\terrain\heightmap.png",
                                               "terrain\\terrainmultitex.xmf",
@@ -1533,7 +1533,7 @@ namespace NthStudio.Gui.Displays
                                                hMin,
                                                hMax)
                 {
-                    UVScale = new Vector2(0.2f, 0.2f)
+                    UVScale = new Vector2(0.5f, 0.5f)
                 };
                 
                 ApplicationBase.Instance.Scene.AddDrawable(terrain);

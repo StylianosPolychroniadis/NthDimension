@@ -118,36 +118,9 @@ namespace NthDimension.Rendering.ViewControllers
 
             return true;
         }
-
-        //public void fromFirstPerson()
-        //{
-        //    // Switching from 1st person view to 3rd person view
-        //    wasActive1stPerson = false;
-        //    weaponModel.isVisible = false;
-        //    avatarModel.isVisible = true;
-        //    avatarPosition = Position;
-        //    //avatarModel.PointingDirection = weaponModel.PointingDirection;
-        //    Parent.PlayerMode = Player.PlayerViewMode.ThirdPerson;
-        //    startUsing();
-        //}
-
-        //public void fromThirdPerson()
-        //{
-        //    // Switching from 3rd person view to 1st person view
-        //    wasActive3rdPerson = false;
-        //    weaponModel.isVisible = true;
-        //    avatarModel.isVisible = false;
-        //    //weaponModel.Position = avatarModel.Position;
-        //    weaponModel.PointingDirection = PointingDirection;
-        //    Parent.PlayerMode = Player.PlayerViewMode.FirstPerson;
-        //    startUsing();
-        //}
-
+   
         public override void EnterView(Vector3 pos)
         {
-            //if (Parent.PlayerViewMode == Player.enuPlayerViewMode.ThirdPerson)
-            //    return;
-
             GameInput.FirstPersonCursorLock(true);
             Parent.Position = /*Parent.ViewInfo.EyePosition =*/ Position = pos;
             Parent.Body.Position = GenericMethods.FromOpenTKVector(Parent.Position);

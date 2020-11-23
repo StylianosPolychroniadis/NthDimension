@@ -647,6 +647,7 @@ namespace NthDimension.Rendering.Drawables.Models
             #endregion
 
             #region animations overrides
+          //if (reader.Name.ToLower() == "sequences" && reader.HasAttributes && reader.NodeType != XmlNodeType.EndElement)
             if (reader.Name.ToLower() == "animation" && reader.HasAttributes && reader.NodeType != XmlNodeType.EndElement)
             {
                 AnimationSettings setting = new AnimationSettings();

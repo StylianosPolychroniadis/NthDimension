@@ -43,7 +43,7 @@ namespace NthDimension.Rendering
 
         protected bool mRaycastCallback(RigidBody hitbody, JVector normal, float frac)
         {
-            return (hitbody != Parent.AvatarBody);
+            return (hitbody != Parent.RigidBody);
         }
 
         public virtual void EnterView(Vector3 position) { }

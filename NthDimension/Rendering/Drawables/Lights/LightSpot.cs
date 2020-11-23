@@ -31,6 +31,17 @@ namespace NthDimension.Rendering.Drawables.Lights
         public int                  lightId;
         public int                  ProjectionTexture       = 0;
 
+        public string               Texture
+        {
+            get { return texturename; }
+            set
+            {
+                texturename = value;
+                ProjectionTexture = ApplicationBase.Instance.TextureLoader.getTextureId(value);
+                useProjectionTexture = true;
+            }
+        }
+
         private float               nextFarUpdate;
         private string              texturename;
         private bool                useProjectionTexture    = false;  // was false
@@ -74,8 +85,8 @@ namespace NthDimension.Rendering.Drawables.Lights
         private void setupShadow()
         {
             viewInfo                = new ViewInfo(this);
-            viewInfo.zNear          = 0.7f;  // was 0.7
-            viewInfo.zFar           = 1500f;
+            viewInfo.zNear          = 0.7f;  
+            viewInfo.zFar           = 1000f;  
             viewInfo.UpdateProjectionMatrix();
 
             // NOTE FOVY was set to PI/2 in Original
@@ -103,13 +114,13 @@ namespace NthDimension.Rendering.Drawables.Lights
             sb.AppendLine(tab2 + "<far>" + viewInfo.zNear + "</far>");
 
             if (Texture != null)
-                sb.AppendLine(tab2 + "<texture>" + Texture + "</texture>");
-
-            // output saving message
-            Utilities.ConsoleUtil.log(string.Format("@ Saving Light: '{0}'", Name));
+                sb.AppendLine(tab2 + "<texture>" + Texture + "</texture>");           
 
             sb.AppendLine(tab + "</lamp>");
 
+            // output saving message
+            if (NthDimension.Settings.Instance.game.diagnostics)
+                Utilities.ConsoleUtil.log(string.Format("@ Saving Light: '{0}'", Name));
             // save childs
             saveChilds(ref sb, level);
         }
@@ -121,6 +132,7 @@ namespace NthDimension.Rendering.Drawables.Lights
                 reader.Read();
                 Texture = reader.Value;
             }
+
 
             // TODO:: zNear & zFar
         }
@@ -148,7 +160,7 @@ namespace NthDimension.Rendering.Drawables.Lights
                 updateChilds();
 
                 viewInfo.zNear                          = 0.7f;
-                viewInfo.zFar = 100f;// 10f;
+                viewInfo.zFar                           = 1000f;
                 viewInfo.Position                       = position;
                 viewInfo.pointingDirection              = PointingDirection;
                 viewInfo.wasUpdated = true;
@@ -236,16 +248,7 @@ namespace NthDimension.Rendering.Drawables.Lights
             }
         }
 
-        public string Texture
-        {
-            get { return texturename; }
-            set
-            {
-                texturename = value;
-                ProjectionTexture = ApplicationBase.Instance.TextureLoader.getTextureId(value);
-                useProjectionTexture = true;
-            }
-        }
+        
 
         
     }

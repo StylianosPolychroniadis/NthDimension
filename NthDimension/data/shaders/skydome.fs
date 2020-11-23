@@ -3,7 +3,7 @@
 in vec3 pos;
 in vec3 sun_norm;
 in vec3 star_pos;
-//---------UNIFORM------------
+//---------UNIFORM------------ // TODO: Switch to baseTextureXXXXX naming convention
 uniform sampler2D tint;//the color of the sky on the half-sphere where the sun is. (time x height)
 uniform sampler2D tint2;//the color of the sky on the opposite half-sphere. (time x height)
 uniform sampler2D sun;//sun texture (radius x time)

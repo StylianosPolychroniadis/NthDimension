@@ -34,8 +34,8 @@ namespace NthDimension.Rendering.Drawables.Models
         {
             // reading Object Atrributes and Converting them to Strings
             string position             = GenericMethods.StringFromVector3(this.Position);
-            string rotation             = null != AvatarBody ? 
-                                          GenericMethods.StringFromJMatrix(AvatarBody.Orientation) :
+            string rotation             = null != RigidBody ? 
+                                          GenericMethods.StringFromJMatrix(RigidBody.Orientation) :
                                           "1|0|0|0|1|0|0|0|1";
             string size                 = GenericMethods.StringFromVector3(this.Size);
             string stringMaterial       = GenericMethods.StringFromStringList(Materials);
