@@ -165,7 +165,6 @@ namespace NthDimension.Rendering.ViewControllers
 
             float smoothness = 0.5f;
             Vector4 tmpToolFromEye = fpsEyePositionDelta;
-            //tmpToolFromEye.Y += fpsCameraHeightOffset;
             Vector3 newPos = GenericMethods.Mult(tmpToolFromEye, Matrix4.Invert(Parent.ViewInfo.modelviewMatrix)).Xyz;
             Matrix4 newOri = Matrix4.Mult(weaponRotationOffset, GenericMethods.MatrixFromVector(PointingDirection));
 
@@ -174,7 +173,6 @@ namespace NthDimension.Rendering.ViewControllers
 
             if (!wasActive)
                 startUsing();
-
 
             if (GameInput != null)
             {
@@ -241,8 +239,8 @@ namespace NthDimension.Rendering.ViewControllers
 
             if (GameInput.RUN)
             {
-                moveVec.X *= 2;
-                moveVec.Z *= 2;
+                moveVec.X *= 1.8f;
+                moveVec.Z *= 1.8f;
             }
 
 #endif
@@ -272,6 +270,7 @@ namespace NthDimension.Rendering.ViewControllers
             if (collisionWithGround && frac < 3f && move.Y > 0)
                 body.LinearVelocity = new JVector(body.LinearVelocity.X, move.Y * 2, body.LinearVelocity.Z);
 
+#if DEBUG
             if (NthDimension.Settings.Instance.game.diagnostics)
             {
                 string colInfo = string.Format("Collision fraction {0} position {1}", frac, Position.ToString());
@@ -280,11 +279,12 @@ namespace NthDimension.Rendering.ViewControllers
                                                                                collisionWithGround ? colInfo : "No Collision", 
                                                                                body.Mass), false);
             }
+#endif
 
         }
-        #endregion
+#endregion
 
-        #region First Person Rotate 
+#region First Person Rotate 
         protected virtual void rotateFirstPersonView()
         {
             rotateWeapon(GameInput.MouseDelta.Y * CameraRotSpeed, GameInput.MouseDelta.X * CameraRotSpeed, 0);
@@ -310,9 +310,9 @@ namespace NthDimension.Rendering.ViewControllers
             Parent.VectorFwd = Parent.GetFrontVec();
             Parent.VectorRight = Parent.GetRightVec();
         }
-        #endregion
+#endregion
 
-        #region First Person View Events
+#region First Person View Events
         protected virtual void interactUp()
         {
         }
@@ -329,11 +329,11 @@ namespace NthDimension.Rendering.ViewControllers
         protected virtual void fireDown()
         {
         }
-        #endregion
+#endregion
 
-        #endregion First Person View
+#endregion First Person View
 
-        #region Properties
+#region Properties
         public new ApplicationUser Parent
         {
             get { return (ApplicationUser)base.Parent; }
@@ -348,6 +348,6 @@ namespace NthDimension.Rendering.ViewControllers
             }
         }
 
-        #endregion
+#endregion
     }
 }

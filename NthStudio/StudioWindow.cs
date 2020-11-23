@@ -791,35 +791,28 @@ namespace NthStudio
 
             VAR_AppState = ApplicationState.Playing;
             return;
-
-            #region Testing Remote Players
-
-            //Scene.CreateRemoteAvatars.Add(new Rafa.Graphics.Scenegraph.PendingAvatar(Scene.CreateRemoteAvatars.Count, Rafa.Graphics.AvatarPresets.FemaleFit_Generic_Blonde_00));
-            //Scene.CreateRemoteAvatars.Add(new Rafa.Graphics.Scenegraph.PendingAvatar(Scene.CreateRemoteAvatars.Count, Rafa.Graphics.AvatarPresets.FemaleFit_Generic_Blonde_01));
-            //Scene.CreateRemoteAvatars.Add(new Rafa.Graphics.Scenegraph.PendingAvatar(Scene.CreateRemoteAvatars.Count, Rafa.Graphics.AvatarPresets.FemaleFit_Generic_Blonde_02));
-
-            #endregion
         }
         private void bindUserInput()
         {
             if (null != AppInput)
                 Scene.removeChild(AppInput);
             AppInput = new GameInput(Scene);
-            ((GameInput)AppInput).OnKeyDown += delegate(object sender, OpenTK.Input.KeyboardKeyEventArgs k)
-            {
-                if (k.Key == OpenTK.Input.Key.Enter) playBlip();
-            };
-
+       
             this.KeyDown += delegate(object sender, OpenTK.Input.KeyboardKeyEventArgs k)
             {
-                if (k.Key == OpenTK.Input.Key.Enter) playBlip();
+                if (k.Key == OpenTK.Input.Key.Enter)
+                {
+                    this.AudioPlayer.playBlip();
 
+#if DEBUG
                 Console.WriteLine("blip");
+#endif
+                }
             };
         }
-        #endregion
+#endregion
 
-        #region Render Frame
+#region Render Frame
         protected override void OnRenderFrame(OpenTK.FrameEventArgs e)
         {
             base.OnRenderFrame(e);
@@ -833,9 +826,9 @@ namespace NthStudio
             //}
 
         }
-        #endregion Render Frame
+#endregion Render Frame
 
-        #region Update Frame
+#region Update Frame
         
         protected override void OnUpdateFrame(OpenTK.FrameEventArgs e)
         {
@@ -847,7 +840,7 @@ namespace NthStudio
             //        upd.UpdateFrame(e.Time);
             // 
 
-            #region UI Updates
+#region UI Updates
             this.updatePerformanceTrends(e.Time);
             if (null != m_screen)
             {
@@ -861,32 +854,32 @@ namespace NthStudio
                 if (VAR_AppState == ApplicationState.AssetLoad)
                     m_screen.SetProgress(VAR_SceneLoadPercentage * 100, string.Format("Loading Scene {0}... {1}%", ActiveSceneFile.SceneName, (VAR_SceneLoadPercentage * 100).ToString("##0.0")));
             }
-            #endregion UI Updates
+#endregion UI Updates
 
             //SciterWnd.UpdateWindow();
 
-            #region Player Input Update
+#region Player Input Update
             if (null != AppInput && !CursorOverGUI())
                 AppInput.update();
 
             this.CtrlF1();
             
-            #endregion
+#endregion
 
             this.mousePickAvatars();
 
             if (null != crowd)
                 crowd.Update();
 
-            #region Enter Scene
+#region Enter Scene
             if (_readyToPlay && VAR_AppState != ApplicationState.Playing && !Scene.Initialized)
             {
                 EnterScene();
             }
-            #endregion Enter Scene
+#endregion Enter Scene
 
         }
-        #endregion
+#endregion
 
         public void createCrowd(int humanCount = 10, int assasinCount = 1)
         {

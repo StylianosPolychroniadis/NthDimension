@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Rendering\ApplicationBase.AudioPlayer.cs" />
     <Compile Include="Rendering\Culling\Boundary.cs" />
     <Compile Include="Rendering\Culling\BoundingAABB.cs" />
     <Compile Include="Rendering\Culling\BoundingCylinderXY.cs" />
