@@ -421,27 +421,19 @@ namespace NthStudio
         {
             //return;
             NanoVG.nvgBeginFrame(vg, Width, Height, 1f);
-            if (null != m_screen)
-            {
+            if (null != m_screen) {
                 if (m_screen.IsHide)
                     m_screen.Show();
                 m_screen.Render();
-
-
             }
             NanoVG.nvgEndFrame(vg);
             Draw3DCursor();
 
-            if(DrawPerformance)
-                this.drawPerformanceTrends();
-
-            DrawMeshDrawTimes();
-            DrawDrawablesDrawTimes();
-            DrawBounds();
-
-            //SciterWnd.
-
-
+            if (DrawPerformance)
+                try { this.drawPerformanceTrends(); }   catch(Exception e) { ConsoleUtil.errorlog("GuiDraw", e.Message); }
+            try { DrawMeshDrawTimes(); }                catch (Exception e) { ConsoleUtil.errorlog("GuiDraw", e.Message); }
+            try { DrawDrawablesDrawTimes(); }           catch (Exception e) { ConsoleUtil.errorlog("GuiDraw", e.Message); }
+            try { DrawBounds(); }                       catch (Exception e) { ConsoleUtil.errorlog("GuiDraw", e.Message); }
         }
         private void Draw3DCursor()
         {

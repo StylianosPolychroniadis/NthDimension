@@ -76,6 +76,12 @@ namespace NthDimension.Physics.Collision.Shapes
         /// <param name="result">The result.</param>
         public override void SupportMapping(ref JVector direction, out JVector result)
         {
+            if (float.IsNaN(direction.X) ||
+                float.IsNaN(direction.Y) ||
+                float.IsNaN(direction.Z))
+            {
+                result = JVector.Zero;
+            }
             result = direction;
             result.Normalize();
 

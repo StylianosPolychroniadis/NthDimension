@@ -38,9 +38,10 @@ namespace NthDimension.Rendering
         //generic stuff
         [ProtoMember(10)]
         public string                   pointer;
-        [ProtoMember(180)]
+
+        [ProtoMember(195)]
         public int                      identifier;
-        //[ProtoMember(190)]
+
         public bool                     loaded;
         [ProtoMember(430)]
         public Type                     type;
@@ -98,25 +99,25 @@ namespace NthDimension.Rendering
             baseTextureTwo,
             [ProtoMember(60)]
             baseTextureThree,
-            [ProtoMember(65)]
-            baseTextureFour,
             [ProtoMember(70)]
-            normalTexture,
+            baseTextureFour,
             [ProtoMember(80)]
-            emitTexture,
+            normalTexture,
             [ProtoMember(90)]
-            reflectionTexture,
+            emitTexture,
             [ProtoMember(100)]
-            emitMapTexture,
+            reflectionTexture,
             [ProtoMember(110)]
-            specMapTexture,
+            emitMapTexture,
             [ProtoMember(120)]
-            envMapTexture,
+            specMapTexture,
             [ProtoMember(130)]
-            envTexture,
+            envMapTexture,
             [ProtoMember(140)]
-            definfoTexture,
+            envTexture,
             [ProtoMember(150)]
+            definfoTexture,
+            [ProtoMember(160)]
             videoTexture
         }
         #endregion
@@ -125,11 +126,11 @@ namespace NthDimension.Rendering
         [ProtoContract]
         public enum WorldTexture
         {
-            [ProtoMember(150)]
-            lightMap,
-            [ProtoMember(160)]
-            reflectionMap,
             [ProtoMember(170)]
+            lightMap,
+            [ProtoMember(180)]
+            reflectionMap,
+            [ProtoMember(190)]
             noise
         }
         #endregion
@@ -247,8 +248,10 @@ namespace NthDimension.Rendering
 
         public int getTextureId(TexType type)
         {
-            if (null == textures) // ADDED FOR QUICK DEBUG -> REMOVE -> STORE ONLY TEXTURE NAMES IN PROTOBUF
+            if (null == textures) 
                 return 0;
+
+            int idx = (int)type;
 
             return textures[(int)type].texture;
         }

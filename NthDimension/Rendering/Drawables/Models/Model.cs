@@ -157,7 +157,8 @@ namespace NthDimension.Rendering.Drawables.Models
             }
             catch (Exception dE)
             {
-                ConsoleUtil.errorlog("Model.draw() ", dE.Message);
+                if(NthDimension.Settings.Instance.game.diagnostics)
+                    ConsoleUtil.errorlog("Model.draw() ", $"{dE.Message} {dE.StackTrace}");
             }
         }
 
@@ -243,7 +244,7 @@ namespace NthDimension.Rendering.Drawables.Models
             }
             catch (Exception dE)
             {
-                ConsoleUtil.errorlog("Model.draw() ", dE.Message);
+                ConsoleUtil.errorlog("Model.drawSelection() ", $"{dE.Message} {dE.StackTrace}");
             }
         }
 
@@ -329,7 +330,7 @@ namespace NthDimension.Rendering.Drawables.Models
             }
             catch (Exception dE)
             {
-                ConsoleUtil.errorlog("Model.draw() ", dE.Message);
+                ConsoleUtil.errorlog("Model.drawNormal() ", $"{dE.Message} {dE.StackTrace}");
             }
         }
 
@@ -417,7 +418,7 @@ namespace NthDimension.Rendering.Drawables.Models
             }
             catch (Exception dE)
             {
-                ConsoleUtil.errorlog("Model.draw() ", dE.Message);
+                ConsoleUtil.errorlog("Model.drawShadow() ", $"{dE.Message} {dE.StackTrace}");
             }
         }
 

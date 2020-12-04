@@ -295,6 +295,12 @@ namespace NthDimension.Physics.Dynamics
 
             public void SupportMapping(ref JVector direction, out JVector result)
             {
+                if (float.IsNaN(direction.X) ||
+                float.IsNaN(direction.Y) ||
+                float.IsNaN(direction.Z))
+                {
+                    result = JVector.Zero;
+                }
 
                 float min = JVector.Dot(ref owner.points[indices.I0].position, ref direction);
                 float dot = JVector.Dot(ref owner.points[indices.I1].position, ref direction);

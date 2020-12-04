@@ -131,24 +131,10 @@ namespace NthDimension.Rendering.Drawables.Models
             }
             catch(Exception aE)
             {
-                ConsoleUtil.errorlog("Failed to build animation data ", aE.Message);
+                ConsoleUtil.errorlog("Failed to build animation data ", aE != null ? aE.Message : "No amimation frames");
             }
             finally
             {
-                //if (this is PlayerModel)
-                //{
-                //    string aniString = string.Format("{0}_{1}_{2}_idle", 
-                //        ((PlayerModel)this).AvatarSex == MySociNet.Common.enuAvatarSex.Male ? "male" : "female",
-                //        ((PlayerModel)this).AvatarBodyType, ((PlayerModel)this).AvatarFaceType);
-
-
-                //    foreach(AnimationRuntime ar in this.m_animationsRuntime)
-                //        if (ar.Name == aniString)
-                //            this.CurrentAnimation = ar.Identifier;
-
-                //    this.AnimationFrame = this.m_animationsRuntime[CurrentAnimation];
-                //}
-               
                 this.AnimationFrame = this.m_animationsRuntime[CurrentAnimation];
             }
         }

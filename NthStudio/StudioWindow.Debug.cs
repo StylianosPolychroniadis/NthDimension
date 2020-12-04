@@ -559,15 +559,15 @@ namespace NthStudio
         private void DrawBounds()
         {
             bool Insert = OpenTK.Input.Keyboard.GetState().IsKeyDown(OpenTK.Input.Key.Insert);
-            if (Insert && !prevInsert)
+            if (Insert && prevInsert == false)
                 displayMeshBounds = !displayMeshBounds;
             prevInsert = Insert;
 
             if (!displayMeshBounds)
                 return;
 
-#region Scene Bounding Boxes Debug
-
+            #region Scene Bounding Boxes Debug
+            NanoVG.nvgBeginFrame(vg, Width, Height, 1);
             NanoVG.nvgStrokeColor(vg, NanoVG.nvgRGBA(255, 255, 255, 70));
             NanoVG.nvgStrokeWidth(vg, 1.0f);
             foreach (Drawable d in Scene.VisibleDrawables.Keys)
@@ -715,10 +715,10 @@ namespace NthStudio
 
             }
 
+            NanoVG.nvgEndFrame(vg);
 
 
-
-#endregion
+            #endregion
         }
 
         public override void debug_aid_frustum(Vector3 n1, Vector3 n2, Vector3 n3, Vector3 n4, Vector3 f1, Vector3 f2, Vector3 f3, Vector3 f4)

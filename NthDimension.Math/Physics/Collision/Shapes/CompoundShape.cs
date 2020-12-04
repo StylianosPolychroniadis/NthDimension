@@ -250,6 +250,12 @@ namespace NthDimension.Physics.Collision.Shapes
         /// <param name="result">The result.</param>
         public override void SupportMapping(ref JVector direction, out JVector result)
         {
+            if (float.IsNaN(direction.X) ||
+                float.IsNaN(direction.Y) ||
+                float.IsNaN(direction.Z))
+            {
+                result = JVector.Zero;
+            }
             JVector.Transform(ref direction, ref shapes[currentShape].invOrientation, out result);
             shapes[currentShape].Shape.SupportMapping(ref direction, out result);
             JVector.Transform(ref result, ref shapes[currentShape].orientation, out result);

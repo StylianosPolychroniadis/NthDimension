@@ -377,8 +377,6 @@ namespace NthDimension.Rendering.Drawables
             if (!shader.Loaded)
                 return shader;
 
-            //ConsoleUtil.log(string.Format("Activating Material {0} : {1} ", curMat.name, debugModelName));
-
 #if _SHADERDEBUG_
             Factories.ShaderLoader.UsingShader(shader);
 #endif
@@ -413,9 +411,9 @@ namespace NthDimension.Rendering.Drawables
             int emit = propertys.useEmit ? 1 : 0;
 
             curMat.activateTexture(Material.TexType.baseTexture,        ref texunit, ref handle);
-            curMat.activateTexture(Material.TexType.baseTextureTwo,       ref texunit, ref handle);
-            curMat.activateTexture(Material.TexType.baseTextureThree,       ref texunit, ref handle);
-            curMat.activateTexture(Material.TexType.baseTextureFour,       ref texunit, ref handle);
+            curMat.activateTexture(Material.TexType.baseTextureTwo,     ref texunit, ref handle);
+            curMat.activateTexture(Material.TexType.baseTextureThree,   ref texunit, ref handle);
+            curMat.activateTexture(Material.TexType.baseTextureFour,    ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.definfoTexture,     ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.reflectionTexture,  ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.normalTexture,      ref texunit, ref handle);
@@ -423,9 +421,9 @@ namespace NthDimension.Rendering.Drawables
             if (propertys.useEmit)
             {
                 curMat.activateTexture(Material.TexType.emitTexture,    ref texunit, ref handle);
-                shader.InsertUniform(Uniform.in_emitcolor, ref propertys.emitMapTint);
+                shader.InsertUniform(Uniform.in_emitcolor,              ref propertys.emitMapTint);
             }
-            shader.InsertUniform(Uniform.use_emit, ref emit);
+            shader.InsertUniform(Uniform.use_emit,                      ref emit);
 
             shader.InsertUniform(Uniform.fresnelExp,                    ref propertys.fresnelExp);
             shader.InsertUniform(Uniform.fresnelStr,                    ref propertys.fresnelStr);
@@ -435,41 +433,6 @@ namespace NthDimension.Rendering.Drawables
          
             activateWorldTexture(Material.WorldTexture.lightMap,        ref texunit, handle);
 
-       
-//            if (propertys.useEmit)
-//            {
-//                emit = 1;   // TODO:: Get from material def
-
-//                //throw new NotImplementedException();
-
-//                shader.InsertUniform(Uniform.in_emitcolor, ref propertys.emitMapTint);
-                
-
-//#region Commented out section
-                 
-//                //int emitBasealpha = 0;
-//                //if (propertys.emitMapAlphaBaseTexture)
-//                //    emitBasealpha = 1;
-
-//                //int emitNormalalpha = 0;
-//                //if (propertys.emitMapAlphaNormalTexture)
-//                //    emitNormalalpha = 1;
-
-//                //shader.InsertUniform(Uniform.emit_a_normal, ref emitNormalalpha);
-//                //shader.InsertUniform(Uniform.emit_a_base, ref emitBasealpha);
-//                //shader.InsertUniform(Uniform.in_emitcolor, ref propertys.emitMapTint);
-                 
-//                //if (curMat.envMapTexture != 0)
-//                //{
-//                //    Game.Instance.Renderer.ActiveTexture(TextureUnit.Texture0 + texunit);
-//                //    Game.Instance.Renderer.BindTexture(TextureTarget.Texture2D, curMat.envMapTexture);
-//                //    Game.Instance.Renderer.Uniform1(Game.Instance.Renderer.GetUniformLocation(handle, "envMapTexture"), texunit);
-//                //    texunit++;
-//                //}
-                
-//#endregion
-//            }
-//            shader.InsertUniform(Uniform.use_emit, ref emit);
 
 #region Transparency   (WARNING::: Transparency is ALWAYS 1 - MODIFY!!!!!)
             int transparency = 0;

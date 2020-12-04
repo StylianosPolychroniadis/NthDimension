@@ -92,6 +92,12 @@ namespace NthDimension.Physics.Collision.Shapes
 
         public override void SupportMapping(ref JVector direction, out JVector result)
         {
+            if (float.IsNaN(direction.X) ||
+                float.IsNaN(direction.Y) ||
+                float.IsNaN(direction.Z))
+            {
+                result = JVector.Zero;
+            }
             JVector temp1, temp2 = JVector.Zero;
 
             for (int i = 0; i < shapes.Count; i++)
