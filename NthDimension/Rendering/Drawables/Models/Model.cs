@@ -113,7 +113,7 @@ namespace NthDimension.Rendering.Drawables.Models
                                 shader.InsertUniform(Uniform.in_rendersize, ref ApplicationBase.Instance.VAR_ScreenSize_Current);
                                 shader.InsertUniform(Uniform.in_time, ref ApplicationBase.Instance.VAR_FrameTime);
                                 shader.InsertUniform(Uniform.in_color, ref color);
-
+                                shader.InsertUniform(Uniform.in_alpha, ref this.Alpha);
 
                                 if (Scene != null)
                                     SetupMatrices(ref curView, ref shader, ref curMesh);

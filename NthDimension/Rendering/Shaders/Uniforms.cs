@@ -62,6 +62,7 @@ namespace NthDimension.Rendering.Shaders
 
         in_color,                           // Arbitrary color input
         in_mod,                             //                                                                              // [TBD: Use appropriate term and TODO: refactor]
+        in_alpha,
 
         use_emit,                           // Emissive feature on/off
         emit_a_base,                        // Emissive albedo texture

@@ -656,27 +656,7 @@ namespace NthDimension.Rendering.Loaders
                     }
                     reader.MoveToElement();
                 }
-                #endregion
-
-                if (reader.Name == "tiled")
-                {
-                    target.propertys.useTile = true;
-                    if (reader.HasAttributes)
-                    {
-                        while (reader.MoveToNextAttribute())
-                        {
-                            if (reader.Name == "tileu")
-                                target.propertys.tileU = int.Parse(reader.Value);
-
-                            if (reader.Name == "tilev")
-                                target.propertys.tileV = int.Parse(reader.Value);
-                        }
-                    }
-
-
-
-                    target.setTextureWrap(target.propertys.tileU, target.propertys.tileV);
-                }
+                #endregion                
 
                 // parsing nucull
                 if (reader.Name == "nocull")

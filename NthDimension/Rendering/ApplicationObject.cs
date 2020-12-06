@@ -79,6 +79,7 @@ namespace NthDimension.Rendering
         private const string                    _nodeAttributename              = "name";
         private const string                    _nodeAttributeenabled           = "enabled";
         private const string                    _nodeAttributePosition          = "position";
+        private const string                    _nodeAttributeAlpha             = "alpha";
         private const string                    _nodeAttributeRotation          = "rotation";
         private const string                    _nodeAttributePointing          = "pointing";
         private const string                    _nodeAttributeDirection         = "direction";
@@ -108,6 +109,8 @@ namespace NthDimension.Rendering
         public virtual Vector3                  Size { get { return size; } set { size = value; } }
 
         public virtual Vector4                  Color { get { return color; } set { color = value; colorRgb = value.Xyz; } }
+
+        public float                            Alpha = 1f;
         public virtual RigidBody                RigidBody { get; set; }
 
         public List<Model>                      Models
@@ -242,6 +245,12 @@ namespace NthDimension.Rendering
                     Scene.SetBloomEnabled(bloomSize, bloomExposure, bloomStrength);
                 else
                     Scene.SetBloomDisabled();
+            }
+
+            if (reader.Name == _nodeAttributeAlpha && reader.NodeType != XmlNodeType.EndElement)
+            {
+                reader.Read();
+                Alpha = (GenericMethods.FloatFromString(reader.Value));
             }
             #endregion
 

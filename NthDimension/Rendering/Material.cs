@@ -196,13 +196,7 @@ namespace NthDimension.Rendering
             [ProtoMember(410)]
             public float fresnelExp;
             [ProtoMember(420)]
-            public float fresnelStr;
-            [ProtoMember(430)]
-            public bool useTile;
-            [ProtoMember(440)]
-            public int tileU;
-            [ProtoMember(450)]
-            public int tileV;
+            public float fresnelStr;            
         }
         #endregion
 

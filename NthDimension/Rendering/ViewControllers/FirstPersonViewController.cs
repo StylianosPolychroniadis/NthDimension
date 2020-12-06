@@ -10,13 +10,13 @@ using NthDimension.Physics.LinearMath;
 
 namespace NthDimension.Rendering.ViewControllers
 {
-    public class FirstPersonViewController : ApplicationUserView // GameObject
+    public class FirstPersonViewController : ApplicationUserView 
     {
         // FPS Camera
-        private readonly Vector4        fpsEyePositionDelta         = new Vector4(0.3f, -0.3f, -0.7f, 1f); // Difference from EyePos
+        private readonly Vector4        fpsEyePositionDelta         = new Vector4(0.3f, -0.3f, -0.7f, 1f);          // Note: Eye to Weapon Offset
         private const float             fpsCameraSpeedNormal        = 5f;
         
-        private const float             fpsRotationSmoothing        = 0.01f;    // 0.7f;
+        private const float             fpsRotationSmoothing        = 0.75f;                                        // TODO:: Move to settings (was .7)
         private const float             fpsCameraHeightOffset       = 2f;
 
         public float                    CameraRotSpeed              = 0.001f;
@@ -38,13 +38,10 @@ namespace NthDimension.Rendering.ViewControllers
         protected bool                  prevK;
 
         //public volatile bool            Crouch = false;
-        //private Vector3 eyeBias           = new Vector3(0f, 3f, 0f);
-
         
 
         public FirstPersonViewController(ApplicationUser parent, ApplicationUserInput gameInput):base(parent, gameInput)
         {
-            //PositionOffset       = new Vector3(0f,2.8f,0f);
             base.raycastCallback = new RaycastCallback(mRaycastCallback);
 
             slot                    = getSlot();

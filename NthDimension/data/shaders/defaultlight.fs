@@ -5,6 +5,7 @@ uniform sampler2D baseTexture;
 uniform sampler2D definfoTexture;
 uniform sampler2D emitTexture;
 out vec4 out_frag_color;
+uniform float in_alpha;
 uniform bool use_emit;
 uniform vec3 in_emitcolor;
 uniform vec2 in_rendersize;
@@ -46,6 +47,8 @@ void main ()
      out_frag_color.xyz = (((tmpvar_6.xyz * tmpvar_4.xyz) + (
     ((tmpvar_7 * tmpvar_6.xyz) * (0.3 / ((tmpvar_6.x + tmpvar_6.y) + tmpvar_6.z))) * fresnel_1)));
   };
-  out_frag_color.w = 1.0;
+  float alpha;
+  alpha = in_alpha;
+  out_frag_color.w = alpha; //1
 }
 
