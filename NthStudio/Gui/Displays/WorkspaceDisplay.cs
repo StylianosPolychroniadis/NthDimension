@@ -1422,7 +1422,7 @@ namespace NthStudio.Gui.Displays
                     //StudioWindow.Instance.Player.FirstPersonView.Position = spawn;
                     //StudioWindow.Instance.Player.ThirdPersonView.Position = spawn;
 
-                    StudioWindow.Instance.Scene.SpawnAt_REFACTOR_TODO = spawn;
+                    StudioWindow.Instance.Scene.PlayerSpawnAt = spawn;
                     Vector3 res = StudioWindow.Instance.Player.SetPosition(spawn);
                     ConsoleUtil.log(string.Format("Player Spawn at {0} now at {1}", spawn, res));
                 }
@@ -1442,7 +1442,7 @@ namespace NthStudio.Gui.Displays
                 {
                     //StudioWindow.Instance.Player.Position       = spawn;
                     //StudioWindow.Instance.Player.Body.Position  = new NthDimension.Physics.LinearMath.JVector(spawn);
-                    StudioWindow.Instance.Scene.SpawnAt_REFACTOR_TODO = spawn;
+                    StudioWindow.Instance.Scene.PlayerSpawnAt = spawn;
                     Vector3 res = StudioWindow.Instance.Player.SetPosition(spawn);
                     ConsoleUtil.log(string.Format("Player Spawn at {0} now at {1}", spawn, res));
                 }
@@ -1462,7 +1462,7 @@ namespace NthStudio.Gui.Displays
                 {
                     //StudioWindow.Instance.Player.Position = spawn;
                     //StudioWindow.Instance.Player.Body.Position = new NthDimension.Physics.LinearMath.JVector(spawn);
-                    StudioWindow.Instance.Scene.SpawnAt_REFACTOR_TODO = spawn;
+                    StudioWindow.Instance.Scene.PlayerSpawnAt = spawn;
                     Vector3 res = StudioWindow.Instance.Player.SetPosition(spawn);
                     ConsoleUtil.log(string.Format("Player Spawn at {0} now at {1}", spawn, res));
                 }

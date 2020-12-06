@@ -125,20 +125,20 @@ namespace NthDimension.Rendering.Scenegraph
 #endif
 
 
-        public Vector3                              SpawnAt_REFACTOR_TODO = new Vector3(13.5f, 10f, -1f); // turn to null to start at 0 always
+        public Vector3                              PlayerSpawnAt           = new Vector3(); 
         public Vector3                              EyePos;
         public Matrix4                              WaterMatrix;
         //public Matrix4 ProjectionMatrix;
         //public Matrix4 ModelviewMatrix;
 
-        public int[]                                EnvTextures = new int[6];
+        public int[]                                EnvTextures             = new int[6];
         public int[]                                BackdropTextures;
         public int                                  CurrentLight;
         public int                                  LightCount;
-        public static float                         WaterLevel = 0.3f;
+        public static float                         WaterLevel              = 0.3f;
 
-        public int                                  DrawCallTotal = 0;
-        public float                                AvatarYOffset = 1f;
+        public int                                  DrawCallTotal           = 0;
+        public float                                AvatarYOffset           = 1f;
 
         public BufferRemotePlayers                  RemotePlayers           = new BufferRemotePlayers();
         public BufferPendingAvatars                 RemotePlayersPending    = new BufferPendingAvatars();
@@ -197,12 +197,12 @@ namespace NthDimension.Rendering.Scenegraph
         private DateTime                    framebufferResizeLast       = DateTime.Now;
         private long                        framebufferResizeInterval   = 2;
         private bool                        framebufferResize           = false;
-
+        
         // Used only for debug
         //private float                       __debug_sun_theta         = 0f;
         //private float                       __debug_sun_radius        = 8000f;
-#endregion
-      
+        #endregion
+
         #region Ctor
         public SceneGame(/*Shape groundshape*/)
         {

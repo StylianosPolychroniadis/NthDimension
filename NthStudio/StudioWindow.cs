@@ -746,24 +746,20 @@ namespace NthStudio
             //AvatarInfoDesc desc = AvatarPresets.MaleFit_Generic_0;
 
             Player = new ApplicationUser(Scene, desc, new Vector3(0, 0, -1), AppInput);
-
-            Player.SetPosition(Scene.SpawnAt_REFACTOR_TODO);
+            Player.SetPosition(Scene.PlayerSpawnAt);
         }
         private void EnterScene()
         {
             this.bindUserInput();
 
-            //// TODO:: WRITE HERE SPAWNPOS
-            //Scene.SpawnAt_REFACTOR_TODO = XXXX;
-            // the last stage
-            
             ConfigureScene();
-            ConfigurePlayer();
 
             Scene.OnInitialize();
             Scene.SceneXsnFile = Path.Combine(DirectoryUtil.Documents_Cache, ActiveSceneFile.Package.SceneFile);
 
             Scene.loadObjects(Scene.SceneXsnFile);
+
+            ConfigurePlayer();
 
             //Scene.OctreeWorld.Children.Clear();
 
@@ -784,8 +780,6 @@ namespace NthStudio
 
             //Scene.OctreeWorld.BuildTree(new Rafa.Graphics.Culling.BoundingAABB(new Vector3(-1300, -40, -1300),
             //    new Vector3(1300, 50, 1300)));
-
-
 
             ConsoleUtil.log(string.Format("Scene loaded in {0}", DateTime.Now - tSceneLoad));
 

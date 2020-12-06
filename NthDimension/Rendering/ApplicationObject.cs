@@ -78,6 +78,7 @@ namespace NthDimension.Rendering
 
         private const string                    _nodeAttributename              = "name";
         private const string                    _nodeAttributeenabled           = "enabled";
+        private const string                    _nodeAttributeSpawn             = "spawn";
         private const string                    _nodeAttributePosition          = "position";
         private const string                    _nodeAttributeAlpha             = "alpha";
         private const string                    _nodeAttributeRotation          = "rotation";
@@ -185,6 +186,12 @@ namespace NthDimension.Rendering
         protected void genericLoad(ref XmlTextReader reader, string type)
         {
             #region generic
+            if (reader.Name == _nodeAttributeSpawn && reader.NodeType != XmlNodeType.EndElement)
+            {
+                reader.Read();
+                Scene.PlayerSpawnAt = new Vector3(GenericMethods.Vector3FromString(reader.Value));
+            }
+
             if (reader.Name == _nodeAttributePosition && reader.NodeType != XmlNodeType.EndElement)
             {
                 reader.Read();

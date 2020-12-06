@@ -109,10 +109,10 @@ namespace NthDimension.Rendering
             Hud                     = new Hud(this);
             parent.Guis.Add(Hud);
 
-            if(null == Scene.SpawnAt_REFACTOR_TODO)
+            if(null == Scene.PlayerSpawnAt)
                 Position                = GenericMethods.Vector3FromString(avatar.SpawnAt); //  spawnPos;
             else
-                Position                = Scene.SpawnAt_REFACTOR_TODO;
+                Position                = Scene.PlayerSpawnAt;
 
             PointingDirection       = viewDir;
 
