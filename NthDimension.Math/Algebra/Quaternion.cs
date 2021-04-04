@@ -968,9 +968,9 @@ namespace NthDimension.Algebra
             double q3 = rotation.Z;
 
             Vector3 radAngles = new Vector3();
-            radAngles.Y = MathHelper.RadiansToDegrees((float)Math.Atan2(2 * (q0 * q1 + q2 * q3), 1 - 2 * (Math.Pow(q1, 2) + Math.Pow(q2, 2))));
-            radAngles.X = MathHelper.RadiansToDegrees((float)Math.Asin(2 * (q0 * q2 - q3 * q1)));
-            radAngles.Z = MathHelper.RadiansToDegrees((float)Math.Atan2(2 * (q0 * q3 + q1 * q2), 1 - 2 * (Math.Pow(q2, 2) + Math.Pow(q3, 2))));
+            radAngles.Y = MathFunc.RadiansToDegrees((float)System.Math.Atan2(2 * (q0 * q1 + q2 * q3), 1 - 2 * (System.Math.Pow(q1, 2) + System.Math.Pow(q2, 2))));
+            radAngles.X = MathFunc.RadiansToDegrees((float)System.Math.Asin(2 * (q0 * q2 - q3 * q1)));
+            radAngles.Z = MathFunc.RadiansToDegrees((float)System.Math.Atan2(2 * (q0 * q3 + q1 * q2), 1 - 2 * (System.Math.Pow(q2, 2) + System.Math.Pow(q3, 2))));
 
             return radAngles;
         }

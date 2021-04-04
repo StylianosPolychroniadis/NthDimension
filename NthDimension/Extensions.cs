@@ -28,4 +28,17 @@ namespace NthDimension
             return new Matrix4(mat.Row0, mat.Row1, mat.Row2, mat.Row3);
         }
     }
+
+    public static class Vector4Extensions
+    {
+        public static NthDimension.Algebra.Vector4 ToVector4(this System.Drawing.Color color)
+        {
+            NthDimension.Algebra.Vector4 ret;
+            ret.X = color.R / 255f;
+            ret.Y = color.G / 255f;
+            ret.Z = color.B / 255f;
+            ret.W = color.A / 255f;
+            return ret;
+        }
+    }
 }

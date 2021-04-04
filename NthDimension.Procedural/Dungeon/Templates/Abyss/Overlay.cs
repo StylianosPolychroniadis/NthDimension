@@ -23,7 +23,7 @@ namespace NthDimension.Procedural.Dungeon.Templates.Abyss
         byte[,] GenerateHeightMap(int w, int h)
         {
             float[,] map = new float[w, h];
-            int maxR = Math.Min(w, h);
+            int maxR = System.Math.Min(w, h);
             int r = Rand.Next(maxR * 1 / 3, maxR * 2 / 3);
             int r2 = r * r;
 

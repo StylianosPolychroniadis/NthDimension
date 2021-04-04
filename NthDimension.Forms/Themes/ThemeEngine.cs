@@ -63,10 +63,10 @@ namespace NthDimension.Forms.Themes
             if (!fillBackColor)
             {
                 rect = new Rectangle(x, middle - 4, 10, 10);
-                int w4 = (int)Math.Ceiling((float)rect.Width / 4);
-                int w2 = (int)Math.Ceiling((float)rect.Width / 2);
-                int h4 = (int)Math.Ceiling((float)rect.Height / 4);
-                int h2 = (int)Math.Ceiling((float)rect.Height / 2);
+                int w4 = (int)System.Math.Ceiling((float)rect.Width / 4);
+                int w2 = (int)System.Math.Ceiling((float)rect.Width / 2);
+                int h4 = (int)System.Math.Ceiling((float)rect.Height / 4);
+                int h2 = (int)System.Math.Ceiling((float)rect.Height / 2);
 
                 if (node.IsExpanded)
                 {

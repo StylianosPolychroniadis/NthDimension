@@ -427,21 +427,29 @@ namespace NthDimension.Rendering.Loaders
                         try
                         {
                             if (reader.Name         == "base")
-                                target.setTexture(Material.TexType.baseTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                                target.setTexture(Material.TexType.baseTexture,         ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
                             else if (reader.Name    == "base2")
-                                target.setTexture(Material.TexType.baseTextureTwo, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                                target.setTexture(Material.TexType.baseTextureTwo,      ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
                             else if (reader.Name    == "base3")
-                                target.setTexture(Material.TexType.baseTextureThree, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                                target.setTexture(Material.TexType.baseTextureThree,    ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
                             else if (reader.Name    == "base4")
-                                target.setTexture(Material.TexType.baseTextureFour, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                                target.setTexture(Material.TexType.baseTextureFour,     ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                            else if (reader.Name    == "base5")
+                                target.setTexture(Material.TexType.auxTexture,          ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                            else if (reader.Name    == "base6")
+                                target.setTexture(Material.TexType.auxTextureTwo,       ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                            else if (reader.Name    == "base7")
+                                target.setTexture(Material.TexType.auxTextureThree,     ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                            else if (reader.Name    == "base8")
+                                target.setTexture(Material.TexType.auxTextureFour,      ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
                             else if (reader.Name    == "normal")
-                                target.setTexture(Material.TexType.normalTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                                target.setTexture(Material.TexType.normalTexture,       ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
                             else if (reader.Name    == "reflection")
-                                target.setTexture(Material.TexType.reflectionTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                                target.setTexture(Material.TexType.reflectionTexture,   ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
                             else if (reader.Name    == "definfo")
-                                target.setTexture(Material.TexType.definfoTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                                target.setTexture(Material.TexType.definfoTexture,      ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
                             else if (reader.Name    == "emit")
-                                target.setTexture(Material.TexType.emitTexture, ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
+                                target.setTexture(Material.TexType.emitTexture,         ApplicationBase.Instance.TextureLoader.getTexture(reader.Value, target.name));
                             else if (reader.Name    == "video" || reader.Name == "videoloop")
                             {
                                 if (!ApplicationBase.Instance.IsIntegratedGpu)
@@ -490,8 +498,9 @@ namespace NthDimension.Rendering.Loaders
                                     ConsoleUtil.log(string.Format("<!> No ffmpeg support on integrated graphics Gpu ", reader.Value));
                                 }
                             }
+
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
                             if(e is NotImplementedException)
                                 ConsoleUtil.errorlog("Error in Material: ", string.Format("Failed to load '{0}', NotImplemented {1}", target.name, reader.Value));

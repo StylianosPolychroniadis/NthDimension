@@ -41,10 +41,10 @@ namespace NthDimension.Forms.Widgets.CalcGrid
             }
         }
 #endif
-        public int TopRow { get { return Math.Min(r1, r2); } }
-        public int BottomRow { get { return Math.Max(r1, r2); } }
-        public int LeftCol { get { return Math.Min(c1, c2); } }
-        public int RightCol { get { return Math.Max(c1, c2); } }
+        public int TopRow { get { return System.Math.Min(r1, r2); } }
+        public int BottomRow { get { return System.Math.Max(r1, r2); } }
+        public int LeftCol { get { return System.Math.Min(c1, c2); } }
+        public int RightCol { get { return System.Math.Max(c1, c2); } }
         public bool IsValid { get { return r1 > -1 && c1 > -1 && r2 > -1 && c2 > -1; } }
         public bool IsSingleCell { get { return r1 == r2 && c1 == c2; } }
     }

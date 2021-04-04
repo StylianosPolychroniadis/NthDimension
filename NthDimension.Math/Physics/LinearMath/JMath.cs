@@ -140,15 +140,15 @@ namespace NthDimension.Physics.LinearMath
         #region public static void Absolute(ref JMatrix matrix,out JMatrix result)
         public static void Absolute(ref JMatrix matrix,out JMatrix result)
         {
-            result.M11 = Math.Abs(matrix.M11);
-            result.M12 = Math.Abs(matrix.M12);
-            result.M13 = Math.Abs(matrix.M13);
-            result.M21 = Math.Abs(matrix.M21);
-            result.M22 = Math.Abs(matrix.M22);
-            result.M23 = Math.Abs(matrix.M23);
-            result.M31 = Math.Abs(matrix.M31);
-            result.M32 = Math.Abs(matrix.M32);
-            result.M33 = Math.Abs(matrix.M33);
+            result.M11 = System.Math.Abs(matrix.M11);
+            result.M12 = System.Math.Abs(matrix.M12);
+            result.M13 = System.Math.Abs(matrix.M13);
+            result.M21 = System.Math.Abs(matrix.M21);
+            result.M22 = System.Math.Abs(matrix.M22);
+            result.M23 = System.Math.Abs(matrix.M23);
+            result.M31 = System.Math.Abs(matrix.M31);
+            result.M32 = System.Math.Abs(matrix.M32);
+            result.M33 = System.Math.Abs(matrix.M33);
         }
         #endregion
     }

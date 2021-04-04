@@ -875,7 +875,7 @@ namespace NthStudio
         }
 #endregion
 
-        public void createCrowd(int humanCount = 10, int assasinCount = 1)
+        public void createCrowd(int humanCount = 20, int assasinCount = 1)
         {
 
             StudioWindow.Instance.Scene.RemotePlayers.Clear();
@@ -883,7 +883,7 @@ namespace NthStudio
             DateTime cNow = DateTime.Now;
             ConsoleUtil.log(string.Format("Creating Crowd..."));
             //crowd = new CrowdSimulator(-2, 2, -45, 10);
-            crowd = new CrowdSimulator(-50, 50, -50, 50);
+            crowd = new CrowdSimulator(-680, -600, 160, 240);
             crowd.Init(humanCount, assasinCount);
             ConsoleUtil.log(string.Format("Creating Crowd... Done! (Total time {0})", (DateTime.Now - cNow)), false);
         }

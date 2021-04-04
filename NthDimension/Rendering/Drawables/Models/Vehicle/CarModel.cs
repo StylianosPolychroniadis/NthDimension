@@ -172,16 +172,16 @@ namespace NthDimension.Rendering.Drawables.Models
                 case PlayerView.Exterior:
                     t = Matrix4.Identity;
                     e = Matrix4.CreateTranslation(0, ExteriorEyeDistance, 0) * 
-                                                    Matrix4.CreateRotationX((y * MathHelper.PiOver4) + MathHelper.PiOver4) * 
-                                                    Matrix4.CreateRotationY((-x * MathHelper.TwoPi));
+                                                    Matrix4.CreateRotationX((y * MathFunc.PiOver4) + MathFunc.PiOver4) * 
+                                                    Matrix4.CreateRotationY((-x * MathFunc.TwoPi));
                     break;
                 case PlayerView.Camera:
                     return Matrix4.LookAt(new Vector3(4, 0.1f, 2), centerOfMassPosition, Vector3.UnitY);
                 case PlayerView.Debug:
                     e = Matrix4.CreateTranslation(DebugLocation);
                     t = Matrix4.CreateTranslation(DebugLocation + new Vector3(0, 0, 2)) * 
-                                                    Matrix4.CreateRotationX((y * MathHelper.Pi) - (MathHelper.Pi / 2)) * 
-                                                    Matrix4.CreateRotationY((-x * MathHelper.Pi) + MathHelper.PiOver2);
+                                                    Matrix4.CreateRotationX((y * MathFunc.Pi) - (MathFunc.Pi / 2)) * 
+                                                    Matrix4.CreateRotationY((-x * MathFunc.Pi) + MathFunc.PiOver2);
                     break;
             }
 
@@ -423,10 +423,10 @@ namespace NthDimension.Rendering.Drawables.Models
 
             //float angle = Misc.getVectorAngle(pos - target) + MathHelper.PiOver2;
             //angle = Misc.normalizeAngle(angle);
-            //float curAngle = ((float)Math.Asin(raycastVehicle.ChassisWorldTransform.ExtractRotation().Y) * -2);
+            //float curAngle = ((float)System.Math.Asin(raycastVehicle.ChassisWorldTransform.ExtractRotation().Y) * -2);
             //curAngle = Misc.normalizeAngle(curAngle);
             //curAngle = Misc.normalizeAngle(angle - curAngle);
-            //if (curAngle > Math.PI && curAngle < MathHelper.TwoPi - 0.01f) result.Left = true;
+            //if (curAngle > System.Math.PI && curAngle < MathHelper.TwoPi - 0.01f) result.Left = true;
             //else if (curAngle > 0.01f) result.Right = true;
             //float dis = (pos - target).Length;
             //if (dis < Dimensions.X / 2 && CurrentMap.Roads[road].RPaths[0].Points.Length - 1 > point) point++;
@@ -708,18 +708,18 @@ namespace NthDimension.Rendering.Drawables.Models
         }
         public static float normalizeAngle(float angle)
         {
-            angle %= MathHelper.Pi * 2;
-            if (angle < 0) angle += MathHelper.Pi * 2;
+            angle %= MathFunc.Pi * 2;
+            if (angle < 0) angle += MathFunc.Pi * 2;
             if (angle > (3.145f * 2)) angle = 0;
             return angle;
         }
 
         public static float getVectorAngle(Vector2 vector)
         {
-            if (vector.Y >= 0 && vector.X >= 0) return (float)Math.Asin(vector.Y / vector.Length);
-            if (vector.Y >= 0 && vector.X <= 0) return MathHelper.Pi - (float)Math.Asin(vector.Y / vector.Length);
-            if (vector.Y <= 0 && vector.X >= 0) return (MathHelper.Pi * 2) + (float)Math.Asin(vector.Y / vector.Length);
-            if (vector.Y <= 0 && vector.X <= 0) return MathHelper.Pi - (float)Math.Asin(vector.Y / vector.Length);
+            if (vector.Y >= 0 && vector.X >= 0) return (float)System.Math.Asin(vector.Y / vector.Length);
+            if (vector.Y >= 0 && vector.X <= 0) return MathFunc.Pi - (float)System.Math.Asin(vector.Y / vector.Length);
+            if (vector.Y <= 0 && vector.X >= 0) return (MathFunc.Pi * 2) + (float)System.Math.Asin(vector.Y / vector.Length);
+            if (vector.Y <= 0 && vector.X <= 0) return MathFunc.Pi - (float)System.Math.Asin(vector.Y / vector.Length);
             return 0;
         }
     }

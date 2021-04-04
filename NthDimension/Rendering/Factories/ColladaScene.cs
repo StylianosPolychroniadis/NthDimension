@@ -386,9 +386,9 @@ namespace NthDimension.Rendering.Loaders
 
                 private void buildBaseMat()
                 {
-                    float rotX = MathHelper.DegreesToRadians(baseRotation.X);
-                    float rotY = MathHelper.DegreesToRadians(baseRotation.Y);
-                    float rotZ = MathHelper.DegreesToRadians(baseRotation.Z);
+                    float rotX = MathFunc.DegreesToRadians(baseRotation.X);
+                    float rotY = MathFunc.DegreesToRadians(baseRotation.Y);
+                    float rotZ = MathFunc.DegreesToRadians(baseRotation.Z);
 
                     baseMatrix = Matrix4.Identity;
 
@@ -406,9 +406,9 @@ namespace NthDimension.Rendering.Loaders
 
                 public List<Matrix4> generateMatrices(int frameCount)
                 {
-                    float rotX = MathHelper.DegreesToRadians(baseRotation.X);
-                    float rotY = MathHelper.DegreesToRadians(baseRotation.Y);
-                    float rotZ = MathHelper.DegreesToRadians(baseRotation.Z);
+                    float rotX = MathFunc.DegreesToRadians(baseRotation.X);
+                    float rotY = MathFunc.DegreesToRadians(baseRotation.Y);
+                    float rotZ = MathFunc.DegreesToRadians(baseRotation.Z);
 
                     animationMatrices = new List<Matrix4> { };
 
@@ -419,7 +419,7 @@ namespace NthDimension.Rendering.Loaders
                     {
                         foreach (var frameRotation in animationRotationX)
                         {
-                            float rot = MathHelper.DegreesToRadians(frameRotation);
+                            float rot = MathFunc.DegreesToRadians(frameRotation);
                             animationMatricesX.Add(Matrix4.CreateRotationX(rot));
                         }
                     }
@@ -431,7 +431,7 @@ namespace NthDimension.Rendering.Loaders
                     {
                         foreach (var frameRotation in animationRotationY)
                         {
-                            float rot = MathHelper.DegreesToRadians(frameRotation);
+                            float rot = MathFunc.DegreesToRadians(frameRotation);
                             animationMatricesY.Add(Matrix4.CreateRotationY(rot));
                         }
                     }
@@ -443,7 +443,7 @@ namespace NthDimension.Rendering.Loaders
                     {
                         foreach (var frameRotation in animationRotationZ)
                         {
-                            float rot = MathHelper.DegreesToRadians(frameRotation);
+                            float rot = MathFunc.DegreesToRadians(frameRotation);
                             animationMatricesZ.Add(Matrix4.CreateRotationZ(rot));
                         }
                     }

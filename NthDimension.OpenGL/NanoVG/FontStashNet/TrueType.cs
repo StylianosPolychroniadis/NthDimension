@@ -522,8 +522,8 @@ namespace NthDimension.Rasterizer.NanoVG.FontStashNet
                     }
 
                     // Find transformation scales.
-                    m = (float)Math.Sqrt(mtx[0] * mtx[0] + mtx[1] * mtx[1]);
-                    n = (float)Math.Sqrt(mtx[2] * mtx[2] + mtx[3] * mtx[3]);
+                    m = (float)System.Math.Sqrt(mtx[0] * mtx[0] + mtx[1] * mtx[1]);
+                    n = (float)System.Math.Sqrt(mtx[2] * mtx[2] + mtx[3] * mtx[3]);
 
                     // Get indexed glyph.
                     comp_num_verts = stbtt_GetGlyphShape(ref info, gidx, out comp_verts);
@@ -1108,12 +1108,12 @@ namespace NthDimension.Rasterizer.NanoVG.FontStashNet
 
         static int STBTT_ifloor(float x)
         {
-            return (int)Math.Floor(x);
+            return (int)System.Math.Floor(x);
         }
 
         static int STBTT_iceil(float x)
         {
-            return (int)Math.Ceiling(x);
+            return (int)System.Math.Ceiling(x);
         }
 
         static void stbtt_GetGlyphBitmapBoxSubpixel(ref stbtt_fontinfo font, int glyph, float scale_x, float scale_y, float shift_x, float shift_y,

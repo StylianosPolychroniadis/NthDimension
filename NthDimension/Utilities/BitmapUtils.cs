@@ -67,7 +67,7 @@ namespace NthDimension.Rendering.Utilities
                 }
             }
             d /= (bmp.Width * bmp.Height);
-            return Math.Sqrt(d);
+            return System.Math.Sqrt(d);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace NthDimension.Rendering.Utilities
         /// <returns>Max channel value.</returns>
         public static int MaxChannel(Color color)
         {
-            return Math.Max(Math.Max(color.R, color.G), color.B);
+            return System.Math.Max(System.Math.Max(color.R, color.G), color.B);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace NthDimension.Rendering.Utilities
         /// <returns>min channel value.</returns>
         public static int MinChannel(Color color)
         {
-            return Math.Min(Math.Min(color.R, color.G), color.B);
+            return System.Math.Min(System.Math.Min(color.R, color.G), color.B);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace NthDimension.Rendering.Utilities
         /// <returns></returns>
         public static int GetColorDistance(Color c1, Color c2)
         {
-            return (int)Math.Sqrt((c1.R - c2.R) * (c1.R - c2.R) +
+            return (int)System.Math.Sqrt((c1.R - c2.R) * (c1.R - c2.R) +
                             (c1.G - c2.G) * (c1.G - c2.G) +
                             (c1.B - c2.B) * (c1.B - c2.B));
         }

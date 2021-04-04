@@ -283,7 +283,7 @@ namespace NthDimension.Forms.Widgets
                         if (ss.Width > 0)
                             ss.Width += mi.separation;
 
-                        maxShortCutWidth = Math.Max(maxShortCutWidth, ss.Width);
+                        maxShortCutWidth = System.Math.Max(maxShortCutWidth, ss.Width);
                         var miSize = mi.CalculateSize();
                         // 'miSize.Width, ss.Width y miSize.Height' solo varian
                         // si el texto cambia.
@@ -298,7 +298,7 @@ namespace NthDimension.Forms.Widgets
                         sizeHeight = w.Height;
                     }
 
-                    maxWidth = Math.Max(maxWidth, sizeWidth);
+                    maxWidth = System.Math.Max(maxWidth, sizeWidth);
                     maxHeight += sizeHeight;
                 }
                 result = new Size(iconAreaWidth + maxWidth

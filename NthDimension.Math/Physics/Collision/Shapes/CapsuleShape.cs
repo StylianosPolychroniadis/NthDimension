@@ -110,11 +110,11 @@ namespace NthDimension.Physics.Collision.Shapes
 
             float r = (float)System.Math.Sqrt(direction.X * direction.X + direction.Z * direction.Z);
 
-            if (Math.Abs(direction.Y) > 0.0f)
+            if (System.Math.Abs(direction.Y) > 0.0f)
             {
                 JVector dir; JVector.Normalize(ref direction, out dir);
                 JVector.Multiply(ref dir, radius, out result);
-                result.Y += Math.Sign(direction.Y) * 0.5f * length;              
+                result.Y += System.Math.Sign(direction.Y) * 0.5f * length;              
             }
             else if (r > 0.0f)
             {

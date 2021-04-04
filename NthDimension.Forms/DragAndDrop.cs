@@ -47,7 +47,7 @@ namespace NthDimension.Forms
                 return false;
 
             // Not been dragged far enough
-            int length = Math.Abs(x - m_LastPressedPos.X) + Math.Abs(y - m_LastPressedPos.Y);
+            int length = System.Math.Abs(x - m_LastPressedPos.X) + System.Math.Abs(y - m_LastPressedPos.Y);
             if (length < 5)
                 return false;
 

@@ -259,7 +259,10 @@ namespace NthDimension.Rendering.Shaders
         }
         public  void InsertUniform(Uniform uni, ref Matrix3 value)
         {
-            throw new NotImplementedException(string.Format("No renderer support for uniform type {0}", value.GetType().Name));
+            //throw new NotImplementedException(string.Format("No renderer support for uniform type {0}", value.GetType().Name));
+            int location = locations[(int)uni];
+            if (location != -1)
+                ApplicationBase.Instance.Renderer.UniformMatrix3(location, false, ref value);
         }
         public  void InsertUniform(Uniform uni, ref Matrix4 value)
         {

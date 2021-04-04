@@ -31,7 +31,7 @@ namespace NthDimension.Rendering.ViewControllers
         // Models
         protected Model                 weaponModel;
         protected bool                  weaponModelLoaded           = false;
-        private Matrix4                 weaponRotationOffset        = Matrix4.Mult(Matrix4.CreateRotationX((float)Math.PI / 2), Matrix4.CreateRotationY((float)Math.PI));
+        private Matrix4                 weaponRotationOffset        = Matrix4.Mult(Matrix4.CreateRotationX(MathFunc.PiOver2), Matrix4.CreateRotationY(MathFunc.Pi));
         
         // KEYS
         private bool                    prevE;

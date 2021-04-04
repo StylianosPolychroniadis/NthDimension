@@ -1096,9 +1096,9 @@ namespace NthDimension.Rasterizer.Windows
                 glnvg__xformToMat3x4(frag.scissorMat, invxform);
                 frag.scissorExt[0] = scissor.extent[0];
                 frag.scissorExt[1] = scissor.extent[1];
-                frag.scissorScale[0] = (float)Math.Sqrt(scissor.xform[0] * scissor.xform[0] +
+                frag.scissorScale[0] = (float)System.Math.Sqrt(scissor.xform[0] * scissor.xform[0] +
                     scissor.xform[2] * scissor.xform[2]) / fringe;
-                frag.scissorScale[1] = (float)Math.Sqrt(scissor.xform[1] * scissor.xform[1] +
+                frag.scissorScale[1] = (float)System.Math.Sqrt(scissor.xform[1] * scissor.xform[1] +
                     scissor.xform[3] * scissor.xform[3]) / fringe;
             }
 
@@ -2110,7 +2110,7 @@ glnvg__checkError(gl, "triangles fill");
             get
             {
                 int size = (int)GLNVGfragUniforms.GetSize;
-                int felements = (int)Math.Ceiling((float)(size / sizeof(float)));
+                int felements = (int)System.Math.Ceiling((float)(size / sizeof(float)));
                 float[] farr = new float[felements];
 
                 IntPtr ptr = Marshal.AllocHGlobal(size);

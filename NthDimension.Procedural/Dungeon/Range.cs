@@ -30,7 +30,7 @@ namespace NthDimension.Procedural.Dungeon
 
         public Range Intersection(Range range)
         {
-            return new Range(Math.Max(Begin, range.Begin), Math.Min(End, range.End));
+            return new Range(System.Math.Max(Begin, range.Begin), System.Math.Min(End, range.End));
         }
 
         public override string ToString()

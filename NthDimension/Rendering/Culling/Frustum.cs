@@ -79,7 +79,7 @@ namespace NthDimension.Rendering.Culling
 
         private void NormalizePlane(float[,] frustum, int side) // Generic
         {
-            float magnitude = (float)Math.Sqrt((frustum[side, 0] * frustum[side, 0]) + (frustum[side, 1] * frustum[side, 1])
+            float magnitude = (float)System.Math.Sqrt((frustum[side, 0] * frustum[side, 0]) + (frustum[side, 1] * frustum[side, 1])
                                                 + (frustum[side, 2] * frustum[side, 2]));
             frustum[side, 0] /= magnitude;
             frustum[side, 1] /= magnitude;
@@ -88,7 +88,7 @@ namespace NthDimension.Rendering.Culling
         }
         private void normalizePlane(float[,] frustum, int side) // Planet Side
         {
-            float magnitude = (float)Math.Sqrt(frustum[side, (int)PlaneData.A] * frustum[side, (int)PlaneData.A] +
+            float magnitude = (float)System.Math.Sqrt(frustum[side, (int)PlaneData.A] * frustum[side, (int)PlaneData.A] +
                                            frustum[side, (int)PlaneData.B] * frustum[side, (int)PlaneData.B] +
                                            frustum[side, (int)PlaneData.C] * frustum[side, (int)PlaneData.C]);
 

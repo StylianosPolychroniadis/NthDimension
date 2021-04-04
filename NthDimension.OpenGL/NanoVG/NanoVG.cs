@@ -74,7 +74,7 @@ namespace NthDimension.Rasterizer.NanoVG
 
         static float nvg__sqrtf(float a)
         {
-            return (float)Math.Sqrt(a);
+            return (float)System.Math.Sqrt(a);
         }
 
         static float nvg__modf(float a, float b)
@@ -84,27 +84,27 @@ namespace NthDimension.Rasterizer.NanoVG
 
         static float nvg__sinf(float a)
         {
-            return (float)Math.Sin(a);
+            return (float)System.Math.Sin(a);
         }
 
         static float nvg__cosf(float a)
         {
-            return (float)Math.Cos(a);
+            return (float)System.Math.Cos(a);
         }
 
         static float nvg__tanf(float a)
         {
-            return (float)Math.Tan(a);
+            return (float)System.Math.Tan(a);
         }
 
         static float nvg__atan2f(float a, float b)
         {
-            return (float)Math.Atan2(a, b);
+            return (float)System.Math.Atan2(a, b);
         }
 
         static float nvg__acosf(float a)
         {
-            return (float)Math.Acos(a);
+            return (float)System.Math.Acos(a);
         }
 
         static int nvg__mini(int a, int b)
@@ -317,15 +317,15 @@ namespace NthDimension.Rasterizer.NanoVG
 
         static float nvg__getAverageScale(float[] t)
         {
-            float sx = (float)Math.Sqrt(t[0] * t[0] + t[2] * t[2]);
-            float sy = (float)Math.Sqrt(t[1] * t[1] + t[3] * t[3]);
+            float sx = (float)System.Math.Sqrt(t[0] * t[0] + t[2] * t[2]);
+            float sy = (float)System.Math.Sqrt(t[1] * t[1] + t[3] * t[3]);
             return (sx + sy) * 0.5f;
         }
 
         static int nvg__curveDivs(float r, float arc, float tol)
         {
-            float da = (float)Math.Acos(r / (r + tol)) * 2.0f;
-            return nvg__maxi(2, (int)Math.Ceiling(arc / da));
+            float da = (float)System.Math.Acos(r / (r + tol)) * 2.0f;
+            return nvg__maxi(2, (int)System.Math.Ceiling(arc / da));
         }
 
         static void nvg__buttCapStart(NVGvertex[] dst, ref int idst, NVGpoint p,
@@ -357,7 +357,7 @@ namespace NthDimension.Rasterizer.NanoVG
             for (i = 0; i < ncap; i++)
             {
                 float a = i / (float)(ncap - 1) * NVG_PI;
-                float ax = (float)Math.Cos(a) * w, ay = (float)Math.Sin(a) * w;
+                float ax = (float)System.Math.Cos(a) * w, ay = (float)System.Math.Sin(a) * w;
                 nvg__vset(ref dst[idst], px - dlx * ax - dx * ay, py - dly * ax - dy * ay, 0, 1);
                 idst++;
                 nvg__vset(ref dst[idst], px, py, 0.5f, 1);
@@ -402,7 +402,7 @@ namespace NthDimension.Rasterizer.NanoVG
             for (i = 0; i < ncap; i++)
             {
                 float a = i / (float)(ncap - 1) * NVG_PI;
-                float ax = (float)Math.Cos(a) * w, ay = (float)Math.Sin(a) * w;
+                float ax = (float)System.Math.Cos(a) * w, ay = (float)System.Math.Sin(a) * w;
                 nvg__vset(ref dst[idst], px, py, 0.5f, 1);
                 idst++;
                 nvg__vset(ref dst[idst], px - dlx * ax + dx * ay, py - dly * ax + dy * ay, 0, 1);
@@ -425,8 +425,8 @@ namespace NthDimension.Rasterizer.NanoVG
                 float lx0 = 0, ly0 = 0, lx1 = 0, ly1 = 0, a0, a1;
                 nvg__chooseBevel(p1.flags & (int)NVGpointFlags.NVG_PR_INNERBEVEL, p0, p1, lw,
                     ref lx0, ref ly0, ref lx1, ref ly1);
-                a0 = (float)Math.Atan2(-dly0, -dlx0);
-                a1 = (float)Math.Atan2(-dly1, -dlx1);
+                a0 = (float)System.Math.Atan2(-dly0, -dlx0);
+                a1 = (float)System.Math.Atan2(-dly1, -dlx1);
                 if (a1 > a0)
                     a1 -= NVG_PI * 2;
 
@@ -435,13 +435,13 @@ namespace NthDimension.Rasterizer.NanoVG
                 nvg__vset(ref dst[idst], p1.x - dlx0 * rw, p1.y - dly0 * rw, ru, 1);
                 idst++;
 
-                n = nvg__clampi((int)Math.Ceiling(((a0 - a1) / NVG_PI) * ncap), 2, ncap);
+                n = nvg__clampi((int)System.Math.Ceiling(((a0 - a1) / NVG_PI) * ncap), 2, ncap);
                 for (i = 0; i < n; i++)
                 {
                     float u = i / (float)(n - 1);
                     float a = a0 + u * (a1 - a0);
-                    float rx = (float)(p1.x + Math.Cos(a) * rw);
-                    float ry = (float)(p1.y + Math.Sin(a) * rw);
+                    float rx = (float)(p1.x + System.Math.Cos(a) * rw);
+                    float ry = (float)(p1.y + System.Math.Sin(a) * rw);
                     nvg__vset(ref dst[idst], p1.x, p1.y, 0.5f, 1);
                     idst++;
                     nvg__vset(ref dst[idst], rx, ry, ru, 1);
@@ -459,8 +459,8 @@ namespace NthDimension.Rasterizer.NanoVG
                 float rx0 = 0, ry0 = 0, rx1 = 0, ry1 = 0, a0, a1;
                 nvg__chooseBevel(p1.flags & (int)NVGpointFlags.NVG_PR_INNERBEVEL, p0, p1, -rw,
                     ref rx0, ref ry0, ref rx1, ref ry1);
-                a0 = (float)Math.Atan2(dly0, dlx0);
-                a1 = (float)Math.Atan2(dly1, dlx1);
+                a0 = (float)System.Math.Atan2(dly0, dlx0);
+                a1 = (float)System.Math.Atan2(dly1, dlx1);
                 if (a1 < a0)
                     a1 += NVG_PI * 2;
 
@@ -469,13 +469,13 @@ namespace NthDimension.Rasterizer.NanoVG
                 nvg__vset(ref dst[idst], rx0, ry0, ru, 1);
                 idst++;
 
-                n = nvg__clampi((int)Math.Ceiling(((a1 - a0) / NVG_PI) * ncap), 2, ncap);
+                n = nvg__clampi((int)System.Math.Ceiling(((a1 - a0) / NVG_PI) * ncap), 2, ncap);
                 for (i = 0; i < n; i++)
                 {
                     float u = i / (float)(n - 1);
                     float a = a0 + u * (a1 - a0);
-                    float lx = (float)(p1.x + Math.Cos(a) * lw);
-                    float ly = (float)(p1.y + Math.Sin(a) * lw);
+                    float lx = (float)(p1.x + System.Math.Cos(a) * lw);
+                    float ly = (float)(p1.y + System.Math.Sin(a) * lw);
                     nvg__vset(ref dst[idst], lx, ly, lu, 1);
                     idst++;
                     nvg__vset(ref dst[idst], p1.x, p1.y, 0.5f, 1);
@@ -2314,7 +2314,7 @@ namespace NthDimension.Rasterizer.NanoVG
             // Calculate transform aligned to the line
             dx = ex - sx;
             dy = ey - sy;
-            d = (float)Math.Sqrt(dx * dx + dy * dy);
+            d = (float)System.Math.Sqrt(dx * dx + dy * dy);
             if (d > 0.0001f)
             {
                 dx /= d;

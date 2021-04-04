@@ -88,7 +88,7 @@ namespace NthDimension.Rendering.Drawables
                 if (modelMatrix != value)
                 {
                     modelMatrix = value;
-                    position = MathHelper.Mult(new Vector4(0, 0, 0, 1), value).Xyz;     // Un-commented Apr-12-18
+                    position = MathFunc.Mult(new Vector4(0, 0, 0, 1), value).Xyz;     // Un-commented Apr-12-18
                     //position = modelMatrix.ExtractTranslation();                      // Commented Apr-12-18 
                     //wasUpdated = true;
                 }
@@ -126,7 +126,7 @@ namespace NthDimension.Rendering.Drawables
                     orientation = value;
                     Vector4 dir = new Vector4(0, 1, 0, 0);
 
-                    pointingDirection = MathHelper.Mult(dir, value).Xyz;
+                    pointingDirection = MathFunc.Mult(dir, value).Xyz;
 
                     //wasUpdated = true;    // Commented Apr-12-18 (also commented in vanilla)
                 }
@@ -366,7 +366,7 @@ namespace NthDimension.Rendering.Drawables
         }
 
       
-        public Shaders.Shader activateMaterial(ref Material curMat)
+        public virtual Shaders.Shader activateMaterial(ref Material curMat)
         {
             int                 texunit     = 0;
             Shaders.Shader      shader      = curMat.shader;
@@ -414,9 +414,12 @@ namespace NthDimension.Rendering.Drawables
             curMat.activateTexture(Material.TexType.baseTextureTwo,     ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.baseTextureThree,   ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.baseTextureFour,    ref texunit, ref handle);
+           
             curMat.activateTexture(Material.TexType.definfoTexture,     ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.reflectionTexture,  ref texunit, ref handle);
             curMat.activateTexture(Material.TexType.normalTexture,      ref texunit, ref handle);
+
+           
 
             if (propertys.useEmit)
             {
@@ -457,7 +460,7 @@ namespace NthDimension.Rendering.Drawables
 
             }
             shader.InsertUniform(Uniform.use_alpha, ref transparency);
-#endregion
+            #endregion
 
             if (propertys.noCull)
             {

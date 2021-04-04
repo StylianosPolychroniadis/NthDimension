@@ -62,7 +62,7 @@ namespace NthDimension.Procedural.Room
 
         public float Length()
         {
-            return (float)Math.Sqrt(Vector3D.Dot(this, this));
+            return (float)System.Math.Sqrt(Vector3D.Dot(this, this));
         }
 
         public float LengthSquared()
@@ -117,7 +117,7 @@ namespace NthDimension.Procedural.Room
 
         public static Vector3D Abs(Vector3D value)
         {
-            return new Vector3D(Math.Abs(value.X), Math.Abs(value.Y), Math.Abs(value.Z));
+            return new Vector3D(System.Math.Abs(value.X), System.Math.Abs(value.Y), System.Math.Abs(value.Z));
         }
 
 

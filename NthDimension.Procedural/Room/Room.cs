@@ -73,7 +73,7 @@ namespace NthDimension.Procedural.Room
                 // [3]: axis-aligned normal direction into room, optional [4]: height
 
                 // Convert inwards normal direction from radians to axis direction number
-                int inwardsNormalDirection = (int)Math.Round(door[3] / Math.PI * 2) % 4;
+                int inwardsNormalDirection = (int)System.Math.Round(door[3] / System.Math.PI * 2) % 4;
 
                 if (door.Length == 5)
                 {
@@ -93,7 +93,7 @@ namespace NthDimension.Procedural.Room
                 // [3]: axis-aligned normal direction into room, optional [4]: height, optional [5]: elevation above floor
 
                 // Convert inwards normal direction from radians to axis direction number
-                int inwardsNormalDirection = (int)Math.Round(window[3] / Math.PI * 2) % 4;
+                int inwardsNormalDirection = (int)System.Math.Round(window[3] / System.Math.PI * 2) % 4;
 
                 if (window.Length == 6)
                 {
@@ -175,8 +175,8 @@ namespace NthDimension.Procedural.Room
         private void CreateFloorGrids()
         {
             // Create floor grid
-            int xSteps = (int)Math.Ceiling((double)Width / GridCellSize);
-            int ySteps = (int)Math.Ceiling((double)Depth / GridCellSize);
+            int xSteps = (int)System.Math.Ceiling((double)Width / GridCellSize);
+            int ySteps = (int)System.Math.Ceiling((double)Depth / GridCellSize);
             obstructionGrid = new int[xSteps, ySteps];
             maxHeightGrid = new int[xSteps, ySteps];
 

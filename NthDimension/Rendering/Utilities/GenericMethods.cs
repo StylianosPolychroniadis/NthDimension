@@ -809,6 +809,25 @@ namespace NthDimension.Rendering
             return arr;
         }
 
+        public static Matrix3 Matrix3FromString(string mString)
+        {
+            NumberFormatInfo nfi = GenericMethods.getNfi();
+            string[] fields = mString.Split(splitChar.ToCharArray());
+            Matrix3 mMat = new Matrix3(
+                Single.Parse(fields[0], nfi),
+                Single.Parse(fields[1], nfi),
+                Single.Parse(fields[2], nfi),
+                Single.Parse(fields[3], nfi),
+                Single.Parse(fields[4], nfi),
+                Single.Parse(fields[5], nfi),
+                Single.Parse(fields[6], nfi),
+                Single.Parse(fields[7], nfi),
+                Single.Parse(fields[8], nfi)
+                );
+
+            return mMat;
+        }
+
         public static Matrix4 BlendMatrix(Matrix4 matA, Matrix4 matB, float weight)
         {
             Matrix4 matR = new Matrix4();
@@ -845,7 +864,7 @@ namespace NthDimension.Rendering
             if (normal.Y < 0.99 && normal.Y > -0.99)
                 tmpMatA = Matrix4.CreateRotationY(rotationY);
 
-            Vector4 secondaryVec = MathHelper.Mult(tmpMatA, new Vector4(ToOpenTKVector(normal), 1));
+            Vector4 secondaryVec = MathFunc.Mult(tmpMatA, new Vector4(ToOpenTKVector(normal), 1));
             float rotationX = (float) Math.Atan2(secondaryVec.Z, secondaryVec.Y);
             Matrix4 tmpMatB = Matrix4.CreateRotationX(rotationX);
 
@@ -861,7 +880,7 @@ namespace NthDimension.Rendering
             if (normal.Y < 0.99 && normal.Y > -0.99)
                 tmpMatA = Matrix4.CreateRotationY(rotationY);
 
-            Vector4 secondaryVec = MathHelper.Mult(tmpMatA, new Vector4(normal, 1));
+            Vector4 secondaryVec = MathFunc.Mult(tmpMatA, new Vector4(normal, 1));
             float rotationX = (float) Math.Atan2(secondaryVec.Z, secondaryVec.Y);
             Matrix4 tmpMatB = Matrix4.CreateRotationX(rotationX);
 
@@ -1142,9 +1161,9 @@ namespace NthDimension.Rendering
         public static Vector3 GetPitchYawRollDeg(Quaternion q)
         {
             Vector3 ret = GetPitchYawRollRad(q);
-            return new Vector3(MathHelper.RadiansToDegrees(ret.X),
-                               MathHelper.RadiansToDegrees(ret.Y),
-                               MathHelper.RadiansToDegrees(ret.Z));
+            return new Vector3(MathFunc.RadiansToDegrees(ret.X),
+                               MathFunc.RadiansToDegrees(ret.Y),
+                               MathFunc.RadiansToDegrees(ret.Z));
         }
 
         public static Quaternion ToLeftHanded(this Quaternion rightHandedQuaternion)

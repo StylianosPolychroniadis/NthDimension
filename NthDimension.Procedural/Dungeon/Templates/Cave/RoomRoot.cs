@@ -35,9 +35,9 @@ namespace NthDimension.Procedural.Dungeon.Templates.Cave
             var r2 = radius * radius;
             var buf = rasterizer.Bitmap;
 
-            double pR = rand.NextDouble() * (radius - 2), pA = rand.NextDouble() * 2 * Math.PI;
-            int pX = (int)(cX + Math.Cos(pR) * pR);
-            int pY = (int)(cY + Math.Sin(pR) * pR);
+            double pR = rand.NextDouble() * (radius - 2), pA = rand.NextDouble() * 2 * System.Math.PI;
+            int pX = (int)(cX + System.Math.Cos(pR) * pR);
+            int pY = (int)(cY + System.Math.Sin(pR) * pR);
 
             for (int x = bounds.X; x < bounds.MaxX; x++)
                 for (int y = bounds.Y; y < bounds.MaxY; y++)

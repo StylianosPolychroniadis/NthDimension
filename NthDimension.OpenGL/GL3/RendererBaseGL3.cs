@@ -204,6 +204,7 @@ namespace NthDimension.Rasterizer
         public virtual void Uniform2(int location, ref Vector2 vector) { }
         public virtual void Uniform3(int location, ref Vector3 vector) { }
         public virtual void Uniform4(int location, ref Vector4 vector) { }
+        public virtual void UniformMatrix3(int location, bool transpose, ref Matrix3 matrix) { }
         public virtual void UniformMatrix4(int location, bool transpose, ref Matrix4 matrix) { }
         public virtual void UseProgram(int program, bool force = false) { }
         public virtual void ValidateProgram(int program) { }

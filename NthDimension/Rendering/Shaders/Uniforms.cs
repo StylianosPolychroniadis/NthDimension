@@ -32,7 +32,7 @@ namespace NthDimension.Rendering.Shaders
         invMVPMatrix,                       // Inverse ModelViewProjection 
 
         rotation_matrix,                    // The rotation matrix in model space (local)
-        rotation_matrix2,                   // Auxiliary rotation matrix                                                    // [TBC: Still used? Eliminate?]                
+        rotation_matrix2,                   // Auxiliary rotation matrix                                                    // Refactor rename to rotation_matrix_aux
 
         viewUp,                             // View vector pointing Up
         viewRight,                          // View vector pointing Right
@@ -54,6 +54,7 @@ namespace NthDimension.Rendering.Shaders
         in_lightsun,                        // Sun light color                                                              // TODO:: Update according to weather model      
         in_waterlevel,                      // Water plane height                                                           // [TODO: Implement water shader] TODO:: Update according to weather model        
         in_vector,                          // Arbitrary input vector                                                       // [TBD: Arbitrary]
+         
 
                                                                      // [TBC/TODO] [REFACTOR in_shadowQuality]
 
@@ -123,14 +124,18 @@ namespace NthDimension.Rendering.Shaders
 
         // Skin Color
         in_skinColor,
-
+        // Terrain v1.0
         terrain_minHeight,                  // float
         terrain_maxHeight,                  // float
         terrain_uvScale,                    // vec2
         terrain_lightDir,                   // vec3
         terrain_densityMap,                 // float
-        terrain_densityFactor
+        terrain_densityFactor,
+        // SkyDome v.1.0
+        sky_time,
+        sky_clouds,
+        sky_sunp,
+        sky_stars,
 
-        //projection_rev_matrix,            // NOT USED
     }
 }

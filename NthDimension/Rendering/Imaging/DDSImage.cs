@@ -1201,7 +1201,7 @@ namespace NthDimension.Rendering.Loaders
                                                 //calculate b (z) component ((r/255)^2 + (g/255)^2 + (b/255)^2 = 1
                                                 t = 127 * 128 - (tx - 127) * (tx - 128) - (ty - 127) * (ty - 128);
                                                 if (t > 0)
-                                                    rawData[t1 + 2] = (byte)(Math.Sqrt(t) + 128);
+                                                    rawData[t1 + 2] = (byte)(System.Math.Sqrt(t) + 128);
                                                 else
                                                     rawData[t1 + 2] = 0x7F;
                                             }

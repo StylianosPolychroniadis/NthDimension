@@ -126,7 +126,7 @@ namespace NthDimension.Procedural.Room
                 }
 
                 // Rotate extreme values
-                if (Math.Abs(rotationDelta % 2) == 1)
+                if (System.Math.Abs(rotationDelta % 2) == 1)
                 {
                     float newMinX = minY;
                     float newMaxX = maxY;
@@ -309,8 +309,8 @@ namespace NthDimension.Procedural.Room
                 float domainXDelta = maxDomainX - minDomainX;
                 float domainYDelta = maxDomainY - minDomainY;
 
-                int stepsX = 1 + Convert.ToInt16(Math.Round(domainXDelta / room.GridCellSize));
-                int stepsY = 1 + Convert.ToInt16(Math.Round(domainYDelta / room.GridCellSize));
+                int stepsX = 1 + Convert.ToInt16(System.Math.Round(domainXDelta / room.GridCellSize));
+                int stepsY = 1 + Convert.ToInt16(System.Math.Round(domainYDelta / room.GridCellSize));
 
                 float stepSizeX = domainXDelta / (stepsX - 1);
                 float stepSizeY = domainYDelta / (stepsY - 1);
@@ -335,8 +335,8 @@ namespace NthDimension.Procedural.Room
                 domainXDelta = maxDomainX - minDomainX;
                 domainYDelta = maxDomainY - minDomainY;
 
-                stepsX = 1 + Convert.ToInt16(Math.Round(domainXDelta / room.GridCellSize));
-                stepsY = 1 + Convert.ToInt16(Math.Round(domainYDelta / room.GridCellSize));
+                stepsX = 1 + Convert.ToInt16(System.Math.Round(domainXDelta / room.GridCellSize));
+                stepsY = 1 + Convert.ToInt16(System.Math.Round(domainYDelta / room.GridCellSize));
 
                 stepSizeX = domainXDelta / (stepsX - 1);
                 stepSizeY = domainYDelta / (stepsY - 1);
@@ -368,7 +368,7 @@ namespace NthDimension.Procedural.Room
                 float maxDomainY = (room.Depth - YLength) / 2;
                 float domainYDelta = maxDomainY - minDomainY;
                     
-                int stepsY = Convert.ToInt16(Math.Round(domainYDelta / room.GridCellSize));
+                int stepsY = Convert.ToInt16(System.Math.Round(domainYDelta / room.GridCellSize));
                 float stepSizeY = domainYDelta / stepsY;
 
                 for (int stepY = 0; stepY < stepsY; stepY++)
@@ -384,7 +384,7 @@ namespace NthDimension.Procedural.Room
                 maxDomainY = (room.Depth - YLength) / 2;
                 domainYDelta = maxDomainY - minDomainY;
 
-                stepsY = Convert.ToInt16(Math.Round(domainYDelta / room.GridCellSize));
+                stepsY = Convert.ToInt16(System.Math.Round(domainYDelta / room.GridCellSize));
                 stepSizeY = domainYDelta / stepsY;
 
                 for (int stepY = 1; stepY <= stepsY; stepY++)
@@ -400,7 +400,7 @@ namespace NthDimension.Procedural.Room
                 float maxDomainX = (room.Width - YLength) / 2;
                 float domainXDelta = maxDomainX - minDomainX;
 
-                int stepsX = Convert.ToInt16(Math.Round(domainXDelta / room.GridCellSize));
+                int stepsX = Convert.ToInt16(System.Math.Round(domainXDelta / room.GridCellSize));
                 float stepSizeX = domainXDelta / stepsX;
 
                 for (int stepX = 1; stepX <= stepsX; stepX++)
@@ -416,7 +416,7 @@ namespace NthDimension.Procedural.Room
                 maxDomainX = (room.Width - YLength) / 2;
                 domainXDelta = maxDomainX - minDomainX;
 
-                stepsX = Convert.ToInt16(Math.Round(domainXDelta / room.GridCellSize));
+                stepsX = Convert.ToInt16(System.Math.Round(domainXDelta / room.GridCellSize));
                 stepSizeX = domainXDelta / stepsX;
 
                 for (int stepX = 0; stepX < stepsX; stepX++)

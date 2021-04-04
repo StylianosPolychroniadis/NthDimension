@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NthDimension</RootNamespace>
     <AssemblyName>NthDimension</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +34,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\..\Build\AnyCPU\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;_WINDOWS_; VOXELS; OPTIMIZED</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;_WINDOWS_; VOXELS; OPTIMIZED;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -55,7 +56,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+    <Reference Include="OpenTK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\OpenTK.dll</HintPath>
     </Reference>
@@ -64,6 +65,9 @@
       <HintPath>..\Lib\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
@@ -478,6 +482,7 @@
     <Compile Include="Scripting\ScriptTemplate.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Utilities\ConsoleUtil.Effects.cs" />
+    <Compile Include="Utilities\FastDirectoryEnumerator.cs" />
     <Compile Include="Utilities\FileAccessUtility.cs" />
     <Compile Include="Utilities\GenericConverter.cs" />
     <Compile Include="Utilities\PrecisionTimer.cs" />
@@ -561,7 +566,7 @@
     <Compile Include="Rendering\Drawables\Effects\ArcModel.cs" />
     <Compile Include="Rendering\Drawables\2D\Quad2d.cs" />
     <Compile Include="Rendering\Drawables\Sky\Skybox.cs" />
-    <Compile Include="Rendering\Drawables\Sky\SkySphere.cs" />
+    <Compile Include="Rendering\Drawables\Sky\SkyDome.cs" />
     <Compile Include="Rendering\Drawables\Models\StaticModel.cs" />
     <Compile Include="Rendering\Drawables\Particles\Affectors\ParticleAffector.cs" />
     <Compile Include="Rendering\Drawables\Particles\Affectors\ParticleAffectorFloorKiller.cs" />
@@ -1136,22 +1141,22 @@
     <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\ScatterGPU.vcxproj.user" />
     <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\StdAfx.cpp" />
     <None Include="Rendering\Drawables\Sky\_SkyAtmosphere Cpp\Sandbox-src\Sandbox\ScatterGPU\StdAfx.h" />
-    <Content Include="data\textures\skysphere\clouds1.png">
+    <Content Include="data\textures\skydome\clouds1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\textures\skysphere\clouds2.png">
+    <Content Include="data\textures\skydome\clouds2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\textures\skysphere\moon.png">
+    <Content Include="data\textures\skydome\moon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\textures\skysphere\sun.png">
+    <Content Include="data\textures\skydome\sun.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\textures\skysphere\tint.png">
+    <Content Include="data\textures\skydome\tint.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\textures\skysphere\tint2.png">
+    <Content Include="data\textures\skydome\tint2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="_Documentation\Animations\Avatar animations.txt" />

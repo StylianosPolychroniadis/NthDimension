@@ -131,7 +131,7 @@ namespace NthDimension.Rendering.Utilities
                     vector[2] = 1.0;
 
                     //Normalization
-                    double invlength = 1.0 / Math.Sqrt(vector[0] * vector[0] + vector[1] * vector[1] + vector[2] * vector[2]);
+                    double invlength = 1.0 / System.Math.Sqrt(vector[0] * vector[0] + vector[1] * vector[1] + vector[2] * vector[2]);
                     vector[0] *= invlength;
                     vector[1] *= invlength;
                     vector[2] *= invlength;

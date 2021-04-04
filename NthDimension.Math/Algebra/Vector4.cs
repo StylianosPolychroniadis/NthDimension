@@ -312,7 +312,7 @@ namespace NthDimension.Algebra
         {
             get
             {
-                return 1.0f / MathHelper.InverseSqrtFast(X * X + Y * Y + Z * Z + W * W);
+                return 1.0f / MathFunc.InverseSqrtFast(X * X + Y * Y + Z * Z + W * W);
             }
         }
 
@@ -372,7 +372,7 @@ namespace NthDimension.Algebra
         /// </summary>
         public void NormalizeFast()
         {
-            float scale = MathHelper.InverseSqrtFast(X * X + Y * Y + Z * Z + W * W);
+            float scale = MathFunc.InverseSqrtFast(X * X + Y * Y + Z * Z + W * W);
             X *= scale;
             Y *= scale;
             Z *= scale;
@@ -831,7 +831,7 @@ namespace NthDimension.Algebra
         /// <returns>The normalized vector</returns>
         public static Vector4 NormalizeFast(Vector4 vec)
         {
-            float scale = MathHelper.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z + vec.W * vec.W);
+            float scale = MathFunc.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z + vec.W * vec.W);
             vec.X *= scale;
             vec.Y *= scale;
             vec.Z *= scale;
@@ -846,7 +846,7 @@ namespace NthDimension.Algebra
         /// <param name="result">The normalized vector</param>
         public static void NormalizeFast(ref Vector4 vec, out Vector4 result)
         {
-            float scale = MathHelper.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z + vec.W * vec.W);
+            float scale = MathFunc.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z + vec.W * vec.W);
             result.X = vec.X * scale;
             result.Y = vec.Y * scale;
             result.Z = vec.Z * scale;

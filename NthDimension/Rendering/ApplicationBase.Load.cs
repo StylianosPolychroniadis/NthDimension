@@ -449,6 +449,28 @@ namespace NthDimension.Rendering
 
         }
 
+        private void readCacheFilePaths()
+        {
+            Settings.Instance.game.materialCacheFile            = string.Empty;
+            Settings.Instance.game.materialVehiclesCacheFile    = string.Empty;
+            Settings.Instance.game.modelAnimationCacheFile      = string.Empty;
+            Settings.Instance.game.modelApparelCacheFile        = string.Empty;
+
+            Settings.Instance.game.modelCacheFile               = string.Empty;
+            Settings.Instance.game.modelFemaleCacheFile         = string.Empty;
+            Settings.Instance.game.modelMaleCacheFile           = string.Empty;
+            Settings.Instance.game.modelNpcCacheFile            = string.Empty;
+            Settings.Instance.game.modelVehiclesCacheFile       = string.Empty;
+
+            Settings.Instance.game.shaderCacheFile              = string.Empty;
+            
+            Settings.Instance.game.templateCacheFile            = string.Empty;
+            
+            Settings.Instance.game.textureCacheFile             = string.Empty;
+            Settings.Instance.game.textureVehiclesCacheFile     = string.Empty;
+
+            
+        }
         //private void scanLocalFiles()
         //{
         //    this._fileSeeker = new FileSeeker(/*Path.Combine(DirectoryUtil.AssemblyDirectory, @"data")*/);

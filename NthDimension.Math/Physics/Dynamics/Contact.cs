@@ -692,7 +692,7 @@ namespace NthDimension.Physics.Dynamics
             // is a new contact.
             if (relNormalVel < -1.0f && newContact)
             {
-                restitutionBias = Math.Max(-restitution * relNormalVel, restitutionBias);
+                restitutionBias = System.Math.Max(-restitution * relNormalVel, restitutionBias);
             }
 
             // Speculative Contacts!

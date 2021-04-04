@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF4BC8D9-EAE1-4E4A-BD67-4A60103F1E8E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NthDimension.Windowing</RootNamespace>
+    <AssemblyName>NthDimension.Windowing</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\AnyCPU\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\IBindingsContext.cs" />
+    <Compile Include="Desktop\Events\KeyboardKeyEventArgs.cs" />
+    <Compile Include="Desktop\Events\MouseButtonEventArgs.cs" />
+    <Compile Include="Desktop\GameWindow.cs" />
+    <Compile Include="Desktop\GameWindowSettings.cs" />
+    <Compile Include="Desktop\GLFWGraphicsContext.cs" />
+    <Compile Include="Desktop\GLFWProvider.cs" />
+    <Compile Include="Desktop\IGLFWGraphicsContext.cs" />
+    <Compile Include="Desktop\MonitorInfo.cs" />
+    <Compile Include="Desktop\Monitors.cs" />
+    <Compile Include="Desktop\NativeWindow.cs" />
+    <Compile Include="Desktop\NativeWindowSettings.cs" />
+    <Compile Include="Enums\ContextAPI.cs" />
+    <Compile Include="Enums\ContextFlags.cs" />
+    <Compile Include="Enums\ContextProfile.cs" />
+    <Compile Include="Events\FileDropEventArgs.cs" />
+    <Compile Include="Events\FocusedChangedEventArgs.cs" />
+    <Compile Include="Events\FrameEventArgs.cs" />
+    <Compile Include="Events\JoystickEventArgs.cs" />
+    <Compile Include="Events\MaximizedEventArgs.cs" />
+    <Compile Include="Events\MinimizedEventArgs.cs" />
+    <Compile Include="Events\MonitorEventArgs.cs" />
+    <Compile Include="Events\MouseMoveEventArgs.cs" />
+    <Compile Include="Events\MouseWheelEventArgs.cs" />
+    <Compile Include="Events\ResizeEventArgs.cs" />
+    <Compile Include="Events\TextInputEventArgs.cs" />
+    <Compile Include="Events\WindowPositionEventArgs.cs" />
+    <Compile Include="Exceptions\BindingsNotRewrittenException.cs" />
+    <Compile Include="Exceptions\ExtensionNotSupportedException.cs" />
+    <Compile Include="Framework\Cursor.cs" />
+    <Compile Include="Framework\Enums\ClientApi.cs" />
+    <Compile Include="Framework\Enums\ConnectedState.cs" />
+    <Compile Include="Framework\Enums\ContextApi.cs" />
+    <Compile Include="Framework\Enums\CursorModeValue.cs" />
+    <Compile Include="Framework\Enums\CursorShape.cs" />
+    <Compile Include="Framework\Enums\CursorStateAttribute.cs" />
+    <Compile Include="Framework\Enums\ErrorCode.cs" />
+    <Compile Include="Framework\Enums\InitHintBool.cs" />
+    <Compile Include="Framework\Enums\InitHintInt.cs" />
+    <Compile Include="Framework\Enums\InputAction.cs" />
+    <Compile Include="Framework\Enums\JoystickHats.cs" />
+    <Compile Include="Framework\Enums\JoystickInputAction.cs" />
+    <Compile Include="Framework\Enums\KeyModifiers.cs" />
+    <Compile Include="Framework\Enums\Keys.cs" />
+    <Compile Include="Framework\Enums\LockKeyAttribute.cs" />
+    <Compile Include="Framework\Enums\MouseButton.cs" />
+    <Compile Include="Framework\Enums\OpenGlProfile.cs" />
+    <Compile Include="Framework\Enums\ReleaseBehavior.cs" />
+    <Compile Include="Framework\Enums\Robustness.cs" />
+    <Compile Include="Framework\Enums\StickyAttributes.cs" />
+    <Compile Include="Framework\Enums\WindowAttribute.cs" />
+    <Compile Include="Framework\Enums\WindowAttributeGetBool.cs" />
+    <Compile Include="Framework\Enums\WindowAttributeGetClientApi.cs" />
+    <Compile Include="Framework\Enums\WindowAttributeGetContextApi.cs" />
+    <Compile Include="Framework\Enums\WindowAttributeGetInt.cs" />
+    <Compile Include="Framework\Enums\WindowAttributeGetOpenGlProfile.cs" />
+    <Compile Include="Framework\Enums\WindowAttributeGetReleaseBehavior.cs" />
+    <Compile Include="Framework\Enums\WindowAttributeGetRobustness.cs" />
+    <Compile Include="Framework\Enums\WindowHintBool.cs" />
+    <Compile Include="Framework\Enums\WindowHintClientApi.cs" />
+    <Compile Include="Framework\Enums\WindowHintContextApi.cs" />
+    <Compile Include="Framework\Enums\WindowHintInt.cs" />
+    <Compile Include="Framework\Enums\WindowHintOpenGlProfile.cs" />
+    <Compile Include="Framework\Enums\WindowHintReleaseBehavior.cs" />
+    <Compile Include="Framework\Enums\WindowHintRobustness.cs" />
+    <Compile Include="Framework\Enums\WindowHintString.cs" />
+    <Compile Include="Framework\GammaRamp.cs" />
+    <Compile Include="Framework\GLFW.cs" />
+    <Compile Include="Framework\GLFWBindingsContext.cs" />
+    <Compile Include="Framework\GLFWCallbacks.cs" />
+    <Compile Include="Framework\GLFWException.cs" />
+    <Compile Include="Framework\GLFWNative.cs" />
+    <Compile Include="Framework\Image.cs" />
+    <Compile Include="Framework\Input\GamepadState.cs" />
+    <Compile Include="Framework\Input\JoystickState.cs" />
+    <Compile Include="Framework\Input\KeyboardState.cs" />
+    <Compile Include="Framework\Input\MouseState.cs" />
+    <Compile Include="Framework\Monitor.cs" />
+    <Compile Include="Framework\VideoMode.cs" />
+    <Compile Include="Framework\VkHandle.cs" />
+    <Compile Include="Framework\Window.cs" />
+    <Compile Include="Input\Enums\Hat.cs" />
+    <Compile Include="Input\Image.cs" />
+    <Compile Include="Input\MouseCursor.cs" />
+    <Compile Include="Input\WindowIcon.cs" />
+    <Compile Include="Interfaces\IGraphicsContext.cs" />
+    <Compile Include="MonitorHandle.cs" />
+    <Compile Include="Native\AutoGeneratedAttribute.cs" />
+    <Compile Include="Native\CountAttribute.cs" />
+    <Compile Include="Native\MarshalTk.cs" />
+    <Compile Include="Native\SlotAttribute.cs" />
+    <Compile Include="Platform\PlatformException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\MarshalUtility.cs" />
+    <Compile Include="Utility\NativeLibrary.CoreCLR.cs" />
+    <Compile Include="Utility\NativeLibrary.cs" />
+    <Compile Include="Utility\Utils.cs" />
+    <Compile Include="VSyncMode.cs" />
+    <Compile Include="WindowBorder.cs" />
+    <Compile Include="WindowState.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NthDimension.Math\NthDimension.Math.csproj">
+      <Project>{9d509ca6-5635-4c05-ad73-76f97cfbaba7}</Project>
+      <Name>NthDimension.Math</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="glfw3-x64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="glfw3-x86.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libglfw.so.3.3" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PInvoke\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

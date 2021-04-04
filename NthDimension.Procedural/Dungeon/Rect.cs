@@ -34,7 +34,7 @@ namespace NthDimension.Procedural.Dungeon
 
         public Rect(double x, double y, double maxX, double maxY)
         {
-            this = new Rect(Math.Round((double)x), Math.Round((double)x), Math.Round((double)maxX), Math.Round((double)maxY));
+            this = new Rect(System.Math.Round((double)x), System.Math.Round((double)x), System.Math.Round((double)maxX), System.Math.Round((double)maxY));
         }
 
         public bool Contains(Point pt)
@@ -54,7 +54,7 @@ namespace NthDimension.Procedural.Dungeon
 
         public Rect Intersection(Rect rect)
         {
-            return new Rect(Math.Max(this.X, rect.X), Math.Max(this.Y, rect.Y), Math.Min(this.MaxX, rect.MaxX), Math.Min(this.MaxY, rect.MaxY));
+            return new Rect(System.Math.Max(this.X, rect.X), System.Math.Max(this.Y, rect.Y), System.Math.Min(this.MaxX, rect.MaxX), System.Math.Min(this.MaxY, rect.MaxY));
         }
 
         public override string ToString()

@@ -1138,7 +1138,7 @@ namespace NthDimension.Rasterizer.NanoVG.FontStashNet
                 return;
             // Calculate the alpha such that 90% of the kernel is within the radius. (Kernel extends to infinity)
             sigma = (float)blur * 0.57735f; // 1 / sqrt(3)
-            alpha = (int)((1 << APREC) * (1.0f - Math.Exp(-2.3f / (sigma + 1.0f))));
+            alpha = (int)((1 << APREC) * (1.0f - System.Math.Exp(-2.3f / (sigma + 1.0f))));
             fons__blurRows(dst, iDst, w, h, dstStride, alpha);
             fons__blurCols(dst, iDst, w, h, dstStride, alpha);
             fons__blurRows(dst, iDst, w, h, dstStride, alpha);

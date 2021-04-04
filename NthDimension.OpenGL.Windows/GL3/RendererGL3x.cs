@@ -385,6 +385,12 @@ namespace NthDimension.Rasterizer.Windows
             OpenTK.Graphics.OpenGL.GL.Uniform4(location, ref ret);
             vector = ret.ToNthDimension();
         }
+        public override void UniformMatrix3(int location, bool transpose, ref Matrix3 matrix)
+        {
+            OpenTK.Matrix3 ret = matrix.ToOpenTK();
+            OpenTK.Graphics.OpenGL.GL.UniformMatrix3(location, transpose, ref ret);
+            matrix = ret.ToNthDimension();
+        }
         public override void UniformMatrix4(int location, bool transpose, ref Matrix4 matrix)
         {
             OpenTK.Matrix4 ret = matrix.ToOpenTK();

@@ -59,7 +59,7 @@ namespace NthDimension.Forms.Dialogs
             iTextBox.FGColor = Color.WhiteSmoke;
             iTextBox.Font = new NanoFont(NanoFont.DefaultRegular, 12f);
             iTextBox.Margin = new Spacing(10, 10, 10, 0);
-            iTextBox.Size = new Size(0, (int)Math.Ceiling(iTextBox.Font.Height + 6));
+            iTextBox.Size = new Size(0, (int)System.Math.Ceiling(iTextBox.Font.Height + 6));
             iTextBox.Dock = EDocking.Top;
 
             panelBottom.Widgets.Add(iTextBox);
@@ -114,6 +114,7 @@ namespace NthDimension.Forms.Dialogs
 
         private void IListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (null == listView.SelectedItems) return;
             if (listView.SelectedItems.Count > 1)
             {
                 iTextBox.Text = "¡¡¡ OPEN ALL SELECTED FILES !!!";
@@ -121,9 +122,9 @@ namespace NthDimension.Forms.Dialogs
             else
             {
                 var si = listView.SelectedItems[0];
-                var fi = si.Tag as FileInfo;
+                var fi = si.Tag as NthDimension.Utilities.FileData;
 
-                string str = Ellipsis.Compact(fi.FullName, iTextBox.Font, iTextBox.Width - 4, EllipsisFormat.Middle);
+                string str = Ellipsis.Compact(fi.Path, iTextBox.Font, iTextBox.Width - 4, EllipsisFormat.Middle);
                 iTextBox.Text = str;
             }
         }
@@ -266,15 +267,15 @@ namespace NthDimension.Forms.Dialogs
                 int cont1 = 0;
                 foreach (ListViewItem mlvi in listView.SelectedItems)
                 {
-                    var fi = mlvi.Tag as FileInfo;
-                    FilesNames[cont1++] = fi.FullName;
+                    var fi = mlvi.Tag as NthDimension.Utilities.FileData;
+                    FilesNames[cont1++] = fi.Path;
                 }
             }
             else
             {
                 FilesNames = new string[1];
-                var fi = listView.SelectedItems[0].Tag as FileInfo;
-                FilesNames[0] = fi.FullName;
+                var fi = listView.SelectedItems[0].Tag as NthDimension.Utilities.FileData;
+                FilesNames[0] = fi.Path;
             }
 
             Hide();
@@ -559,19 +560,101 @@ namespace NthDimension.Forms.Dialogs
 
         bool fileValid = false;
 
+        /// <summary>
+        /// TODO:: This function features DirectoryInfo.GetFiles which is slow on large data
+        /// </summary>
+        /// <param name="di"></param>
         void PopulateFiles(DirectoryInfo di)
         {
 
+            if (!Directory.Exists(di.FullName)) return;
+
+            
 
             //foreach (FileInfo fi in di.GetFiles())
             //foreach (FileInfo fi in DirectoryAlternative.GetFiles(di.FullName))
-            if (!Directory.Exists(di.FullName)) return;
-            string[] files = DirectoryAlternative.GetFiles(di.FullName);
+            #region Slow Get Files - DELETE
+            //string[] files = DirectoryAlternative.GetFiles(di.FullName);
+            //for (int f = 0; f < files.Length; f++)
+            //{
+            //    FileInfo fi = new FileInfo(files[f]);
+            //    string ext = Path.GetExtension(fi.Name).ToLower();
 
-            for (int f = 0; f < files.Length; f++)
+            //    foreach (string fext in filterExtensions)
+            //    {
+            //        string auxExt = "." + fext.ToLower();
+
+            //        if (fext == "*" || auxExt == ext)
+            //        {
+            //            fileValid = true;
+            //            break;
+            //        }
+            //    }
+
+            //    if (fileValid)
+            //    {
+            //        float factor = 1024;
+            //        string sizeUnit = " KB";
+
+            //        if (fi.Length > 1048576)
+            //        {
+            //            factor = 1048576;
+            //            sizeUnit = " MB";
+            //        }
+            //        if (fi.Length > 1073741824)
+            //        {
+            //            factor = 1073741824;
+            //            sizeUnit = " GB";
+            //        }
+            //        float sizeKbytes = fi.Length / factor;
+
+            //        var item = new ListViewItem();
+            //        item.Tag = fi;
+
+            //        // File Name
+            //        var subitem = new ListViewSubItem();
+            //        // by this, the subitem will be shown and listed under the 'column'
+            //        subitem.ColumnID = listView.Columns[0].ID;
+            //        subitem.DrawMode = EListViewItemDrawMode.Text;
+            //        subitem.Text = fi.Name;
+            //        item.SubItems.Add(subitem);
+
+            //        // Modification Date
+            //        subitem = new ListViewSubItem();
+            //        // by this, the subitem will be shown and listed under the 'column'
+            //        subitem.ColumnID = listView.Columns[1].ID;
+            //        subitem.DrawMode = EListViewItemDrawMode.Text;
+            //        subitem.Text = fi.LastAccessTime.ToString();
+            //        item.SubItems.Add(subitem);
+
+            //        // File Type
+            //        subitem = new ListViewSubItem();
+            //        // by this, the subitem will be shown and listed under the 'column'
+            //        subitem.ColumnID = listView.Columns[2].ID;
+            //        subitem.DrawMode = EListViewItemDrawMode.Text;
+            //        subitem.Text = sizeKbytes.ToString("0.##") + sizeUnit;
+            //        item.SubItems.Add(subitem);
+
+            //        /*TableRow row = lb.AddRow(fi.LastAccessTime.ToString());
+            //        row.SetCellText(1, sizeKbytes.ToString("0.##") + sizeUnit);
+            //        row.SetCellText(2, fi.Name);
+            //        row.UserData = fi;*/
+
+            //        fileValid = false;
+
+            //        listView.Items.Add(item);
+            //    }
+            //}
+            #endregion DELETE
+
+            //IEnumerable<string> files = Directory.EnumerateFiles(di.FullName);
+            IEnumerable<NthDimension.Utilities.FileData> files = NthDimension.Utilities.FastDirectoryEnumerator.EnumerateFiles(di.FullName);
+
+            foreach (NthDimension.Utilities.FileData f in files)
             {
-                FileInfo fi = new FileInfo(files[f]);
-                string ext = Path.GetExtension(fi.Name).ToLower();
+                //FileInfo fi = new FileInfo(f);
+
+                string ext = Path.GetExtension(f.Name).ToLower();
 
                 foreach (string fext in filterExtensions)
                 {
@@ -589,27 +672,27 @@ namespace NthDimension.Forms.Dialogs
                     float factor = 1024;
                     string sizeUnit = " KB";
 
-                    if (fi.Length > 1048576)
+                    if (f.Size > 1048576)
                     {
                         factor = 1048576;
                         sizeUnit = " MB";
                     }
-                    if (fi.Length > 1073741824)
+                    if (f.Size > 1073741824)
                     {
                         factor = 1073741824;
                         sizeUnit = " GB";
                     }
-                    float sizeKbytes = fi.Length / factor;
+                    float sizeKbytes = f.Size / factor;
 
                     var item = new ListViewItem();
-                    item.Tag = fi;
+                    item.Tag = f;
 
                     // File Name
                     var subitem = new ListViewSubItem();
                     // by this, the subitem will be shown and listed under the 'column'
                     subitem.ColumnID = listView.Columns[0].ID;
                     subitem.DrawMode = EListViewItemDrawMode.Text;
-                    subitem.Text = fi.Name;
+                    subitem.Text = f.Name;
                     item.SubItems.Add(subitem);
 
                     // Modification Date
@@ -617,7 +700,7 @@ namespace NthDimension.Forms.Dialogs
                     // by this, the subitem will be shown and listed under the 'column'
                     subitem.ColumnID = listView.Columns[1].ID;
                     subitem.DrawMode = EListViewItemDrawMode.Text;
-                    subitem.Text = fi.LastAccessTime.ToString();
+                    subitem.Text = f.LastAccesTime.ToString();
                     item.SubItems.Add(subitem);
 
                     // File Type
@@ -644,6 +727,7 @@ namespace NthDimension.Forms.Dialogs
 
             listView.Invalidate();
         }
+
 
     }
 }

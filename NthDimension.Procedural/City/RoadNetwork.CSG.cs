@@ -105,10 +105,10 @@ namespace NthDimension.Procedural.City
             {
                 RoadNetworkTraversal.PreOrder(segment, (a) =>
                 {
-                    minX = Math.Min(Math.Min(a.Start.X, a.End.X), minX);
-                    minY = Math.Min(Math.Min(a.Start.Y, a.End.Y), minY);
-                    maxX = Math.Max(Math.Max(a.Start.X, a.End.X), maxX);
-                    maxY = Math.Max(Math.Max(a.Start.Y, a.End.Y), maxY);
+                    minX = System.Math.Min(System.Math.Min(a.Start.X, a.End.X), minX);
+                    minY = System.Math.Min(System.Math.Min(a.Start.Y, a.End.Y), minY);
+                    maxX = System.Math.Max(System.Math.Max(a.Start.X, a.End.X), maxX);
+                    maxY = System.Math.Max(System.Math.Max(a.Start.Y, a.End.Y), maxY);
                     return true;
                 }, mask, ref visited);
             }
@@ -161,8 +161,8 @@ namespace NthDimension.Procedural.City
         private static Vector2 ComputeEnd(Vector2 start, float direction, float length)
         {            
             return new Vector2(
-                start.X + length * (float)Math.Sin(MathHelper.DegreesToRadians(direction)),
-                start.Y + length * (float)Math.Cos(MathHelper.DegreesToRadians(direction))
+                start.X + length * (float)System.Math.Sin(MathFunc.DegreesToRadians(direction)),
+                start.Y + length * (float)System.Math.Cos(MathFunc.DegreesToRadians(direction))
             );
         }
 
@@ -317,7 +317,7 @@ namespace NthDimension.Procedural.City
                     if (Length == 0)
                         cachedDirection = 0;
                     else
-                        cachedDirection = (float)MathHelper.RadiansToDegrees(Math.Sign(direction.X) * Math.Acos(direction.Y / Length));
+                        cachedDirection = (float)MathFunc.RadiansToDegrees(System.Math.Sign(direction.X) * System.Math.Acos(direction.Y / Length));
                 }
                 return cachedDirection;
             }

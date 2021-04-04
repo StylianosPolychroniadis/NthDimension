@@ -137,8 +137,8 @@ namespace NthDimension.Rendering.Drawables.Models
 					// on calcule donc les positions des points du vertex buffer
 					for (int i = 0; i < NB_POINTS_CENTERS; i++)
 					{
-						float x = it.pos.X + it.innerRadius * (float)Math.Cos((float)i * angle);
-						float z = it.pos.Y + it.innerRadius * (float)Math.Sin((float)i * angle);
+						float x = it.pos.X + it.innerRadius * (float)System.Math.Cos((float)i * angle);
+						float z = it.pos.Y + it.innerRadius * (float)System.Math.Sin((float)i * angle);
 #if DEBUG_DRAW_CENTERS
 					vertices[i + NB_POINTS_CENTERS * nb].X = x;
 					vertices[i + NB_POINTS_CENTERS * nb].Z = z;
@@ -377,7 +377,7 @@ namespace NthDimension.Rendering.Drawables.Models
 					if(dist < center.innerRadius)
 					{
 						float d = dist / center.innerRadius;
-						weight = 1.0f - (float)Math.Pow(d, m_powAttenuation) * (1.0f - m_innerRadiusDensity);
+						weight = 1.0f - (float)System.Math.Pow(d, m_powAttenuation) * (1.0f - m_innerRadiusDensity);
 						break;
 					}
 					else if(dist > center.outerRadius)
@@ -387,12 +387,12 @@ namespace NthDimension.Rendering.Drawables.Models
 					else
 					{
 						float d = 1.0f - ((dist - center.innerRadius) / (center.outerRadius - center.innerRadius));
-						weight = (float)Math.Max(weight, Math.Pow(d, m_powAttenuation) * m_innerRadiusDensity);
+						weight = (float)System.Math.Max(weight, System.Math.Pow(d, m_powAttenuation) * m_innerRadiusDensity);
 					}
 				}
 
 				float density = weight - variance;
-				MathHelper.Clamp(density, 0.0f, 1.0f);
+				MathFunc.Clamp(density, 0.0f, 1.0f);
 				return density;
 			}
 			private void generateCenters()
@@ -404,10 +404,10 @@ namespace NthDimension.Rendering.Drawables.Models
 			}
 			private void genCenter()
 			{
-				float innerRadius = (float)MathHelper.RandomNumber(this.m_innerRadius, this.m_innerRadiusVariance);
-				float outerRadius = innerRadius * (float)MathHelper.RandomNumber(this.m_outerRadiusProportion, this.m_outerRadiusVariance);
-				Vector2 center = new Vector2((float)MathHelper.RandomNumber(0f, this.m_terrain.Width),
-											 (float)MathHelper.RandomNumber(0f, this.m_terrain.Length));
+				float innerRadius = (float)MathFunc.RandomNumber(this.m_innerRadius, this.m_innerRadiusVariance);
+				float outerRadius = innerRadius * (float)MathFunc.RandomNumber(this.m_outerRadiusProportion, this.m_outerRadiusVariance);
+				Vector2 center = new Vector2((float)MathFunc.RandomNumber(0f, this.m_terrain.Width),
+											 (float)MathFunc.RandomNumber(0f, this.m_terrain.Length));
 				this.addCenter(center, innerRadius, outerRadius, ECenterType.CENTER_BASIC);
 			}
 			private float getLocalDensity(Vector2 pos)

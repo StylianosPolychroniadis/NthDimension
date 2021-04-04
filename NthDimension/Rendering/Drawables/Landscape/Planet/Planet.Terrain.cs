@@ -108,7 +108,7 @@ namespace NthDimension.Rendering.Drawables.Models
 
             public Terrain(Vector3 centerPos, Vector3 axisX, Vector3 axisZ, int LODLevels, int terrainSize, int patchSize, float planetRadius, int textureID, string heightmapURL, string detailURL)
             {
-                if ((!MathHelper.IsPowerOfTwo(terrainSize - 1)) || (!MathHelper.IsPowerOfTwo(patchSize - 1)))
+                if ((!MathFunc.IsPowerOfTwo(terrainSize - 1)) || (!MathFunc.IsPowerOfTwo(patchSize - 1)))
                     ConsoleUtil.errorlog("Terrain.Ctor() ", "Patch size must be 2^x+1 and terrain size must be 2^x+1");
 
                 if (!File.Exists(heightmapURL))

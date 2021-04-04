@@ -170,8 +170,8 @@ namespace NthDimension.Forms.Widgets
 
             if (splitterType == ESplitterType.HorizontalScroll)
             {
-                markersCount = (int)Math.Ceiling((float)Width / SplitterSize);
-                markerItem = (int)Math.Ceiling(SplitterBarLocation * (markersCount - 1));
+                markersCount = (int)System.Math.Ceiling((float)Width / SplitterSize);
+                markerItem = (int)System.Math.Ceiling(SplitterBarLocation * (markersCount - 1));
 
                 dividerBarPos = markerItem * SplitterSize;
 
@@ -184,8 +184,8 @@ namespace NthDimension.Forms.Widgets
             }
             else // splitterType == ESplitterType.VerticalScroll
             {
-                markersCount = (int)Math.Ceiling((float)Height / SplitterSize);
-                markerItem = (int)Math.Ceiling(SplitterBarLocation * (markersCount - 1));
+                markersCount = (int)System.Math.Ceiling((float)Height / SplitterSize);
+                markerItem = (int)System.Math.Ceiling(SplitterBarLocation * (markersCount - 1));
 
                 dividerBarPos = markerItem * SplitterSize;
 

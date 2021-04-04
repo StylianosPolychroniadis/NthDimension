@@ -152,8 +152,8 @@ namespace NthDimension.Rendering.Drawables.Models
 				Vector2 vec = r.get2dVector().Normalized();
 				if (r.getStartCrossing() != m_start)
 					vec = -vec;
-				MathHelper.Clamp(vec.X, -1.0f, 1.0f);
-				float angle = (float)Math.Acos(vec.X);
+				MathFunc.Clamp(vec.X, -1.0f, 1.0f);
+				float angle = (float)System.Math.Acos(vec.X);
 				return vec.Y < 0.0f ? -angle : angle;
 			}
 

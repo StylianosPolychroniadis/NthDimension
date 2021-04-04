@@ -209,8 +209,8 @@ namespace NthStudio
             
             for(int i = 0; i < 50; i++)
             {
-                Vector3 vt  =  vtx * (float)Math.Cos((2 * MathHelper.Pi / 50) * i);
-                vt          += vty * (float)Math.Sin((2 * MathHelper.Pi / 50) * i);
+                Vector3 vt  =  vtx * (float)Math.Cos((2 * MathFunc.Pi / 50) * i);
+                vt          += vty * (float)Math.Sin((2 * MathFunc.Pi / 50) * i);
                 vt          += orig;
 
                 Vector2 v = ((StudioWindow)StudioWindow.Instance).UnProject(vt,
@@ -261,8 +261,8 @@ namespace NthStudio
 
             for (int i = 0; i < 29; i++)
             {
-                Vector3 vt = vtx * (float)Math.Cos((MathHelper.Pi / 30) * i);
-                vt += vty * (float)Math.Sin((MathHelper.Pi / 30) * i);
+                Vector3 vt = vtx * (float)Math.Cos((MathFunc.Pi / 30) * i);
+                vt += vty * (float)Math.Sin((MathFunc.Pi / 30) * i);
                 vt += orig;
 
                 Vector2 v = ((StudioWindow)StudioWindow.Instance).UnProject(vt,

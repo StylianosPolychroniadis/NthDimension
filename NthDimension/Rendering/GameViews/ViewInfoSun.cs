@@ -36,9 +36,9 @@ namespace NthDimension.Rendering.GameViews
         {
             Vector3 pos                 = new Vector3(Scene.EyePos.X, 0, Scene.EyePos.Z);
             float texelSize             = 1f / Settings.Instance.video.shadowResolution;
-            position                    = new Vector3((float)Math.Floor(pos.X / texelSize) * texelSize,
-                                                (float)Math.Floor(pos.Y / texelSize) * texelSize - 1f,
-                                                (float)Math.Floor(pos.Z / texelSize) * texelSize);
+            position                    = new Vector3((float)System.Math.Floor(pos.X / texelSize) * texelSize,
+                                                (float)System.Math.Floor(pos.Y / texelSize) * texelSize - 1f,
+                                                (float)System.Math.Floor(pos.Z / texelSize) * texelSize);
 
             PointingDirection           = Parent.PointingDirection; ;
 

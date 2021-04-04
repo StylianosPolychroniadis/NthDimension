@@ -79,7 +79,7 @@ namespace NthDimension.Forms.Dialogs
             iTextBox.FGColor = Color.WhiteSmoke;
             iTextBox.Font = new NanoFont(NanoFont.DefaultRegular, 12f);
             iTextBox.Margin = new Spacing(10, 10, 10, 0);
-            iTextBox.Size = new Size(0, (int)Math.Ceiling(iTextBox.Font.Height + 6));
+            iTextBox.Size = new Size(0, (int)System.Math.Ceiling(iTextBox.Font.Height + 6));
             iTextBox.Dock = EDocking.Top;
 
             panelBottom.Widgets.Add(iTextBox);

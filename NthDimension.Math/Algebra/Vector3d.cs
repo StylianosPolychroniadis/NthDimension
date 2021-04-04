@@ -239,7 +239,7 @@ namespace NthDimension.Algebra
         {
             get
             {
-                return 1.0 / MathHelper.InverseSqrtFast(X * X + Y * Y + Z * Z);
+                return 1.0 / MathFunc.InverseSqrtFast(X * X + Y * Y + Z * Z);
             }
         }
 
@@ -299,7 +299,7 @@ namespace NthDimension.Algebra
         /// </summary>
         public void NormalizeFast()
         {
-            double scale = MathHelper.InverseSqrtFast(X * X + Y * Y + Z * Z);
+            double scale = MathFunc.InverseSqrtFast(X * X + Y * Y + Z * Z);
             X *= scale;
             Y *= scale;
             Z *= scale;
@@ -809,7 +809,7 @@ namespace NthDimension.Algebra
         /// <returns>The normalized vector</returns>
         public static Vector3d NormalizeFast(Vector3d vec)
         {
-            double scale = MathHelper.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z);
+            double scale = MathFunc.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z);
             vec.X *= scale;
             vec.Y *= scale;
             vec.Z *= scale;
@@ -823,7 +823,7 @@ namespace NthDimension.Algebra
         /// <param name="result">The normalized vector</param>
         public static void NormalizeFast(ref Vector3d vec, out Vector3d result)
         {
-            double scale = MathHelper.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z);
+            double scale = MathFunc.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z);
             result.X = vec.X * scale;
             result.Y = vec.Y * scale;
             result.Z = vec.Z * scale;
@@ -1206,7 +1206,7 @@ namespace NthDimension.Algebra
         {
             double temp;
             Vector3d.Dot(ref first, ref second, out temp);
-            result = System.Math.Acos(MathHelper.Clamp(temp / (first.Length * second.Length), -1.0, 1.0));
+            result = System.Math.Acos(MathFunc.Clamp(temp / (first.Length * second.Length), -1.0, 1.0));
         }
 
         #endregion

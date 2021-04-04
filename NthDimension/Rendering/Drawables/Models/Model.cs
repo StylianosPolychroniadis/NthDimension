@@ -85,7 +85,7 @@ namespace NthDimension.Rendering.Drawables.Models
 
                         Material curMaterial = materials[matIdx];
 //#if DEBUG
-                        if (!ApplicationBase.Instance.DrawnMeshes.Contains(curMesh))       // USED FOR DEBUG ONLY
+                        if (!ApplicationBase.Instance.DrawnMeshes.Contains(curMesh))       // USED FOR DEBUG/DIAGNOSTICS
                             ApplicationBase.Instance.DrawnMeshes.Add(curMesh);
 //#endif
 

@@ -27,8 +27,8 @@
         }
         public static float normalizeAngle(float angle)
         {
-            angle %= MathHelper.Pi * 2;
-            if (angle < 0) angle += MathHelper.Pi * 2;
+            angle %= MathFunc.Pi * 2;
+            if (angle < 0) angle += MathFunc.Pi * 2;
             if (angle > (3.145f * 2)) angle = 0;
             return angle;
         }
@@ -36,9 +36,9 @@
         public static float getVectorAngle(Vector2 vector)
         {
             if (vector.Y >= 0 && vector.X >= 0) return (float)Math.Asin(vector.Y / vector.Length);
-            if (vector.Y >= 0 && vector.X <= 0) return MathHelper.Pi - (float)Math.Asin(vector.Y / vector.Length);
-            if (vector.Y <= 0 && vector.X >= 0) return (MathHelper.Pi * 2) + (float)Math.Asin(vector.Y / vector.Length);
-            if (vector.Y <= 0 && vector.X <= 0) return MathHelper.Pi - (float)Math.Asin(vector.Y / vector.Length);
+            if (vector.Y >= 0 && vector.X <= 0) return MathFunc.Pi - (float)Math.Asin(vector.Y / vector.Length);
+            if (vector.Y <= 0 && vector.X >= 0) return (MathFunc.Pi * 2) + (float)Math.Asin(vector.Y / vector.Length);
+            if (vector.Y <= 0 && vector.X <= 0) return MathFunc.Pi - (float)Math.Asin(vector.Y / vector.Length);
             return 0;
         }
     }

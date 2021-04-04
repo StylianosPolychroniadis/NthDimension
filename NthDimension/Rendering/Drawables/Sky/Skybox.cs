@@ -73,7 +73,7 @@ namespace NthDimension.Rendering.Drawables.Models
             this.Scene = mScene;
             mScene.AddDrawable(this);
 
-            float skyScale = NthDimension.Settings.Instance.view.CullZFar / (float)Math.Sqrt(3);
+            float skyScale = NthDimension.Settings.Instance.view.CullZFar / (float)System.Math.Sqrt(3);
 
             Size = new Vector3(skyScale, skyScale, skyScale);
         }

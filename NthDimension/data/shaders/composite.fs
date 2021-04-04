@@ -27,6 +27,8 @@ uniform sampler2D Texture3;
 uniform sampler2D Texture4;
 uniform sampler2D Texture5;
 uniform sampler2D Texture6;
+uniform sampler2D Texture7;
+uniform sampler2D Texture8;
 
 out vec4 out_frag_color;
 

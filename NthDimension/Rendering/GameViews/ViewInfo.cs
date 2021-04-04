@@ -36,7 +36,7 @@ namespace NthDimension.Rendering.GameViews
 
         public float            dofFocus                = 10;              // original 10
 
-        public float            fovy                    { get { float ret = MathHelper.DegreesToRadians(45f);
+        public float            fovy                    { get { float ret = MathFunc.DegreesToRadians(45f);
                                                                 return ret; } } //= (float)Math.PI / 2;
         public float            aspect                  = 1;
 

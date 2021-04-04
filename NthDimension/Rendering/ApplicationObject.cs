@@ -65,6 +65,7 @@ namespace NthDimension.Rendering
         private const string                    _nodeAttributeBloomExposure     = "exposure";       // TODO:: Pass Uniform to bloom curve shader
         private const string                    _nodeAttributeBloomStrength     = "strength";       // TODO:: Pass Uniform to bloom curve shader
         private const string                    _nodeskybox                     = "skybox";
+        private const string                    _nodeskydome                    = "skydome";
         private const string                    _nodesunlight                   = "sunlight";
         private const string                    _nodeMetamodel                  = "metamodel";
         private const string                    _nodetmodel                     = "tmodel";         // terrain
@@ -276,6 +277,19 @@ namespace NthDimension.Rendering
                 ApplicationObject child = new Skybox(this);
                 child.name = childname;
                 child.load(ref reader, _nodeskybox);
+            }
+
+            if(reader.Name == SkyDome.nodename)
+            {
+                string childname = scene.GetUniqueName();
+                while(reader.MoveToNextAttribute())
+                {
+                    if (reader.Name == _nodeAttributename)
+                        childname = reader.Value;
+                }
+                ApplicationObject child = new SkyDome(this);
+                child.name = childname;
+                child.load(ref reader, _nodeskydome);
             }
 
             if (reader.Name == LightDirectional.nodename)

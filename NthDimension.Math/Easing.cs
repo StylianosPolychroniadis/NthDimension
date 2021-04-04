@@ -14,7 +14,7 @@ namespace NthDimension.Algebra
                               acceleration < 0 ? EaseOut(linearStep, type) :
                               (float)linearStep;
 
-            return MathHelper.Lerp(linearStep, easedStep, System.Math.Abs(acceleration));
+            return MathFunc.Lerp(linearStep, easedStep, System.Math.Abs(acceleration));
         }
 
         public static float EaseIn(double linearStep, EasingType type)
@@ -70,15 +70,15 @@ namespace NthDimension.Algebra
         {
             public static float EaseIn(double s)
             {
-                return (float)System.Math.Sin(s * MathHelper.HalfPi - MathHelper.HalfPi) + 1;
+                return (float)System.Math.Sin(s * MathFunc.HalfPi - MathFunc.HalfPi) + 1;
             }
             public static float EaseOut(double s)
             {
-                return (float)System.Math.Sin(s * MathHelper.HalfPi);
+                return (float)System.Math.Sin(s * MathFunc.HalfPi);
             }
             public static float EaseInOut(double s)
             {
-                return (float)(System.Math.Sin(s * MathHelper.Pi - MathHelper.HalfPi) + 1) / 2;
+                return (float)(System.Math.Sin(s * MathFunc.Pi - MathFunc.HalfPi) + 1) / 2;
             }
         }
 

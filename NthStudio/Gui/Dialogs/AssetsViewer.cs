@@ -337,6 +337,11 @@ namespace NthStudio.Gui
                         Nodes.Add(shaders);
                     
                 }
+
+                public override void OnMouseClick(MouseEventArgs e)
+                {
+                    AssetsViewer.Instance.PreviewMaterial(m_material);
+                }
             }
 
             public MaterialsNode()
@@ -685,6 +690,15 @@ namespace NthStudio.Gui
             this.m_previewPicture = new Widgets.Picture(textureHandle);
             this.m_previewPicture.Dock = EDocking.Fill;
             this.m_previewPanel.Widgets.Add(m_previewPicture);
+        }
+        public void PreviewMaterial(Material material)
+        {
+            this.m_previewPanel.Widgets.Clear();
+
+            Gui.Widgets.MaterialEditor matView = new Widgets.MaterialEditor(material);
+            matView.Dock = EDocking.Fill;
+            this.m_previewPanel.Widgets.Add(matView);
+
         }
         public void PreviewText(string text)
         {

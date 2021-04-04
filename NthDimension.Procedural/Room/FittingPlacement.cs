@@ -18,7 +18,7 @@ namespace NthDimension.Procedural.Room
         {
             PositionX = x;
             PositionY = y;
-            Orientation = (float)(orientation * Math.PI / 2);
+            Orientation = (float)(orientation * System.Math.PI / 2);
             RepresentationObject = representationObject;
         }
     }

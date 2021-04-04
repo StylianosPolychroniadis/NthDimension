@@ -212,6 +212,55 @@ namespace NthDimension.Algebra
             return vec;
         }
 
+        public static Vector2i operator *(Vector2i vec, int scale)
+        {
+            vec.X *= scale;
+            vec.Y *= scale;
+            return vec;
+        }
+
+        /// <summary>
+        /// Multiplies the specified instance by a scalar.
+        /// </summary>
+        /// <param name="scale">Left operand.</param>
+        /// <param name="vec">Right operand.</param>
+        /// <returns>Result of multiplication.</returns>
+        
+        public static Vector2i operator *(int scale, Vector2i vec)
+        {
+            vec.X *= scale;
+            vec.Y *= scale;
+            return vec;
+        }
+
+        /// <summary>
+        /// Component-wise multiplication between the specified instance by a scale vector.
+        /// </summary>
+        /// <param name="scale">Left operand.</param>
+        /// <param name="vec">Right operand.</param>
+        /// <returns>Result of multiplication.</returns>
+
+        public static Vector2i operator *(Vector2i vec, Vector2i scale)
+        {
+            vec.X *= scale.X;
+            vec.Y *= scale.Y;
+            return vec;
+        }
+
+        /// <summary>
+        /// Divides the instance by a scalar using integer division, floor(a/b).
+        /// </summary>
+        /// <param name="vec">Left operand.</param>
+        /// <param name="scale">Right operand.</param>
+        /// <returns>Result of the division.</returns>
+        
+        public static Vector2i operator /(Vector2i vec, int scale)
+        {
+            vec.X /= scale;
+            vec.Y /= scale;
+            return vec;
+        }
+
 
         /// <summary>
         /// Compares the specified instances for equality.
@@ -299,5 +348,14 @@ namespace NthDimension.Algebra
         }
 
         #endregion
+
+        /// <summary>
+        /// Gets a <see cref="Vector2"/> object with the same component values as the <see cref="Vector2i"/> instance.
+        /// </summary>
+        /// <returns>The resulting <see cref="Vector3"/> instance.</returns>
+        public Vector2 ToVector2()
+        {
+            return new Vector2(X, Y);
+        }
     }
 }

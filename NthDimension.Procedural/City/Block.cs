@@ -83,7 +83,7 @@ namespace NthDimension.Procedural.City
 
                 float angle = Vector2.Dot(vOP1, vOP2);
                 angle = (angle > 1.0f) ? 1.0f : (angle < -1.0f) ? -1.0f : angle;
-                angle = (float)Math.Acos(angle);
+                angle = (float)System.Math.Acos(angle);
 
                 float ccw = (vOP1.X * vOP2.Y - vOP1.Y * vOP2.X);
                 if (!Vector2.IsCCW(vOP1, vOP2))
@@ -91,7 +91,7 @@ namespace NthDimension.Procedural.City
                 sum += angle;
             }
 
-            return Math.Abs(sum) >= 2 * MathHelper.Pi;
+            return System.Math.Abs(sum) >= 2 * MathFunc.Pi;
 
             #region C++
             //float sum = 0.0f;

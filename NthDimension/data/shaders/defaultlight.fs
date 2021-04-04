@@ -51,4 +51,3 @@ void main ()
   alpha = in_alpha;
   out_frag_color.w = alpha; //1
 }
-

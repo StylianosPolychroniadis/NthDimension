@@ -646,7 +646,7 @@ namespace NthDimension.Rendering.ViewControllers
                 angle += 360F;
             if (angle > 360F)
                 angle -= 360F;
-            return MathHelper.Clamp(angle, min, max);
+            return MathFunc.Clamp(angle, min, max);
         }
         #endregion
 

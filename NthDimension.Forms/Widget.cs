@@ -1541,8 +1541,8 @@ namespace NthDimension.Forms
                 if (child.IsHide)
                     continue;
 
-                size.X = Math.Max(size.X, child.Right);
-                size.Y = Math.Max(size.Y, child.Bottom);
+                size.X = System.Math.Max(size.X, child.Right);
+                size.Y = System.Math.Max(size.Y, child.Bottom);
             }
 
             return size;

@@ -157,7 +157,7 @@ namespace NthDimension.Forms.Widgets
 
             foreach (Widget w in Widgets)
             {
-                maxHeight = Math.Max(maxHeight, w.Size.Height);
+                maxHeight = System.Math.Max(maxHeight, w.Size.Height);
             }
             return new Size(Size.Width, maxHeight);
         }

@@ -1,2 +1,10 @@
-<material>
+<material shader="skydome.xsp">
+
+  <textures    base="skydome\tint.png"
+               base2="skydome\tint2.png"
+               base3 ="skydome\sun.png"
+               base4="skydome\moon.png"
+               base5="skydome\clouds1.png"
+               base6="skydome\clouds2.png" />
+
 </material>

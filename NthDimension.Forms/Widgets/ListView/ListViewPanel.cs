@@ -353,7 +353,7 @@ namespace NthDimension.Forms.Widgets
             int hLines = this.Width / (spaceBetweenItemsThunmbailsView + ThumbnailsWidth);
             if (hLines == 0) vLines = 1;
 
-            double itemRows = Math.Ceiling((double)items.Count / hLines);
+            double itemRows = System.Math.Ceiling((double)items.Count / hLines);
             h = (int)(itemRows * (spaceBetweenItemsThunmbailsView + ThumbnailsHeight + itemTextHeight));
 
             if ((spaceBetweenItemsThunmbailsView + ThumbnailsWidth) > this.Width)
@@ -1471,7 +1471,7 @@ namespace NthDimension.Forms.Widgets
 
         void DrawString(GContext gc, string str, NanoFont font, Color c, Rectangle rect)
         {
-            int tAscender = (int)Math.Ceiling(Font.Ascender);
+            int tAscender = (int)System.Math.Ceiling(Font.Ascender);
             var nsb = new NanoSolidBrush(c);
             gc.DrawString(str, font, nsb, rect.Y + tAscender, rect);
         }

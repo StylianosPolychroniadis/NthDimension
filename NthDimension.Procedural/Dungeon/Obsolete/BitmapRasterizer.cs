@@ -281,8 +281,8 @@ namespace NthDimension.Procedural.Dungeon
 
         public void DrawLine(int x0, int y0, int x1, int y1, TPixel pix, int width = 1)
         {
-            int num = Math.Abs(x1 - x0);
-            int num2 = Math.Abs(y1 - y0);
+            int num = System.Math.Abs(x1 - x0);
+            int num2 = System.Math.Abs(y1 - y0);
             int num3 = (x0 < x1) ? 1 : -1;
             int num4 = (y0 < y1) ? 1 : -1;
             int num5 = num - num2;
@@ -311,8 +311,8 @@ namespace NthDimension.Procedural.Dungeon
 
         public void DrawLine(int x0, int y0, int x1, int y1, Func<int, int, TPixel> texMapping, int width = 1)
         {
-            int num = Math.Abs(x1 - x0);
-            int num2 = Math.Abs(y1 - y0);
+            int num = System.Math.Abs(x1 - x0);
+            int num2 = System.Math.Abs(y1 - y0);
             int num3 = (x0 < x1) ? 1 : -1;
             int num4 = (y0 < y1) ? 1 : -1;
             int num5 = num - num2;
@@ -336,8 +336,8 @@ namespace NthDimension.Procedural.Dungeon
 
         private void ScanEdge(int x0, int y0, int x1, int y1, int?[] min, int?[] max)
         {
-            int num = Math.Abs(x1 - x0);
-            int num2 = Math.Abs(y1 - y0);
+            int num = System.Math.Abs(x1 - x0);
+            int num2 = System.Math.Abs(y1 - y0);
             int num3 = (x0 < x1) ? 1 : -1;
             int num4 = (y0 < y1) ? 1 : -1;
             int num5 = num - num2;
@@ -375,8 +375,8 @@ namespace NthDimension.Procedural.Dungeon
 
         public void FillTriangle(Point a, Point b, Point c, TPixel color)
         {
-            int num = Math.Min(a.Y, Math.Min(b.Y, c.Y));
-            int num2 = Math.Max(a.Y, Math.Max(b.Y, c.Y)) + 1;
+            int num = System.Math.Min(a.Y, System.Math.Min(b.Y, c.Y));
+            int num2 = System.Math.Max(a.Y, System.Math.Max(b.Y, c.Y)) + 1;
             int num3 = num2 - num;
             int?[] array = new int?[num3];
             int?[] array2 = new int?[num3];
@@ -396,8 +396,8 @@ namespace NthDimension.Procedural.Dungeon
 
         public void FillTriangle(Point a, Point b, Point c, Func<int, int, TPixel> texMapping)
         {
-            int num = Math.Min(a.Y, Math.Min(b.Y, c.Y));
-            int num2 = Math.Max(a.Y, Math.Max(b.Y, c.Y)) + 1;
+            int num = System.Math.Min(a.Y, System.Math.Min(b.Y, c.Y));
+            int num2 = System.Math.Max(a.Y, System.Math.Max(b.Y, c.Y)) + 1;
             int num3 = num2 - num;
             int?[] array = new int?[num3];
             int?[] array2 = new int?[num3];

@@ -1351,7 +1351,7 @@ namespace NthDimension.Forms.Widgets
         {
             int order = 0;
             if (node != null)
-                order = Math.Max(0, node.visible_order - 1);
+                order = System.Math.Max(0, node.visible_order - 1);
 
             if (!vbar.IsHide)
             {
@@ -1359,7 +1359,7 @@ namespace NthDimension.Forms.Widgets
                 return;
             }
 
-            SetVScrollValue(Math.Min(order, vbar.Maximum - VisibleCount + 1));
+            SetVScrollValue(System.Math.Min(order, vbar.Maximum - VisibleCount + 1));
         }
 
         internal void SetBottom(TreeNode node)
@@ -1408,7 +1408,7 @@ namespace NthDimension.Forms.Widgets
             }
 
             // We need to update the current node so the plus/minus block gets update too
-            int top = Math.Max(node.Bounds.Top - 1, 0);
+            int top = System.Math.Max(node.Bounds.Top - 1, 0);
             var invalid = new Rectangle(0, top,
                                         Width, Height - top);
             Invalidate(invalid);
@@ -1649,7 +1649,7 @@ namespace NthDimension.Forms.Widgets
         private void LabelTextChanged(object sender, EventArgs e)
         {
             //int width = TextRenderer.MeasureText(edit_text_box.Text, edit_text_box.Font).Width + 4;
-            int width = (int)Math.Ceiling(WHUD.LibContext.MeasureTextWidth(edit_text_box.Text, edit_text_box.Font)) + 4;
+            int width = (int)System.Math.Ceiling(WHUD.LibContext.MeasureTextWidth(edit_text_box.Text, edit_text_box.Font)) + 4;
             edit_text_box.Size = new Size(width, edit_text_box.Size.Height); // .Width = width;
 
             if (edit_args != null)
@@ -1768,7 +1768,7 @@ namespace NthDimension.Forms.Widgets
             if (text_color.IsEmpty)
                 text_color = ForeColor;
 
-            int tAscender = (int)Math.Ceiling(font.Ascender);
+            int tAscender = (int)System.Math.Ceiling(font.Ascender);
             dc.DrawString(node.Text, font,
                           new NanoSolidBrush(text_color),
                           node.Bounds.Location.X,
@@ -1901,7 +1901,7 @@ namespace NthDimension.Forms.Widgets
             if (vert)
             {
                 int visible_height = ClientRect.Height; // horz ? ClientRect.Height - hbar.Height : ClientRect.Height;
-                BarSetValues(vbar, Math.Max(0, max_visible_order - 2), visible_height / ActualItemHeight);
+                BarSetValues(vbar, System.Math.Max(0, max_visible_order - 2), visible_height / ActualItemHeight);
                 /*
 				vbar.Maximum = max_visible_order;
 				vbar.LargeChange = ClientRectangle.Height / ItemHeight;
@@ -1922,7 +1922,7 @@ namespace NthDimension.Forms.Widgets
                 vbar.IsHide = false;
                 if (skipped_nodes > 0)
                 {
-                    int skip = Math.Min(skipped_nodes, vbar.Maximum - VisibleCount + 1);
+                    int skip = System.Math.Min(skipped_nodes, vbar.Maximum - VisibleCount + 1);
                     skipped_nodes = 0;
                     //BarSetValues(vbar, SafeValueSet(skip);
                     skipped_nodes = skip;
@@ -2099,11 +2099,11 @@ namespace NthDimension.Forms.Widgets
 
             if (e.DeltaWheel <= 0)
             {
-                SetVScrollValue(Math.Min(vbar.Value + MouseConfig.MouseWheelScrollLines, vbar.Maximum - VisibleCount + 1));
+                SetVScrollValue(System.Math.Min(vbar.Value + MouseConfig.MouseWheelScrollLines, vbar.Maximum - VisibleCount + 1));
             }
             else
             {
-                SetVScrollValue(Math.Max(0, vbar.Value - MouseConfig.MouseWheelScrollLines));
+                SetVScrollValue(System.Math.Max(0, vbar.Value - MouseConfig.MouseWheelScrollLines));
             }
         }
 
@@ -2305,9 +2305,9 @@ namespace NthDimension.Forms.Widgets
             {
                 if (drag_begin_x != -1 && drag_begin_y != -1)
                 {
-                    double rise = Math.Pow(drag_begin_x - e.X, 2);
-                    double run = Math.Pow(drag_begin_y - e.Y, 2);
-                    double move = Math.Sqrt(rise + run);
+                    double rise = System.Math.Pow(drag_begin_x - e.X, 2);
+                    double run = System.Math.Pow(drag_begin_y - e.Y, 2);
+                    double move = System.Math.Sqrt(rise + run);
                     if (move > 3)
                     {
                         TreeNode drag = GetNodeAtUseX(e.X, e.Y);

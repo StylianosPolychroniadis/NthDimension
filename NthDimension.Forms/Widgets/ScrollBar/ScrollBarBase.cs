@@ -178,7 +178,7 @@ namespace NthDimension.Forms.Widgets
 
         public int LargeChange
         {
-            get { return Math.Min(LargeChange_, Maximum_ - Minimum_ + 1); }
+            get { return System.Math.Min(LargeChange_, Maximum_ - Minimum_ + 1); }
             set
             {
                 if (LargeChange_ != value)
@@ -194,7 +194,7 @@ namespace NthDimension.Forms.Widgets
 
         public int SmallChange
         {
-            get { return Math.Min(SmallChange_, LargeChange_); }
+            get { return System.Math.Min(SmallChange_, LargeChange_); }
             set
             {
                 if (SmallChange_ != value)
@@ -348,7 +348,7 @@ namespace NthDimension.Forms.Widgets
             else
                 channelLength = channelRect.Width;
 
-            result = (int)Math.Round((double)(channelLength * LargeChange) / (Maximum - Minimum));
+            result = (int)System.Math.Round((double)(channelLength * LargeChange) / (Maximum - Minimum));
 
             if (result > channelLength)
                 result = channelLength;
@@ -429,7 +429,7 @@ namespace NthDimension.Forms.Widgets
                 trackLength = channelRect.Width - ThumbLength;
 
             double percent = (double)trackLength / (Maximum - Minimum - LargeChange + 1);
-            result = (int)Math.Round(percent * (auxValue - Minimum));
+            result = (int)System.Math.Round(percent * (auxValue - Minimum));
 
             return result;
         }
@@ -447,7 +447,7 @@ namespace NthDimension.Forms.Widgets
             double percent = (double)trackLength / (Maximum - Minimum - LargeChange + 1);
             result = (float)(thumbPos / percent) + Minimum;
 
-            return (int)Math.Round(result);
+            return (int)System.Math.Round(result);
         }
 
         #endregion Methdos
@@ -595,24 +595,24 @@ namespace NthDimension.Forms.Widgets
             }
         }
 
+        private int prevDelta = 0;
         public override void OnMouseWheel(MouseEventArgs e)
         {
             base.OnMouseWheel(e);
 
             //if (Focus())
             {
-                if (e.DeltaWheel <= 0)
-                {
+                if (e.DeltaWheel <= /*prevDelta*/ 0)
+                {                   
                     //RDArrowState = EButtonState.Pressed;
-
                     IncrementManual(3);
                 }
                 else
-                {
+                {                    
                     //LUArrowState = EButtonState.Pressed;
-
                     DecrementManual(3);
                 }
+                prevDelta = e.DeltaWheel;
 
             }
         }
@@ -967,8 +967,8 @@ namespace NthDimension.Forms.Widgets
                 return false;
 
             // Calculate ratio
-            float drawRatio = (Math.Min(rc.Width, rc.Height)) / 200f;
-            if (Math.Abs(drawRatio) < float.Epsilon) // if(drawRatio == 0)
+            float drawRatio = (System.Math.Min(rc.Width, rc.Height)) / 200f;
+            if (System.Math.Abs(drawRatio) < float.Epsilon) // if(drawRatio == 0)
                 drawRatio = 1f;
 
             if (state == EScrollButtonState.NotFocused)
@@ -1067,8 +1067,8 @@ namespace NthDimension.Forms.Widgets
             byte b = clr.B;
             float bg = 0;
 
-            int _alpha = Math.Min(alpha, 200);
-            _alpha = Math.Max(alpha, 0);
+            int _alpha = System.Math.Min(alpha, 200);
+            _alpha = System.Math.Max(alpha, 0);
             double ialpha = ((double)(_alpha - 100.0)) / 100.0;
 
             if (ialpha > 100)
@@ -1186,14 +1186,14 @@ namespace NthDimension.Forms.Widgets
                 if (rect.Height < rect.Width)
                     return;
                 rect.X += 1;
-                r = (float)Math.Floor(rect.Width / 2f);
+                r = (float)System.Math.Floor(rect.Width / 2f);
             }
             else
             {
                 if (rect.Width < rect.Height)
                     return;
                 rect.Y += 1;
-                r = (float)Math.Floor(rect.Height / 2f);
+                r = (float)System.Math.Floor(rect.Height / 2f);
             }
 
             g.FillRoundedRect(new NanoSolidBrush(ThumbColor), rect.X, rect.Y, rect.Width, rect.Height, r);
@@ -1353,7 +1353,7 @@ namespace NthDimension.Forms.Widgets
         {
             // si el ancho de pixel de la línea es impar restar 1
             // if(p.Width % 2 == 0)
-            if (!(Math.Abs(p.Width % 2) < float.Epsilon))
+            if (!(System.Math.Abs(p.Width % 2) < float.Epsilon))
             {
                 rect.Width -= 1;
                 rect.Height -= 1;

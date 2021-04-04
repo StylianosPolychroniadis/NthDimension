@@ -116,7 +116,7 @@ namespace NthDimension.Procedural.Tree
                 foreach (var b in Branches.Values)
                 {
                     var direction = Leaves[i].Position - b.Position;
-                    var distance = (float)Math.Round(direction.Length);            //distance to branch from leaf
+                    var distance = (float)System.Math.Round(direction.Length);            //distance to branch from leaf
                     direction.Normalize();
 
                     if (distance <= MinDistance)            //Min leaf distance reached, we remove it

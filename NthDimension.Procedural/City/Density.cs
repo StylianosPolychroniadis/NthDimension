@@ -322,10 +322,10 @@
 		}
 		private void genCenter()
 		{			
-			float innerRadius = (float)MathHelper.RandomNumber(this.m_innerRadius, this.m_innerRadiusVariance);
-			float outerRadius = innerRadius * (float)MathHelper.RandomNumber(this.m_outerRadiusProportion, this.m_outerRadiusVariance);
-			Vector2 center = new Vector2((float)MathHelper.RandomNumber(0f, this.m_gridSize),
-										 (float)MathHelper.RandomNumber(0f, this.m_gridSize));
+			float innerRadius = (float)MathFunc.RandomNumber(this.m_innerRadius, this.m_innerRadiusVariance);
+			float outerRadius = innerRadius * (float)MathFunc.RandomNumber(this.m_outerRadiusProportion, this.m_outerRadiusVariance);
+			Vector2 center = new Vector2((float)MathFunc.RandomNumber(0f, this.m_gridSize),
+										 (float)MathFunc.RandomNumber(0f, this.m_gridSize));
 			this.addCenter(center, innerRadius, outerRadius, ECenterType.CENTER_BASIC);
 		}
 		private float getLocalDensity(Vector2 pos)

@@ -108,7 +108,7 @@ namespace NthDimension.Rendering.Culling
             farClip = yon;
 
             // compute projectionMatrix
-            float s = 1.0f / (float)Math.Tan(fov / 2.0f);
+            float s = 1.0f / (float)System.Math.Tan(fov / 2.0f);
             float fracHeight = 1.0f - (float)height / (float)height;
             projection.M11 = s;
             projection.M22 = (1.0f - fracHeight) * s * (float)width / (float)height;
@@ -207,8 +207,8 @@ namespace NthDimension.Rendering.Culling
             base.Matrix = Matrix4.Mult(view, projection);
 
             // compute vectors of frustum edges
-            float xs = (float)Math.Abs(1.0f / projection.Column0.X);
-            float ys = (float)Math.Abs(1.0f / projection.Column1.Y);
+            float xs = (float)System.Math.Abs(1.0f / projection.Column0.X);
+            float ys = (float)System.Math.Abs(1.0f / projection.Column1.Y);
             edge = new Vector3[4];
 
             edge[0] = ViewDir - (xs * RightVec) - (ys * Up);

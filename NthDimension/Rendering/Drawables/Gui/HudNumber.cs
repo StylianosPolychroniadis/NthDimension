@@ -59,7 +59,7 @@ namespace NthDimension.Rendering.Drawables.Gui
                     Vector2 positon = new Vector2(screenSize.X * (digits - 2 * i - 1), 0f) + screenPosition;
                     shader.InsertUniform(Uniform.in_hudpos, ref positon);
 
-                    float value = elementValue / (float)Math.Pow(10, i);
+                    float value = elementValue / (float)System.Math.Pow(10, i);
                     shader.InsertUniform(Uniform.in_hudvalue, ref value);
 
 #if _WINDOWS_

@@ -331,11 +331,10 @@ namespace NthDimension.Rendering.Scenegraph
                 if (reader.HasAttributes)
                     while (reader.MoveToNextAttribute())
                     {
-                        //if (reader.Name == _nodeAttributeBloom)
-                        //{
-                        //    float bl = GenericMethods.FloatFromString(reader.Value);
-                        //    this.SetBloomSize(new Vector2(bl, bl));
-                        //}
+                        if (reader.Name.ToLower() == "cache")
+                        {
+
+                        }
                     }
 
                 load(ref reader, "scene");
@@ -344,16 +343,13 @@ namespace NthDimension.Rendering.Scenegraph
             {
                 ConsoleUtil.errorlog("ERROR Loading Scene ", string.Format("Error establishing scene '{0} Line Number:{1} Line Position:{2}'. Please check definition file and try again.", SceneXsnFile, reader.LineNumber, reader.LinePosition));
                 ConsoleUtil.errorlog(string.Format("{0}Reason: {1}", Environment.NewLine, lxe.Message), string.Format("{0}Stack Trace: {1}  ", Environment.NewLine, lxe.StackTrace));
-                Console.WriteLine(string.Format("{0} {1}", Environment.NewLine, "Press Enter to Exit..."));
+                Console.WriteLine(string.Format("{0} {1}", Environment.NewLine, "Press Enter to continue..."));
                 Console.ReadLine();
-                ApplicationBase.Instance.DisconnectClient();
-                ApplicationBase.Instance.Exit();
-
-                //throw new Exception(
-                //    string.Format("Error establishing scene '{0}'. Please check definition file and try again. {1}{2}",
-                //        sceneXsnFile,
-                //        Environment.NewLine,
-                //        lxe.Message));
+                
+                // TODO:: YesNo Dialog to ask whether to continue loading or terminating the app
+                
+                //ApplicationBase.Instance.DisconnectClient();
+                //ApplicationBase.Instance.Exit();                
             }
             finally
             {

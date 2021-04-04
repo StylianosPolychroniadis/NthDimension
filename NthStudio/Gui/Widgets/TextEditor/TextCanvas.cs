@@ -57,7 +57,7 @@ namespace NthStudio.Gui.Widgets.TextEditor
 
             bracketshemes.Add(new BracketHighlightingSheme('{', '}'));
             bracketshemes.Add(new BracketHighlightingSheme('(', ')'));
-            bracketshemes.Add(new BracketHighlightingSheme('[', ']'));
+            bracketshemes.Add(new BracketHighlightingSheme('[', ']'));           
 
             caret.PositionChanged += SearchMatchingBracket;
             Document.TextContentChanged += TextContentChanged;
@@ -401,24 +401,47 @@ namespace NthStudio.Gui.Widgets.TextEditor
 
         Util.MouseWheelHandler mouseWheelHandler;
 
+        int prevDelta = 0;
+        const int WHEEL_DELTA = 2;
+
+        int mouseWheelDelta;
+        int mouseWheelScrollLines = 1;
+        int GetScrollAmount(MouseEventArgs e, out int md)
+        {
+            // accumulate the delta to support high-resolution mice
+            mouseWheelDelta += e.DeltaWheel;
+            md = mouseWheelDelta;
+
+            //int linesPerClick = Math.Max(SystemInformation.MouseWheelScrollLines, 1);
+            int linesPerClick = Math.Max(mouseWheelScrollLines, 3);
+
+            int scrollDistance = mouseWheelDelta * linesPerClick / WHEEL_DELTA;
+            mouseWheelDelta %= Math.Max(1, WHEEL_DELTA / linesPerClick);
+            return scrollDistance;
+        }
         public override void OnMouseWheel(MouseEventArgs e)
         {
-            base.OnMouseWheel(e);
+            //base.OnMouseWheel(e);
 
             //if (Focus())
             {
-                if (e.DeltaWheel <= 0)
+                if (e.DeltaWheel </*=*/ 0)
                 {
                     //RDArrowState = EButtonState.Pressed;
-
-                    iTextArea.ScrollBarV.IncrementManual(3);
+                    int move = 0;
+                    GetScrollAmount(e, out move);
+                    //iTextArea.ScrollBarV.IncrementManual(move /*3*/);
+                    iTextArea.ScrollBarV.DecrementManual(move /*3*/);
                 }
                 else
                 {
                     //LUArrowState = EButtonState.Pressed;
-
-                    iTextArea.ScrollBarV.DecrementManual(3);
+                    int move = 0;
+                    GetScrollAmount(e, out move);
+                    //iTextArea.ScrollBarV.DecrementManual(move /*3*/);
+                    iTextArea.ScrollBarV.IncrementManual(move /*3*/);
                 }
+                prevDelta = e.DeltaWheel;
                 caret.UpdateCaretPosition();
             }
             /*int md;

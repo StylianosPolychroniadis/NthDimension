@@ -107,12 +107,18 @@ namespace NthDimension.Rasterizer.Windows
 
         #region Matrix4 Extensions
 
-        //public static OpenTK.Matrix3 ToOpenTK(this Rafa.Algebra.Matrix3 mat)
-        //{
-        //    return new Matrix3(mat.Row0.ToOpenTK(),
-        //                       mat.Row1.ToOpenTK(),
-        //                       mat.Row2.ToOpenTK());
-        //}
+        public static OpenTK.Matrix3 ToOpenTK(this NthDimension.Algebra.Matrix3 mat)
+        {
+            return new Matrix3(mat.Row0.ToOpenTK(),
+                               mat.Row1.ToOpenTK(),
+                               mat.Row2.ToOpenTK());
+        }
+        public static NthDimension.Algebra.Matrix3 ToNthDimension(this OpenTK.Matrix3 mat)
+        {
+            return new Algebra.Matrix3(mat.Row0.ToNthDimension(),
+                mat.Row1.ToNthDimension(),
+                mat.Row2.ToNthDimension());
+        }
 
         //public static Rafa.Algebra.Matrix3 ToRafa(this OpenTK.Matrix3 mat)
         //{

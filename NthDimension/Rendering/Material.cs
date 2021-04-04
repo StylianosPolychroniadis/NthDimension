@@ -100,7 +100,7 @@ namespace NthDimension.Rendering
             [ProtoMember(60)]
             baseTextureThree,
             [ProtoMember(70)]
-            baseTextureFour,
+            baseTextureFour,          
             [ProtoMember(80)]
             normalTexture,
             [ProtoMember(90)]
@@ -118,7 +118,15 @@ namespace NthDimension.Rendering
             [ProtoMember(150)]
             definfoTexture,
             [ProtoMember(160)]
-            videoTexture
+            videoTexture,
+            [ProtoMember(170)]
+            auxTexture,
+            [ProtoMember(180)]
+            auxTextureTwo,
+            [ProtoMember(190)]
+            auxTextureThree,
+            [ProtoMember(200)]
+            auxTextureFour,
         }
         #endregion
 
@@ -342,8 +350,8 @@ public Texture nameOnly()
             {
                 ApplicationBase.Instance.Renderer.ActiveTexture(TextureUnit.Texture0 + texunit);
                 ApplicationBase.Instance.Renderer.BindTexture(TextureTarget.Texture2D, texid);
-
-                ApplicationBase.Instance.Renderer.Uniform1(ApplicationBase.Instance.Renderer.GetUniformLocation(handle, name), texunit);
+                int uniformLocation = ApplicationBase.Instance.Renderer.GetUniformLocation(handle, name);
+                ApplicationBase.Instance.Renderer.Uniform1(uniformLocation, texunit);
                 texunit++;
             }
         }

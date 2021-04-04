@@ -70,7 +70,7 @@ namespace NthDimension.Forms.Docking
             switch (_splitterType)
             {
                 case EDockSplitterType.Left:
-                    var leftX = Math.Max(bounds.Location.X - difference.X, _minimum);
+                    var leftX = System.Math.Max(bounds.Location.X - difference.X, _minimum);
 
                     if (_maximum != 0 && leftX > _maximum)
                         leftX = _maximum;
@@ -78,7 +78,7 @@ namespace NthDimension.Forms.Docking
                     bounds.Location = new Point(leftX, bounds.Location.Y);
                     break;
                 case EDockSplitterType.Right:
-                    var rightX = Math.Max(bounds.Location.X - difference.X, _minimum);
+                    var rightX = System.Math.Max(bounds.Location.X - difference.X, _minimum);
 
                     if (_maximum != 0 && rightX > _maximum)
                         rightX = _maximum;
@@ -86,7 +86,7 @@ namespace NthDimension.Forms.Docking
                     bounds.Location = new Point(rightX, bounds.Location.Y);
                     break;
                 case EDockSplitterType.Top:
-                    var topY = Math.Max(bounds.Location.Y - difference.Y, _minimum);
+                    var topY = System.Math.Max(bounds.Location.Y - difference.Y, _minimum);
 
                     if (_maximum != 0 && topY > _maximum)
                         topY = _maximum;
@@ -94,7 +94,7 @@ namespace NthDimension.Forms.Docking
                     bounds.Location = new Point(bounds.Location.X, topY);
                     break;
                 case EDockSplitterType.Bottom:
-                    var bottomY = Math.Max(bounds.Location.Y - difference.Y, _minimum);
+                    var bottomY = System.Math.Max(bounds.Location.Y - difference.Y, _minimum);
 
                     if (_maximum != 0 && bottomY > _maximum)
                         topY = _maximum;
