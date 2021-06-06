@@ -194,6 +194,7 @@ namespace NthDimension.Rendering.Drawables.Models
                 
                 ApplicationBase.Instance.CheckGlError(string.Format("(!) OpenGL Error: Draw Model {0}:{1}:{2} Shader: {3}", this.GetType(), Name, curMesh.Name, shader.Name));
 
+                ApplicationBase.Instance.Renderer.DepthTestEnabled = true;  // Should be enabled? Hides effects (eg arc)?
 
 
                 ApplicationBase.Instance.Renderer.BindVertexArray(vaoHandle[0]);
