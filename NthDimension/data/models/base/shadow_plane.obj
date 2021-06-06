@@ -1,0 +1,30 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 23.08.2017 17:35:03
+
+mtllib shadow_plane.mtl
+
+#
+# object default
+#
+
+v  -1529.0889 1529.0889 0.0000
+v  1529.0889 1529.0889 0.0000
+v  1529.0889 -1529.0889 0.0000
+v  -1529.0889 -1529.0889 0.0000
+# 4 vertices
+
+vn 0.0000 0.0000 -1.0000
+# 1 vertex normals
+
+vt 1.0000 1.0000 0.0000
+vt 0.0000 1.0000 0.0000
+vt 0.0000 0.0000 0.0000
+vt 1.0000 0.0000 0.0000
+# 4 texture coords
+
+g default
+usemtl default
+f 1/1/1 2/2/1 3/3/1 
+f 1/1/1 3/3/1 4/4/1 
+# 0 polygons - 2 triangles
+
