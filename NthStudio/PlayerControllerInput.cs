@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace NthStudio
 {
-    public class GameInput : ApplicationUserInput
+    public class GameInput : ControllerInput
     {
         public delegate void KeyDownEvent(object sender, OpenTK.Input.KeyboardKeyEventArgs e);
         public event KeyDownEvent OnKeyDown;
@@ -99,8 +99,8 @@ namespace NthStudio
 
         public override void update()
         {
-            OpenTK.Input.MouseState _mouse = OpenTK.Input.Mouse.GetCursorState();
-            OpenTK.Input.KeyboardState _keyboard = OpenTK.Input.Keyboard.GetState();
+            OpenTK.Input.MouseState     _mouse = OpenTK.Input.Mouse.GetCursorState();
+            OpenTK.Input.KeyboardState  _keyboard = OpenTK.Input.Keyboard.GetState();
 
 #region Cursor Lock/Unlock
             if (CursorLock)

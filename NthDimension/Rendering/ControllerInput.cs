@@ -19,7 +19,7 @@ namespace NthDimension.Rendering
 
     // TODO:: Heavy refactor. Implement NthDimension KeyboardState from OpenTK and decouple from Scene
 
-    public class ApplicationUserInput : ApplicationObject
+    public class PlayerControllerInput : ApplicationObject
     {
         public Point MouseDelta;
         public bool MouseButtonLeft;
@@ -347,7 +347,7 @@ namespace NthDimension.Rendering
         //        public MouseDevice mouse;
         //#endif
 
-        public ApplicationUserInput(SceneGame scene //,
+        public PlayerControllerInput(SceneGame scene //,
 //#if _WINDOWS_
 //            KeyboardDevice keyboard, MouseDevice mouse
 //#endif
@@ -363,23 +363,23 @@ namespace NthDimension.Rendering
 
         public virtual void update()
         {
-#if _WINDOWS_
+//#if _WINDOWS_
             
-            //// Calculates how far the mouse has moved since the last call to this method
-            //Point center = new Point(
-            //    (Game.Instance.Bounds.Left + Game.Instance.Bounds.Right) / 2,
-            //    (Game.Instance.Bounds.Top + Game.Instance.Bounds.Bottom) / 2);
+//            //// Calculates how far the mouse has moved since the last call to this method
+//            //Point center = new Point(
+//            //    (Game.Instance.Bounds.Left + Game.Instance.Bounds.Right) / 2,
+//            //    (Game.Instance.Bounds.Top + Game.Instance.Bounds.Bottom) / 2);
 
-            //Point mouse_current = Game.Instance.PointToScreen(new Point(Game.Instance.Mouse.X, Game.Instance.Mouse.Y));
-            //Cursor.Position = center;
+//            //Point mouse_current = Game.Instance.PointToScreen(new Point(Game.Instance.Mouse.X, Game.Instance.Mouse.Y));
+//            //Cursor.Position = center;
 
-            //Point mouse_delta = new Point(
-            //    mouse_current.X - center.X,
-            //    -mouse_current.Y + center.Y);
+//            //Point mouse_delta = new Point(
+//            //    mouse_current.X - center.X,
+//            //    -mouse_current.Y + center.Y);
 
-            //MouseMove = mouse_delta;
-            ////return mouse_delta;
-#endif
+//            //MouseMove = mouse_delta;
+//            ////return mouse_delta;
+//#endif
         }
 
         public virtual void ThirdPersonCursorLock(bool @lock) { }
